@@ -31,6 +31,97 @@ let isInSummaryMode = false; // Para controlar si estamos en modo resumen
 let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
 let availableGuides = []; // Lista de cursos, cargada desde guides/cursos.json
 
+// ===== Persistencia en Sesión =====
+const SESSION_KEY = 'devops_quiz_state';
+
+function saveSessionState() {
+    try {
+        // Guardar solo cuando el examen está iniciado
+        if (!quizStarted) return;
+        const state = {
+            selectedQuestions,
+            currentQuestionIndex,
+            userAnswers,
+            quizStarted,
+            examMode,
+            selectedQuestionCount,
+            isInSummaryMode,
+            selectedTechnologies
+        };
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
+    } catch (e) {
+        console.warn('No se pudo guardar el estado en sesión:', e);
+    }
+}
+
+function clearSessionState() {
+    try {
+        sessionStorage.removeItem(SESSION_KEY);
+    } catch (e) {
+        console.warn('No se pudo limpiar el estado de sesión:', e);
+    }
+}
+
+function applyRestoredAnswers() {
+    try {
+        if (!Array.isArray(userAnswers)) return;
+        userAnswers.forEach((answers, qIndex) => {
+            if (!Array.isArray(answers)) return;
+            answers.forEach(optIndex => {
+                const cb = document.getElementById(`q${qIndex}_o${optIndex}`);
+                if (cb) cb.checked = true;
+            });
+            updateOptionStyles(qIndex);
+        });
+    } catch (e) {
+        console.warn('No se pudieron aplicar respuestas restauradas:', e);
+    }
+}
+
+function restoreSessionState() {
+    try {
+        const raw = sessionStorage.getItem(SESSION_KEY);
+        if (!raw) return false;
+        const state = JSON.parse(raw);
+        // Restaurar variables
+        selectedQuestions = Array.isArray(state.selectedQuestions) ? state.selectedQuestions : [];
+        currentQuestionIndex = Number.isInteger(state.currentQuestionIndex) ? state.currentQuestionIndex : 0;
+        userAnswers = Array.isArray(state.userAnswers) ? state.userAnswers : [];
+        quizStarted = !!state.quizStarted;
+        examMode = state.examMode || null;
+        selectedQuestionCount = state.selectedQuestionCount || selectedQuestionCount;
+        isInSummaryMode = !!state.isInSummaryMode;
+        selectedTechnologies = Array.isArray(state.selectedTechnologies) ? state.selectedTechnologies : [];
+
+        if (!quizStarted || selectedQuestions.length === 0) return false;
+
+        // Ocultar inicio, mostrar contenedor del quiz
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('quizContainer').style.display = 'block';
+
+        // Render de preguntas y aplicación de respuestas
+        generateQuizHTML();
+        applyRestoredAnswers();
+
+        // Activar la pregunta correcta si no estamos en resumen
+        if (!isInSummaryMode) {
+            document.querySelectorAll('.question-container').forEach(el => el.classList.remove('active'));
+            const activeEl = document.getElementById(`question-${currentQuestionIndex}`);
+            if (activeEl) activeEl.classList.add('active');
+            updateProgress();
+            updateNavigation();
+        } else {
+            // Mostrar resumen si estábamos en modo resumen
+            showSummary();
+        }
+
+        return true;
+    } catch (e) {
+        console.warn('No se pudo restaurar el estado de sesión:', e);
+        return false;
+    }
+}
+
 // Función para cargar todas las preguntas de los archivos JSON
 async function loadAllQuestions() {
     const loadingElement = document.getElementById('loading');
@@ -90,6 +181,9 @@ function selectRandomQuestions() {
 
     console.log('Preguntas seleccionadas:', selectedQuestions);
     generateQuizHTML();
+    // Guardar estado inicial del examen tras generar
+    quizStarted = true;
+    saveSessionState();
 }
 
 // Función para generar el HTML del cuestionario
@@ -104,7 +198,7 @@ function generateQuizHTML() {
         const fragment = questionTemplate.content.cloneNode(true);
         const questionDiv = fragment.querySelector('.question-container');
         questionDiv.id = `question-${index}`;
-        if (index === 0) questionDiv.classList.add('active');
+        if (index === currentQuestionIndex) questionDiv.classList.add('active');
 
         // Header
         fragment.querySelector('.question-number').textContent = `Pregunta ${index + 1}`;
@@ -173,8 +267,6 @@ function generateQuizHTML() {
 // Función para seleccionar una opción
 function selectOption(questionIndex, optionIndex, toggle = false) {
     const question = selectedQuestions[questionIndex];
-    const isMultipleChoice = question.respuestas_correctas.length > 1;
-
     // Inicializar array de respuestas si no existe
     if (!userAnswers[questionIndex]) {
         userAnswers[questionIndex] = [];
@@ -182,28 +274,22 @@ function selectOption(questionIndex, optionIndex, toggle = false) {
 
     const checkbox = document.getElementById(`q${questionIndex}_o${optionIndex}`);
 
-    if (!isMultipleChoice) {
-        // Para preguntas de una sola respuesta: marcar solo la elegida
-        const allCheckboxes = document.querySelectorAll(`input[name="question-${questionIndex}"]`);
-        allCheckboxes.forEach(cb => { cb.checked = false; });
-        checkbox.checked = true;
-        userAnswers[questionIndex] = [optionIndex];
+    // Permitir SIEMPRE seleccionar múltiples opciones (sin límite)
+    if (toggle) {
+        checkbox.checked = !checkbox.checked;
+    }
+    if (checkbox.checked) {
+        if (!userAnswers[questionIndex].includes(optionIndex)) {
+            userAnswers[questionIndex].push(optionIndex);
+        }
     } else {
-        // Para opción múltiple: permitir seleccionar cualquier cantidad de opciones
-        if (toggle) {
-            checkbox.checked = !checkbox.checked;
-        }
-        if (checkbox.checked) {
-            if (!userAnswers[questionIndex].includes(optionIndex)) {
-                userAnswers[questionIndex].push(optionIndex);
-            }
-        } else {
-            userAnswers[questionIndex] = userAnswers[questionIndex].filter(ans => ans !== optionIndex);
-        }
+        userAnswers[questionIndex] = userAnswers[questionIndex].filter(ans => ans !== optionIndex);
     }
 
     // Actualizar estilos visuales
     updateOptionStyles(questionIndex);
+    // Guardar sesión tras cambiar respuesta
+    saveSessionState();
 }
 
 // Función para actualizar estilos de las opciones
@@ -227,13 +313,7 @@ function validateAndShowExplanation(questionIndex) {
     const explanationSection = document.getElementById(`explanation-${questionIndex}`);
     const explanationText = document.getElementById(`explanation-text-${questionIndex}`);
     const validateBtn = document.getElementById(`validate-btn-${questionIndex}`);
-    
-    // Verificar si el usuario ha seleccionado al menos una opción
-    if (!userAnswers[questionIndex] || userAnswers[questionIndex].length === 0) {
-        alert('Por favor, selecciona al menos una opción antes de validar.');
-        return;
-    }
-    
+
     const userAnswer = userAnswers[questionIndex];
     const correctAnswers = question.respuestas_correctas;
     
@@ -246,7 +326,7 @@ function validateAndShowExplanation(questionIndex) {
         option.classList.remove('correct', 'incorrect');
         
         const isCorrectAnswer = correctAnswers.includes(index);
-        const isUserSelected = userAnswer.includes(index);
+        const isUserSelected = (userAnswer || []).includes(index);
         
         if (isCorrectAnswer) {
             // Marcar respuestas correctas en verde
@@ -301,6 +381,7 @@ function nextQuestion() {
         document.getElementById(`question-${currentQuestionIndex}`).classList.add('active');
         updateProgress();
         updateNavigation();
+        saveSessionState();
     } else {
         finishQuiz();
     }
@@ -314,6 +395,7 @@ function previousQuestion() {
         document.getElementById(`question-${currentQuestionIndex}`).classList.add('active');
         updateProgress();
         updateNavigation();
+        saveSessionState();
     }
 }
 
@@ -338,13 +420,8 @@ function updateNavigation() {
     }
 
     if (currentQuestionIndex === selectedQuestions.length - 1) {
-        if (isInSummaryMode) {
-            nextBtn.textContent = 'Volver al Resumen';
-            nextBtn.onclick = showSummary;
-        } else {
-            nextBtn.textContent = 'Finalizar';
-            nextBtn.onclick = finishQuiz;
-        }
+        nextBtn.textContent = 'Finalizar';
+        nextBtn.onclick = finishQuiz;
         nextBtn.className = 'btn btn-primary';
     } else {
         nextBtn.textContent = 'Siguiente';
@@ -416,6 +493,7 @@ function showSummary() {
     document.getElementById('summaryScreen').style.display = 'block';
     isInSummaryMode = true;
     generateSummary();
+    saveSessionState();
 }
 
 // Función para generar el resumen de respuestas
@@ -456,6 +534,7 @@ function modifyAnswer(questionIndex) {
     document.getElementById(`question-${currentQuestionIndex}`).classList.add('active');
     updateProgress();
     updateNavigation();
+    saveSessionState();
 }
 
 // Función para volver al cuestionario desde el resumen
@@ -463,6 +542,7 @@ function backToQuiz() {
     isInSummaryMode = false;
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('quizContainer').style.display = 'block';
+    saveSessionState();
 }
 
 // Función para enviar respuestas finales
@@ -486,6 +566,8 @@ function submitFinalAnswers() {
     resultsElement.style.display = 'block';
     resultsElement.classList.add('show');
     console.log('Results element classes:', resultsElement.className);
+    // Al finalizar, limpiar estado de sesión para evitar restauraciones no deseadas
+    clearSessionState();
 }
 
 // Función para calcular los resultados
@@ -567,6 +649,7 @@ function restartQuiz() {
     examMode = null;
     isInSummaryMode = false;
     selectedTechnologies = [];
+    clearSessionState();
     
     // Ocultar resultados
     const resultsElement = document.getElementById('results');
@@ -632,6 +715,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cargar lista de cursos para el multi-select y la galería de guías
     loadCoursesList();
     initTechnologySelectHandler();
+    // Intentar restaurar el estado del examen si existe en sesión
+    restoreSessionState();
 });
 
 // ===== SELECCIÓN DE TECNOLOGÍAS =====
@@ -794,6 +879,12 @@ function showGuidesPage() {
 function backToQuiz() {
     document.getElementById('guidesPage').style.display = 'none';
     document.getElementById('startScreen').style.display = 'block';
+}
+
+// ===== Salir del Examen =====
+function exitExam() {
+    clearSessionState();
+    restartQuiz();
 }
 
 // Función para cargar la galería de guías

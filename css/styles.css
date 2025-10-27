@@ -54,7 +54,13 @@ body {
 .quiz-header-controls {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     margin-bottom: 15px;
+}
+
+/* Asegura que el botón de salir quede SIEMPRE a la derecha */
+#exitExamBtn {
+    margin-left: auto;
 }
 
 .question-container {
