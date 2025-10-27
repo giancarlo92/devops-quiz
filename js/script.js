@@ -29,7 +29,7 @@ let examMode = null; // 'guided' or 'evaluation'
 let selectedQuestionCount = 30; // Número de preguntas seleccionado (por defecto 30)
 let isInSummaryMode = false; // Para controlar si estamos en modo resumen
 let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
-let availableGuides = []; // Lista de cursos, cargada desde guides/cursos.json
+ let availablePrompts = []; // Lista de cursos, cargada desde prompts/cursos.json
 
 // ===== Persistencia en Sesión =====
 const SESSION_KEY = 'devops_quiz_state';
@@ -712,7 +712,7 @@ function restartQuiz() {
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Cuestionario DevOps cargado');
-    // Cargar lista de cursos para el multi-select y la galería de guías
+    // Cargar lista de cursos para el multi-select y la galería de prompts
     loadCoursesList();
     initTechnologySelectHandler();
     // Intentar restaurar el estado del examen si existe en sesión
@@ -723,10 +723,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // Cargar cursos desde JSON y poblar el selector
 async function loadCoursesList() {
     try {
-        const response = await fetch('guides/cursos.json');
-        if (!response.ok) throw new Error('No se pudo cargar guides/cursos.json');
+        const response = await fetch('prompts/cursos.json');
+        if (!response.ok) throw new Error('No se pudo cargar prompts/cursos.json');
         const data = await response.json();
-        availableGuides = Array.isArray(data.cursos) ? data.cursos : [];
+        availablePrompts = Array.isArray(data.cursos) ? data.cursos : [];
         populateTechnologySelect();
     } catch (error) {
         console.warn('No se pudo cargar la lista de cursos:', error);
@@ -738,7 +738,7 @@ function populateTechnologySelect() {
     if (!dropdown) return;
     dropdown.innerHTML = '';
 
-    const sorted = [...availableGuides].sort((a, b) => a.title.localeCompare(b.title));
+    const sorted = [...availablePrompts].sort((a, b) => a.title.localeCompare(b.title));
     sorted.forEach(item => {
         const el = document.createElement('div');
         el.className = 'multi-select-item';
@@ -858,26 +858,26 @@ function clearTechnologySelection() {
     renderTechChips();
 }
 
-// ===== FUNCIONALIDAD DE GUÍAS =====
+// ===== FUNCIONALIDAD DE PROMPTS =====
 
-// Función para mostrar la página de guías
-function showGuidesPage() {
+// Función para mostrar la página de prompts
+function showPromptsPage() {
     // Ocultar todas las pantallas
     document.getElementById('startScreen').style.display = 'none';
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('results').style.display = 'none';
     
-    // Mostrar página de guías
-    document.getElementById('guidesPage').style.display = 'block';
+    // Mostrar página de prompts
+    document.getElementById('promptsPage').style.display = 'block';
     
-    // Cargar las guías en la galería
-    loadGuidesGallery();
+    // Cargar los prompts en la galería
+    loadPromptsGallery();
 }
 
 // Función para volver al cuestionario
 function backToQuiz() {
-    document.getElementById('guidesPage').style.display = 'none';
+    document.getElementById('promptsPage').style.display = 'none';
     document.getElementById('startScreen').style.display = 'block';
 }
 
@@ -887,22 +887,22 @@ function exitExam() {
     restartQuiz();
 }
 
-// Función para cargar la galería de guías
-function loadGuidesGallery() {
-    const gallery = document.getElementById('guidesGallery');
+// Función para cargar la galería de prompts
+function loadPromptsGallery() {
+    const gallery = document.getElementById('promptsGallery');
     gallery.innerHTML = '';
     
-    availableGuides.forEach(guide => {
+    availablePrompts.forEach(prompt => {
         const card = document.createElement('div');
-        card.className = 'guide-card';
+        card.className = 'prompt-card';
         card.innerHTML = `
-            <div class="guide-card-header">
-                <h3>${guide.title}</h3>
+            <div class="prompt-card-header">
+                <h3>${prompt.title}</h3>
             </div>
-            <div class="guide-card-body">
-                <p>${guide.description}</p>
-                <button class="btn btn-primary" onclick="openGuide('${guide.file}', '${guide.title}')">
-                    📖 Ver Guía
+            <div class="prompt-card-body">
+                <p>${prompt.description}</p>
+                <button class="btn btn-primary" onclick="openPrompt('${prompt.file}', '${prompt.title}')">
+                    🧠 Ver Prompt
                 </button>
             </div>
         `;
@@ -910,18 +910,18 @@ function loadGuidesGallery() {
     });
 }
 
-// Función para abrir una guía específica
-async function openGuide(filename, title) {
+// Función para abrir un prompt específico
+async function openPrompt(filename, title) {
     try {
-        const response = await fetch(`guides/${filename}`);
+        const response = await fetch(`prompts/${filename}`);
         if (!response.ok) {
-            throw new Error(`Error al cargar la guía: ${response.status}`);
+            throw new Error(`Error al cargar el prompt: ${response.status}`);
         }
         
         const markdownContent = await response.text();
         
         // Mostrar el modal
-        const modal = document.getElementById('guideModal');
+        const modal = document.getElementById('promptModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalContent = document.getElementById('markdownContent');
         
@@ -941,19 +941,19 @@ async function openGuide(filename, title) {
         modal.style.display = 'block';
         
     } catch (error) {
-        console.error('Error al cargar la guía:', error);
-        alert('Error al cargar la guía. Por favor, intenta de nuevo.');
+        console.error('Error al cargar el prompt:', error);
+        alert('Error al cargar el prompt. Por favor, intenta de nuevo.');
     }
 }
 
 // Función para cerrar el modal
 function closeModal() {
-    document.getElementById('guideModal').style.display = 'none';
+    document.getElementById('promptModal').style.display = 'none';
 }
 
 // Función para copiar el contenido Markdown al portapapeles
 async function copyMarkdownContent() {
-    const modal = document.getElementById('guideModal');
+    const modal = document.getElementById('promptModal');
     const originalContent = modal.dataset.originalContent;
     
     if (!originalContent) {
@@ -998,7 +998,7 @@ async function copyMarkdownContent() {
 
 // Cerrar modal al hacer clic fuera de él
 window.onclick = function(event) {
-    const modal = document.getElementById('guideModal');
+    const modal = document.getElementById('promptModal');
     if (event.target === modal) {
         closeModal();
     }

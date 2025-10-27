@@ -16,8 +16,8 @@
                     <p>Evaluación técnica de conocimientos en tecnologías DevOps</p>
                 </div>
             </div>
-            <div class="guides-button-container">
-                <button class="btn btn-secondary" id="guidesBtn" onclick="showGuidesPage()">📚 Guías</button>
+            <div class="prompts-button-container">
+                <button class="btn btn-secondary" id="promptsBtn" onclick="showPromptsPage()">🧠 Prompts</button>
             </div>
         </div>
 
@@ -175,28 +175,28 @@
         </div>
     </div>
 
-    <!-- Página de Guías -->
-    <div id="guidesPage" class="guides-page" style="display: none;">
-        <div class="guides-header">
-            <div class="guides-header-content">
-                <div class="guides-title">
-                    <h1>📚 Guías de Aprendizaje DevOps</h1>
+    <!-- Página de Prompts -->
+    <div id="promptsPage" class="prompts-page" style="display: none;">
+        <div class="prompts-header">
+            <div class="prompts-header-content">
+                <div class="prompts-title">
+                    <h1>🧠 Prompts de Aprendizaje DevOps</h1>
                     <p>Recursos completos para dominar las tecnologías DevOps</p>
                 </div>
-                <div class="guides-actions">
+                <div class="prompts-actions">
                     <button class="btn btn-secondary" onclick="backToQuiz()">← Volver al Cuestionario</button>
                 </div>
             </div>
         </div>
         
-        <div class="guides-content">
-            <div class="guides-gallery" id="guidesGallery">
-                <!-- Las guías se cargarán dinámicamente aquí -->
+        <div class="prompts-content">
+            <div class="prompts-gallery" id="promptsGallery">
+                <!-- Los prompts se cargarán dinámicamente aquí -->
             </div>
         </div>
         
-        <!-- Modal para mostrar el contenido de la guía -->
-        <div id="guideModal" class="modal" style="display: none;">
+        <!-- Modal para mostrar el contenido del prompt -->
+        <div id="promptModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 id="modalTitle"></h2>

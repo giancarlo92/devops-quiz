@@ -1006,9 +1006,9 @@ body {
     }
 }
 
-/* ===== ESTILOS PARA GUÍAS ===== */
+/* ===== ESTILOS PARA PROMPTS ===== */
 
-/* Header con botón de guías */
+/* Header con botón de prompts */
 .header-content {
     display: flex;
     justify-content: center;
@@ -1020,7 +1020,7 @@ body {
     flex: 1;
 }
 
-.guides-button-container {
+.prompts-button-container {
     text-align: center;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -1032,20 +1032,20 @@ body {
     gap: 10px;
 }
 
-/* Página de guías */
-.guides-page {
+/* Página de prompts */
+.prompts-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.guides-header {
+.prompts-header {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 30px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.guides-header-content {
+.prompts-header-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -1056,33 +1056,33 @@ body {
     gap: 20px;
 }
 
-.guides-title h1 {
+.prompts-title h1 {
     color: white;
     margin: 0 0 10px 0;
     font-size: 2.5rem;
 }
 
-.guides-title p {
+.prompts-title p {
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
     font-size: 1.1rem;
 }
 
-.guides-content {
+.prompts-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* Galería de guías */
-.guides-gallery {
+/* Galería de prompts */
+.prompts-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     margin-top: 20px;
 }
 
-.guide-card {
+.prompt-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -1094,13 +1094,13 @@ body {
     height: 100%;
 }
 
-.guide-card:hover {
+.prompt-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     border-color: #4caf50;
 }
 
-.guide-card-header h3 {
+.prompt-card-header h3 {
     font-size: 1.4rem;
     font-weight: 600;
     color: #333;
@@ -1108,33 +1108,33 @@ body {
     text-align: center;
 }
 
-.guide-card-body {
+.prompt-card-body {
     display: flex;
     flex-direction: column;
     flex: 1;
     text-align: center;
 }
 
-.guide-card-body p {
+.prompt-card-body p {
     color: #666;
     line-height: 1.5;
     margin-bottom: 20px;
     flex: 1;
 }
 
-.guide-card-body .btn {
+.prompt-card-body .btn {
     margin-top: auto;
     align-self: center;
     min-width: 140px;
 }
 
-.guide-card-icon {
+.prompt-card-icon {
     font-size: 3rem;
     margin-bottom: 15px;
     text-align: center;
 }
 
-.guide-card-title {
+.prompt-card-title {
     font-size: 1.4rem;
     font-weight: 600;
     color: #333;
@@ -1142,14 +1142,14 @@ body {
     text-align: center;
 }
 
-.guide-card-description {
+.prompt-card-description {
     color: #666;
     text-align: center;
     line-height: 1.5;
     margin-bottom: 15px;
 }
 
-.guide-card-tech {
+.prompt-card-tech {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 8px 16px;
@@ -1343,23 +1343,23 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive para guías */
+/* Responsive para prompts */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         text-align: center;
     }
     
-    .guides-header-content {
+    .prompts-header-content {
         flex-direction: column;
         text-align: center;
     }
     
-    .guides-title h1 {
+    .prompts-title h1 {
         font-size: 2rem;
     }
     
-    .guides-gallery {
+    .prompts-gallery {
         grid-template-columns: 1fr;
         gap: 20px;
     }
