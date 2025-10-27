@@ -1,0 +1,271 @@
+{
+  "tecnologia": "Kubernetes",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Kubernetes?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plataforma de orquestación de contenedores",
+        "Un sistema operativo",
+        "Una base de datos",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Kubernetes (K8s) es una <strong>plataforma de orquestación de contenedores</strong> de código abierto que automatiza el despliegue, escalado y gestión de aplicaciones en contenedores. Originalmente desarrollado por Google, permite gestionar clusters de contenedores de manera declarativa y proporciona funcionalidades como auto-scaling, self-healing y rolling updates."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son los componentes principales del Control Plane?",
+      "nivel": "básico",
+      "opciones": [
+        "kube-apiserver",
+        "etcd",
+        "kube-scheduler",
+        "kube-controller-manager",
+        "cloud-controller-manager"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "El Control Plane incluye: <strong>kube-apiserver</strong> (API principal), <strong>etcd</strong> (almacén de datos distribuido), <strong>kube-scheduler</strong> (asigna pods a nodos), <strong>kube-controller-manager</strong> (ejecuta controladores del cluster), y <strong>cloud-controller-manager</strong> (interactúa con APIs de proveedores cloud). Estos componentes gestionan el estado del cluster y toman decisiones globales."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es un Pod en Kubernetes?",
+      "nivel": "básico",
+      "opciones": [
+        "La unidad más pequeña desplegable",
+        "Un tipo de servicio",
+        "Una configuración de red",
+        "Un volumen de almacenamiento"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Pod es la <strong>unidad más pequeña desplegable</strong> en Kubernetes. Representa uno o más contenedores que comparten almacenamiento, red y especificaciones sobre cómo ejecutar los contenedores. Los contenedores en un Pod siempre se programan juntos en el mismo nodo y comparten el mismo ciclo de vida."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué componentes ejecutan en los Worker Nodes?",
+      "nivel": "básico",
+      "opciones": [
+        "kubelet",
+        "kube-proxy",
+        "Container runtime",
+        "kube-apiserver"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los Worker Nodes ejecutan: <strong>kubelet</strong> (agente que se comunica con el Control Plane), <strong>kube-proxy</strong> (maneja reglas de red y balanceo de carga), y <strong>Container runtime</strong> (Docker, containerd, etc.). El kube-apiserver NO ejecuta en worker nodes, sino en el Control Plane."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué es un Service en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una abstracción que define acceso a un conjunto de Pods",
+        "Un tipo de contenedor",
+        "Una configuración de almacenamiento",
+        "Un comando de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Service es <strong>una abstracción que define acceso a un conjunto de Pods</strong> y las políticas para acceder a ellos. Proporciona una dirección IP estable y un nombre DNS para un conjunto de Pods que pueden cambiar dinámicamente. Los Services permiten el descubrimiento de servicios y balanceo de carga automático entre los Pods backend."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Cuáles son los tipos de Services en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "ClusterIP",
+        "NodePort",
+        "LoadBalancer",
+        "ExternalName",
+        "Headless"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de Services son: <strong>ClusterIP</strong> (acceso interno al cluster, por defecto), <strong>NodePort</strong> (expone el service en un puerto de cada nodo), <strong>LoadBalancer</strong> (provisiona un load balancer externo), <strong>ExternalName</strong> (mapea a un nombre DNS externo), y <strong>Headless</strong> (ClusterIP: None, para acceso directo a Pods). Cada tipo sirve diferentes casos de uso de conectividad."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué es un Deployment en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un controlador que gestiona ReplicaSets",
+        "Un tipo de Pod",
+        "Una configuración de red",
+        "Un volumen de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Deployment es <strong>un controlador que gestiona ReplicaSets</strong> y proporciona actualizaciones declarativas para Pods. Permite rolling updates, rollbacks, escalado automático y garantiza que el número deseado de réplicas esté ejecutándose. Es la forma recomendada de gestionar aplicaciones stateless en Kubernetes."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es un Namespace en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una forma de dividir recursos del cluster",
+        "Un tipo de contenedor",
+        "Una configuración de red",
+        "Un comando de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Namespace es <strong>una forma de dividir recursos del cluster</strong> en múltiples clusters virtuales. Proporciona aislamiento de nombres para recursos, permite aplicar políticas de seguridad y cuotas de recursos por namespace. Es útil para separar entornos (dev, staging, prod) o equipos en el mismo cluster físico."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué son los ConfigMaps en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Objetos para almacenar datos de configuración no confidenciales",
+        "Tipos de Pods",
+        "Configuraciones de red",
+        "Volúmenes de almacenamiento"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los ConfigMaps son <strong>objetos para almacenar datos de configuración no confidenciales</strong> en pares clave-valor. Permiten separar la configuración del código de la aplicación, pueden montarse como volúmenes o usarse como variables de entorno. Son ideales para archivos de configuración, parámetros de aplicación y scripts."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son los Secrets en Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Objetos para almacenar datos sensibles",
+        "Tipos de Services",
+        "Configuraciones de red",
+        "Comandos de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Secrets son <strong>objetos para almacenar datos sensibles</strong> como passwords, tokens OAuth, claves SSH y certificados TLS. Los datos se almacenan en base64 y pueden cifrarse en reposo. Se pueden montar como volúmenes o usar como variables de entorno, proporcionando una forma segura de gestionar información confidencial."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué tipos de volúmenes soporta Kubernetes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "emptyDir",
+        "hostPath",
+        "persistentVolumeClaim",
+        "configMap",
+        "secret"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Kubernetes soporta múltiples tipos: <strong>emptyDir</strong> (directorio temporal que existe mientras el Pod vive), <strong>hostPath</strong> (monta un archivo/directorio del nodo host), <strong>persistentVolumeClaim</strong> (solicita almacenamiento persistente), <strong>configMap</strong> (monta datos de ConfigMap), y <strong>secret</strong> (monta datos de Secret). También soporta volúmenes de proveedores cloud como AWS EBS, Azure Disk, GCE PD."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es un Ingress en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un objeto que gestiona acceso externo a servicios HTTP/HTTPS",
+        "Un tipo de Pod",
+        "Una configuración de almacenamiento",
+        "Un comando de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Ingress es <strong>un objeto que gestiona acceso externo a servicios HTTP/HTTPS</strong> en el cluster. Proporciona balanceo de carga, terminación SSL y routing basado en nombres virtuales. Requiere un Ingress Controller (como NGINX, Traefik, HAProxy) para funcionar y es más eficiente que exponer múltiples Services como LoadBalancer."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué son los DaemonSets en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Controladores que aseguran que un Pod corra en todos los nodos",
+        "Tipos de Services",
+        "Configuraciones de red",
+        "Volúmenes especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los DaemonSets son <strong>controladores que aseguran que un Pod corra en todos los nodos</strong> (o un subconjunto seleccionado). Son ideales para servicios de sistema como agentes de monitoreo (Prometheus Node Exporter), recolectores de logs (Fluentd), proxies de red (kube-proxy), o drivers de almacenamiento. Automáticamente programan Pods en nodos nuevos."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son los StatefulSets en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Controladores para aplicaciones con estado",
+        "Tipos de Pods",
+        "Configuraciones de red",
+        "Comandos de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los StatefulSets son <strong>controladores para aplicaciones con estado</strong> que requieren identidades de red estables, almacenamiento persistente y orden de despliegue/escalado. Proporcionan nombres de Pod predecibles, PVCs persistentes y arranque/parada ordenada. Son ideales para bases de datos, sistemas de colas y aplicaciones que requieren identidad única."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es RBAC en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Role-Based Access Control",
+        "Un tipo de Service",
+        "Una configuración de red",
+        "Un volumen de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "RBAC es <strong>Role-Based Access Control</strong>, un método de regulación de acceso a recursos basado en roles de usuarios individuales. En Kubernetes, RBAC permite definir qué usuarios o ServiceAccounts pueden realizar qué acciones en qué recursos. Es fundamental para la seguridad del cluster y el principio de menor privilegio."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Cuáles son los componentes de RBAC?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Role",
+        "ClusterRole",
+        "RoleBinding",
+        "ClusterRoleBinding",
+        "ServiceAccount"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los componentes de RBAC incluyen: <strong>Role</strong> (permisos dentro de un namespace), <strong>ClusterRole</strong> (permisos a nivel de cluster), <strong>RoleBinding</strong> (vincula Role a usuarios/grupos en un namespace), <strong>ClusterRoleBinding</strong> (vincula ClusterRole a nivel de cluster), y <strong>ServiceAccount</strong> (identidad para Pods). Estos componentes trabajan juntos para implementar control de acceso granular."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué son los Health Checks en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Liveness Probe",
+        "Readiness Probe",
+        "Startup Probe",
+        "Performance Probe"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los Health Checks válidos son: <strong>Liveness Probe</strong> (determina si reiniciar el contenedor), <strong>Readiness Probe</strong> (determina si el Pod está listo para recibir tráfico), y <strong>Startup Probe</strong> (para contenedores con arranque lento, deshabilita otros probes hasta que pase). 'Performance Probe' no existe. Estos probes garantizan la salud y disponibilidad de las aplicaciones."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué es Helm en el ecosistema Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un gestor de paquetes para Kubernetes",
+        "Un tipo de Pod",
+        "Una configuración de red",
+        "Un comando de kubectl"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Helm es <strong>un gestor de paquetes para Kubernetes</strong> que simplifica el despliegue y gestión de aplicaciones complejas. Utiliza 'Charts' (paquetes de archivos YAML templated) para definir, instalar y actualizar aplicaciones. Permite versionado, rollbacks, gestión de dependencias y reutilización de configuraciones a través de valores parametrizables."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué son los Custom Resource Definitions (CRDs)?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Extensiones que permiten definir recursos personalizados",
+        "Tipos de Pods",
+        "Configuraciones de red",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los CRDs son <strong>extensiones que permiten definir recursos personalizados</strong> en la API de Kubernetes. Permiten extender Kubernetes con nuevos tipos de recursos específicos para aplicaciones, creando APIs personalizadas que se comportan como recursos nativos. Son la base para operadores y controladores personalizados que automatizan tareas complejas."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son estrategias de deployment en Kubernetes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Rolling Update",
+        "Blue-Green",
+        "Canary",
+        "Recreate",
+        "A/B Testing"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las estrategias incluyen: <strong>Rolling Update</strong> (actualización gradual, por defecto), <strong>Blue-Green</strong> (dos entornos completos, switch instantáneo), <strong>Canary</strong> (despliegue parcial para testing), <strong>Recreate</strong> (termina todos los Pods antes de crear nuevos), y <strong>A/B Testing</strong> (comparación de versiones con tráfico dividido). Cada estrategia ofrece diferentes balances entre velocidad, seguridad y downtime."
+    }
+  ]
+}

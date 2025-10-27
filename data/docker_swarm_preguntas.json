@@ -1,0 +1,269 @@
+{
+  "tecnologia": "Docker Swarm",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Docker Swarm?",
+      "nivel": "básico",
+      "opciones": [
+        "Una herramienta de orquestación nativa de Docker",
+        "Un tipo de contenedor",
+        "Una imagen de Docker",
+        "Un comando de Docker"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Docker Swarm</strong> es una <strong>herramienta de orquestación nativa de Docker</strong> que permite crear y gestionar un cluster de nodos Docker. Convierte múltiples hosts Docker en un solo host virtual, proporcionando alta disponibilidad, escalabilidad automática, load balancing, y gestión declarativa de servicios. Es más simple que Kubernetes pero menos potente."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son los componentes principales de Docker Swarm?",
+      "nivel": "básico",
+      "opciones": [
+        "Manager nodes",
+        "Worker nodes",
+        "Services",
+        "Tasks"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los componentes principales de Docker Swarm son: <strong>Manager nodes</strong> (gestionan el estado del cluster y toman decisiones), <strong>Worker nodes</strong> (ejecutan contenedores), <strong>Services</strong> (definiciones de cómo ejecutar aplicaciones), y <strong>Tasks</strong> (instancias individuales de contenedores). Esta arquitectura proporciona separación de responsabilidades y escalabilidad."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué comando inicializa un Docker Swarm?",
+      "nivel": "básico",
+      "opciones": [
+        "docker swarm init",
+        "docker init swarm",
+        "docker create swarm",
+        "docker start swarm"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>docker swarm init</strong> inicializa un nuevo cluster Docker Swarm. Este comando convierte el nodo actual en el primer manager node del cluster, genera tokens de unión para otros nodos, y configura la red overlay por defecto. Opcionalmente se puede especificar la IP de advertise con --advertise-addr."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué comando se usa para unir un nodo al swarm?",
+      "nivel": "básico",
+      "opciones": [
+        "docker swarm join",
+        "docker join swarm",
+        "docker node join",
+        "docker add node"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>docker swarm join</strong> se usa para unir un nodo al cluster Swarm existente. Requiere un token de unión (obtenido con 'docker swarm join-token') y la dirección del manager. Dependiendo del token usado, el nodo se unirá como manager o worker. Ejemplo: docker swarm join --token TOKEN IP:PORT."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son las diferencias entre manager y worker nodes?",
+      "nivel": "básico",
+      "opciones": [
+        "Manager nodes gestionan el cluster",
+        "Worker nodes ejecutan tareas",
+        "Manager nodes pueden ejecutar tareas también",
+        "Worker nodes no pueden tomar decisiones de orquestación"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Las diferencias clave son: <strong>Manager nodes gestionan el cluster</strong> (estado, scheduling, API), <strong>Worker nodes ejecutan tareas</strong> (solo contenedores), <strong>Manager nodes pueden ejecutar tareas también</strong> (por defecto), y <strong>Worker nodes no pueden tomar decisiones de orquestación</strong>. Los managers usan el algoritmo Raft para consenso y se recomienda un número impar para evitar split-brain."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es un service en Docker Swarm?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una definición de cómo ejecutar contenedores en el cluster",
+        "Un tipo de contenedor",
+        "Una imagen específica",
+        "Un comando de Docker"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>service</strong> en Docker Swarm es una <strong>definición de cómo ejecutar contenedores en el cluster</strong>. Especifica la imagen, número de réplicas, recursos, redes, volúmenes, y constraints de placement. Los services son declarativos: defines el estado deseado y Swarm se encarga de mantenerlo, creando y destruyendo tasks según sea necesario."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son comandos para gestión de services?",
+      "nivel": "intermedio",
+      "opciones": [
+        "docker service create",
+        "docker service ls",
+        "docker service update",
+        "docker service rm",
+        "docker service scale"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos principales para gestión de services son: <strong>docker service create</strong> (crear nuevo service), <strong>docker service ls</strong> (listar services), <strong>docker service update</strong> (actualizar service existente), <strong>docker service rm</strong> (eliminar service), y <strong>docker service scale</strong> (cambiar número de réplicas). Estos comandos permiten el ciclo completo de vida de los services."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué son las tasks en Docker Swarm?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Instancias individuales de contenedores ejecutándose",
+        "Comandos de gestión",
+        "Tipos de nodos",
+        "Configuraciones de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>tasks</strong> son <strong>instancias individuales de contenedores ejecutándose</strong> como parte de un service. Cada task representa una unidad atómica de trabajo que incluye el contenedor y su configuración. Los manager nodes asignan tasks a worker nodes, y cada task tiene un estado (running, failed, complete, etc.). Son inmutables: si fallan, se crean nuevas tasks."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuáles son modos de deployment en services?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Replicated (múltiples réplicas)",
+        "Global (una instancia por nodo)",
+        "Singleton",
+        "Distributed"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Docker Swarm soporta dos modos de deployment: <strong>Replicated</strong> (ejecuta un número específico de réplicas distribuidas en el cluster) y <strong>Global</strong> (ejecuta exactamente una instancia en cada nodo disponible). Replicated es útil para aplicaciones web escalables, mientras que Global es ideal para agentes de monitoreo o logging que necesitan ejecutarse en todos los nodos."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué comando muestra información de los nodos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "docker node ls",
+        "docker swarm nodes",
+        "docker list nodes",
+        "docker show nodes"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>docker node ls</strong> muestra información de todos los nodos en el cluster Swarm. Proporciona detalles como ID del nodo, hostname, status (Ready/Down), availability (Active/Pause/Drain), rol (Manager/Worker), y versión del Engine. Solo puede ejecutarse desde un manager node."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son tipos de redes en Docker Swarm?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Overlay networks",
+        "Bridge networks",
+        "Host networks",
+        "Ingress network"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Docker Swarm soporta varios tipos de redes: <strong>Overlay networks</strong> (conectan contenedores entre múltiples hosts), <strong>Bridge networks</strong> (red local en un solo host), <strong>Host networks</strong> (usa la red del host directamente), e <strong>Ingress network</strong> (red especial para load balancing de servicios publicados). Las overlay son las más importantes para comunicación inter-nodos."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es el load balancing en Docker Swarm?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Distribución automática de tráfico entre réplicas",
+        "Un tipo de red",
+        "Una configuración de nodo",
+        "Un comando específico"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El load balancing en Docker Swarm es la <strong>distribución automática de tráfico entre réplicas</strong> de un service. Swarm proporciona load balancing interno (entre tasks del mismo service) y externo (routing mesh para tráfico entrante). Utiliza IPVS (IP Virtual Server) y permite que cualquier nodo del cluster reciba tráfico para cualquier service publicado."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son estrategias de actualización en services?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Rolling updates",
+        "Blue-green deployment",
+        "Canary deployment",
+        "Recreate"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Docker Swarm soporta varias estrategias de actualización: <strong>Rolling updates</strong> (actualización gradual, por defecto), <strong>Blue-green deployment</strong> (dos entornos completos), <strong>Canary deployment</strong> (actualización parcial para testing), y <strong>Recreate</strong> (parar todo y recrear). Se configuran con --update-parallelism, --update-delay, y --update-failure-action para controlar el proceso."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son los secrets en Docker Swarm?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Datos sensibles gestionados de forma segura",
+        "Tipos de contenedores",
+        "Configuraciones de red",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>secrets</strong> son <strong>datos sensibles gestionados de forma segura</strong> en Docker Swarm (passwords, certificados, claves API). Se almacenan encriptados en el Raft log, se transmiten encriptados por TLS, y se montan como archivos en memoria (tmpfs) en los contenedores. Solo son accesibles por services autorizados y nunca se escriben al disco."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son comandos para gestión de secrets?",
+      "nivel": "avanzado",
+      "opciones": [
+        "docker secret create",
+        "docker secret ls",
+        "docker secret rm",
+        "docker secret inspect"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los comandos para gestión de secrets incluyen: <strong>docker secret create</strong> (crear nuevo secret), <strong>docker secret ls</strong> (listar secrets), <strong>docker secret rm</strong> (eliminar secret), y <strong>docker secret inspect</strong> (ver detalles del secret). Los secrets se referencian en services con --secret y se montan en /run/secrets/ por defecto."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los configs en Docker Swarm?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Archivos de configuración no sensibles",
+        "Tipos de servicios",
+        "Configuraciones de nodos",
+        "Comandos de gestión"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>configs</strong> son <strong>archivos de configuración no sensibles</strong> gestionados por Docker Swarm. A diferencia de los secrets, no se encriptan y pueden ser leídos por cualquier service autorizado. Se usan para archivos de configuración de aplicaciones, scripts, certificados públicos, etc. Se montan como archivos en el sistema de archivos del contenedor."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son características de alta disponibilidad?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Múltiples manager nodes",
+        "Quorum para decisiones",
+        "Failover automático",
+        "Raft consensus algorithm"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "La alta disponibilidad en Docker Swarm incluye: <strong>Múltiples manager nodes</strong> (recomendado número impar), <strong>Quorum para decisiones</strong> (mayoría de managers activos), <strong>Failover automático</strong> (promoción automática de workers a managers), y <strong>Raft consensus algorithm</strong> (garantiza consistencia de datos). Tolera (N-1)/2 fallos de managers."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué son las constraints en services?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Restricciones para placement de contenedores",
+        "Límites de recursos",
+        "Configuraciones de red",
+        "Tipos de volúmenes"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>constraints</strong> son <strong>restricciones para placement de contenedores</strong> que determinan en qué nodos pueden ejecutarse las tasks. Se definen con --constraint y pueden basarse en labels de nodos (node.labels.type==database), roles (node.role==worker), o características del nodo. Permiten control granular sobre la distribución de workloads."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles son comandos para troubleshooting?",
+      "nivel": "avanzado",
+      "opciones": [
+        "docker service logs",
+        "docker node inspect",
+        "docker service ps",
+        "docker swarm ca",
+        "docker system events"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos principales para troubleshooting incluyen: <strong>docker service logs</strong> (ver logs de un service), <strong>docker node inspect</strong> (detalles de un nodo), <strong>docker service ps</strong> (estado de tasks de un service), <strong>docker swarm ca</strong> (gestión de certificados), y <strong>docker system events</strong> (eventos en tiempo real). Estos comandos ayudan a diagnosticar problemas de conectividad, fallos de tasks, y problemas de certificados."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para Docker Swarm?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar número impar de managers",
+        "Separar managers de workers en producción",
+        "Implementar monitoreo y logging",
+        "Usar health checks en services",
+        "Gestionar secrets apropiadamente"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas incluyen: <strong>Usar número impar de managers</strong> (evita split-brain), <strong>separar managers de workers en producción</strong> (mejor rendimiento y seguridad), <strong>implementar monitoreo y logging</strong> (observabilidad), <strong>usar health checks en services</strong> (detección automática de fallos), y <strong>gestionar secrets apropiadamente</strong> (seguridad). También es recomendable usar labels para organización y constraints para placement estratégico."
+    }
+  ]
+}

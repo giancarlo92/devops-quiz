@@ -1,0 +1,273 @@
+{
+  "tecnologia": "PowerShell",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es PowerShell?",
+      "nivel": "básico",
+      "opciones": [
+        "Un shell de línea de comandos y lenguaje de scripting de Microsoft",
+        "Una base de datos",
+        "Un navegador web",
+        "Un editor de texto"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>PowerShell</strong> es un <strong>shell de línea de comandos y lenguaje de scripting</strong> desarrollado por Microsoft. Está construido sobre .NET Framework/.NET Core y permite automatizar tareas administrativas y de configuración. A diferencia de shells tradicionales que manejan texto, PowerShell trabaja con objetos .NET, lo que lo hace más poderoso para administración de sistemas Windows y multiplataforma."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las versiones principales de PowerShell?",
+      "nivel": "básico",
+      "opciones": [
+        "Windows PowerShell (5.1)",
+        "PowerShell Core (6.x)",
+        "PowerShell 7+",
+        "PowerShell ISE"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Las versiones principales son: <strong>Windows PowerShell 5.1</strong> (basado en .NET Framework, solo Windows), <strong>PowerShell Core 6.x</strong> (basado en .NET Core, multiplataforma), y <strong>PowerShell 7+</strong> (unifica Windows PowerShell y PowerShell Core, basado en .NET). PowerShell ISE es un entorno de desarrollo integrado, no una versión del motor de PowerShell."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué comando se usa para obtener ayuda en PowerShell?",
+      "nivel": "básico",
+      "opciones": [
+        "Get-Help",
+        "Help",
+        "Man",
+        "Info"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "<strong>Get-Help</strong> es el cmdlet principal para obtener ayuda, y <strong>Help</strong> es su alias. Ambos proporcionan documentación detallada sobre cmdlets, funciones y conceptos. Ejemplos: <code>Get-Help Get-Process</code>, <code>Help Get-Process -Examples</code>, <code>Get-Help about_Variables</code>. Man e Info no son comandos nativos de PowerShell."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué comando lista archivos y carpetas?",
+      "nivel": "básico",
+      "opciones": [
+        "Get-ChildItem",
+        "ls",
+        "dir",
+        "gci"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "<strong>Get-ChildItem</strong> es el cmdlet principal para listar archivos y carpetas. <strong>ls</strong>, <strong>dir</strong> y <strong>gci</strong> son aliases del mismo cmdlet. Ejemplos: <code>Get-ChildItem C:\\</code>, <code>ls -Recurse</code>, <code>dir *.txt</code>, <code>gci -Hidden</code>. Todos estos comandos proporcionan la misma funcionalidad con diferentes sintaxis."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son comandos básicos para navegación?",
+      "nivel": "básico",
+      "opciones": [
+        "Set-Location (cd)",
+        "Get-Location (pwd)",
+        "Push-Location",
+        "Pop-Location"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Comandos de navegación: <strong>Set-Location (cd)</strong> cambia el directorio actual, <strong>Get-Location (pwd)</strong> muestra la ubicación actual, <strong>Push-Location</strong> guarda la ubicación actual en una pila y cambia a otra, <strong>Pop-Location</strong> regresa a la ubicación guardada. Ejemplo: <code>cd C:\\Users</code>, <code>pwd</code>, <code>pushd D:\\Projects</code>, <code>popd</code>."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué son los cmdlets en PowerShell?",
+      "nivel": "básico",
+      "opciones": [
+        "Comandos especializados con formato Verbo-Sustantivo",
+        "Variables especiales",
+        "Tipos de archivos",
+        "Configuraciones de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>cmdlets</strong> son <strong>comandos especializados con formato Verbo-Sustantivo</strong> que realizan acciones específicas. Ejemplos: <code>Get-Process</code>, <code>Set-Location</code>, <code>New-Item</code>, <code>Remove-File</code>. Esta convención de nomenclatura hace que PowerShell sea intuitivo y consistente. Los cmdlets son clases .NET compiladas que heredan de la clase Cmdlet."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son cmdlets comunes para gestión de archivos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Copy-Item",
+        "Move-Item",
+        "Remove-Item",
+        "New-Item",
+        "Rename-Item"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Cmdlets de gestión de archivos: <strong>Copy-Item</strong> (copia archivos/carpetas), <strong>Move-Item</strong> (mueve/corta), <strong>Remove-Item</strong> (elimina), <strong>New-Item</strong> (crea nuevos), <strong>Rename-Item</strong> (renombra). Ejemplos: <code>Copy-Item file.txt backup.txt</code>, <code>Move-Item *.log C:\\Logs</code>, <code>Remove-Item temp.txt</code>, <code>New-Item -ItemType Directory NewFolder</code>."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es el pipeline en PowerShell?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un mecanismo para pasar objetos entre cmdlets",
+        "Un tipo de variable",
+        "Una configuración de red",
+        "Un archivo de script"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El <strong>pipeline</strong> es un <strong>mecanismo para pasar objetos entre cmdlets</strong> usando el operador <code>|</code>. A diferencia de shells tradicionales que pasan texto, PowerShell pasa objetos .NET completos con propiedades y métodos. Ejemplo: <code>Get-Process | Where-Object {$_.CPU -gt 100} | Sort-Object CPU -Descending</code>. Esto permite operaciones más sofisticadas y eficientes."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuáles son operadores de comparación en PowerShell?",
+      "nivel": "intermedio",
+      "opciones": [
+        "-eq (igual)",
+        "-ne (no igual)",
+        "-lt (menor que)",
+        "-gt (mayor que)",
+        "-like (similar)"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Operadores de comparación: <strong>-eq</strong> (igual), <strong>-ne</strong> (no igual), <strong>-lt</strong> (menor que), <strong>-gt</strong> (mayor que), <strong>-like</strong> (coincidencia con wildcards). También existen: <code>-le</code> (menor o igual), <code>-ge</code> (mayor o igual), <code>-match</code> (regex), <code>-contains</code> (contiene). Ejemplo: <code>$a -eq 5</code>, <code>$name -like 'John*'</code>."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son las variables en PowerShell?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Contenedores de datos que comienzan con $",
+        "Comandos especiales",
+        "Tipos de archivos",
+        "Configuraciones del sistema"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>variables</strong> son <strong>contenedores de datos que comienzan con $</strong>. PowerShell es dinámicamente tipado, las variables pueden contener cualquier tipo de objeto .NET. Ejemplos: <code>$name = 'Juan'</code>, <code>$number = 42</code>, <code>$processes = Get-Process</code>. Variables especiales incluyen <code>$_</code> (objeto actual en pipeline), <code>$args</code> (argumentos), <code>$PSVersionTable</code> (información de versión)."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son cmdlets para gestión de procesos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Get-Process",
+        "Start-Process",
+        "Stop-Process",
+        "Wait-Process"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Cmdlets de gestión de procesos: <strong>Get-Process</strong> (lista procesos), <strong>Start-Process</strong> (inicia nuevos procesos), <strong>Stop-Process</strong> (termina procesos), <strong>Wait-Process</strong> (espera a que termine un proceso). Ejemplos: <code>Get-Process notepad</code>, <code>Start-Process notepad.exe</code>, <code>Stop-Process -Name notepad</code>, <code>Wait-Process -Name setup</code>."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué son los objetos en PowerShell?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Estructuras de datos con propiedades y métodos",
+        "Archivos especiales",
+        "Comandos avanzados",
+        "Configuraciones de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>objetos</strong> son <strong>estructuras de datos con propiedades y métodos</strong> basadas en .NET. Todo en PowerShell es un objeto, incluso números y strings. Puedes acceder a propiedades con <code>$objeto.Propiedad</code> y métodos con <code>$objeto.Metodo()</code>. Ejemplo: <code>$proceso = Get-Process notepad; $proceso.ProcessName; $proceso.Kill()</code>. Usa <code>Get-Member</code> para explorar objetos."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son cmdlets para trabajar con objetos?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Select-Object",
+        "Where-Object",
+        "ForEach-Object",
+        "Sort-Object",
+        "Group-Object"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Cmdlets para objetos: <strong>Select-Object</strong> (selecciona propiedades), <strong>Where-Object</strong> (filtra objetos), <strong>ForEach-Object</strong> (ejecuta código para cada objeto), <strong>Sort-Object</strong> (ordena), <strong>Group-Object</strong> (agrupa). Ejemplos: <code>Get-Process | Select-Object Name, CPU | Where-Object {$_.CPU -gt 100} | Sort-Object CPU</code>."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son las funciones en PowerShell?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Bloques de código reutilizable",
+        "Variables especiales",
+        "Tipos de archivos",
+        "Configuraciones del sistema"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>funciones</strong> son <strong>bloques de código reutilizable</strong> que encapsulan lógica específica. Se definen con <code>function</code> y pueden tener parámetros, valores de retorno y documentación. Ejemplo: <code>function Get-DiskSpace { param($ComputerName) Get-WmiObject -Class Win32_LogicalDisk -ComputerName $ComputerName }</code>. Las funciones mejoran la modularidad y reutilización del código."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son características de las funciones avanzadas?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Parámetros con validación",
+        "Soporte para pipeline",
+        "Help integrado",
+        "Manejo de errores",
+        "Atributos [CmdletBinding()]"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Funciones avanzadas incluyen: <strong>Parámetros con validación</strong> ([ValidateSet], [ValidateRange]), <strong>Soporte para pipeline</strong> (ValueFromPipeline), <strong>Help integrado</strong> (.SYNOPSIS, .DESCRIPTION), <strong>Manejo de errores</strong> (ErrorAction), <strong>Atributos [CmdletBinding()]</strong> (habilita características avanzadas). Estas características hacen que las funciones se comporten como cmdlets nativos."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los módulos en PowerShell?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Paquetes de funciones, cmdlets y recursos",
+        "Archivos de configuración",
+        "Variables del sistema",
+        "Tipos de procesos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>módulos</strong> son <strong>paquetes de funciones, cmdlets y recursos</strong> que se pueden importar y reutilizar. Pueden ser archivos .psm1 (script modules), .dll (binary modules), o carpetas con manifiestos .psd1. Los módulos permiten organizar código, controlar el scope y distribuir funcionalidad. Ejemplos: ActiveDirectory, AzureRM, ImportExcel."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son cmdlets para gestión de módulos?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Import-Module",
+        "Get-Module",
+        "Remove-Module",
+        "Install-Module",
+        "Update-Module"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Cmdlets de módulos: <strong>Import-Module</strong> (carga módulos), <strong>Get-Module</strong> (lista módulos disponibles/cargados), <strong>Remove-Module</strong> (descarga módulos), <strong>Install-Module</strong> (instala desde PowerShell Gallery), <strong>Update-Module</strong> (actualiza módulos). Ejemplos: <code>Install-Module -Name Az</code>, <code>Import-Module ActiveDirectory</code>, <code>Get-Module -ListAvailable</code>."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué es PowerShell Desired State Configuration (DSC)?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una plataforma de gestión de configuración",
+        "Un tipo de variable",
+        "Una herramienta de debugging",
+        "Un editor de scripts"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>PowerShell DSC</strong> es una <strong>plataforma de gestión de configuración</strong> que permite definir y mantener el estado deseado de sistemas. Usa configuraciones declarativas para asegurar que los sistemas mantengan configuraciones específicas. DSC incluye recursos para gestionar archivos, servicios, registry, roles de Windows, etc. Es útil para automatización de infraestructura y compliance."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles son cmdlets para manejo de errores?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Try-Catch-Finally",
+        "Throw",
+        "Write-Error",
+        "$ErrorActionPreference",
+        "Get-Error"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Manejo de errores: <strong>Try-Catch-Finally</strong> (manejo estructurado de excepciones), <strong>Throw</strong> (lanza errores personalizados), <strong>Write-Error</strong> (escribe errores no terminantes), <strong>$ErrorActionPreference</strong> (controla comportamiento global de errores), <strong>Get-Error</strong> (obtiene detalles de errores). Ejemplo: <code>try { Get-Item NoExiste } catch { Write-Host 'Archivo no encontrado' }</code>."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son cmdlets para trabajo remoto?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Invoke-Command",
+        "Enter-PSSession",
+        "New-PSSession",
+        "Remove-PSSession",
+        "Enable-PSRemoting"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "PowerShell Remoting: <strong>Invoke-Command</strong> (ejecuta comandos remotos), <strong>Enter-PSSession</strong> (sesión interactiva remota), <strong>New-PSSession</strong> (crea sesiones persistentes), <strong>Remove-PSSession</strong> (cierra sesiones), <strong>Enable-PSRemoting</strong> (habilita remoting). Ejemplos: <code>Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Service }</code>, <code>Enter-PSSession -ComputerName Server01</code>."
+    }
+  ]
+}

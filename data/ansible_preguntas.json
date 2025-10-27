@@ -1,0 +1,271 @@
+{
+  "tecnologia": "Ansible",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Ansible?",
+      "nivel": "básico",
+      "opciones": [
+        "Una herramienta de automatización de TI",
+        "Una base de datos",
+        "Un servidor web",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Ansible es una <strong>herramienta de automatización de TI</strong> de código abierto desarrollada por Red Hat. Permite automatizar la configuración de sistemas, despliegue de aplicaciones, orquestación de tareas y gestión de infraestructura de manera simple y eficiente."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las características principales de Ansible?",
+      "nivel": "básico",
+      "opciones": [
+        "Agentless",
+        "Declarativo",
+        "Idempotente",
+        "Usa SSH",
+        "YAML syntax"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Ansible tiene todas estas características: <strong>Agentless</strong> (no requiere agentes en hosts remotos), <strong>Declarativo</strong> (describes el estado deseado), <strong>Idempotente</strong> (ejecutar múltiples veces produce el mismo resultado), <strong>Usa SSH</strong> (comunicación segura), y <strong>YAML syntax</strong> (fácil de leer y escribir)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es un Playbook en Ansible?",
+      "nivel": "básico",
+      "opciones": [
+        "Archivo YAML que define tareas de automatización",
+        "Una base de datos",
+        "Un tipo de servidor",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Playbook es un <strong>archivo YAML que define tareas de automatización</strong>. Contiene una serie de 'plays' que mapean grupos de hosts a roles/tareas específicas. Los playbooks son el corazón de Ansible y permiten orquestar configuraciones complejas de manera ordenada y repetible."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es un Inventory en Ansible?",
+      "nivel": "básico",
+      "opciones": [
+        "Lista de hosts gestionados por Ansible",
+        "Un tipo de playbook",
+        "Una configuración de red",
+        "Un tipo de módulo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Inventory es una <strong>lista de hosts gestionados por Ansible</strong>. Define qué servidores están disponibles para automatización, puede organizarlos en grupos, y especificar variables específicas para hosts o grupos. Puede ser estático (archivo) o dinámico (script/plugin)."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son formatos de Inventory?",
+      "nivel": "básico",
+      "opciones": [
+        "INI format",
+        "YAML format",
+        "JSON format",
+        "Dynamic inventory"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Ansible soporta múltiples formatos de inventory: <strong>INI format</strong> (formato tradicional, simple y legible), <strong>YAML format</strong> (más estructurado, permite jerarquías complejas), <strong>JSON format</strong> (útil para integración con APIs), y <strong>Dynamic inventory</strong> (scripts/plugins que generan inventarios dinámicamente desde fuentes externas como AWS, Azure, etc.)."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué son los Modules en Ansible?",
+      "nivel": "básico",
+      "opciones": [
+        "Unidades de trabajo que Ansible ejecuta",
+        "Tipos de playbooks",
+        "Configuraciones de red",
+        "Tipos de inventarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Modules son <strong>unidades de trabajo que Ansible ejecuta</strong>. Son scripts reutilizables que realizan tareas específicas como copiar archivos, instalar paquetes, gestionar servicios, etc. Ansible incluye cientos de módulos built-in y también permite crear módulos personalizados. Cada módulo es idempotente y retorna información sobre los cambios realizados."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son módulos comunes en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "copy",
+        "file",
+        "service",
+        "yum/apt",
+        "template"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Estos son módulos fundamentales en Ansible: <strong>copy</strong> (copia archivos desde control node a hosts), <strong>file</strong> (gestiona archivos/directorios, permisos, enlaces), <strong>service</strong> (controla servicios del sistema), <strong>yum/apt</strong> (gestión de paquetes en RHEL/Debian), y <strong>template</strong> (procesa plantillas Jinja2 para generar archivos de configuración dinámicos)."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué son las Tasks en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Llamadas a módulos con argumentos específicos",
+        "Tipos de inventarios",
+        "Configuraciones de red",
+        "Tipos de playbooks"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Tasks son <strong>llamadas a módulos con argumentos específicos</strong>. Cada task define qué módulo usar, con qué parámetros, y opcionalmente condiciones, loops, handlers, etc. Las tasks se ejecutan secuencialmente en un play y representan las acciones concretas que Ansible realizará en los hosts objetivo."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué son las Variables en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Valores que pueden cambiar entre hosts o ejecuciones",
+        "Tipos de módulos",
+        "Configuraciones de red",
+        "Tipos de tareas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Variables son <strong>valores que pueden cambiar entre hosts o ejecuciones</strong>. Permiten hacer los playbooks flexibles y reutilizables. Se pueden definir en múltiples niveles (host, group, play, etc.) y usar en templates, tasks, y condiciones. Ansible tiene un orden de precedencia específico para resolver conflictos entre variables del mismo nombre."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Cuáles son tipos de Variables en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Host variables",
+        "Group variables",
+        "Play variables",
+        "Extra variables",
+        "Facts"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Ansible maneja varios tipos de variables: <strong>Host variables</strong> (específicas de un host), <strong>Group variables</strong> (aplicadas a grupos de hosts), <strong>Play variables</strong> (definidas en el play), <strong>Extra variables</strong> (pasadas por línea de comandos, máxima precedencia), y <strong>Facts</strong> (información del sistema recopilada automáticamente). Cada tipo tiene diferente precedencia y alcance."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué son los Facts en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Información del sistema recopilada automáticamente",
+        "Tipos de módulos",
+        "Configuraciones de playbook",
+        "Tipos de inventarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Facts son <strong>información del sistema recopilada automáticamente</strong> por Ansible al conectarse a un host. Incluyen datos como OS, arquitectura, interfaces de red, memoria, discos, etc. Se recopilan mediante el módulo 'setup' y están disponibles como variables (ansible_facts). Se pueden deshabilitar con 'gather_facts: false' para mejorar performance."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué son los Handlers en Ansible?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Tareas que se ejecutan cuando son notificadas",
+        "Tipos de módulos",
+        "Configuraciones de inventario",
+        "Tipos de variables"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Handlers son <strong>tareas que se ejecutan cuando son notificadas</strong> por otras tareas mediante 'notify'. Se ejecutan al final del play, solo una vez por handler sin importar cuántas veces sea notificado, y solo si las tareas que los notificaron realizaron cambios. Son ideales para reiniciar servicios después de cambios de configuración."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué son los Roles en Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Forma de organizar playbooks y archivos relacionados",
+        "Tipos de módulos",
+        "Configuraciones de red",
+        "Tipos de inventarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Roles son una <strong>forma de organizar playbooks y archivos relacionados</strong> en una estructura estándar y reutilizable. Permiten encapsular funcionalidad específica (como configurar un web server) en componentes modulares que pueden ser compartidos, versionados y reutilizados en múltiples playbooks y proyectos."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál es la estructura de un Role?",
+      "nivel": "avanzado",
+      "opciones": [
+        "tasks/",
+        "handlers/",
+        "vars/",
+        "defaults/",
+        "templates/",
+        "files/"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4, 5],
+      "explicacion": "Un Role tiene una estructura estándar: <strong>tasks/</strong> (tareas principales), <strong>handlers/</strong> (handlers del role), <strong>vars/</strong> (variables del role), <strong>defaults/</strong> (variables por defecto), <strong>templates/</strong> (plantillas Jinja2), y <strong>files/</strong> (archivos estáticos). También puede incluir meta/, tests/, y README.md para metadatos, pruebas y documentación."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué son los Templates en Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Archivos con variables que se procesan con Jinja2",
+        "Tipos de módulos",
+        "Configuraciones de inventario",
+        "Tipos de roles"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Templates son <strong>archivos con variables que se procesan con Jinja2</strong>. Permiten generar archivos de configuración dinámicos usando variables, condicionales, loops y filtros. Se procesan en el control node y el resultado se transfiere al host objetivo, siendo fundamentales para configuraciones que varían entre entornos."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es Ansible Vault?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Herramienta para encriptar datos sensibles",
+        "Un tipo de módulo",
+        "Una configuración de red",
+        "Un tipo de playbook"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Ansible Vault es una <strong>herramienta para encriptar datos sensibles</strong> como contraseñas, claves API, certificados, etc. Permite encriptar archivos completos o variables específicas usando AES256. Los datos encriptados pueden incluirse en repositorios de código de forma segura y se desencriptan automáticamente durante la ejecución."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son estrategias de ejecución en Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "linear",
+        "free",
+        "debug"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Ansible tiene varias estrategias de ejecución: <strong>linear</strong> (por defecto, espera que todos los hosts completen una tarea antes de continuar), <strong>free</strong> (permite que hosts avancen independientemente), y <strong>debug</strong> (modo interactivo para debugging). Cada estrategia afecta el paralelismo y sincronización de la ejecución."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué son los Conditionals en Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Declaraciones when para ejecutar tareas condicionalmente",
+        "Tipos de módulos",
+        "Configuraciones de inventario",
+        "Tipos de variables"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Conditionals son <strong>declaraciones when para ejecutar tareas condicionalmente</strong>. Permiten ejecutar tareas solo cuando se cumplen ciertas condiciones basadas en variables, facts, resultados de tareas anteriores, etc. Usan sintaxis Jinja2 y operadores como ==, !=, in, is defined, etc."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué son los Loops en Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Mecanismo para repetir tareas con diferentes valores",
+        "Tipos de módulos",
+        "Configuraciones de red",
+        "Tipos de roles"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Loops son un <strong>mecanismo para repetir tareas con diferentes valores</strong>. Permiten iterar sobre listas, diccionarios, rangos numéricos, etc. usando 'loop', 'with_items', 'with_dict', etc. Cada iteración tiene acceso a la variable 'item' y pueden combinarse con conditionals para control granular."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para Ansible?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar roles para organización",
+        "Implementar idempotencia",
+        "Usar Ansible Vault para secretos",
+        "Documentar playbooks",
+        "Testing con molecule"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las <strong>mejores prácticas de Ansible</strong> incluyen: <strong>Roles</strong> para organizar código reutilizable, <strong>Idempotencia</strong> para ejecuciones seguras repetidas, <strong>Ansible Vault</strong> para proteger secretos, <strong>Documentación</strong> clara en playbooks y roles, y <strong>Testing con Molecule</strong> para validar roles. Estas prácticas aseguran código mantenible, seguro y confiable."
+    }
+  ]
+}

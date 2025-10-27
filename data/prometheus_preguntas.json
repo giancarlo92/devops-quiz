@@ -1,0 +1,272 @@
+{
+  "tecnologia": "Prometheus",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Prometheus?",
+      "nivel": "básico",
+      "opciones": [
+        "Un sistema de monitoreo y alertas de código abierto",
+        "Una base de datos relacional",
+        "Un servidor web",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Prometheus es un sistema de monitoreo y alertas de código abierto desarrollado originalmente por SoundCloud. Es parte de la Cloud Native Computing Foundation (CNCF) y se ha convertido en el estándar de facto para el monitoreo de aplicaciones cloud-native. Prometheus recolecta métricas de sistemas y aplicaciones, las almacena como series temporales y proporciona un lenguaje de consulta potente (PromQL) para analizarlas. Su arquitectura pull-based y su capacidad de service discovery automático lo hacen ideal para entornos dinámicos como Kubernetes."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las características principales de Prometheus?",
+      "nivel": "básico",
+      "opciones": [
+        "Modelo de datos de series temporales",
+        "Lenguaje de consulta PromQL",
+        "Pull-based metrics collection",
+        "Alerting integrado",
+        "Service discovery"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características principales de Prometheus incluyen: 1) **Modelo de datos de series temporales**: Almacena métricas como series temporales identificadas por nombre de métrica y pares clave-valor (labels). 2) **PromQL**: Lenguaje de consulta funcional que permite seleccionar y agregar datos de series temporales en tiempo real. 3) **Pull-based collection**: Prometheus extrae métricas de los targets configurados a través de HTTP, lo que es más confiable que push-based. 4) **Alerting integrado**: Sistema de alertas basado en reglas que se integra con Alertmanager. 5) **Service discovery**: Descubrimiento automático de targets a través de múltiples mecanismos (Kubernetes, Consul, DNS, etc.)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué puerto usa Prometheus por defecto?",
+      "nivel": "básico",
+      "opciones": [
+        "9090",
+        "8080",
+        "3000",
+        "8000"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Prometheus utiliza el puerto **9090** por defecto para su interfaz web y API. Este puerto es donde se puede acceder a la interfaz de usuario web de Prometheus, que incluye el explorador de expresiones PromQL, el navegador de targets, y las páginas de configuración y estado. También es el puerto donde otros servicios pueden consultar la API de Prometheus para obtener métricas. Este puerto puede ser configurado usando el flag `--web.listen-address` al iniciar el servidor Prometheus."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué son las métricas en Prometheus?",
+      "nivel": "básico",
+      "opciones": [
+        "Medidas numéricas de un sistema en un punto específico del tiempo",
+        "Configuraciones del servidor",
+        "Tipos de alertas",
+        "Archivos de configuración"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las métricas en Prometheus son **medidas numéricas de un sistema en un punto específico del tiempo**. Representan el estado o comportamiento de una aplicación, servicio o infraestructura. Cada métrica tiene un nombre único y puede incluir labels (etiquetas) que proporcionan dimensiones adicionales para la segmentación y filtrado. Por ejemplo, `http_requests_total{method='GET', status='200'}` es una métrica que cuenta las solicitudes HTTP GET exitosas. Las métricas se almacenan como series temporales, permitiendo el análisis de tendencias y patrones a lo largo del tiempo."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son los tipos de métricas en Prometheus?",
+      "nivel": "básico",
+      "opciones": [
+        "Counter",
+        "Gauge",
+        "Histogram",
+        "Summary"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Prometheus define cuatro tipos principales de métricas: 1) **Counter**: Métrica acumulativa que solo puede incrementar o reiniciarse a cero (ej: total de requests). 2) **Gauge**: Métrica que puede subir y bajar arbitrariamente (ej: uso de memoria, temperatura). 3) **Histogram**: Muestrea observaciones y las cuenta en buckets configurables, útil para medir latencias y tamaños (ej: duración de requests). 4) **Summary**: Similar al histogram pero calcula cuantiles configurables en el lado del cliente (ej: percentiles de latencia). Cada tipo está optimizado para diferentes casos de uso y patrones de consulta en PromQL."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es PromQL?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Lenguaje de consulta de Prometheus",
+        "Una base de datos",
+        "Un tipo de métrica",
+        "Una configuración de alerta"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "**PromQL (Prometheus Query Language)** es el lenguaje de consulta funcional de Prometheus que permite seleccionar y agregar datos de series temporales en tiempo real. PromQL está diseñado específicamente para trabajar con datos de series temporales y proporciona operadores para filtrar, agregar y manipular métricas. Incluye funciones para cálculos matemáticos, agregaciones (sum, avg, max, min), operaciones de tiempo (rate, increase), y predicados para filtrado. Por ejemplo: `rate(http_requests_total[5m])` calcula la tasa por segundo de requests HTTP en los últimos 5 minutos."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son componentes del ecosistema Prometheus?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Prometheus server",
+        "Alertmanager",
+        "Pushgateway",
+        "Node exporter",
+        "Grafana"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "El ecosistema Prometheus incluye varios componentes: 1) **Prometheus server**: El componente principal que recolecta y almacena métricas. 2) **Alertmanager**: Maneja alertas enviadas por Prometheus, incluyendo silenciamiento, inhibición, agrupación y enrutamiento. 3) **Pushgateway**: Permite que trabajos de corta duración envíen métricas a Prometheus. 4) **Node exporter**: Exporter oficial para métricas de hardware y SO de sistemas Unix. 5) **Grafana**: Herramienta de visualización que se integra perfectamente con Prometheus para crear dashboards. Otros componentes incluyen diversos exporters para diferentes servicios y bibliotecas cliente para instrumentar aplicaciones."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es un Counter en Prometheus?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Métrica que solo puede incrementar",
+        "Métrica que puede subir y bajar",
+        "Métrica que mide distribuciones",
+        "Métrica que calcula percentiles"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un **Counter** es un tipo de métrica en Prometheus que representa un valor acumulativo que **solo puede incrementar** o reiniciarse a cero al reiniciar la aplicación. Los counters son ideales para medir eventos que ocurren continuamente, como el número total de requests HTTP, errores, o bytes transferidos. En PromQL, los counters se usan típicamente con funciones como `rate()` o `increase()` para calcular tasas de cambio. Por ejemplo, `rate(http_requests_total[5m])` calcula la tasa por segundo de requests en los últimos 5 minutos. Los counters nunca deben decrecer durante la operación normal."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué es un Gauge en Prometheus?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Métrica que puede subir y bajar",
+        "Métrica que solo puede incrementar",
+        "Métrica que mide distribuciones",
+        "Métrica que calcula percentiles"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un **Gauge** es un tipo de métrica en Prometheus que representa un valor numérico que **puede subir y bajar arbitrariamente**. Los gauges son perfectos para medir valores instantáneos como uso de memoria, CPU, temperatura, número de conexiones activas, o tamaño de cola. A diferencia de los counters, los gauges representan un estado actual en lugar de un valor acumulativo. En PromQL, los gauges se pueden usar directamente sin funciones de tasa, y son útiles para alertas basadas en umbrales. Por ejemplo, `memory_usage_bytes > 1000000000` para alertar cuando el uso de memoria supera 1GB."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son los labels en Prometheus?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Pares clave-valor que identifican series temporales",
+        "Tipos de métricas",
+        "Configuraciones de servidor",
+        "Tipos de alertas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los **labels** en Prometheus son **pares clave-valor que identifican de manera única las series temporales**. Proporcionan dimensiones adicionales a las métricas, permitiendo segmentación y filtrado granular. Por ejemplo, `http_requests_total{method='GET', status='200', endpoint='/api/users'}` tiene tres labels: method, status y endpoint. Los labels permiten consultas específicas como `sum(rate(http_requests_total{status=~'5..'}[5m])) by (endpoint)` para obtener la tasa de errores 5xx por endpoint. Es importante usar labels con cardinalidad controlada, ya que cada combinación única de labels crea una nueva serie temporal."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué es el Alertmanager?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Componente que maneja alertas enviadas por Prometheus",
+        "Un tipo de métrica",
+        "Una configuración de servidor",
+        "Un lenguaje de consulta"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "**Alertmanager** es un componente separado del ecosistema Prometheus que **maneja alertas enviadas por el servidor Prometheus**. Sus funciones principales incluyen: 1) **Agrupación**: Combina alertas similares en una sola notificación. 2) **Silenciamiento**: Permite suprimir alertas temporalmente. 3) **Inhibición**: Suprime ciertas alertas cuando otras están activas. 4) **Enrutamiento**: Dirige alertas a diferentes receptores basado en labels. 5) **Integración**: Envía notificaciones a múltiples canales (email, Slack, PagerDuty, webhooks). Alertmanager desacopla la detección de alertas (Prometheus) del manejo de notificaciones, proporcionando un sistema robusto y flexible."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Cuáles son funciones comunes en PromQL?",
+      "nivel": "avanzado",
+      "opciones": [
+        "rate()",
+        "sum()",
+        "avg()",
+        "increase()",
+        "histogram_quantile()"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las funciones comunes en PromQL incluyen: 1) **rate()**: Calcula la tasa por segundo de incremento de un counter en un rango de tiempo. 2) **sum()**: Agrega valores a través de dimensiones, útil para totales. 3) **avg()**: Calcula el promedio de valores a través de dimensiones. 4) **increase()**: Calcula el incremento total de un counter en un rango de tiempo. 5) **histogram_quantile()**: Calcula cuantiles de histogramas. Otras funciones importantes incluyen `max()`, `min()`, `count()`, `topk()`, `bottomk()`, `abs()`, `ceil()`, `floor()`, y funciones de tiempo como `time()` y `day_of_week()`. Estas funciones permiten análisis sofisticados de métricas."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué es el Service Discovery en Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Mecanismo para descubrir automáticamente targets",
+        "Un tipo de métrica",
+        "Una configuración de alerta",
+        "Un componente de visualización"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "**Service Discovery** en Prometheus es un **mecanismo para descubrir automáticamente targets** (endpoints) que deben ser monitoreados, sin necesidad de configuración manual estática. Esto es especialmente importante en entornos dinámicos donde los servicios pueden aparecer, desaparecer o cambiar de ubicación frecuentemente. Prometheus actualiza automáticamente su lista de targets basándose en la información del service discovery, aplicando relabeling rules para filtrar y modificar targets según sea necesario. Esto permite un monitoreo escalable y mantenible en arquitecturas cloud-native y microservicios."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuáles son tipos de Service Discovery en Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Kubernetes",
+        "Consul",
+        "EC2",
+        "DNS",
+        "File-based"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Prometheus soporta múltiples tipos de Service Discovery: 1) **Kubernetes**: Descubre pods, services, endpoints, nodes e ingresses automáticamente. 2) **Consul**: Integración con HashiCorp Consul para service discovery. 3) **EC2**: Descubre instancias EC2 de AWS basándose en tags y metadatos. 4) **DNS**: Descubre targets a través de registros DNS A, AAAA o SRV. 5) **File-based**: Lee targets de archivos JSON/YAML que pueden ser actualizados externamente. Otros tipos incluyen Azure, GCE, Marathon, Zookeeper, Nerve, Serverset, Triton, y OpenStack. Cada tipo está optimizado para su ecosistema específico y proporciona metadatos relevantes como labels."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es el Pushgateway?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Servicio para métricas de trabajos de corta duración",
+        "Un tipo de métrica",
+        "Una configuración de servidor",
+        "Un componente de alertas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "**Pushgateway** es un **servicio intermediario para métricas de trabajos de corta duración** que no pueden ser scrapeados directamente por Prometheus. Está diseñado para batch jobs, scripts, y tareas que se ejecutan brevemente y terminan antes de que Prometheus pueda recolectar sus métricas. Los trabajos 'empujan' sus métricas al Pushgateway, y Prometheus luego 'extrae' estas métricas del gateway. Es importante usar Pushgateway solo cuando sea necesario, ya que puede crear puntos únicos de falla y complicar el service discovery. Se recomienda para casos específicos como trabajos cron, scripts de backup, o procesos ETL."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los recording rules en Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Consultas precomputadas para mejorar rendimiento",
+        "Tipos de métricas",
+        "Configuraciones de alerta",
+        "Tipos de exporters"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los **recording rules** son **consultas PromQL precomputadas que se ejecutan a intervalos regulares para mejorar el rendimiento**. Permiten calcular expresiones complejas o costosas de antemano y almacenar los resultados como nuevas series temporales. Esto es especialmente útil para: 1) Consultas frecuentes en dashboards. 2) Agregaciones complejas que tardan mucho en calcularse. 3) Datos que se consultan en múltiples alertas. 4) Reducir la carga en consultas en tiempo real. Los recording rules se definen en archivos de configuración y se evalúan según el intervalo especificado, creando métricas derivadas que pueden consultarse como cualquier otra métrica."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son mejores prácticas para naming de métricas?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar snake_case",
+        "Incluir unidades en el nombre",
+        "Ser descriptivo pero conciso",
+        "Evitar espacios y caracteres especiales",
+        "Usar prefijos consistentes"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas para naming de métricas en Prometheus incluyen: 1) **snake_case**: Usar guiones bajos para separar palabras (ej: `http_requests_total`). 2) **Incluir unidades**: Especificar unidades en el nombre (ej: `_bytes`, `_seconds`, `_total`). 3) **Descriptivo pero conciso**: Nombres claros que expliquen qué miden sin ser excesivamente largos. 4) **Evitar espacios y caracteres especiales**: Solo usar letras, números y guiones bajos. 5) **Prefijos consistentes**: Usar prefijos por aplicación o componente (ej: `myapp_http_requests_total`). También se recomienda usar sufijos estándar como `_total` para counters, `_bucket` para histogramas, y seguir las convenciones de la comunidad."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué es la retención de datos en Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Tiempo que se mantienen los datos antes de ser eliminados",
+        "Un tipo de métrica",
+        "Una configuración de alerta",
+        "Un tipo de exporter"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "La **retención de datos** en Prometheus es el **tiempo que se mantienen los datos almacenados antes de ser eliminados automáticamente**. Por defecto, Prometheus retiene datos por 15 días, pero esto es configurable usando el flag `--storage.tsdb.retention.time`. También se puede configurar retención basada en tamaño usando `--storage.tsdb.retention.size`. La retención es importante para: 1) Gestionar el espacio en disco. 2) Controlar costos de almacenamiento. 3) Cumplir con políticas de datos. Para retención a largo plazo, se recomienda usar remote storage o herramientas como Thanos, Cortex, o VictoriaMetrics que proporcionan almacenamiento escalable y duradero."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles son estrategias de escalabilidad para Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Federation",
+        "Sharding",
+        "Remote storage",
+        "Horizontal scaling",
+        "Recording rules"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las estrategias de escalabilidad para Prometheus incluyen: 1) **Federation**: Permite que un servidor Prometheus recolecte métricas de otros servidores Prometheus, creando jerarquías. 2) **Sharding**: Dividir targets entre múltiples instancias de Prometheus basándose en criterios como región o servicio. 3) **Remote storage**: Usar sistemas de almacenamiento externos como Thanos, Cortex, o InfluxDB para almacenamiento a largo plazo. 4) **Horizontal scaling**: Ejecutar múltiples instancias de Prometheus con diferentes responsabilidades. 5) **Recording rules**: Precomputar consultas complejas para reducir carga en tiempo real. Otras estrategias incluyen optimización de scrape intervals, uso de relabeling para filtrar métricas innecesarias, y implementación de proxies o load balancers."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Qué son los exporters en Prometheus?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Programas que exponen métricas en formato Prometheus",
+        "Tipos de métricas",
+        "Configuraciones de servidor",
+        "Tipos de alertas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los **exporters** son **programas que exponen métricas en formato Prometheus** para sistemas que no tienen instrumentación nativa de Prometheus. Actúan como traductores, convirtiendo métricas de sistemas existentes al formato que Prometheus puede entender. Tipos de exporters incluyen: 1) **Oficiales**: Node exporter (métricas de sistema), Blackbox exporter (probing), MySQL exporter, etc. 2) **De terceros**: Para bases de datos, servicios cloud, aplicaciones específicas. 3) **Personalizados**: Desarrollados para aplicaciones específicas. Los exporters exponen métricas en el endpoint `/metrics` usando el formato de texto de Prometheus, permitiendo que Prometheus los scrape como cualquier otro target."
+    }
+  ]
+}

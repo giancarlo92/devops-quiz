@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario DevOps - Evaluación Técnica</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>🚀 Cuestionario DevOps</h1>
+                    <p>Evaluación técnica de conocimientos en tecnologías DevOps</p>
+                </div>
+            </div>
+            <div class="guides-button-container">
+                <button class="btn btn-secondary" id="guidesBtn" onclick="showGuidesPage()">📚 Guías</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Pantalla de inicio -->
+            <div id="startScreen" class="start-screen">
+
+                <!-- Selector de número de preguntas -->
+                <div class="question-count-selector">
+                    <h3>Selecciona el número de preguntas:</h3>
+                    <div class="question-count-options">
+                        <label class="question-count-option">
+                            <input type="radio" name="questionCount" value="10" onchange="updateQuestionCount(10)">
+                            <span>10 preguntas</span>
+                        </label>
+                        <label class="question-count-option">
+                            <input type="radio" name="questionCount" value="20" onchange="updateQuestionCount(20)">
+                            <span>20 preguntas</span>
+                        </label>
+                        <label class="question-count-option selected">
+                            <input type="radio" name="questionCount" value="30" onchange="updateQuestionCount(30)" checked>
+                            <span>30 preguntas</span>
+                        </label>
+                        <label class="question-count-option">
+                            <input type="radio" name="questionCount" value="40" onchange="updateQuestionCount(40)">
+                            <span>40 preguntas</span>
+                        </label>
+                        <label class="question-count-option">
+                            <input type="radio" name="questionCount" value="50" onchange="updateQuestionCount(50)">
+                            <span>50 preguntas</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="exam-type-selection">
+                    <h3>Selecciona el tipo de examen:</h3>
+                    <div class="exam-cards">
+                        <div class="exam-card" id="guidedCard" onclick="selectExamType('guided')">
+                            <div class="exam-icon">🎯</div>
+                            <h4>Modo Guiado</h4>
+                            <p>Puedes validar cada respuesta y ver explicaciones durante el examen</p>
+                        </div>
+                        <div class="exam-card" id="evaluationCard" onclick="selectExamType('evaluation')">
+                            <div class="exam-icon">📝</div>
+                            <h4>Modo Evaluación</h4>
+                            <p>Responde todas las preguntas y ve los resultados al final</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <h3>📋 Instrucciones:</h3>
+                    <ul>
+                        <li>Lee cada pregunta cuidadosamente</li>
+                        <li>Algunas preguntas pueden tener múltiples respuestas correctas</li>
+                        <li id="guidedInstruction" style="display: none;">En modo guiado puedes validar cada respuesta</li>
+                        <li id="evaluationInstruction" style="display: none;">En modo evaluación verás los resultados al final</li>
+                    </ul>
+                    <button class="btn btn-primary" id="startQuizBtn" onclick="startQuiz()" disabled>Selecciona un tipo de examen para continuar</button>
+                </div>
+
+                <!-- Pantalla de carga -->
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <h3>Cargando preguntas...</h3>
+                    <p>Seleccionando 30 preguntas aleatorias de todas las tecnologías</p>
+                </div>
+
+            </div>
+
+            <div class="quiz-content">
+                <!-- Contenido del cuestionario -->
+                <div id="quizContainer" style="display: none;">
+                    <div class="quiz-header-controls">
+                        <button class="btn btn-secondary" id="summaryBtn" style="display: none;" onclick="showSummary()">Volver al Resumen</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                    <div id="questionsContainer">
+                        <!-- Las preguntas se generarán dinámicamente aquí -->
+                    </div>
+
+                    <div class="navigation">
+                        <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>Anterior</button>
+                        <span id="questionCounter">Pregunta 1 de 30</span>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Pantalla de resumen de respuestas -->
+                <div id="summaryScreen" class="summary-screen" style="display: none;">
+                    <h2>Resumen de Respuestas</h2>
+                    <p>Revisa tus respuestas antes de enviar el cuestionario. Puedes modificar cualquier respuesta haciendo clic en "Modificar".</p>
+                    
+                    <div id="summaryContainer" class="summary-container">
+                        <!-- Las respuestas se generarán dinámicamente aquí -->
+                    </div>
+                    
+                    <div class="summary-actions">
+                        <button class="btn btn-secondary" onclick="backToQuiz()">Volver al Cuestionario</button>
+                        <button class="btn btn-primary" onclick="submitFinalAnswers()">Enviar Respuestas para Calificación</button>
+                    </div>
+                </div>
+
+                <!-- Pantalla de resultados -->
+                <div id="results" class="results" style="display: none;">
+                    <h2>¡Cuestionario Completado!</h2>
+                    <div class="score-circle" id="scoreCircle">
+                        <span id="scoreText">0/30</span>
+                    </div>
+                    <h3 id="scoreMessage">¡Excelente trabajo!</h3>
+                    
+                    <div class="results-details">
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <h3>Respuestas Correctas</h3>
+                                <div class="number" id="correctAnswers">0</div>
+                            </div>
+                            <div class="result-item">
+                                <h3>Respuestas Incorrectas</h3>
+                                <div class="number" id="incorrectAnswers">0</div>
+                            </div>
+                            <div class="result-item">
+                                <h3>Porcentaje</h3>
+                                <div class="number" id="percentage">0%</div>
+                            </div>
+                            <div class="result-item">
+                                <h3>Calificación</h3>
+                                <div class="number" id="grade">F</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="restartQuiz()">Nuevo Cuestionario</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Página de Guías -->
+    <div id="guidesPage" class="guides-page" style="display: none;">
+        <div class="guides-header">
+            <div class="guides-header-content">
+                <div class="guides-title">
+                    <h1>📚 Guías de Aprendizaje DevOps</h1>
+                    <p>Recursos completos para dominar las tecnologías DevOps</p>
+                </div>
+                <div class="guides-actions">
+                    <button class="btn btn-secondary" onclick="backToQuiz()">← Volver al Cuestionario</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guides-content">
+            <div class="guides-gallery" id="guidesGallery">
+                <!-- Las guías se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+        
+        <!-- Modal para mostrar el contenido de la guía -->
+        <div id="guideModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="copyMarkdownBtn" onclick="copyMarkdownContent()">📋 Copiar MD</button>
+                        <button class="btn btn-danger" onclick="closeModal()">✕ Cerrar</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="markdownContent" class="markdown-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plantillas HTML -->
+    <template id="question-template">
+        <div class="question-container">
+            <div class="question-header">
+                <div class="question-number"></div>
+                <div class="question-tech"></div>
+                <div class="question-level"></div>
+            </div>
+            <div class="question-text"></div>
+            <div class="options-container"></div>
+            <div class="validate-section">
+                <button class="validate-btn">🔍 Validar Respuesta</button>
+            </div>
+            <div class="explanation-section" style="display: none;">
+                <h4>💡 Explicación:</h4>
+                <p class="explanation-text"></p>
+            </div>
+        </div>
+    </template>
+
+    <template id="option-template">
+        <div class="option">
+            <input type="checkbox">
+            <label></label>
+        </div>
+    </template>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

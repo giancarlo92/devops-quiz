@@ -1,0 +1,272 @@
+{
+  "tecnologia": "ArgoCD",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es ArgoCD?",
+      "nivel": "básico",
+      "opciones": [
+        "Una herramienta de GitOps para Kubernetes",
+        "Una base de datos",
+        "Un servidor web",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "ArgoCD es una herramienta de entrega continua declarativa, GitOps para Kubernetes. Permite gestionar aplicaciones de Kubernetes usando Git como fuente de verdad, implementando los principios de GitOps para automatizar el despliegue y la sincronización de aplicaciones."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son los principios de GitOps que implementa ArgoCD?",
+      "nivel": "básico",
+      "opciones": [
+        "Declarativo",
+        "Versionado e inmutable",
+        "Pulled automáticamente",
+        "Continuamente reconciliado"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los cuatro principios de GitOps son: <strong>Declarativo</strong> (el sistema se describe declarativamente), <strong>Versionado e inmutable</strong> (el estado deseado se almacena en Git), <strong>Pulled automáticamente</strong> (los agentes de software extraen automáticamente el estado deseado), y <strong>Continuamente reconciliado</strong> (los agentes observan continuamente el estado real y aplican el estado deseado)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué puerto usa ArgoCD por defecto para la UI?",
+      "nivel": "básico",
+      "opciones": [
+        "8080",
+        "9090",
+        "3000",
+        "8000"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "ArgoCD utiliza el puerto <strong>8080</strong> por defecto para su interfaz de usuario web. Este puerto puede ser configurado durante la instalación o mediante la configuración del servicio de ArgoCD."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es una Application en ArgoCD?",
+      "nivel": "básico",
+      "opciones": [
+        "Un recurso que define el estado deseado de una aplicación",
+        "Un tipo de base de datos",
+        "Una configuración de red",
+        "Un tipo de contenedor"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una <strong>Application</strong> en ArgoCD es un Custom Resource Definition (CRD) de Kubernetes que define el estado deseado de una aplicación. Especifica la fuente (repositorio Git), el destino (cluster y namespace), y la herramienta de renderizado (Helm, Kustomize, etc.). Es el objeto principal que ArgoCD utiliza para gestionar el ciclo de vida de las aplicaciones, comparando continuamente el estado actual con el estado deseado definido en Git."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son los componentes principales de ArgoCD?",
+      "nivel": "básico",
+      "opciones": [
+        "API Server",
+        "Repository Server",
+        "Application Controller",
+        "Web UI",
+        "CLI"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "ArgoCD está compuesto por varios componentes clave: <strong>API Server</strong> (expone la API y sirve la Web UI), <strong>Repository Server</strong> (clona repositorios Git y genera manifiestos), <strong>Application Controller</strong> (monitorea aplicaciones y sincroniza el estado), <strong>Web UI</strong> (interfaz gráfica para gestión), y <strong>CLI</strong> (herramienta de línea de comandos). Cada componente tiene un rol específico en el flujo de GitOps."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué tipos de repositorios soporta ArgoCD?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Git repositories",
+        "Helm repositories",
+        "OCI repositories",
+        "Docker repositories"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "ArgoCD soporta múltiples tipos de repositorios: <strong>Git repositories</strong> (fuente principal para manifiestos YAML, Helm charts, Kustomize), <strong>Helm repositories</strong> (para charts de Helm públicos o privados), y <strong>OCI repositories</strong> (para almacenar charts de Helm como artefactos OCI). Los Docker repositories no son soportados directamente ya que ArgoCD se enfoca en manifiestos de configuración, no en imágenes de contenedores."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son los estados de sincronización en ArgoCD?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Synced",
+        "OutOfSync",
+        "Unknown"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "ArgoCD maneja tres estados de sincronización principales: <strong>Synced</strong> (el estado actual en el cluster coincide con el estado deseado en Git), <strong>OutOfSync</strong> (hay diferencias entre el estado actual y el deseado, requiere sincronización), y <strong>Unknown</strong> (ArgoCD no puede determinar el estado, generalmente por errores de conectividad o permisos). Estos estados son fundamentales para el monitoreo y la gestión de aplicaciones."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es el Application Controller en ArgoCD?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Componente que monitorea aplicaciones y reconcilia el estado",
+        "Una interfaz de usuario",
+        "Un tipo de base de datos",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El <strong>Application Controller</strong> es el componente central de ArgoCD responsable de monitorear continuamente las aplicaciones definidas y reconciliar el estado actual del cluster con el estado deseado definido en Git. Ejecuta un bucle de control que detecta diferencias (drift) y puede aplicar automáticamente los cambios necesarios según las políticas de sincronización configuradas. Es el corazón del proceso GitOps en ArgoCD."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuáles son estrategias de sincronización en ArgoCD?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Manual sync",
+        "Automatic sync",
+        "Self-heal",
+        "Prune"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "ArgoCD ofrece múltiples estrategias de sincronización: <strong>Manual sync</strong> (requiere intervención manual para aplicar cambios), <strong>Automatic sync</strong> (aplica cambios automáticamente cuando se detectan diferencias), <strong>Self-heal</strong> (revierte cambios manuales no autorizados en el cluster), y <strong>Prune</strong> (elimina recursos que ya no están definidos en Git). Estas estrategias pueden combinarse para diferentes niveles de automatización y control."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son los Sync Hooks en ArgoCD?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Recursos que se ejecutan en momentos específicos del sync",
+        "Tipos de aplicaciones",
+        "Configuraciones de red",
+        "Tipos de repositorios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>Sync Hooks</strong> son recursos especiales de Kubernetes (generalmente Jobs o Pods) que se ejecutan en momentos específicos durante el proceso de sincronización. Permiten ejecutar tareas como migraciones de base de datos, validaciones, limpieza de recursos, o cualquier lógica personalizada antes, durante o después de la sincronización. Se definen usando anotaciones especiales en los manifiestos."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son tipos de Sync Hooks?",
+      "nivel": "intermedio",
+      "opciones": [
+        "PreSync",
+        "Sync",
+        "PostSync",
+        "SyncFail",
+        "Skip"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de Sync Hooks incluyen: <strong>PreSync</strong> (se ejecuta antes de aplicar los manifiestos), <strong>Sync</strong> (se ejecuta durante la fase de sincronización), <strong>PostSync</strong> (se ejecuta después de que todos los recursos estén sincronizados), <strong>SyncFail</strong> (se ejecuta cuando la sincronización falla), y <strong>Skip</strong> (omite el recurso durante la sincronización). Cada tipo permite diferentes estrategias de orquestación del despliegue."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es un Project en ArgoCD?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Agrupación lógica de aplicaciones con políticas",
+        "Un tipo de aplicación",
+        "Una configuración de red",
+        "Un tipo de repositorio"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>Project</strong> en ArgoCD es una agrupación lógica de aplicaciones que proporciona un mecanismo para implementar políticas de seguridad y governance. Define qué repositorios fuente pueden usarse, qué clusters y namespaces son válidos como destinos, y qué usuarios o grupos tienen acceso. Los Projects son fundamentales para implementar multi-tenancy y control de acceso granular en entornos empresariales."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son características de los Projects?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Source repositories permitidos",
+        "Clusters de destino permitidos",
+        "Namespaces permitidos",
+        "Roles y políticas RBAC",
+        "Resource whitelists/blacklists"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los Projects en ArgoCD tienen múltiples características de control: <strong>Source repositories permitidos</strong> (define qué repositorios Git pueden usarse), <strong>Clusters de destino permitidos</strong> (especifica en qué clusters se pueden desplegar aplicaciones), <strong>Namespaces permitidos</strong> (limita los namespaces de destino), <strong>Roles y políticas RBAC</strong> (define permisos granulares para usuarios y grupos), y <strong>Resource whitelists/blacklists</strong> (controla qué tipos de recursos Kubernetes pueden ser gestionados). Estas características proporcionan governance y seguridad robusta."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son las Application Sets?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Herramienta para generar múltiples aplicaciones ArgoCD",
+        "Tipos de proyectos",
+        "Configuraciones de red",
+        "Tipos de repositorios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>Application Sets</strong> son una herramienta avanzada de ArgoCD que permite generar y gestionar múltiples aplicaciones ArgoCD de forma automática y declarativa. Son especialmente útiles para escenarios multi-cluster, multi-tenant, o cuando se necesita desplegar la misma aplicación en múltiples entornos (dev, staging, prod). Utilizan generadores para crear aplicaciones dinámicamente basadas en patrones o fuentes de datos."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son generadores de Application Sets?",
+      "nivel": "avanzado",
+      "opciones": [
+        "List generator",
+        "Clusters generator",
+        "Git generator",
+        "Matrix generator",
+        "Pull Request generator"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los generadores de Application Sets incluyen: <strong>List generator</strong> (genera aplicaciones desde una lista estática), <strong>Clusters generator</strong> (crea aplicaciones para cada cluster registrado), <strong>Git generator</strong> (genera aplicaciones basadas en directorios o archivos en Git), <strong>Matrix generator</strong> (combina múltiples generadores), y <strong>Pull Request generator</strong> (crea aplicaciones temporales para PRs). Cada generador permite diferentes patrones de automatización y escalabilidad."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es el Repository Server?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Servicio que clona repositorios y genera manifiestos",
+        "Una interfaz de usuario",
+        "Un tipo de base de datos",
+        "Una configuración de aplicación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El <strong>Repository Server</strong> es un componente interno de ArgoCD responsable de clonar repositorios Git y generar los manifiestos Kubernetes finales. Maneja diferentes herramientas de gestión de configuración (Helm, Kustomize, Jsonnet), cachea repositorios para mejorar el rendimiento, y procesa templates y configuraciones para producir los manifiestos YAML que serán aplicados al cluster. Es un servicio stateless que puede escalarse horizontalmente."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son métodos de autenticación en ArgoCD?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Local users",
+        "SSO (OIDC)",
+        "LDAP",
+        "SAML",
+        "GitHub/GitLab OAuth"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "ArgoCD soporta múltiples métodos de autenticación: <strong>Local users</strong> (usuarios almacenados localmente en ArgoCD), <strong>SSO (OIDC)</strong> (integración con proveedores OpenID Connect), <strong>LDAP</strong> (autenticación contra directorios LDAP/Active Directory), <strong>SAML</strong> (integración con proveedores SAML), y <strong>GitHub/GitLab OAuth</strong> (autenticación usando cuentas de Git providers). Esto permite integración flexible con sistemas de identidad empresariales existentes."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué son las Config Management Tools en ArgoCD?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Herramientas para generar manifiestos Kubernetes",
+        "Tipos de aplicaciones",
+        "Configuraciones de red",
+        "Tipos de proyectos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las <strong>Config Management Tools</strong> en ArgoCD son herramientas especializadas para generar y procesar manifiestos Kubernetes a partir de templates, configuraciones o definiciones de alto nivel. Estas herramientas permiten gestionar configuraciones complejas, reutilizar componentes, y mantener diferentes configuraciones para múltiples entornos de forma eficiente y mantenible."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles Config Management Tools soporta ArgoCD?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Helm",
+        "Kustomize",
+        "Jsonnet",
+        "Plain YAML",
+        "Custom tools"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "ArgoCD soporta múltiples herramientas de gestión de configuración: <strong>Helm</strong> (gestor de paquetes para Kubernetes con charts y templates), <strong>Kustomize</strong> (herramienta nativa de Kubernetes para personalización declarativa), <strong>Jsonnet</strong> (lenguaje de templating para generar JSON/YAML), <strong>Plain YAML</strong> (manifiestos Kubernetes estándar), y <strong>Custom tools</strong> (herramientas personalizadas mediante plugins). Esta flexibilidad permite adaptarse a diferentes flujos de trabajo y preferencias de los equipos de desarrollo."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para ArgoCD?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Separar configuración de aplicación del código",
+        "Usar Projects para organización",
+        "Implementar RBAC apropiado",
+        "Monitorear health de aplicaciones",
+        "Usar Application Sets para múltiples entornos"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas para ArgoCD incluyen: <strong>Separar configuración de aplicación del código</strong> (mantener manifiestos en repositorios separados del código fuente), <strong>Usar Projects para organización</strong> (implementar governance y multi-tenancy), <strong>Implementar RBAC apropiado</strong> (controlar acceso granular por equipos y entornos), <strong>Monitorear health de aplicaciones</strong> (configurar alertas y dashboards para visibilidad), y <strong>Usar Application Sets para múltiples entornos</strong> (automatizar despliegues multi-cluster y multi-tenant). Estas prácticas aseguran operaciones seguras, escalables y mantenibles."
+    }
+  ]
+}

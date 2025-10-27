@@ -1,0 +1,273 @@
+{
+  "tecnologia": "OpenShift",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Red Hat OpenShift?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plataforma de contenedores empresarial basada en Kubernetes",
+        "Un sistema operativo",
+        "Una base de datos",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Red Hat OpenShift es <strong>una plataforma de contenedores empresarial basada en Kubernetes</strong> que proporciona herramientas adicionales para desarrollo, despliegue y gestión de aplicaciones. Incluye características empresariales como seguridad mejorada, interfaz web completa, registro de imágenes integrado, herramientas de CI/CD, y soporte comercial de Red Hat."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las diferencias principales entre OpenShift y Kubernetes vanilla?",
+      "nivel": "básico",
+      "opciones": [
+        "OpenShift incluye herramientas adicionales de desarrollo",
+        "OpenShift tiene seguridad mejorada por defecto",
+        "OpenShift incluye registro de imágenes integrado",
+        "OpenShift tiene interfaz web más completa"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "OpenShift se diferencia de Kubernetes vanilla en varios aspectos: incluye <strong>herramientas adicionales de desarrollo</strong> (Source-to-Image, BuildConfigs), tiene <strong>seguridad mejorada por defecto</strong> (SCCs, RBAC estricto), incluye un <strong>registro de imágenes integrado</strong> para almacenar contenedores, y proporciona una <strong>interfaz web más completa</strong> con consola de desarrollador y administrador."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es un Project en OpenShift?",
+      "nivel": "básico",
+      "opciones": [
+        "Un namespace de Kubernetes con funcionalidades adicionales",
+        "Un tipo de contenedor",
+        "Una imagen de Docker",
+        "Un comando específico"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Project en OpenShift es <strong>un namespace de Kubernetes con funcionalidades adicionales</strong> que proporciona aislamiento de recursos y control de acceso. Incluye características como cuotas de recursos, políticas de red, RBAC específico del proyecto, y herramientas de colaboración. Es la unidad básica de organización para equipos y aplicaciones."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cuáles son los componentes principales de OpenShift?",
+      "nivel": "básico",
+      "opciones": [
+        "Master nodes",
+        "Worker nodes",
+        "etcd",
+        "Container Registry",
+        "Router"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los componentes principales incluyen: <strong>Master nodes</strong> (controlan el cluster), <strong>Worker nodes</strong> (ejecutan aplicaciones), <strong>etcd</strong> (almacén de datos distribuido), <strong>Container Registry</strong> (almacena imágenes de contenedor), y <strong>Router</strong> (enruta tráfico externo). Estos componentes trabajan juntos para proporcionar una plataforma completa de contenedores."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué comando se usa para hacer login en OpenShift CLI?",
+      "nivel": "básico",
+      "opciones": [
+        "oc login",
+        "openshift login",
+        "kubectl login",
+        "os login"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>oc login</strong> se usa para autenticarse en un cluster OpenShift desde la línea de comandos. Puede usarse con URL del servidor, token, o credenciales de usuario. Ejemplo: 'oc login https://api.cluster.com:6443' o 'oc login --token=TOKEN'. Una vez autenticado, se pueden ejecutar comandos oc para gestionar recursos."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es un BuildConfig en OpenShift?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una definición de cómo construir imágenes de contenedor",
+        "Una configuración de red",
+        "Un tipo de servicio",
+        "Una configuración de almacenamiento"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un BuildConfig es <strong>una definición de cómo construir imágenes de contenedor</strong> en OpenShift. Especifica la estrategia de build (S2I, Docker, Custom), el código fuente, la imagen base, triggers para iniciar builds, y configuraciones de salida. Automatiza el proceso de construcción de imágenes desde código fuente hasta imagen lista para desplegar."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son los tipos de build strategies en OpenShift?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Source-to-Image (S2I)",
+        "Docker build",
+        "Custom build",
+        "Pipeline build"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Las estrategias de build incluyen: <strong>Source-to-Image (S2I)</strong> (combina código fuente con imagen builder), <strong>Docker build</strong> (usa Dockerfile), <strong>Custom build</strong> (estrategia personalizada con imagen propia), y <strong>Pipeline build</strong> (usa Jenkins pipelines para builds complejos). Cada estrategia tiene casos de uso específicos según las necesidades del proyecto."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es Source-to-Image (S2I)?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una herramienta para construir imágenes reproducibles",
+        "Un tipo de deployment",
+        "Una configuración de red",
+        "Un comando de OpenShift"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Source-to-Image (S2I) es <strong>una herramienta para construir imágenes reproducibles</strong> que combina código fuente de aplicación con una imagen builder para producir una nueva imagen lista para ejecutar. Proporciona builds rápidos, seguros y reproducibles sin necesidad de Dockerfile. Es especialmente útil para lenguajes como Java, Node.js, Python, etc."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué es un DeploymentConfig en OpenShift?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una definición de cómo desplegar aplicaciones",
+        "Una configuración de build",
+        "Un tipo de servicio",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un DeploymentConfig es <strong>una definición de cómo desplegar aplicaciones</strong> en OpenShift. Especifica la imagen a desplegar, número de réplicas, estrategia de deployment, triggers automáticos, y configuraciones de rollback. Proporciona capacidades avanzadas como rolling deployments, blue-green deployments, y hooks de lifecycle."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Cuáles son comandos básicos del CLI de OpenShift (oc)?",
+      "nivel": "intermedio",
+      "opciones": [
+        "oc new-app",
+        "oc get",
+        "oc describe",
+        "oc logs",
+        "oc exec"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos básicos incluyen: <strong>oc new-app</strong> (crea nueva aplicación), <strong>oc get</strong> (lista recursos), <strong>oc describe</strong> (muestra detalles de recursos), <strong>oc logs</strong> (muestra logs de pods), y <strong>oc exec</strong> (ejecuta comandos en contenedores). Estos comandos son fundamentales para la gestión diaria de aplicaciones en OpenShift."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué son las Routes en OpenShift?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Objetos que exponen servicios externamente",
+        "Configuraciones de red interna",
+        "Tipos de contenedores",
+        "Comandos de gestión"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Routes son <strong>objetos que exponen servicios externamente</strong> proporcionando URLs accesibles desde fuera del cluster. Permiten configurar hostnames personalizados, terminación SSL/TLS, balanceeo de carga, y políticas de tráfico. Son el mecanismo principal para hacer que las aplicaciones sean accesibles desde internet en OpenShift."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es el Image Registry en OpenShift?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un registro interno para almacenar imágenes de contenedor",
+        "Una base de datos",
+        "Un tipo de servicio",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El Image Registry es <strong>un registro interno para almacenar imágenes de contenedor</strong> integrado en OpenShift. Permite almacenar, gestionar y distribuir imágenes de contenedor dentro del cluster. Proporciona características como autenticación integrada, control de acceso basado en proyectos, y integración con el proceso de build de OpenShift."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son características de seguridad en OpenShift?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Security Context Constraints (SCCs)",
+        "Role-Based Access Control (RBAC)",
+        "Network Policies",
+        "Pod Security Standards",
+        "Image scanning"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características de seguridad incluyen: <strong>Security Context Constraints (SCCs)</strong> (controlan privilegios de pods), <strong>Role-Based Access Control (RBAC)</strong> (control de acceso granular), <strong>Network Policies</strong> (aislamiento de red), <strong>Pod Security Standards</strong> (políticas de seguridad de pods), e <strong>Image scanning</strong> (análisis de vulnerabilidades en imágenes). Estas características proporcionan seguridad multicapa."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son los Security Context Constraints (SCCs)?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Políticas que controlan las acciones que pueden realizar los pods",
+        "Configuraciones de red",
+        "Tipos de servicios",
+        "Comandos de gestión"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Security Context Constraints (SCCs) son <strong>políticas que controlan las acciones que pueden realizar los pods</strong> en OpenShift. Definen qué usuarios pueden ejecutar, qué capacidades tienen, si pueden acceder al sistema de archivos del host, usar volúmenes privilegiados, etc. Proporcionan un control granular sobre la seguridad de los contenedores."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son tipos de almacenamiento en OpenShift?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Persistent Volumes (PV)",
+        "Persistent Volume Claims (PVC)",
+        "Storage Classes",
+        "ConfigMaps",
+        "Secrets"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de almacenamiento incluyen: <strong>Persistent Volumes (PV)</strong> (almacenamiento físico), <strong>Persistent Volume Claims (PVC)</strong> (solicitudes de almacenamiento), <strong>Storage Classes</strong> (tipos de almacenamiento dinámico), <strong>ConfigMaps</strong> (datos de configuración), y <strong>Secrets</strong> (datos sensibles). Cada tipo tiene propósitos específicos para diferentes necesidades de almacenamiento."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los Operators en OpenShift?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Aplicaciones que extienden Kubernetes para gestionar aplicaciones complejas",
+        "Tipos de contenedores",
+        "Configuraciones de red",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Operators son <strong>aplicaciones que extienden Kubernetes para gestionar aplicaciones complejas</strong> usando conocimiento específico del dominio. Automatizan tareas operacionales como instalación, configuración, actualizaciones, backups y recuperación. OpenShift incluye muchos operators para bases de datos, middleware y otras aplicaciones empresariales."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuáles son componentes del OpenShift Container Platform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "OpenShift API server",
+        "OpenShift Controller Manager",
+        "OpenShift Router",
+        "OpenShift Registry",
+        "OpenShift Web Console"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los componentes incluyen: <strong>OpenShift API server</strong> (API principal), <strong>OpenShift Controller Manager</strong> (controladores específicos de OpenShift), <strong>OpenShift Router</strong> (enrutamiento de tráfico), <strong>OpenShift Registry</strong> (registro de imágenes), y <strong>OpenShift Web Console</strong> (interfaz web). Estos componentes extienden Kubernetes con funcionalidades empresariales."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué es el OpenShift Service Mesh?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una implementación de Istio para OpenShift",
+        "Un tipo de red",
+        "Una configuración de almacenamiento",
+        "Un comando de gestión"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "OpenShift Service Mesh es <strong>una implementación de Istio para OpenShift</strong> que proporciona conectividad, seguridad y observabilidad para microservicios. Incluye características como traffic management, security policies, telemetría, y distributed tracing. Facilita la gestión de comunicaciones complejas entre servicios en arquitecturas de microservicios."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles son estrategias de deployment en OpenShift?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Rolling deployment",
+        "Recreate deployment",
+        "Blue-Green deployment",
+        "Canary deployment",
+        "A/B testing"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las estrategias incluyen: <strong>Rolling deployment</strong> (actualización gradual), <strong>Recreate deployment</strong> (parar y recrear), <strong>Blue-Green deployment</strong> (dos entornos paralelos), <strong>Canary deployment</strong> (despliegue gradual a subconjunto), y <strong>A/B testing</strong> (comparación de versiones). Cada estrategia tiene ventajas específicas según los requisitos de disponibilidad y riesgo."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para OpenShift?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar resource quotas y limits",
+        "Implementar health checks",
+        "Usar multi-stage builds",
+        "Aplicar principio de menor privilegio",
+        "Monitorear con Prometheus y Grafana"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas incluyen: <strong>usar resource quotas y limits</strong> (controlar uso de recursos), <strong>implementar health checks</strong> (liveness y readiness probes), <strong>usar multi-stage builds</strong> (imágenes optimizadas), <strong>aplicar principio de menor privilegio</strong> (seguridad mínima necesaria), y <strong>monitorear con Prometheus y Grafana</strong> (observabilidad completa). Estas prácticas aseguran operaciones eficientes y seguras."
+    }
+  ]
+}

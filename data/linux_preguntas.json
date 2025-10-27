@@ -1,0 +1,273 @@
+{
+  "tecnologia": "Linux",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Linux?",
+      "nivel": "básico",
+      "opciones": [
+        "Un sistema operativo de código abierto",
+        "Una aplicación web",
+        "Una base de datos",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Linux es <strong>un sistema operativo de código abierto</strong> basado en Unix, creado por Linus Torvalds en 1991. Es gratuito, seguro, estable y altamente personalizable. Se usa en servidores, supercomputadoras, dispositivos móviles (Android), y sistemas embebidos. Su naturaleza de código abierto permite que cualquiera pueda ver, modificar y distribuir el código fuente."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son distribuciones populares de Linux?",
+      "nivel": "básico",
+      "opciones": [
+        "Ubuntu",
+        "CentOS",
+        "Red Hat",
+        "Debian",
+        "SUSE"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las distribuciones populares incluyen: <strong>Ubuntu</strong> (fácil de usar, basada en Debian), <strong>CentOS</strong> (gratuita, basada en Red Hat), <strong>Red Hat</strong> (empresarial, soporte comercial), <strong>Debian</strong> (estable, base de muchas otras), y <strong>SUSE</strong> (empresarial, especialmente en Europa). Cada distribución tiene diferentes enfoques, gestores de paquetes, y casos de uso específicos."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué comando se usa para listar archivos y directorios?",
+      "nivel": "básico",
+      "opciones": [
+        "ls",
+        "dir",
+        "list",
+        "show"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>ls</strong> (list) se usa para listar archivos y directorios en Linux. Opciones útiles: 'ls -l' (formato largo con permisos), 'ls -a' (incluye archivos ocultos), 'ls -la' (combina ambos), 'ls -h' (tamaños legibles). Es uno de los comandos más básicos y utilizados en la terminal de Linux."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué comando se usa para cambiar de directorio?",
+      "nivel": "básico",
+      "opciones": [
+        "cd",
+        "chdir",
+        "move",
+        "goto"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>cd</strong> (change directory) se usa para cambiar de directorio. Ejemplos: 'cd /home/usuario' (ruta absoluta), 'cd documentos' (ruta relativa), 'cd ..' (directorio padre), 'cd ~' (directorio home), 'cd -' (directorio anterior). Es fundamental para navegar por el sistema de archivos desde la terminal."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son comandos básicos para gestión de archivos?",
+      "nivel": "básico",
+      "opciones": [
+        "cp (copiar)",
+        "mv (mover/renombrar)",
+        "rm (eliminar)",
+        "mkdir (crear directorio)",
+        "rmdir (eliminar directorio)"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos básicos incluyen: <strong>cp</strong> (copy - copiar archivos/directorios), <strong>mv</strong> (move - mover o renombrar), <strong>rm</strong> (remove - eliminar archivos), <strong>mkdir</strong> (make directory - crear directorios), y <strong>rmdir</strong> (remove directory - eliminar directorios vacíos). Usar con cuidado, especialmente 'rm -rf' que elimina recursivamente sin confirmación."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué comando muestra el contenido de un archivo?",
+      "nivel": "básico",
+      "opciones": [
+        "cat",
+        "less",
+        "more",
+        "head",
+        "tail"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Varios comandos muestran contenido: <strong>cat</strong> (muestra todo el archivo), <strong>less</strong> (navegación interactiva, recomendado), <strong>more</strong> (similar a less, menos funciones), <strong>head</strong> (primeras líneas, por defecto 10), y <strong>tail</strong> (últimas líneas, útil para logs). 'less' es preferible para archivos grandes por su capacidad de navegación."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué son los permisos de archivos en Linux?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Controles de acceso para lectura, escritura y ejecución",
+        "Configuraciones de red",
+        "Tipos de archivos",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los permisos de archivos son <strong>controles de acceso para lectura, escritura y ejecución</strong>. Se aplican a tres niveles: propietario (u), grupo (g) y otros (o). Cada nivel puede tener permisos de lectura (r), escritura (w) y ejecución (x). Se representan como rwxrwxrwx o en notación octal (755, 644, etc.). Controlan quién puede acceder y modificar archivos y directorios."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Cuáles son los tipos de permisos en Linux?",
+      "nivel": "intermedio",
+      "opciones": [
+        "r (read)",
+        "w (write)",
+        "x (execute)",
+        "d (directory)"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los tipos de permisos básicos son: <strong>r (read)</strong> permite leer el contenido del archivo o listar un directorio, <strong>w (write)</strong> permite modificar el archivo o crear/eliminar archivos en un directorio, y <strong>x (execute)</strong> permite ejecutar el archivo como programa o acceder a un directorio. 'd' indica tipo directorio pero no es un permiso."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué comando se usa para cambiar permisos de archivos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "chmod",
+        "chown",
+        "chgrp",
+        "permission"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>chmod</strong> (change mode) se usa para cambiar permisos de archivos. Ejemplos: 'chmod 755 archivo' (notación octal), 'chmod u+x archivo' (agregar ejecución al propietario), 'chmod g-w archivo' (quitar escritura al grupo). 'chown' cambia propietario, 'chgrp' cambia grupo, pero solo 'chmod' modifica permisos."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué es un proceso en Linux?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una instancia de un programa en ejecución",
+        "Un archivo de configuración",
+        "Un tipo de directorio",
+        "Un comando especial"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un proceso es <strong>una instancia de un programa en ejecución</strong> en memoria. Cada proceso tiene un PID (Process ID) único, consume recursos del sistema (CPU, memoria), puede tener procesos padre e hijo, y puede estar en diferentes estados: ejecutándose, durmiendo, zombie, etc. El kernel gestiona todos los procesos del sistema."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son comandos para gestión de procesos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "ps (listar procesos)",
+        "top (monitor en tiempo real)",
+        "kill (terminar proceso)",
+        "jobs (trabajos en background)",
+        "nohup (ejecutar sin terminal)"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos de gestión incluyen: <strong>ps</strong> (muestra procesos activos), <strong>top</strong> (monitor interactivo en tiempo real), <strong>kill</strong> (termina procesos por PID o señal), <strong>jobs</strong> (muestra trabajos en background de la sesión actual), y <strong>nohup</strong> (ejecuta comandos que persisten al cerrar terminal). También útiles: htop, killall, pgrep, pkill."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es el sistema de archivos en Linux?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una estructura jerárquica que organiza archivos y directorios",
+        "Un tipo de proceso",
+        "Una configuración de red",
+        "Un comando especial"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El sistema de archivos es <strong>una estructura jerárquica que organiza archivos y directorios</strong> comenzando desde la raíz (/). En Linux, todo es un archivo: directorios, dispositivos, procesos. Tipos comunes incluyen ext4, xfs, btrfs. La jerarquía estándar (FHS) define ubicaciones como /bin, /etc, /home, /var, etc."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son directorios importantes en el sistema de archivos Linux?",
+      "nivel": "intermedio",
+      "opciones": [
+        "/root (directorio del usuario root)",
+        "/home (directorios de usuarios)",
+        "/etc (archivos de configuración)",
+        "/var (archivos variables)",
+        "/usr (programas de usuario)"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los directorios importantes incluyen: <strong>/root</strong> (directorio personal del usuario root), <strong>/home</strong> (directorios personales de usuarios normales), <strong>/etc</strong> (archivos de configuración del sistema), <strong>/var</strong> (archivos variables como logs, cache, spool), y <strong>/usr</strong> (programas y bibliotecas de usuario). También importantes: /bin, /sbin, /lib, /tmp, /opt."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son las variables de entorno en Linux?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Variables que afectan el comportamiento de procesos",
+        "Archivos de configuración",
+        "Tipos de permisos",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las variables de entorno son <strong>variables que afectan el comportamiento de procesos</strong> y aplicaciones. Almacenan información como rutas de programas, configuraciones de usuario, y parámetros del sistema. Se heredan por procesos hijo y pueden ser temporales (sesión actual) o permanentes (definidas en archivos como .bashrc, .profile)."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son variables de entorno comunes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "PATH",
+        "HOME",
+        "USER",
+        "SHELL",
+        "PWD"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Variables importantes incluyen: <strong>PATH</strong> (rutas donde buscar ejecutables), <strong>HOME</strong> (directorio personal del usuario), <strong>USER</strong> (nombre del usuario actual), <strong>SHELL</strong> (shell por defecto como /bin/bash), y <strong>PWD</strong> (directorio de trabajo actual). También importantes: LANG, TERM, PS1, EDITOR."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los pipes (|) en Linux?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Mecanismo para conectar la salida de un comando con la entrada de otro",
+        "Tipos de archivos",
+        "Configuraciones de red",
+        "Permisos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los pipes (|) son un <strong>mecanismo para conectar la salida de un comando con la entrada de otro</strong>, permitiendo encadenar comandos. Ejemplo: 'ls -l | grep txt' lista archivos y filtra solo los .txt. Permiten crear flujos de procesamiento complejos combinando comandos simples. Son fundamentales en la filosofía Unix de 'hacer una cosa bien'."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué son los servicios (daemons) en Linux?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Procesos que corren en background",
+        "Archivos de configuración",
+        "Tipos de permisos",
+        "Comandos especiales"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los servicios (daemons) son <strong>procesos que corren en background</strong> sin interacción directa del usuario. Ejemplos: sshd (SSH), httpd (Apache), mysqld (MySQL). Se inician automáticamente al arrancar el sistema y proporcionan funcionalidades como servidores web, bases de datos, servicios de red, etc."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuáles son comandos para gestión de servicios?",
+      "nivel": "avanzado",
+      "opciones": [
+        "systemctl (systemd)",
+        "service (SysV)",
+        "chkconfig",
+        "update-rc.d"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los comandos de gestión incluyen: <strong>systemctl</strong> (systemd moderno - start, stop, enable, status), <strong>service</strong> (SysV tradicional), <strong>chkconfig</strong> (Red Hat/CentOS para habilitar servicios), y <strong>update-rc.d</strong> (Debian/Ubuntu para gestionar runlevels). systemctl es el estándar actual en la mayoría de distribuciones."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es cron en Linux?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un planificador de tareas",
+        "Un tipo de archivo",
+        "Una configuración de red",
+        "Un comando de gestión de procesos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Cron es <strong>un planificador de tareas</strong> que permite ejecutar comandos o scripts automáticamente en horarios específicos. Utiliza archivos crontab con formato de 5 campos: minuto, hora, día del mes, mes, día de la semana. Ejemplos: '0 2 * * *' (diario a las 2 AM), '*/15 * * * *' (cada 15 minutos). Es esencial para automatización y mantenimiento del sistema."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son herramientas de monitoreo en Linux?",
+      "nivel": "avanzado",
+      "opciones": [
+        "htop",
+        "iotop",
+        "netstat",
+        "ss",
+        "lsof"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Herramientas de monitoreo incluyen: <strong>htop</strong> (monitor interactivo de procesos con interfaz mejorada), <strong>iotop</strong> (monitorea uso de I/O por proceso), <strong>netstat</strong> (muestra conexiones de red y puertos), <strong>ss</strong> (reemplazo moderno y más rápido de netstat), y <strong>lsof</strong> (lista archivos abiertos por procesos). También útiles: vmstat, iostat, sar, nmon."
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "tecnologia": "Git",
+  "descripcion": "Sistema de control de versiones distribuido",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "nivel": "básico",
+      "pregunta": "¿Qué es Git?",
+      "opciones": [
+        "Un editor de texto",
+        "Un sistema de control de versiones distribuido",
+        "Un lenguaje de programación",
+        "Una base de datos"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "Git es un <strong>sistema de control de versiones distribuido</strong> creado por Linus Torvalds. Permite rastrear cambios en archivos, colaborar con otros desarrolladores, mantener un historial completo de modificaciones y trabajar de forma distribuida sin necesidad de un servidor central."
+    },
+    {
+      "id": 2,
+      "nivel": "básico",
+      "pregunta": "¿Cuáles de los siguientes comandos agregan archivos al área de staging?",
+      "opciones": [
+        "git add .",
+        "git commit -m 'mensaje'",
+        "git add archivo.txt",
+        "git status"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "Los comandos que agregan archivos al staging area son: <strong>git add .</strong> (agrega todos los archivos modificados) y <strong>git add archivo.txt</strong> (agrega un archivo específico). 'git commit' confirma los cambios y 'git status' solo muestra el estado actual."
+    },
+    {
+      "id": 3,
+      "nivel": "básico",
+      "pregunta": "¿Cómo se inicializa un repositorio Git?",
+      "opciones": [
+        "git start",
+        "git init",
+        "git create",
+        "git new"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "El comando <strong>git init</strong> inicializa un nuevo repositorio Git en el directorio actual. Crea la carpeta oculta .git que contiene toda la metadata necesaria para el control de versiones, incluyendo el historial de commits, configuración y referencias."
+    },
+    {
+      "id": 4,
+      "nivel": "básico",
+      "pregunta": "¿Qué información muestra 'git status'?",
+      "opciones": [
+        "Archivos modificados",
+        "Archivos en staging area",
+        "Archivos no rastreados",
+        "Todas las anteriores"
+      ],
+      "respuestas_correctas": [3],
+      "explicacion": "El comando 'git status' muestra <strong>todas las anteriores</strong>: archivos modificados (changed), archivos en el staging area (staged for commit), archivos no rastreados (untracked), y el estado actual de la rama. Es fundamental para entender el estado del repositorio antes de hacer commits."
+    },
+    {
+      "id": 5,
+      "nivel": "básico",
+      "pregunta": "¿Cuál es la sintaxis correcta para clonar un repositorio?",
+      "opciones": [
+        "git clone <URL>",
+        "git download <URL>",
+        "git copy <URL>",
+        "git pull <URL>"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "La sintaxis correcta es <strong>git clone &lt;URL&gt;</strong>. Este comando descarga una copia completa del repositorio remoto, incluyendo todo el historial de commits, ramas y tags. Crea un directorio local con el nombre del repositorio y configura automáticamente el remote 'origin'."
+    },
+    {
+      "id": 6,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuáles comandos pueden crear una nueva rama?",
+      "opciones": [
+        "git branch nueva-rama",
+        "git checkout -b nueva-rama",
+        "git switch -c nueva-rama",
+        "git create nueva-rama"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los comandos válidos son: <strong>git branch nueva-rama</strong> (crea rama pero no cambia a ella), <strong>git checkout -b nueva-rama</strong> (crea y cambia a la nueva rama), y <strong>git switch -c nueva-rama</strong> (comando moderno que crea y cambia a la nueva rama). 'git create' no existe en Git."
+    },
+    {
+      "id": 7,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuáles son diferencias entre 'git merge' y 'git rebase'?",
+      "opciones": [
+        "Merge crea un commit de fusión",
+        "Rebase reescribe el historial",
+        "Merge preserva el historial original",
+        "Rebase es más seguro que merge"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Las diferencias principales son: <strong>Merge crea un commit de fusión</strong> que une dos historiales, <strong>rebase reescribe el historial</strong> aplicando commits uno por uno, y <strong>merge preserva el historial original</strong> manteniendo la estructura de ramas. Rebase NO es más seguro que merge, ya que reescribe el historial y puede ser problemático en ramas compartidas."
+    },
+    {
+      "id": 8,
+      "nivel": "intermedio",
+      "pregunta": "¿Para qué sirve 'git stash'?",
+      "opciones": [
+        "Guardar cambios temporalmente",
+        "Eliminar archivos",
+        "Cambiar de rama sin commit",
+        "Crear un backup"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "Git stash sirve para <strong>guardar cambios temporalmente</strong> en una pila de stashes y permite <strong>cambiar de rama sin commit</strong> cuando tienes modificaciones no confirmadas. Es útil cuando necesitas cambiar de contexto rápidamente sin perder el trabajo actual. No elimina archivos ni crea backups permanentes."
+    },
+    {
+      "id": 9,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuáles comandos deshacen el último commit manteniendo los cambios?",
+      "opciones": [
+        "git reset --soft HEAD~1",
+        "git reset --hard HEAD~1",
+        "git revert HEAD",
+        "git reset --mixed HEAD~1"
+      ],
+      "respuestas_correctas": [0, 3],
+      "explicacion": "Los comandos que mantienen los cambios son: <strong>git reset --soft HEAD~1</strong> (deshace el commit pero mantiene cambios en staging) y <strong>git reset --mixed HEAD~1</strong> (deshace el commit y unstage, pero mantiene cambios en working directory). 'git reset --hard' elimina todos los cambios, y 'git revert' crea un nuevo commit que revierte los cambios."
+    },
+    {
+      "id": 10,
+      "nivel": "intermedio",
+      "pregunta": "¿Cómo se resuelve un conflicto de merge?",
+      "opciones": [
+        "Editar manualmente los archivos conflictivos",
+        "Usar git merge --abort",
+        "Hacer commit después de resolver",
+        "Usar git reset --hard"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "Para resolver conflictos: <strong>editar manualmente los archivos conflictivos</strong> eliminando los marcadores (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;) y eligiendo el código correcto, luego <strong>hacer commit después de resolver</strong> para completar el merge. 'git merge --abort' cancela el merge, y 'git reset --hard' eliminaría todos los cambios."
+    },
+    {
+      "id": 11,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuáles comandos configuran un repositorio remoto?",
+      "opciones": [
+        "git remote add origin <URL>",
+        "git remote set-url origin <URL>",
+        "git clone <URL>",
+        "git push origin main"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Los comandos que configuran remotos son: <strong>git remote add origin &lt;URL&gt;</strong> (agrega un nuevo remote llamado 'origin') y <strong>git remote set-url origin &lt;URL&gt;</strong> (cambia la URL de un remote existente). 'git clone' configura automáticamente el remote, pero no es un comando de configuración manual. 'git push' envía cambios, no configura remotos."
+    },
+    {
+      "id": 12,
+      "nivel": "avanzado",
+      "pregunta": "¿Para qué se utiliza 'git cherry-pick'?",
+      "opciones": [
+        "Aplicar commits específicos de otra rama",
+        "Seleccionar archivos para commit",
+        "Elegir la mejor rama",
+        "Aplicar solo cambios específicos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Git cherry-pick se utiliza para <strong>aplicar commits específicos de otra rama</strong> al branch actual. Toma un commit específico (identificado por su hash) y lo aplica como un nuevo commit en la rama actual, manteniendo los mismos cambios pero con un nuevo hash. Es útil para aplicar fixes específicos sin hacer merge completo."
+    },
+    {
+      "id": 13,
+      "nivel": "avanzado",
+      "pregunta": "¿Cómo funciona 'git bisect'?",
+      "opciones": [
+        "Búsqueda binaria en el historial",
+        "Divide el repositorio en dos",
+        "Encuentra el commit que introdujo un bug",
+        "Compara dos ramas"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "Git bisect utiliza <strong>búsqueda binaria en el historial</strong> para <strong>encontrar el commit que introdujo un bug</strong>. Divide el rango de commits por la mitad repetidamente, permitiendo marcar cada commit como 'good' o 'bad' hasta localizar exactamente dónde se introdujo el problema. Es muy eficiente para debugging en historiales largos."
+    },
+    {
+      "id": 14,
+      "nivel": "avanzado",
+      "pregunta": "¿Cuáles son tipos de hooks de Git?",
+      "opciones": [
+        "pre-commit",
+        "post-receive",
+        "pre-push",
+        "post-merge"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Todos son tipos válidos de hooks: <strong>pre-commit</strong> (se ejecuta antes de cada commit), <strong>post-receive</strong> (se ejecuta en el servidor después de recibir un push), <strong>pre-push</strong> (se ejecuta antes de hacer push), y <strong>post-merge</strong> (se ejecuta después de un merge exitoso). Los hooks permiten automatizar tareas y validaciones en diferentes momentos del flujo de Git."
+    },
+    {
+      "id": 15,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué hace 'git reset --hard HEAD~1'?",
+      "opciones": [
+        "Elimina el último commit",
+        "Resetea el working directory",
+        "Resetea el staging area",
+        "Mantiene los cambios en working directory"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Este comando <strong>elimina el último commit</strong>, <strong>resetea el working directory</strong> y <strong>resetea el staging area</strong> al estado del commit anterior. Es destructivo porque elimina permanentemente todos los cambios no confirmados. NO mantiene los cambios en el working directory, esa sería la opción --soft o --mixed."
+    },
+    {
+      "id": 16,
+      "nivel": "avanzado",
+      "pregunta": "¿Para qué sirve 'git reflog'?",
+      "opciones": [
+        "Registra movimientos de HEAD",
+        "Recuperar commits 'perdidos'",
+        "Ver el historial de comandos",
+        "Mostrar referencias remotas"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Git reflog <strong>registra movimientos de HEAD</strong> (cambios de rama, commits, resets, etc.) y permite <strong>recuperar commits 'perdidos'</strong> después de operaciones como reset --hard. Es un log local que mantiene un historial de referencias por 90 días por defecto. No muestra comandos ni referencias remotas."
+    },
+    {
+      "id": 17,
+      "nivel": "avanzado",
+      "pregunta": "¿Cuáles son opciones de rebase interactivo?",
+      "opciones": [
+        "pick (usar commit)",
+        "squash (combinar commits)",
+        "edit (modificar commit)",
+        "drop (eliminar commit)"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Todas son opciones válidas del rebase interactivo: <strong>pick</strong> (usar el commit tal como está), <strong>squash</strong> (combinar este commit con el anterior), <strong>edit</strong> (pausar para modificar el commit), y <strong>drop</strong> (eliminar el commit completamente). Otras opciones incluyen 'reword' (cambiar mensaje) y 'fixup' (como squash pero descarta el mensaje)."
+    },
+    {
+      "id": 18,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué permite 'git worktree'?",
+      "opciones": [
+        "Múltiples working directories",
+        "Trabajar en diferentes ramas simultáneamente",
+        "Crear árboles de trabajo separados",
+        "Sincronizar repositorios"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Git worktree permite <strong>múltiples working directories</strong> del mismo repositorio, <strong>trabajar en diferentes ramas simultáneamente</strong> sin cambiar de rama constantemente, y <strong>crear árboles de trabajo separados</strong> que comparten el mismo .git. Es útil para trabajar en features paralelos o comparar ramas. No sincroniza repositorios diferentes."
+    },
+    {
+      "id": 19,
+      "nivel": "avanzado",
+      "pregunta": "¿Cuáles comandos se usan con 'git subtree'?",
+      "opciones": [
+        "git subtree add",
+        "git subtree pull",
+        "git subtree push",
+        "git subtree merge"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los comandos válidos son: <strong>git subtree add</strong> (agregar un subtree desde otro repositorio), <strong>git subtree pull</strong> (actualizar el subtree con cambios del repositorio origen), y <strong>git subtree push</strong> (enviar cambios del subtree de vuelta al repositorio origen). 'git subtree merge' no es un comando válido; el merge se maneja automáticamente con pull."
+    },
+    {
+      "id": 20,
+      "nivel": "avanzado",
+      "pregunta": "¿Cuáles son estrategias de merge en Git?",
+      "opciones": [
+        "recursive",
+        "octopus",
+        "ours",
+        "subtree"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Todas son estrategias válidas: <strong>recursive</strong> (por defecto, para merge de dos ramas), <strong>octopus</strong> (para merge de múltiples ramas simultáneamente), <strong>ours</strong> (ignora cambios de otras ramas, mantiene solo los nuestros), y <strong>subtree</strong> (para merge de proyectos que fueron subtrees). Cada estrategia se adapta a diferentes escenarios de merge."
+    }
+  ]
+}

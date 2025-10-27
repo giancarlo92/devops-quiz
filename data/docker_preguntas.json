@@ -1,0 +1,271 @@
+{
+  "tecnologia": "Docker",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Docker?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plataforma de contenedorización",
+        "Un sistema operativo",
+        "Una base de datos",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Docker es una <strong>plataforma de contenedorización</strong> que permite empaquetar aplicaciones y sus dependencias en contenedores ligeros y portables. Utiliza la virtualización a nivel de sistema operativo para crear entornos aislados que pueden ejecutarse de manera consistente en cualquier sistema que tenga Docker instalado."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las ventajas principales de usar Docker?",
+      "nivel": "básico",
+      "opciones": [
+        "Portabilidad",
+        "Aislamiento",
+        "Escalabilidad",
+        "Consistencia entre entornos",
+        "Eficiencia de recursos"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Docker ofrece múltiples ventajas: <strong>Portabilidad</strong> (funciona igual en desarrollo, testing y producción), <strong>Aislamiento</strong> (cada contenedor es independiente), <strong>Escalabilidad</strong> (fácil escalado horizontal), <strong>Consistencia entre entornos</strong> (elimina el problema 'funciona en mi máquina'), y <strong>Eficiencia de recursos</strong> (menor overhead que las VMs tradicionales)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es un contenedor Docker?",
+      "nivel": "básico",
+      "opciones": [
+        "Una instancia ejecutable de una imagen",
+        "Un archivo de configuración",
+        "Una máquina virtual",
+        "Un repositorio de código"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un contenedor Docker es una <strong>instancia ejecutable de una imagen</strong>. Es un proceso aislado que incluye todo lo necesario para ejecutar una aplicación: código, runtime, herramientas del sistema, bibliotecas y configuraciones. A diferencia de las VMs, los contenedores comparten el kernel del sistema operativo host."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es una imagen Docker?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plantilla de solo lectura para crear contenedores",
+        "Un contenedor en ejecución",
+        "Un archivo de logs",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una imagen Docker es una <strong>plantilla de solo lectura</strong> que contiene las instrucciones para crear un contenedor. Se construye usando un Dockerfile y está compuesta por capas (layers) que se apilan para formar el sistema de archivos final. Las imágenes son inmutables y se pueden compartir a través de registries como Docker Hub."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué comando se usa para ejecutar un contenedor Docker?",
+      "nivel": "básico",
+      "opciones": [
+        "docker run",
+        "docker start",
+        "docker execute",
+        "docker launch"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>docker run</strong> se usa para crear y ejecutar un nuevo contenedor desde una imagen. Combina las operaciones de crear un contenedor (docker create) e iniciarlo (docker start). Acepta múltiples opciones como -d (detached), -p (port mapping), -v (volumes), --name (nombre del contenedor), etc."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es un Dockerfile?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un archivo de texto con instrucciones para construir una imagen",
+        "Un contenedor en ejecución",
+        "Una configuración de red",
+        "Un archivo de logs"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>Dockerfile</strong> es un <strong>archivo de texto con instrucciones</strong> que define cómo construir una imagen Docker. Contiene comandos secuenciales que Docker ejecuta automáticamente para crear capas de la imagen. Es la receta que especifica el sistema operativo base, dependencias, código de aplicación, configuraciones y comandos de ejecución."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son instrucciones comunes en un Dockerfile?",
+      "nivel": "intermedio",
+      "opciones": [
+        "FROM",
+        "RUN",
+        "COPY",
+        "EXPOSE",
+        "CMD"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las instrucciones principales del Dockerfile son: <strong>FROM</strong> (imagen base), <strong>RUN</strong> (ejecutar comandos durante build), <strong>COPY</strong> (copiar archivos al contenedor), <strong>EXPOSE</strong> (documentar puertos), y <strong>CMD</strong> (comando por defecto al ejecutar). Otras importantes incluyen WORKDIR, ENV, ADD, ENTRYPOINT, y LABEL."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué comando construye una imagen desde un Dockerfile?",
+      "nivel": "intermedio",
+      "opciones": [
+        "docker build",
+        "docker create",
+        "docker make",
+        "docker construct"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El comando <strong>docker build</strong> construye una imagen Docker desde un Dockerfile. Sintaxis típica: 'docker build -t nombre:tag .'. El punto (.) indica el contexto de build (directorio actual). Opciones útiles incluyen -f (especificar Dockerfile), --no-cache (build sin cache), y --build-arg (argumentos de build)."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué es Docker Hub?",
+      "nivel": "básico",
+      "opciones": [
+        "Un registro público de imágenes Docker",
+        "Una herramienta de orquestación",
+        "Un sistema operativo",
+        "Una base de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Docker Hub</strong> es el <strong>registro público de imágenes Docker</strong> más grande del mundo. Permite almacenar, compartir y descargar imágenes Docker. Ofrece repositorios públicos gratuitos, repositorios privados (de pago), builds automatizados desde GitHub/Bitbucket, y webhooks. Es el registry por defecto cuando usas 'docker pull' sin especificar otro."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué comandos se usan para gestionar imágenes Docker?",
+      "nivel": "intermedio",
+      "opciones": [
+        "docker images",
+        "docker pull",
+        "docker push",
+        "docker rmi",
+        "docker tag"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos principales para gestionar imágenes son: <strong>docker images</strong> (listar imágenes locales), <strong>docker pull</strong> (descargar imagen), <strong>docker push</strong> (subir imagen a registry), <strong>docker rmi</strong> (eliminar imagen), y <strong>docker tag</strong> (etiquetar imagen). Otros útiles: docker inspect, docker history, y docker save/load."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué es un volumen en Docker?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un mecanismo para persistir datos",
+        "Un tipo de contenedor",
+        "Una configuración de red",
+        "Un archivo de logs"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un volumen en Docker es un <strong>mecanismo para persistir datos</strong> generados y utilizados por contenedores. Los volúmenes existen independientemente del ciclo de vida del contenedor, permitiendo que los datos sobrevivan cuando el contenedor se elimina. Son gestionados por Docker y proporcionan mejor rendimiento que bind mounts en algunos casos."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Cuáles son los tipos de volúmenes en Docker?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Named volumes",
+        "Bind mounts",
+        "tmpfs mounts",
+        "Anonymous volumes"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Docker ofrece varios tipos de almacenamiento: <strong>Named volumes</strong> (gestionados por Docker con nombre), <strong>Bind mounts</strong> (mapeo directo a directorio del host), <strong>tmpfs mounts</strong> (almacenamiento temporal en memoria), y <strong>Anonymous volumes</strong> (volúmenes sin nombre gestionados por Docker). Cada tipo tiene casos de uso específicos según las necesidades de persistencia y rendimiento."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué es Docker Compose?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una herramienta para definir aplicaciones multi-contenedor",
+        "Un tipo de imagen",
+        "Un comando de Docker",
+        "Un sistema de monitoreo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Docker Compose</strong> es una <strong>herramienta para definir y ejecutar aplicaciones multi-contenedor</strong>. Utiliza un archivo YAML para configurar servicios, redes y volúmenes de la aplicación. Con un solo comando (docker-compose up) puede crear e iniciar todos los servicios definidos, facilitando el desarrollo y deployment de aplicaciones complejas."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué archivo usa Docker Compose para su configuración?",
+      "nivel": "intermedio",
+      "opciones": [
+        "docker-compose.yml",
+        "Dockerfile",
+        "compose.json",
+        "docker.config"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Docker Compose utiliza el archivo <strong>docker-compose.yml</strong> (o .yaml) para su configuración. Este archivo YAML define servicios, redes, volúmenes y otras configuraciones necesarias para la aplicación multi-contenedor. También puede usar archivos adicionales como docker-compose.override.yml para sobrescribir configuraciones en diferentes entornos."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es una red Docker?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un mecanismo para conectar contenedores",
+        "Un tipo de volumen",
+        "Una imagen especial",
+        "Un archivo de configuración"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una red Docker es un <strong>mecanismo para conectar contenedores</strong> entre sí y con el mundo exterior. Proporciona aislamiento de red, comunicación segura entre contenedores, resolución de nombres DNS automática, y control de tráfico. Permite que los contenedores se comuniquen de manera controlada y segura."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Cuáles son los tipos de redes en Docker?",
+      "nivel": "avanzado",
+      "opciones": [
+        "bridge",
+        "host",
+        "overlay",
+        "macvlan",
+        "none"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Docker soporta varios tipos de redes: <strong>bridge</strong> (red por defecto, aislada), <strong>host</strong> (usa la red del host directamente), <strong>overlay</strong> (para Docker Swarm, conecta múltiples hosts), <strong>macvlan</strong> (asigna MAC address al contenedor), y <strong>none</strong> (sin conectividad de red). Cada tipo sirve diferentes casos de uso y arquitecturas."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué es multi-stage build en Docker?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una técnica para optimizar el tamaño de imágenes",
+        "Un tipo de contenedor",
+        "Una configuración de red",
+        "Un comando especial"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>multi-stage build</strong> es una <strong>técnica para optimizar el tamaño de imágenes</strong> usando múltiples declaraciones FROM en un solo Dockerfile. Permite usar diferentes imágenes base para diferentes etapas del build, copiando solo los artefactos necesarios a la imagen final. Esto resulta en imágenes más pequeñas y seguras, eliminando herramientas de build y dependencias innecesarias del resultado final."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué son los health checks en Docker?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Verificaciones del estado de salud de contenedores",
+        "Comandos de limpieza",
+        "Configuraciones de red",
+        "Tipos de volúmenes"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>health checks</strong> son <strong>verificaciones del estado de salud de contenedores</strong> que determinan si la aplicación dentro del contenedor está funcionando correctamente. Se definen con la instrucción HEALTHCHECK en el Dockerfile o con el flag --health-cmd. Docker ejecuta periódicamente este comando y marca el contenedor como healthy, unhealthy o starting según el resultado."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es Docker Registry?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un servicio para almacenar y distribuir imágenes",
+        "Un tipo de contenedor",
+        "Una herramienta de monitoreo",
+        "Un sistema operativo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Docker Registry</strong> es un <strong>servicio para almacenar y distribuir imágenes Docker</strong>. Actúa como un repositorio centralizado donde se pueden subir (push) y descargar (pull) imágenes. Docker Hub es el registry público más conocido, pero también se pueden crear registries privados para uso interno de organizaciones, proporcionando control de acceso y seguridad adicional."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Qué técnicas se usan para optimizar imágenes Docker?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar imágenes base mínimas",
+        "Multi-stage builds",
+        "Minimizar capas",
+        "Usar .dockerignore",
+        "Limpiar cache de paquetes"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las técnicas principales para optimizar imágenes Docker incluyen: <strong>Usar imágenes base mínimas</strong> (como Alpine Linux), <strong>Multi-stage builds</strong> para eliminar dependencias de build, <strong>minimizar capas</strong> combinando comandos RUN, <strong>usar .dockerignore</strong> para excluir archivos innecesarios, y <strong>limpiar cache de paquetes</strong> después de instalaciones. También es recomendable ordenar instrucciones por frecuencia de cambio y evitar instalar paquetes innecesarios."
+    }
+  ]
+}

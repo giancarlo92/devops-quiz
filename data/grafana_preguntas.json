@@ -1,0 +1,275 @@
+{
+  "tecnologia": "Grafana",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Grafana?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plataforma de visualización y monitoreo de datos",
+        "Una base de datos",
+        "Un servidor web",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Grafana es <strong>una plataforma de visualización y monitoreo de datos</strong> open-source que permite crear dashboards interactivos y alertas. Se conecta a múltiples fuentes de datos (Prometheus, InfluxDB, MySQL, etc.) para crear visualizaciones en tiempo real. Es ampliamente usado en DevOps, SRE y monitoreo de infraestructura."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las características principales de Grafana?",
+      "nivel": "básico",
+      "opciones": [
+        "Dashboards interactivos",
+        "Alertas",
+        "Múltiples fuentes de datos",
+        "Visualizaciones personalizables",
+        "Colaboración en equipo"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características principales incluyen: <strong>dashboards interactivos</strong> (con filtros y variables), <strong>alertas</strong> (notificaciones automáticas), <strong>múltiples fuentes de datos</strong> (más de 60 conectores), <strong>visualizaciones personalizables</strong> (gráficos, tablas, mapas), y <strong>colaboración en equipo</strong> (compartir, permisos, organizaciones)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cuáles son fuentes de datos comunes en Grafana?",
+      "nivel": "básico",
+      "opciones": [
+        "Prometheus",
+        "InfluxDB",
+        "Elasticsearch",
+        "MySQL",
+        "CloudWatch"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las fuentes de datos comunes son: <strong>Prometheus</strong> (métricas de sistemas), <strong>InfluxDB</strong> (base de datos de series temporales), <strong>Elasticsearch</strong> (logs y búsquedas), <strong>MySQL</strong> (base de datos relacional), y <strong>CloudWatch</strong> (métricas de AWS). Grafana soporta más de 60 fuentes de datos diferentes."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es un Dashboard en Grafana?",
+      "nivel": "básico",
+      "opciones": [
+        "Una colección de paneles que muestran visualizaciones",
+        "Una base de datos",
+        "Un tipo de alerta",
+        "Una configuración de red"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Dashboard es <strong>una colección de paneles que muestran visualizaciones</strong> organizadas en una interfaz. Cada panel puede mostrar gráficos, tablas, métricas o texto. Los dashboards son interactivos, permiten filtros temporales, variables, y se pueden compartir con equipos o exportar."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son tipos de paneles en Grafana?",
+      "nivel": "básico",
+      "opciones": [
+        "Graph",
+        "Stat",
+        "Table",
+        "Heatmap",
+        "Text"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de paneles incluyen: <strong>Graph</strong> (gráficos de líneas/barras), <strong>Stat</strong> (valores únicos con umbrales), <strong>Table</strong> (datos tabulares), <strong>Heatmap</strong> (mapas de calor), y <strong>Text</strong> (contenido markdown/HTML). Cada tipo está optimizado para diferentes tipos de datos y casos de uso."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué puerto usa Grafana por defecto?",
+      "nivel": "básico",
+      "opciones": [
+        "3000",
+        "8080",
+        "9090",
+        "8000"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Grafana usa el puerto <strong>3000</strong> por defecto. Se accede típicamente via <code>http://localhost:3000</code>. Este puerto se puede cambiar en el archivo de configuración <code>grafana.ini</code> o mediante variables de entorno. Los puertos 8080, 9090 y 8000 son usados por otras herramientas (Jenkins, Prometheus, etc.)."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son tipos de visualizaciones en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Time series",
+        "Bar chart",
+        "Pie chart",
+        "Gauge",
+        "World map"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de visualizaciones incluyen: <strong>Time series</strong> (gráficos temporales), <strong>Bar chart</strong> (gráficos de barras), <strong>Pie chart</strong> (gráficos circulares), <strong>Gauge</strong> (medidores/indicadores), y <strong>World map</strong> (mapas geográficos). Cada visualización está optimizada para diferentes tipos de datos y casos de uso específicos."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué son las variables en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Placeholders dinámicos para hacer dashboards interactivos",
+        "Tipos de paneles",
+        "Configuraciones de red",
+        "Tipos de alertas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las variables son <strong>placeholders dinámicos para hacer dashboards interactivos</strong>. Permiten crear filtros dropdown, cambiar contextos (servidor, aplicación, región), y reutilizar dashboards para diferentes entornos. Se definen con sintaxis <code>$variable</code> y hacen los dashboards más flexibles y reutilizables."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuáles son tipos de variables en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Query variables",
+        "Custom variables",
+        "Constant variables",
+        "Datasource variables",
+        "Interval variables"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos incluyen: <strong>Query variables</strong> (valores desde consultas), <strong>Custom variables</strong> (valores manuales), <strong>Constant variables</strong> (valores fijos), <strong>Datasource variables</strong> (selección de fuente de datos), e <strong>Interval variables</strong> (intervalos de tiempo). Cada tipo sirve para diferentes casos de uso de interactividad."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son las alertas en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Notificaciones automáticas basadas en condiciones de datos",
+        "Tipos de paneles",
+        "Configuraciones de dashboard",
+        "Tipos de visualizaciones"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las alertas son <strong>notificaciones automáticas basadas en condiciones de datos</strong>. Se configuran con reglas que evalúan métricas continuamente y envían notificaciones cuando se cumplen condiciones (umbrales, ausencia de datos, etc.). Incluyen estados: OK, Pending, Alerting, No Data."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son canales de notificación en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Email",
+        "Slack",
+        "PagerDuty",
+        "Webhook",
+        "Microsoft Teams"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los canales incluyen: <strong>Email</strong> (correo electrónico), <strong>Slack</strong> (mensajería de equipo), <strong>PagerDuty</strong> (gestión de incidentes), <strong>Webhook</strong> (HTTP personalizado), y <strong>Microsoft Teams</strong> (colaboración). Cada canal permite configurar formatos y destinatarios específicos para las alertas."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es el Query Editor en Grafana?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Interfaz para construir consultas a fuentes de datos",
+        "Un tipo de panel",
+        "Una configuración de alerta",
+        "Un tipo de dashboard"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El Query Editor es la <strong>interfaz para construir consultas a fuentes de datos</strong>. Cada fuente de datos tiene su propio editor (PromQL para Prometheus, SQL para bases de datos, etc.). Incluye autocompletado, validación, y vista previa de resultados para facilitar la construcción de consultas."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son características avanzadas de Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Templating",
+        "Annotations",
+        "Provisioning",
+        "Plugins",
+        "API REST"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características avanzadas incluyen: <strong>Templating</strong> (variables dinámicas), <strong>Annotations</strong> (marcadores de eventos), <strong>Provisioning</strong> (configuración como código), <strong>Plugins</strong> (extensiones personalizadas), y <strong>API REST</strong> (automatización y integración). Estas funciones permiten escalabilidad y personalización avanzada."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué son las Annotations en Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Marcadores de eventos en gráficos de tiempo",
+        "Tipos de alertas",
+        "Configuraciones de panel",
+        "Tipos de variables"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Annotations son <strong>marcadores de eventos en gráficos de tiempo</strong> que permiten correlacionar métricas con eventos (deployments, incidentes, releases). Se pueden crear manualmente, desde consultas, o automáticamente desde fuentes externas. Ayudan a entender el contexto de cambios en las métricas."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es el Provisioning en Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Configuración automática mediante archivos",
+        "Un tipo de panel",
+        "Una configuración de alerta",
+        "Un tipo de visualización"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El Provisioning es <strong>configuración automática mediante archivos</strong> YAML/JSON que permite gestionar dashboards, fuentes de datos, alertas y notificaciones como código. Facilita el versionado, despliegue automatizado, y consistencia entre entornos. Soporta GitOps y Infrastructure as Code."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Cuáles son tipos de plugins en Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Panel plugins",
+        "Datasource plugins",
+        "App plugins",
+        "Renderer plugins"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los tipos incluyen: <strong>Panel plugins</strong> (nuevas visualizaciones), <strong>Datasource plugins</strong> (conectores a fuentes de datos), <strong>App plugins</strong> (aplicaciones completas), y <strong>Renderer plugins</strong> (generación de imágenes/PDFs). Permiten extender funcionalidad y conectar con sistemas específicos."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué son las Organizations en Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Contenedores para usuarios, equipos y dashboards",
+        "Tipos de paneles",
+        "Configuraciones de alerta",
+        "Tipos de variables"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Organizations son <strong>contenedores para usuarios, equipos y dashboards</strong> que proporcionan aislamiento multi-tenant. Cada organización tiene sus propios dashboards, fuentes de datos, usuarios y configuraciones. Permiten separar diferentes equipos o proyectos en una misma instancia de Grafana."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuáles son métodos de autenticación en Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Local authentication",
+        "LDAP",
+        "OAuth",
+        "SAML",
+        "Auth Proxy"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los métodos incluyen: <strong>Local authentication</strong> (usuarios locales), <strong>LDAP</strong> (Active Directory), <strong>OAuth</strong> (Google, GitHub, etc.), <strong>SAML</strong> (SSO empresarial), y <strong>Auth Proxy</strong> (autenticación delegada). Permiten integración con sistemas de identidad existentes y SSO."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es Grafana Enterprise?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Versión comercial con características adicionales",
+        "Un plugin específico",
+        "Una configuración especial",
+        "Un tipo de dashboard"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Grafana Enterprise es la <strong>versión comercial con características adicionales</strong> que incluye: soporte empresarial 24/7, características de seguridad avanzadas (SAML, OAuth mejorado), reportes automatizados, escalabilidad mejorada, métricas de uso y auditoría, integración con sistemas empresariales, y acceso a plugins premium. Está diseñada para organizaciones que necesitan características empresariales y soporte profesional."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para Grafana?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Organizar dashboards en folders",
+        "Usar variables para reutilización",
+        "Implementar alertas significativas",
+        "Documentar dashboards",
+        "Usar provisioning para configuración"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas incluyen: <strong>organizar dashboards en folders</strong> (por equipos/servicios), <strong>usar variables para reutilización</strong> (dashboards dinámicos), <strong>implementar alertas significativas</strong> (evitar ruido), <strong>documentar dashboards</strong> (facilitar mantenimiento), y <strong>usar provisioning para configuración</strong> (Infrastructure as Code). También: convenciones de nomenclatura, optimización de queries, control de versiones, y permisos adecuados."
+    }
+  ]
+}

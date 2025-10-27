@@ -1,0 +1,275 @@
+{
+  "tecnologia": "Python",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Python?",
+      "nivel": "básico",
+      "opciones": [
+        "Un lenguaje de programación interpretado",
+        "Un sistema operativo",
+        "Una base de datos",
+        "Un framework web"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Python es un <strong>lenguaje de programación interpretado</strong> de alto nivel, creado por Guido van Rossum en 1991. Es conocido por su sintaxis clara y legible, filosofía de diseño que enfatiza la legibilidad del código, y su versatilidad para desarrollo web, ciencia de datos, inteligencia artificial, automatización, y más. Su lema es 'Simple es mejor que complejo'."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las características principales de Python?",
+      "nivel": "básico",
+      "opciones": [
+        "Sintaxis simple y legible",
+        "Interpretado",
+        "Multiplataforma",
+        "Tipado dinámico",
+        "Gran biblioteca estándar"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características principales incluyen: <strong>Sintaxis simple y legible</strong> (fácil de aprender y mantener), <strong>Interpretado</strong> (no requiere compilación), <strong>Multiplataforma</strong> (Windows, Linux, macOS), <strong>Tipado dinámico</strong> (no necesita declarar tipos), y <strong>Gran biblioteca estándar</strong> ('batteries included'). También es orientado a objetos, tiene gestión automática de memoria, y una gran comunidad."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es PEP 8?",
+      "nivel": "básico",
+      "opciones": [
+        "Guía de estilo para código Python",
+        "Una versión de Python",
+        "Un framework web",
+        "Una biblioteca de testing"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "PEP 8 es la <strong>Guía de estilo para código Python</strong> (Python Enhancement Proposal 8). Define convenciones para escribir código Python legible y consistente, incluyendo: indentación de 4 espacios, longitud máxima de línea de 79 caracteres, nomenclatura de variables y funciones, espaciado, y organización de imports. Es el estándar de facto para código Python profesional."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cuáles son tipos de datos básicos en Python?",
+      "nivel": "básico",
+      "opciones": [
+        "int",
+        "float",
+        "str",
+        "bool",
+        "list",
+        "dict"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4, 5],
+      "explicacion": "Los tipos de datos básicos incluyen: <strong>int</strong> (números enteros), <strong>float</strong> (números decimales), <strong>str</strong> (cadenas de texto), <strong>bool</strong> (True/False), <strong>list</strong> (listas ordenadas y mutables), y <strong>dict</strong> (diccionarios clave-valor). También existen tuple (inmutables), set (conjuntos únicos), y None (valor nulo). Python maneja estos tipos dinámicamente."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué es pip?",
+      "nivel": "básico",
+      "opciones": [
+        "El gestor de paquetes de Python",
+        "Un framework web",
+        "Un editor de código",
+        "Una base de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "pip es <strong>el gestor de paquetes de Python</strong> (Pip Installs Packages). Permite instalar, actualizar y desinstalar paquetes desde PyPI (Python Package Index) y otros repositorios. Comandos comunes: 'pip install package', 'pip list', 'pip freeze', 'pip uninstall'. Es esencial para gestionar dependencias y bibliotecas externas en proyectos Python."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es un entorno virtual en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un entorno aislado para instalar paquetes",
+        "Una máquina virtual",
+        "Un tipo de variable",
+        "Un framework de testing"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un entorno virtual es <strong>un entorno aislado para instalar paquetes</strong> Python sin afectar la instalación global del sistema. Permite tener diferentes versiones de paquetes para diferentes proyectos, evita conflictos de dependencias, y facilita la reproducibilidad. Se crea con 'python -m venv nombre_entorno' y se activa con scripts específicos del sistema operativo."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuáles son herramientas para crear entornos virtuales?",
+      "nivel": "intermedio",
+      "opciones": [
+        "venv",
+        "virtualenv",
+        "conda",
+        "pipenv",
+        "poetry"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las herramientas incluyen: <strong>venv</strong> (módulo estándar desde Python 3.3), <strong>virtualenv</strong> (biblioteca externa, más funciones), <strong>conda</strong> (gestor de paquetes y entornos, especialmente para ciencia de datos), <strong>pipenv</strong> (combina pip y virtualenv con Pipfile), y <strong>poetry</strong> (gestión moderna de dependencias y packaging). Cada una tiene ventajas específicas según el proyecto."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué es una función lambda en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una función anónima de una sola línea",
+        "Un tipo de variable",
+        "Una biblioteca externa",
+        "Un método de clase"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una función lambda es <strong>una función anónima de una sola línea</strong> que se define usando la palabra clave 'lambda'. Sintaxis: 'lambda argumentos: expresión'. Ejemplo: 'lambda x: x * 2'. Son útiles para funciones simples en map(), filter(), sort(), y como argumentos de funciones de orden superior. No pueden contener declaraciones, solo expresiones."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué son los decoradores en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Funciones que modifican el comportamiento de otras funciones",
+        "Tipos de variables",
+        "Métodos de clase",
+        "Bibliotecas externas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los decoradores son <strong>funciones que modifican el comportamiento de otras funciones</strong> sin cambiar su código fuente. Se aplican usando '@decorador' antes de la definición de función. Permiten agregar funcionalidad como logging, autenticación, medición de tiempo, etc. Ejemplos comunes: @property, @staticmethod, @classmethod. Implementan el patrón de diseño Decorator de forma elegante."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué es list comprehension?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una forma concisa de crear listas",
+        "Un tipo de función",
+        "Una biblioteca externa",
+        "Un método de debugging"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "List comprehension es <strong>una forma concisa de crear listas</strong> usando una sintaxis compacta. Estructura: '[expresión for elemento in iterable if condición]'. Ejemplo: '[x**2 for x in range(10) if x%2==0]' crea una lista de cuadrados de números pares. Es más eficiente y legible que bucles tradicionales para crear listas. También existen dict y set comprehensions."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son frameworks web populares en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Django",
+        "Flask",
+        "FastAPI",
+        "Pyramid",
+        "Tornado"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los frameworks incluyen: <strong>Django</strong> (full-stack con ORM, admin, autenticación), <strong>Flask</strong> (micro-framework minimalista y flexible), <strong>FastAPI</strong> (moderno, rápido, con tipado automático), <strong>Pyramid</strong> (flexible, escalable), y <strong>Tornado</strong> (asíncrono, para aplicaciones en tiempo real). Cada uno tiene fortalezas específicas según el tipo de aplicación."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es el GIL (Global Interpreter Lock) en Python?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un mutex que protege el acceso a objetos Python",
+        "Una biblioteca de threading",
+        "Un tipo de variable",
+        "Un framework web"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El GIL es <strong>un mutex que protege el acceso a objetos Python</strong> en CPython, permitiendo que solo un hilo ejecute código Python a la vez. Protege el intérprete de condiciones de carrera pero limita el paralelismo real en aplicaciones multi-hilo CPU-intensivas. No afecta operaciones I/O. Alternativas: multiprocessing, asyncio, o intérpretes sin GIL como Jython."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Cuáles son bibliotecas populares para testing en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "unittest",
+        "pytest",
+        "nose2",
+        "doctest",
+        "mock"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las bibliotecas incluyen: <strong>unittest</strong> (framework estándar de Python), <strong>pytest</strong> (más popular, sintaxis simple, fixtures potentes), <strong>nose2</strong> (sucesor de nose, extensible), <strong>doctest</strong> (tests en docstrings), y <strong>mock</strong> (para crear objetos simulados, integrado en unittest desde Python 3.3). Pytest es el más usado por su simplicidad y características avanzadas."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué es asyncio en Python?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una biblioteca para programación asíncrona",
+        "Un framework web",
+        "Una herramienta de debugging",
+        "Un gestor de paquetes"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "asyncio es una <strong>biblioteca para programación asíncrona</strong> incluida en Python 3.4+. Permite escribir código concurrente usando async/await, ideal para operaciones I/O intensivas. Proporciona event loops, corrutinas, tasks, y primitivas de sincronización. Mejora el rendimiento en aplicaciones que manejan muchas conexiones simultáneas sin usar múltiples hilos."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son bibliotecas populares para ciencia de datos?",
+      "nivel": "intermedio",
+      "opciones": [
+        "NumPy",
+        "Pandas",
+        "Matplotlib",
+        "Scikit-learn",
+        "Jupyter"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las bibliotecas incluyen: <strong>NumPy</strong> (arrays multidimensionales, operaciones matemáticas), <strong>Pandas</strong> (manipulación de datos estructurados), <strong>Matplotlib</strong> (visualización de datos), <strong>Scikit-learn</strong> (machine learning), y <strong>Jupyter</strong> (notebooks interactivos). Forman el ecosistema base para análisis de datos, junto con SciPy, Seaborn, y TensorFlow/PyTorch."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué son los context managers en Python?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Objetos que definen el contexto de ejecución para declaraciones with",
+        "Tipos de variables",
+        "Métodos de clase",
+        "Bibliotecas externas"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los context managers son <strong>objetos que definen el contexto de ejecución para declaraciones with</strong>. Implementan métodos __enter__() y __exit__() para garantizar la limpieza de recursos. Ejemplo común: 'with open(file) as f:' que cierra automáticamente el archivo. Se pueden crear con @contextmanager o implementando el protocolo directamente."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué es el método __init__ en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "El constructor de una clase",
+        "Un método de destrucción",
+        "Una función global",
+        "Un decorador especial"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El método __init__ es <strong>el constructor de una clase</strong> en Python. Se ejecuta automáticamente cuando se crea una nueva instancia del objeto. Recibe 'self' como primer parámetro y puede recibir argumentos adicionales para inicializar los atributos del objeto. Es donde se define el estado inicial de la instancia. No retorna valores (implícitamente retorna None)."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuáles son métodos especiales (dunder methods) comunes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "__init__",
+        "__str__",
+        "__repr__",
+        "__len__",
+        "__call__"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los métodos especiales (dunder methods) incluyen: <strong>__init__</strong> (constructor), <strong>__str__</strong> (representación legible para usuarios), <strong>__repr__</strong> (representación técnica para desarrolladores), <strong>__len__</strong> (longitud del objeto), y <strong>__call__</strong> (hace el objeto callable). Permiten que los objetos se comporten como tipos built-in y personalizar operadores."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es el manejo de excepciones en Python?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un mecanismo para manejar errores usando try/except",
+        "Un tipo de variable",
+        "Una biblioteca externa",
+        "Un método de debugging"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El manejo de excepciones es <strong>un mecanismo para manejar errores usando try/except</strong> durante la ejecución del programa. Usa try/except/else/finally para capturar y manejar errores sin que el programa termine abruptamente. Permite respuesta controlada a errores, logging, y recuperación. Excepciones comunes: ValueError, TypeError, FileNotFoundError. Mejora la robustez y experiencia del usuario."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son herramientas para análisis de código Python?",
+      "nivel": "avanzado",
+      "opciones": [
+        "pylint",
+        "flake8",
+        "black",
+        "mypy",
+        "bandit"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las herramientas incluyen: <strong>pylint</strong> (análisis estático completo, calidad de código), <strong>flake8</strong> (combina PyFlakes, pycodestyle, McCabe), <strong>black</strong> (formateador automático de código), <strong>mypy</strong> (verificación de tipos estáticos), y <strong>bandit</strong> (análisis de seguridad). Estas herramientas mejoran la calidad, legibilidad, y seguridad del código Python."
+    }
+  ]
+}

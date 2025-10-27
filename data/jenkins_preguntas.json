@@ -1,0 +1,271 @@
+{
+  "tecnologia": "Jenkins",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Jenkins?",
+      "nivel": "básico",
+      "opciones": [
+        "Un servidor de automatización de código abierto",
+        "Una base de datos",
+        "Un servidor web",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Jenkins es un <strong>servidor de automatización de código abierto</strong> escrito en Java. Es la herramienta líder para implementar CI/CD (Integración y Entrega Continua), permitiendo automatizar la construcción, prueba y despliegue de aplicaciones. Su arquitectura extensible con plugins lo hace muy versátil."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las características principales de Jenkins?",
+      "nivel": "básico",
+      "opciones": [
+        "Integración continua",
+        "Entrega continua",
+        "Automatización de builds",
+        "Extensible con plugins",
+        "Multiplataforma"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Jenkins ofrece todas estas características: <strong>Integración continua</strong> (CI), <strong>Entrega continua</strong> (CD), <strong>Automatización de builds</strong>, es <strong>extensible con plugins</strong> (más de 1800 disponibles), y es <strong>multiplataforma</strong> (Windows, Linux, macOS). Estas características lo convierten en una solución completa para DevOps."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué puerto usa Jenkins por defecto?",
+      "nivel": "básico",
+      "opciones": [
+        "8080",
+        "9090",
+        "3000",
+        "8000"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Jenkins usa el puerto <strong>8080</strong> por defecto para su interfaz web. Este puerto puede cambiarse durante la instalación o configuración posterior. Es importante asegurarse de que este puerto esté disponible y no esté siendo usado por otras aplicaciones."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es un Job en Jenkins?",
+      "nivel": "básico",
+      "opciones": [
+        "Una tarea o proyecto que Jenkins puede ejecutar",
+        "Un tipo de plugin",
+        "Una configuración de red",
+        "Un tipo de usuario"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Job en Jenkins es una <strong>tarea o proyecto que Jenkins puede ejecutar</strong>. Puede incluir pasos como compilar código, ejecutar pruebas, desplegar aplicaciones, etc. Los jobs se configuran con triggers, pasos de construcción y acciones post-construcción."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son tipos de Jobs en Jenkins?",
+      "nivel": "básico",
+      "opciones": [
+        "Freestyle project",
+        "Pipeline",
+        "Multi-configuration project",
+        "Folder",
+        "Multibranch Pipeline"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Jenkins ofrece varios tipos de jobs: <strong>Freestyle project</strong> (configuración tradicional con interfaz gráfica), <strong>Pipeline</strong> (definido como código con Jenkinsfile), <strong>Multi-configuration project</strong> (ejecuta el mismo job en múltiples configuraciones), <strong>Folder</strong> (organiza jobs en carpetas), y <strong>Multibranch Pipeline</strong> (crea automáticamente pipelines para cada rama del repositorio)."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué es un Build en Jenkins?",
+      "nivel": "básico",
+      "opciones": [
+        "Una ejecución específica de un Job",
+        "Un tipo de plugin",
+        "Una configuración de usuario",
+        "Un tipo de workspace"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Build en Jenkins es <strong>una ejecución específica de un Job</strong>. Cada vez que se ejecuta un job, se crea un nuevo build con un número único. El build incluye logs de ejecución, artefactos generados, resultados de pruebas, y estado final (éxito, fallo, inestable). Los builds se almacenan históricamente para análisis y trazabilidad."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué es un Pipeline en Jenkins?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una suite de plugins para implementar CI/CD",
+        "Un tipo de base de datos",
+        "Una configuración de red",
+        "Un tipo de usuario"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un Pipeline en Jenkins es <strong>una suite de plugins para implementar CI/CD</strong> que permite definir el proceso de entrega como código. Los pipelines se escriben en Groovy y se almacenan en un Jenkinsfile, proporcionando versionado, revisión de código, y reutilización. Permiten modelar procesos complejos con etapas, condiciones, y paralelización."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Cuáles son tipos de Pipeline syntax?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Declarative Pipeline",
+        "Scripted Pipeline"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Jenkins ofrece dos sintaxis de Pipeline: <strong>Declarative Pipeline</strong> (sintaxis más simple y estructurada, recomendada para la mayoría de casos, con validación automática y mejor manejo de errores) y <strong>Scripted Pipeline</strong> (sintaxis más flexible basada en Groovy, permite mayor control programático pero es más compleja). Declarative es más fácil de aprender y mantener."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué son los Agents en Jenkins Pipeline?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Nodos donde se ejecutan los pasos del pipeline",
+        "Tipos de plugins",
+        "Configuraciones de red",
+        "Tipos de usuarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Agents en Jenkins Pipeline son <strong>nodos donde se ejecutan los pasos del pipeline</strong>. Pueden ser el master de Jenkins, nodos esclavos específicos, contenedores Docker, o agentes dinámicos en la nube. Se definen con la directiva 'agent' y permiten distribuir la carga de trabajo, usar entornos específicos, y escalar horizontalmente la capacidad de construcción."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Cuáles son secciones principales de un Declarative Pipeline?",
+      "nivel": "intermedio",
+      "opciones": [
+        "agent",
+        "stages",
+        "steps",
+        "post",
+        "environment"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las secciones principales de un Declarative Pipeline son: <strong>agent</strong> (define dónde ejecutar), <strong>stages</strong> (contiene las etapas del pipeline), <strong>steps</strong> (pasos individuales dentro de cada stage), <strong>post</strong> (acciones a ejecutar al final según el resultado), y <strong>environment</strong> (variables de entorno). Otras secciones incluyen tools, options, triggers, y parameters."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué son los Triggers en Jenkins?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Eventos que inician automáticamente un build",
+        "Tipos de plugins",
+        "Configuraciones de usuario",
+        "Tipos de workspace"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Triggers en Jenkins son <strong>eventos que inician automáticamente un build</strong>. Permiten automatizar la ejecución de jobs sin intervención manual, respondiendo a cambios en el código, horarios programados, o eventos externos. Son fundamentales para implementar integración continua efectiva y mantener los builds actualizados automáticamente."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Cuáles son tipos de Triggers comunes?",
+      "nivel": "intermedio",
+      "opciones": [
+        "SCM polling",
+        "Webhook",
+        "Cron schedule",
+        "Build after other projects",
+        "GitHub hook trigger"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los triggers comunes incluyen: <strong>SCM polling</strong> (verifica cambios en el repositorio periódicamente), <strong>Webhook</strong> (notificación inmediata desde el repositorio), <strong>Cron schedule</strong> (ejecución programada por tiempo), <strong>Build after other projects</strong> (ejecuta después de otros jobs), y <strong>GitHub hook trigger</strong> (específico para GitHub). Los webhooks son más eficientes que el polling."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué son los Nodes/Slaves en Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Máquinas adicionales para ejecutar builds",
+        "Tipos de plugins",
+        "Configuraciones de red",
+        "Tipos de usuarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los Nodes/Slaves en Jenkins son <strong>máquinas adicionales para ejecutar builds</strong>. Permiten distribuir la carga de trabajo del master Jenkins, ejecutar builds en diferentes entornos (Windows, Linux, macOS), y escalar horizontalmente la capacidad de construcción. Cada node puede tener herramientas específicas y ejecutar jobs según sus labels y capacidades."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuáles son métodos de conexión a Nodes?",
+      "nivel": "avanzado",
+      "opciones": [
+        "SSH",
+        "JNLP",
+        "Windows service",
+        "Command execution"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los métodos de conexión a Nodes incluyen: <strong>SSH</strong> (conexión segura para sistemas Unix/Linux), <strong>JNLP</strong> (Java Network Launch Protocol, inicia el agente desde el node), <strong>Windows service</strong> (servicio de Windows para conexión permanente), y <strong>Command execution</strong> (ejecuta comandos para iniciar el agente). SSH es el más común para Linux, JNLP para conexiones a través de firewalls."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué es Blue Ocean en Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una interfaz moderna para Jenkins Pipeline",
+        "Un tipo de plugin de seguridad",
+        "Una configuración de red",
+        "Un tipo de base de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Blue Ocean es <strong>una interfaz moderna para Jenkins Pipeline</strong> que proporciona una experiencia de usuario mejorada con visualización intuitiva de pipelines, editor visual para crear pipelines, mejor navegación, y diseño responsive. Simplifica la creación y monitoreo de pipelines, especialmente útil para equipos nuevos en Jenkins."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Cuáles son características de seguridad en Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Matrix-based security",
+        "Role-based security",
+        "LDAP integration",
+        "Script security",
+        "Credential management"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las características de seguridad incluyen: <strong>Matrix-based security</strong> (permisos granulares por usuario/grupo), <strong>Role-based security</strong> (roles predefinidos), <strong>LDAP integration</strong> (autenticación corporativa), <strong>Script security</strong> (sandbox para scripts Groovy), y <strong>Credential management</strong> (almacenamiento seguro de credenciales). Estas características permiten implementar seguridad robusta en entornos empresariales."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué son los Shared Libraries en Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Código reutilizable para Pipelines",
+        "Tipos de plugins",
+        "Configuraciones de red",
+        "Tipos de usuarios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las Shared Libraries en Jenkins son <strong>código reutilizable para Pipelines</strong> que permite compartir funciones, clases y variables entre múltiples pipelines. Se almacenan en repositorios Git separados y se cargan dinámicamente. Facilitan la estandarización, reducen duplicación de código, y permiten implementar mejores prácticas organizacionales en todos los pipelines."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuáles son estrategias de backup para Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Backup del JENKINS_HOME",
+        "Configuration as Code",
+        "Plugin de backup",
+        "Version control de configuraciones",
+        "Snapshots de filesystem"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las estrategias de backup incluyen: <strong>Backup del JENKINS_HOME</strong> (directorio completo con configuraciones y datos), <strong>Configuration as Code</strong> (JCasC para configuración reproducible), <strong>Plugin de backup</strong> (ThinBackup, Backup Plugin), <strong>Version control de configuraciones</strong> (Git para Jenkinsfiles y configuraciones), y <strong>Snapshots de filesystem</strong> (LVM, ZFS). La combinación de múltiples estrategias proporciona mejor protección."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es Jenkins Configuration as Code (JCasC)?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Plugin para configurar Jenkins mediante YAML",
+        "Un tipo de pipeline",
+        "Una configuración de seguridad",
+        "Un tipo de plugin de build"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Jenkins Configuration as Code (JCasC) es un <strong>plugin para configurar Jenkins mediante YAML</strong>. Permite definir toda la configuración de Jenkins (plugins, seguridad, jobs, nodes) en archivos YAML versionables. Facilita la reproducibilidad, automatización del setup, y gestión de configuraciones en múltiples entornos. Es fundamental para Infrastructure as Code."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuáles son mejores prácticas para Jenkins?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar Pipeline as Code",
+        "Implementar proper security",
+        "Regular backups",
+        "Monitor performance",
+        "Keep plugins updated"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las mejores prácticas incluyen: <strong>Usar Pipeline as Code</strong> (Jenkinsfiles versionados), <strong>Implementar proper security</strong> (autenticación, autorización, credenciales), <strong>Regular backups</strong> (JENKINS_HOME, configuraciones), <strong>Monitor performance</strong> (métricas, logs, alertas), y <strong>Keep plugins updated</strong> (seguridad, nuevas características). También: usar agents distribuidos, implementar CI/CD apropiado, y documentar procesos."
+    }
+  ]
+}

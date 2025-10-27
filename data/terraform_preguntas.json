@@ -1,0 +1,272 @@
+{
+  "tecnologia": "Terraform",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Terraform?",
+      "nivel": "básico",
+      "opciones": [
+        "Una herramienta de Infrastructure as Code (IaC)",
+        "Un sistema operativo",
+        "Una base de datos",
+        "Un lenguaje de programación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Terraform es una <strong>herramienta de Infrastructure as Code (IaC)</strong> desarrollada por HashiCorp. Permite definir, provisionar y gestionar infraestructura de manera declarativa usando archivos de configuración. Soporta múltiples proveedores cloud y on-premise, facilitando la automatización y versionado de infraestructura."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son las ventajas principales de Terraform?",
+      "nivel": "básico",
+      "opciones": [
+        "Infraestructura como código",
+        "Multi-cloud",
+        "Planificación de cambios",
+        "Gestión de estado",
+        "Reutilización de código"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Terraform ofrece todas estas ventajas: <strong>Infraestructura como código</strong> (versionable y reproducible), <strong>Multi-cloud</strong> (AWS, Azure, GCP, etc.), <strong>Planificación de cambios</strong> (preview antes de aplicar), <strong>Gestión de estado</strong> (tracking de recursos), y <strong>Reutilización de código</strong> (módulos y templates)."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué lenguaje usa Terraform para definir infraestructura?",
+      "nivel": "básico",
+      "opciones": [
+        "HCL (HashiCorp Configuration Language)",
+        "JSON",
+        "YAML",
+        "XML"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Terraform usa principalmente <strong>HCL (HashiCorp Configuration Language)</strong>, un lenguaje declarativo diseñado específicamente para configuración de infraestructura. También soporta <strong>JSON</strong> como formato alternativo, pero HCL es más legible y expresivo para este propósito."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué es un provider en Terraform?",
+      "nivel": "básico",
+      "opciones": [
+        "Un plugin que permite interactuar con APIs de servicios",
+        "Un archivo de configuración",
+        "Un tipo de variable",
+        "Un comando de Terraform"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un provider en Terraform es un <strong>plugin que permite interactuar con APIs de servicios</strong>. Los providers traducen las configuraciones de Terraform en llamadas API específicas para cada plataforma (AWS, Azure, GCP, etc.). Cada provider define los recursos y data sources disponibles para esa plataforma."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuáles son los comandos básicos de Terraform?",
+      "nivel": "básico",
+      "opciones": [
+        "terraform init",
+        "terraform plan",
+        "terraform apply",
+        "terraform destroy",
+        "terraform validate"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los comandos básicos incluyen: <strong>terraform init</strong> (inicializa directorio de trabajo), <strong>terraform plan</strong> (muestra cambios planificados), <strong>terraform apply</strong> (aplica cambios), <strong>terraform destroy</strong> (destruye infraestructura), y <strong>terraform validate</strong> (valida sintaxis). Estos comandos forman el flujo de trabajo básico de Terraform."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué hace el comando 'terraform init'?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Inicializa el directorio de trabajo",
+        "Descarga providers",
+        "Configura el backend",
+        "Aplica cambios a la infraestructura"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "<strong>terraform init</strong> realiza tres funciones principales: <strong>inicializa el directorio de trabajo</strong> preparándolo para Terraform, <strong>descarga providers</strong> necesarios según la configuración, y <strong>configura el backend</strong> para almacenar el estado. No aplica cambios a la infraestructura, solo prepara el entorno."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué es el estado (state) en Terraform?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un archivo que mapea la configuración con la infraestructura real",
+        "Un comando de Terraform",
+        "Un tipo de variable",
+        "Un provider específico"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El estado es <strong>un archivo que mapea la configuración con la infraestructura real</strong>. Contiene metadatos sobre los recursos gestionados, sus dependencias y atributos actuales. Terraform usa este archivo para determinar qué cambios aplicar, realizar un seguimiento de los recursos y optimizar las operaciones."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Dónde se puede almacenar el estado de Terraform?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Local (terraform.tfstate)",
+        "Remote backend (S3, Azure Storage)",
+        "Terraform Cloud",
+        "Base de datos"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "El estado se puede almacenar: <strong>localmente</strong> (terraform.tfstate, por defecto), en <strong>remote backends</strong> como S3, Azure Storage, GCS para colaboración y seguridad, y en <strong>Terraform Cloud</strong> que proporciona gestión de estado como servicio. Las bases de datos no son backends estándar soportados."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué es un recurso en Terraform?",
+      "nivel": "básico",
+      "opciones": [
+        "Un componente de infraestructura que se puede gestionar",
+        "Un archivo de configuración",
+        "Un comando",
+        "Una variable"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un recurso es <strong>un componente de infraestructura que se puede gestionar</strong> por Terraform. Puede ser una instancia EC2, una base de datos, una red virtual, etc. Los recursos se definen en bloques 'resource' y representan objetos de infraestructura con un ciclo de vida gestionado (crear, leer, actualizar, eliminar)."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué son las variables en Terraform?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Parámetros que hacen las configuraciones reutilizables",
+        "Archivos de estado",
+        "Comandos específicos",
+        "Tipos de recursos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Las variables son <strong>parámetros que hacen las configuraciones reutilizables</strong>. Permiten parametrizar configuraciones, separar valores específicos del entorno del código, y facilitar la reutilización de módulos. Se pueden definir valores por defecto, tipos de datos y descripciones para documentación."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuáles son los tipos de variables en Terraform?",
+      "nivel": "intermedio",
+      "opciones": [
+        "string",
+        "number",
+        "bool",
+        "list",
+        "map",
+        "object"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4, 5],
+      "explicacion": "Terraform soporta tipos primitivos: <strong>string</strong> (texto), <strong>number</strong> (enteros y decimales), <strong>bool</strong> (true/false); y tipos complejos: <strong>list</strong> (secuencia ordenada), <strong>map</strong> (clave-valor), y <strong>object</strong> (estructura con atributos tipados). También soporta <strong>set</strong> y <strong>tuple</strong> para casos específicos."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué son los outputs en Terraform?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Valores que se exponen después de aplicar la configuración",
+        "Archivos de logs",
+        "Tipos de variables",
+        "Comandos de destrucción"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los outputs son <strong>valores que se exponen después de aplicar la configuración</strong>. Permiten extraer información de los recursos creados (como IPs, IDs, URLs) para uso en otros módulos, scripts o para mostrar al usuario. Son útiles para compartir datos entre módulos y para debugging."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué es un módulo en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un conjunto reutilizable de configuraciones de Terraform",
+        "Un tipo de variable",
+        "Un comando específico",
+        "Un archivo de estado"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un módulo es <strong>un conjunto reutilizable de configuraciones de Terraform</strong>. Encapsula recursos relacionados en una unidad lógica, promoviendo la reutilización, mantenibilidad y organización del código. Los módulos pueden tener variables de entrada, outputs y pueden ser versionados y compartidos."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuáles son los tipos de módulos en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Root module",
+        "Child modules",
+        "Published modules",
+        "Local modules"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Los tipos incluyen: <strong>Root module</strong> (directorio principal donde se ejecuta Terraform), <strong>Child modules</strong> (módulos llamados por otros módulos), <strong>Published modules</strong> (disponibles en Terraform Registry), y <strong>Local modules</strong> (almacenados localmente en el sistema de archivos). Cada tipo sirve diferentes propósitos de organización y distribución."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué son los data sources en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Recursos existentes que se pueden consultar",
+        "Archivos de configuración",
+        "Variables especiales",
+        "Comandos de consulta"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los data sources son <strong>recursos existentes que se pueden consultar</strong> para obtener información sin gestionarlos. Permiten referenciar infraestructura creada fuera de Terraform, como AMIs, VPCs existentes, o datos de configuración. Son de solo lectura y no modifican la infraestructura."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es el workspace en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un entorno aislado para gestionar diferentes estados",
+        "Un tipo de módulo",
+        "Un archivo de configuración",
+        "Un comando específico"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un workspace es <strong>un entorno aislado para gestionar diferentes estados</strong> con la misma configuración. Permite mantener múltiples instancias de infraestructura (dev, staging, prod) usando el mismo código pero con estados separados. Cada workspace tiene su propio archivo de estado."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué son los provisioners en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Herramientas para ejecutar acciones en recursos locales o remotos",
+        "Tipos de variables",
+        "Archivos de estado",
+        "Comandos de validación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los provisioners son <strong>herramientas para ejecutar acciones en recursos locales o remotos</strong> después de su creación o antes de su destrucción. Incluyen 'local-exec' (comandos locales), 'remote-exec' (comandos remotos), y 'file' (transferencia de archivos). Se recomiendan como último recurso, prefiriendo cloud-init o user data."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cuáles son buenas prácticas para el estado de Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Usar remote backend",
+        "Habilitar state locking",
+        "Hacer backups regulares",
+        "No editar manualmente el estado",
+        "Usar workspaces para diferentes entornos"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las buenas prácticas incluyen: <strong>usar remote backend</strong> para colaboración, <strong>habilitar state locking</strong> para prevenir conflictos, <strong>hacer backups regulares</strong> del estado, <strong>nunca editar manualmente</strong> el archivo de estado, y <strong>usar workspaces</strong> para separar entornos. Estas prácticas garantizan integridad y colaboración segura."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué es terraform import?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un comando para importar infraestructura existente al estado",
+        "Un tipo de módulo",
+        "Una variable especial",
+        "Un provider específico"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>terraform import</strong> es <strong>un comando para importar infraestructura existente al estado</strong> de Terraform. Permite adoptar recursos creados manualmente o por otras herramientas, agregándolos al estado sin recrearlos. Requiere escribir la configuración correspondiente y conocer el ID del recurso."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Qué estrategias existen para manejar secretos en Terraform?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Variables de entorno",
+        "Archivos .tfvars separados",
+        "Servicios de gestión de secretos (AWS Secrets Manager, Azure Key Vault)",
+        "Terraform Cloud/Enterprise",
+        "Nunca hardcodear en archivos .tf"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Las estrategias incluyen: <strong>variables de entorno</strong> (TF_VAR_*), <strong>archivos .tfvars separados</strong> (no versionados), <strong>servicios de gestión de secretos</strong> como AWS Secrets Manager o Azure Key Vault, <strong>Terraform Cloud/Enterprise</strong> con variables sensibles, y la regla fundamental de <strong>nunca hardcodear secretos</strong> en archivos .tf versionados."
+    }
+  ]
+}

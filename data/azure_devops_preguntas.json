@@ -1,0 +1,271 @@
+{
+  "tecnologia": "Azure DevOps",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué es Azure DevOps?",
+      "nivel": "básico",
+      "opciones": [
+        "Una plataforma de desarrollo colaborativo de Microsoft",
+        "Un servicio de hosting de código únicamente",
+        "Una herramienta de testing automatizado",
+        "Un sistema operativo en la nube"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure DevOps</strong> es una <strong>plataforma integral de desarrollo colaborativo</strong> de Microsoft que proporciona servicios para todo el ciclo de vida del desarrollo de software. Incluye control de versiones, CI/CD, gestión de proyectos, testing y gestión de artefactos. Es ideal para equipos que buscan una solución completa y integrada para DevOps."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuáles son los servicios principales de Azure DevOps?",
+      "nivel": "básico",
+      "opciones": [
+        "Azure Repos",
+        "Azure Pipelines",
+        "Azure Boards",
+        "Azure Test Plans",
+        "Azure Artifacts"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los <strong>cinco servicios principales de Azure DevOps</strong> son: <strong>Azure Repos</strong> (control de versiones), <strong>Azure Pipelines</strong> (CI/CD), <strong>Azure Boards</strong> (gestión ágil), <strong>Azure Test Plans</strong> (testing manual), y <strong>Azure Artifacts</strong> (gestión de paquetes). Cada servicio puede usarse independientemente o en conjunto para una experiencia DevOps completa."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué es Azure Repos?",
+      "nivel": "básico",
+      "opciones": [
+        "Un servicio de control de versiones",
+        "Una herramienta de gestión de proyectos",
+        "Un sistema de monitoreo",
+        "Una base de datos en la nube"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure Repos</strong> es el <strong>servicio de control de versiones</strong> de Azure DevOps que permite almacenar y gestionar código fuente. Soporta repositorios Git distribuidos y TFVC centralizados, con características como pull requests, branch policies, y integración con IDEs. Es esencial para colaboración en equipo y seguimiento de cambios."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué tipos de repositorios soporta Azure Repos?",
+      "nivel": "básico",
+      "opciones": [
+        "Git",
+        "Team Foundation Version Control (TFVC)",
+        "Subversion",
+        "Mercurial"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Azure Repos soporta dos tipos de repositorios: <strong>Git</strong> (sistema distribuido, recomendado para nuevos proyectos) y <strong>TFVC</strong> (Team Foundation Version Control, sistema centralizado para proyectos legacy). Git ofrece branching flexible y trabajo offline, mientras TFVC proporciona control granular y es mejor para archivos binarios grandes."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué es Azure Pipelines?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un servicio de CI/CD",
+        "Una herramienta de gestión de tareas",
+        "Un sistema de monitoreo de aplicaciones",
+        "Una base de datos distribuida"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure Pipelines</strong> es el <strong>servicio de CI/CD</strong> (Integración y Despliegue Continuo) que automatiza la construcción, testing y despliegue de aplicaciones. Soporta múltiples lenguajes y plataformas, con agentes hosted y self-hosted. Permite crear pipelines como código usando YAML o mediante interfaz visual."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Cuáles son los tipos de pipelines en Azure DevOps?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Build Pipelines",
+        "Release Pipelines",
+        "YAML Pipelines",
+        "Classic Pipelines"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Azure DevOps ofrece varios tipos de pipelines: <strong>Build Pipelines</strong> (compilación y testing), <strong>Release Pipelines</strong> (despliegue), <strong>YAML Pipelines</strong> (definidos como código), y <strong>Classic Pipelines</strong> (interfaz visual). YAML es el enfoque moderno recomendado por ser versionable y reutilizable."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué es Azure Boards?",
+      "nivel": "básico",
+      "opciones": [
+        "Una herramienta de gestión de proyectos ágiles",
+        "Un servicio de almacenamiento",
+        "Una plataforma de testing",
+        "Un sistema de monitoreo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure Boards</strong> es una <strong>herramienta de gestión de proyectos ágiles</strong> que permite planificar, rastrear y discutir el trabajo en equipo. Proporciona tableros Kanban, backlogs, sprints, dashboards y reportes. Facilita la colaboración entre equipos y la visibilidad del progreso del proyecto usando metodologías ágiles."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué metodologías ágiles soporta Azure Boards?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Scrum",
+        "Kanban",
+        "Agile",
+        "CMMI"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Azure Boards soporta múltiples metodologías: <strong>Scrum</strong> (sprints, backlogs, burndown charts), <strong>Kanban</strong> (flujo continuo, WIP limits), <strong>Agile</strong> (proceso básico ágil), y <strong>CMMI</strong> (Capability Maturity Model Integration para procesos más formales). Cada plantilla incluye work items y flujos específicos para la metodología."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué es un Work Item en Azure Boards?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una unidad de trabajo trackeable",
+        "Un archivo de código",
+        "Una configuración de pipeline",
+        "Un usuario del sistema"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>Work Item</strong> es una <strong>unidad de trabajo trackeable</strong> en Azure Boards que representa tareas, bugs, features, etc. Contiene campos como título, descripción, estado, asignado, prioridad y estimación. Permite seguimiento granular del progreso y facilita la planificación y reporting del proyecto."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué tipos de Work Items existen en Azure Boards?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Epic",
+        "Feature",
+        "User Story",
+        "Task",
+        "Bug"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Los tipos de Work Items forman una jerarquía: <strong>Epic</strong> (iniciativas grandes), <strong>Feature</strong> (funcionalidades), <strong>User Story</strong> (requisitos desde perspectiva del usuario), <strong>Task</strong> (trabajo técnico específico), y <strong>Bug</strong> (defectos). Esta estructura permite organizar el trabajo desde alto nivel hasta tareas específicas."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué es Azure Test Plans?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Una herramienta de testing manual y exploratorio",
+        "Un servicio de deployment",
+        "Una base de datos de pruebas",
+        "Un sistema de monitoreo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure Test Plans</strong> es una <strong>herramienta de testing manual y exploratorio</strong> que permite crear test suites, ejecutar test cases, reportar bugs y rastrear calidad. Incluye test runners web y desktop, captura de evidencia, y integración con work items. Es ideal para testing que requiere intervención humana."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué es Azure Artifacts?",
+      "nivel": "intermedio",
+      "opciones": [
+        "Un repositorio de paquetes",
+        "Una herramienta de testing",
+        "Un servicio de monitoreo",
+        "Una base de datos"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Azure Artifacts</strong> es un <strong>repositorio de paquetes</strong> que permite crear, hospedar y compartir paquetes como NuGet, npm, Maven, Python, y Universal Packages. Facilita la gestión de dependencias, versionado de artefactos, y distribución segura de componentes reutilizables entre equipos y proyectos."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué tipos de paquetes puede almacenar Azure Artifacts?",
+      "nivel": "intermedio",
+      "opciones": [
+        "NuGet",
+        "npm",
+        "Maven",
+        "Python",
+        "Universal packages"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Azure Artifacts soporta múltiples tipos de paquetes: <strong>NuGet</strong> (.NET), <strong>npm</strong> (Node.js), <strong>Maven</strong> (Java), <strong>Python</strong> (PyPI), y <strong>Universal Packages</strong> (formato genérico). Cada tipo tiene su propio feed y herramientas específicas, permitiendo gestión centralizada de dependencias para diferentes tecnologías."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué es un Agent Pool en Azure Pipelines?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un conjunto de agentes que ejecutan jobs",
+        "Una configuración de red",
+        "Un tipo de repositorio",
+        "Una herramienta de monitoreo"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>Agent Pool</strong> es un <strong>conjunto de agentes que ejecutan jobs</strong> de pipeline. Organiza y gestiona la capacidad de ejecución, permitiendo distribución de carga, configuración de permisos, y asignación específica de agentes a proyectos. Facilita la escalabilidad y administración de recursos de CI/CD."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuáles son los tipos de agentes en Azure Pipelines?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Microsoft-hosted agents",
+        "Self-hosted agents",
+        "Container agents",
+        "Virtual agents"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "Azure Pipelines ofrece dos tipos principales: <strong>Microsoft-hosted agents</strong> (gestionados por Microsoft, con diferentes OS y herramientas preinstaladas) y <strong>Self-hosted agents</strong> (instalados y gestionados por el usuario, con control total sobre configuración y software). Los self-hosted permiten acceso a recursos internos y configuraciones específicas."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es una Service Connection en Azure DevOps?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Una conexión segura a servicios externos",
+        "Un tipo de pipeline",
+        "Una configuración de red",
+        "Un usuario del sistema"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una <strong>Service Connection</strong> es una <strong>conexión segura a servicios externos</strong> como Azure, AWS, Docker registries, etc. Almacena credenciales de forma segura y permite que pipelines accedan a recursos externos sin exponer secretos. Facilita deployments y integraciones con servicios de terceros."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué elementos pueden configurarse en una YAML pipeline?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Triggers",
+        "Variables",
+        "Stages",
+        "Jobs",
+        "Steps"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3, 4],
+      "explicacion": "Una YAML pipeline puede configurar: <strong>Triggers</strong> (cuándo ejecutar), <strong>Variables</strong> (valores reutilizables), <strong>Stages</strong> (fases lógicas), <strong>Jobs</strong> (unidades de trabajo), y <strong>Steps</strong> (tareas individuales). Esta estructura jerárquica permite pipelines complejos, paralelos y reutilizables definidos como código."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué es Branch Protection en Azure Repos?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Políticas que protegen ramas importantes",
+        "Un tipo de repositorio",
+        "Una herramienta de backup",
+        "Un sistema de autenticación"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "<strong>Branch Protection</strong> son <strong>políticas que protegen ramas importantes</strong> como main/master. Incluyen requisitos de pull requests, revisiones obligatorias, checks de estado, y restricciones de push directo. Aseguran calidad del código y previenen cambios accidentales en ramas críticas."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué tipos de políticas de rama se pueden configurar?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Require pull request reviews",
+        "Require status checks",
+        "Require up-to-date branches",
+        "Restrict pushes",
+        "Require signed commits"
+      ],
+      "respuestas_correctas": [0, 1, 2, 3],
+      "explicacion": "Las políticas de rama incluyen: <strong>Require pull request reviews</strong> (revisiones obligatorias), <strong>Require status checks</strong> (builds exitosos), <strong>Require up-to-date branches</strong> (sincronización con target), y <strong>Restrict pushes</strong> (limitar acceso directo). Estas políticas aseguran calidad y control en el flujo de código."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Qué es Multi-stage YAML pipeline en Azure DevOps?",
+      "nivel": "avanzado",
+      "opciones": [
+        "Un pipeline con múltiples etapas definidas en YAML",
+        "Un pipeline que solo funciona en múltiples repositorios",
+        "Una configuración de red avanzada",
+        "Un tipo especial de agente"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Un <strong>Multi-stage YAML pipeline</strong> es un <strong>pipeline con múltiples etapas definidas en YAML</strong> que permite CI/CD completo en un solo archivo. Incluye stages para build, test, y deploy con dependencias, aprobaciones, y environments. Proporciona visibilidad end-to-end y control granular del proceso de entrega."
+    }
+  ]
+}
