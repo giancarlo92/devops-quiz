@@ -68,6 +68,22 @@
                     </div>
                 </div>
 
+                <!-- Selección de tecnologías (opcional) - Multi-select con chips -->
+                <div class="technology-selection">
+                    <h3>Filtra por temas (opcional):</h3>
+                    <div id="techMultiSelect" class="multi-select" aria-label="Selector de temas">
+                        <div id="techControl" class="multi-select-control" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+                            <div id="chipContainer" class="chip-container"><!-- chips dinámicos --></div>
+                            <button type="button" id="clearTechBtn" class="clear-btn" aria-label="Limpiar selección">✕</button>
+                            <button type="button" class="caret-btn" aria-label="Abrir selección">▾</button>
+                        </div>
+                        <div id="techDropdown" class="multi-select-dropdown" role="listbox" aria-multiselectable="true">
+                            <!-- elementos cargados dinámicamente -->
+                        </div>
+                    </div>
+                    <p class="technology-helper">Si no seleccionas nada, se combinarán todos los temas.</p>
+                </div>
+
                 <div class="instructions">
                     <h3>📋 Instrucciones:</h3>
                     <ul>

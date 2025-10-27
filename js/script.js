@@ -28,6 +28,8 @@ let quizStarted = false;
 let examMode = null; // 'guided' or 'evaluation'
 let selectedQuestionCount = 30; // Número de preguntas seleccionado (por defecto 30)
 let isInSummaryMode = false; // Para controlar si estamos en modo resumen
+let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
+let availableGuides = []; // Lista de cursos, cargada desde guides/cursos.json
 
 // Función para cargar todas las preguntas de los archivos JSON
 async function loadAllQuestions() {
@@ -58,7 +60,6 @@ async function loadAllQuestions() {
         }
 
         console.log(`Cargadas ${allQuestions.length} preguntas de ${jsonFiles.length} tecnologías`);
-        selectRandomQuestions();
         
     } catch (error) {
         console.error('Error cargando preguntas:', error);
@@ -70,15 +71,23 @@ async function loadAllQuestions() {
 
 // Función para seleccionar preguntas aleatorias
 function selectRandomQuestions() {
-    // Mezclar todas las preguntas aleatoriamente
-    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
-    
+    // Determinar el conjunto de preguntas según tecnologías seleccionadas
+    const pool = (selectedTechnologies && selectedTechnologies.length > 0)
+        ? allQuestions.filter(q => selectedTechnologies.includes(q.tecnologia))
+        : allQuestions;
+
+    // Si el filtro no devuelve resultados, usar todas las preguntas como fallback
+    const base = pool.length > 0 ? pool : allQuestions;
+
+    // Mezclar aleatoriamente
+    const shuffled = [...base].sort(() => Math.random() - 0.5);
+
     // Seleccionar el número especificado de preguntas
     selectedQuestions = shuffled.slice(0, selectedQuestionCount);
-    
+
     // Inicializar array de respuestas del usuario
     userAnswers = new Array(selectedQuestionCount).fill(null);
-    
+
     console.log('Preguntas seleccionadas:', selectedQuestions);
     generateQuizHTML();
 }
@@ -392,7 +401,6 @@ async function startQuiz() {
     document.getElementById('startScreen').style.display = 'none';
     await loadAllQuestions();
     selectRandomQuestions();
-    generateQuizHTML();
     document.getElementById('quizContainer').style.display = 'block';
     quizStarted = true;
 }
@@ -558,6 +566,7 @@ function restartQuiz() {
     quizStarted = false;
     examMode = null;
     isInSummaryMode = false;
+    selectedTechnologies = [];
     
     // Ocultar resultados
     const resultsElement = document.getElementById('results');
@@ -568,37 +577,203 @@ function restartQuiz() {
     document.getElementById('startScreen').style.display = 'block';
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('summaryScreen').style.display = 'none';
-    
+
+    // Resetear selección de número de preguntas (por defecto 30)
+    selectedQuestionCount = 30;
+    document.querySelectorAll('.question-count-option').forEach(opt => opt.classList.remove('selected'));
+    const defaultRadio = document.querySelector('input[name="questionCount"][value="30"]');
+    if (defaultRadio) {
+        defaultRadio.checked = true;
+        const label = defaultRadio.parentElement;
+        if (label) label.classList.add('selected');
+    }
+
+    // Resetear tipo de examen y textos
+    const guidedCard = document.getElementById('guidedCard');
+    const evaluationCard = document.getElementById('evaluationCard');
+    if (guidedCard) guidedCard.classList.remove('selected');
+    if (evaluationCard) evaluationCard.classList.remove('selected');
+    const guidedInstruction = document.getElementById('guidedInstruction');
+    const evaluationInstruction = document.getElementById('evaluationInstruction');
+    if (guidedInstruction) guidedInstruction.style.display = 'none';
+    if (evaluationInstruction) evaluationInstruction.style.display = 'none';
+    const startBtn = document.getElementById('startQuizBtn');
+    if (startBtn) {
+        startBtn.disabled = true;
+        startBtn.textContent = 'Selecciona un tipo de examen para continuar';
+    }
+
+    // Resetear multi-select de tecnologías
+    const dropdown = document.getElementById('techDropdown');
+    const control = document.getElementById('techControl');
+    const chipContainer = document.getElementById('chipContainer');
+    if (dropdown) {
+        dropdown.querySelectorAll('input.multi-check').forEach(cb => cb.checked = false);
+        dropdown.classList.remove('open');
+    }
+    if (control) control.setAttribute('aria-expanded', 'false');
+    if (chipContainer) {
+        // Mostrar placeholder
+        chipContainer.innerHTML = '';
+        const placeholder = document.createElement('span');
+        placeholder.className = 'placeholder-text';
+        placeholder.textContent = 'Selecciona tecnologías...';
+        chipContainer.appendChild(placeholder);
+    }
+    const clearBtn = document.getElementById('clearTechBtn');
+    if (clearBtn) clearBtn.disabled = true;
+
     console.log('Cuestionario reiniciado');
 }
 
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Cuestionario DevOps cargado');
+    // Cargar lista de cursos para el multi-select y la galería de guías
+    loadCoursesList();
+    initTechnologySelectHandler();
 });
 
-// ===== FUNCIONALIDAD DE GUÍAS =====
+// ===== SELECCIÓN DE TECNOLOGÍAS =====
+// Cargar cursos desde JSON y poblar el selector
+async function loadCoursesList() {
+    try {
+        const response = await fetch('guides/cursos.json');
+        if (!response.ok) throw new Error('No se pudo cargar guides/cursos.json');
+        const data = await response.json();
+        availableGuides = Array.isArray(data.cursos) ? data.cursos : [];
+        populateTechnologySelect();
+    } catch (error) {
+        console.warn('No se pudo cargar la lista de cursos:', error);
+    }
+}
 
-// Lista de archivos de guías disponibles
-const availableGuides = [
-    { file: 'argocd_aprendizaje.md', title: 'ArgoCD', description: 'Continuous Deployment con ArgoCD' },
-    { file: 'azure_aprendizaje.md', title: 'Azure', description: 'Microsoft Azure Cloud Platform' },
-    { file: 'azure_devops_aprendizaje.md', title: 'Azure DevOps', description: 'Azure DevOps Services' },
-    { file: 'docker_aprendizaje.md', title: 'Docker', description: 'Containerización con Docker' },
-    { file: 'docker_swarm_aprendizaje.md', title: 'Docker Swarm', description: 'Orquestación con Docker Swarm' },
-    { file: 'git_aprendizaje.md', title: 'Git', description: 'Control de versiones con Git' },
-    { file: 'github_actions_aprendizaje.md', title: 'GitHub Actions', description: 'CI/CD con GitHub Actions' },
-    { file: 'github_aprendizaje.md', title: 'GitHub', description: 'Plataforma GitHub' },
-    { file: 'grafana_aprendizaje.md', title: 'Grafana', description: 'Visualización de datos con Grafana' },
-    { file: 'kubernetes_aprendizaje.md', title: 'Kubernetes', description: 'Orquestación de contenedores' },
-    { file: 'linux_aprendizaje.md', title: 'Linux', description: 'Sistema operativo Linux' },
-    { file: 'monitoreo_aprendizaje.md', title: 'Monitoreo', description: 'Estrategias de monitoreo' },
-    { file: 'openshift_aprendizaje.md', title: 'OpenShift', description: 'Red Hat OpenShift' },
-    { file: 'powershell_aprendizaje.md', title: 'PowerShell', description: 'Scripting con PowerShell' },
-    { file: 'prometheus_aprendizaje.md', title: 'Prometheus', description: 'Monitoreo con Prometheus' },
-    { file: 'python_aprendizaje.md', title: 'Python', description: 'Programación en Python' },
-    { file: 'terraform_aprendizaje.md', title: 'Terraform', description: 'Infrastructure as Code' }
-];
+function populateTechnologySelect() {
+    const dropdown = document.getElementById('techDropdown');
+    if (!dropdown) return;
+    dropdown.innerHTML = '';
+
+    const sorted = [...availableGuides].sort((a, b) => a.title.localeCompare(b.title));
+    sorted.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'multi-select-item';
+        el.setAttribute('role', 'option');
+        el.dataset.value = item.title;
+        el.innerHTML = `<label><input type="checkbox" class="multi-check" value="${item.title}"><span>${item.title}</span></label>`;
+        el.addEventListener('click', (e) => {
+            const cb = el.querySelector('input.multi-check');
+            if (e.target !== cb) cb.checked = !cb.checked;
+            handleTechSelectionChange();
+        });
+        dropdown.appendChild(el);
+    });
+
+    renderTechChips();
+}
+
+function initTechnologySelectHandler() {
+    const control = document.getElementById('techControl');
+    const dropdown = document.getElementById('techDropdown');
+    const clearBtn = document.getElementById('clearTechBtn');
+    if (!control || !dropdown) return;
+
+    const toggle = () => toggleTechDropdown();
+    control.addEventListener('click', (e) => {
+        toggle();
+    });
+    control.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+        }
+    });
+    document.addEventListener('click', (e) => {
+        if (!control.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+            control.setAttribute('aria-expanded', 'false');
+        }
+    });
+    dropdown.addEventListener('change', (e) => {
+        if (e.target.matches('input.multi-check')) {
+            handleTechSelectionChange();
+        }
+    });
+
+    // Limpiar selección con el botón X sin abrir/cerrar el dropdown
+    if (clearBtn) {
+        clearBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearTechnologySelection();
+        });
+    }
+}
+
+function toggleTechDropdown() {
+    const control = document.getElementById('techControl');
+    const dropdown = document.getElementById('techDropdown');
+    if (!control || !dropdown) return;
+    const open = !dropdown.classList.contains('open');
+    dropdown.classList.toggle('open', open);
+    control.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function handleTechSelectionChange() {
+    const dropdown = document.getElementById('techDropdown');
+    const checks = dropdown.querySelectorAll('input.multi-check:checked');
+    selectedTechnologies = Array.from(checks).map(cb => cb.value);
+    renderTechChips();
+    console.log('Tecnologías seleccionadas:', selectedTechnologies);
+}
+
+function renderTechChips() {
+    const chipContainer = document.getElementById('chipContainer');
+    const dropdown = document.getElementById('techDropdown');
+    const clearBtn = document.getElementById('clearTechBtn');
+    if (!chipContainer) return;
+    chipContainer.innerHTML = '';
+
+    if (!selectedTechnologies || selectedTechnologies.length === 0) {
+        const placeholder = document.createElement('span');
+        placeholder.className = 'placeholder-text';
+        placeholder.textContent = 'Selecciona tecnologías...';
+        chipContainer.appendChild(placeholder);
+        if (clearBtn) clearBtn.disabled = true;
+        return;
+    }
+
+    if (clearBtn) clearBtn.disabled = false;
+    selectedTechnologies.forEach(value => {
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.textContent = value;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chip-remove';
+        btn.setAttribute('aria-label', `Quitar ${value}`);
+        btn.textContent = '×';
+        btn.addEventListener('click', () => {
+            const checks = dropdown.querySelectorAll('input.multi-check');
+            checks.forEach(cb => {
+                if (cb.value === value) cb.checked = false;
+            });
+            selectedTechnologies = selectedTechnologies.filter(v => v !== value);
+            renderTechChips();
+        });
+        chip.appendChild(btn);
+        chipContainer.appendChild(chip);
+    });
+}
+
+// Limpiar todas las tecnologías seleccionadas
+function clearTechnologySelection() {
+    const dropdown = document.getElementById('techDropdown');
+    if (!dropdown) return;
+    dropdown.querySelectorAll('input.multi-check').forEach(cb => cb.checked = false);
+    selectedTechnologies = [];
+    renderTechChips();
+}
+
+// ===== FUNCIONALIDAD DE GUÍAS =====
 
 // Función para mostrar la página de guías
 function showGuidesPage() {

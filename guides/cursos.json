@@ -1,0 +1,21 @@
+{
+  "cursos": [
+    { "file": "argocd_aprendizaje.md", "title": "ArgoCD", "description": "Continuous Deployment con ArgoCD" },
+    { "file": "azure_aprendizaje.md", "title": "Azure", "description": "Microsoft Azure Cloud Platform" },
+    { "file": "azure_devops_aprendizaje.md", "title": "Azure DevOps", "description": "Azure DevOps Services" },
+    { "file": "docker_aprendizaje.md", "title": "Docker", "description": "Containerización con Docker" },
+    { "file": "docker_swarm_aprendizaje.md", "title": "Docker Swarm", "description": "Orquestación con Docker Swarm" },
+    { "file": "git_aprendizaje.md", "title": "Git", "description": "Control de versiones con Git" },
+    { "file": "github_actions_aprendizaje.md", "title": "GitHub Actions", "description": "CI/CD con GitHub Actions" },
+    { "file": "github_aprendizaje.md", "title": "GitHub", "description": "Plataforma GitHub" },
+    { "file": "grafana_aprendizaje.md", "title": "Grafana", "description": "Visualización de datos con Grafana" },
+    { "file": "kubernetes_aprendizaje.md", "title": "Kubernetes", "description": "Orquestación de contenedores" },
+    { "file": "linux_aprendizaje.md", "title": "Linux", "description": "Sistema operativo Linux" },
+    { "file": "monitoreo_aprendizaje.md", "title": "Monitoreo", "description": "Estrategias de monitoreo" },
+    { "file": "openshift_aprendizaje.md", "title": "OpenShift", "description": "Red Hat OpenShift" },
+    { "file": "powershell_aprendizaje.md", "title": "PowerShell", "description": "Scripting con PowerShell" },
+    { "file": "prometheus_aprendizaje.md", "title": "Prometheus", "description": "Monitoreo con Prometheus" },
+    { "file": "python_aprendizaje.md", "title": "Python", "description": "Programación en Python" },
+    { "file": "terraform_aprendizaje.md", "title": "Terraform", "description": "Infrastructure as Code" }
+  ]
+}
