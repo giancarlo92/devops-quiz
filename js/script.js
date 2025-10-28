@@ -29,7 +29,7 @@ let examMode = null; // 'guided' or 'evaluation'
 let selectedQuestionCount = 30; // Número de preguntas seleccionado (por defecto 30)
 let isInSummaryMode = false; // Para controlar si estamos en modo resumen
 let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
- let availablePrompts = []; // Lista de cursos, cargada desde prompts/cursos.json
+ let availablePrompts = []; // Lista de cursos, cargada desde js/cursos.json
 
 // ===== Persistencia en Sesión =====
 const SESSION_KEY = 'devops_quiz_state';
@@ -723,8 +723,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Cargar cursos desde JSON y poblar el selector
 async function loadCoursesList() {
     try {
-        const response = await fetch('prompts/cursos.json');
-        if (!response.ok) throw new Error('No se pudo cargar prompts/cursos.json');
+        const response = await fetch('js/cursos.json');
+        if (!response.ok) throw new Error('No se pudo cargar js/cursos.json');
         const data = await response.json();
         availablePrompts = Array.isArray(data.cursos) ? data.cursos : [];
         populateTechnologySelect();
@@ -867,6 +867,10 @@ function showPromptsPage() {
     document.getElementById('quizContainer').style.display = 'none';
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('results').style.display = 'none';
+    // Ocultar página de guías y cerrar modales abiertos
+    const guidesPage = document.getElementById('guidesPage');
+    if (guidesPage) guidesPage.style.display = 'none';
+    hideAllModals();
     
     // Mostrar página de prompts
     document.getElementById('promptsPage').style.display = 'block';
@@ -877,7 +881,10 @@ function showPromptsPage() {
 
 // Función para volver al cuestionario
 function backToQuiz() {
-    document.getElementById('promptsPage').style.display = 'none';
+    const promptsPage = document.getElementById('promptsPage');
+    const guidesPage = document.getElementById('guidesPage');
+    if (promptsPage) promptsPage.style.display = 'none';
+    if (guidesPage) guidesPage.style.display = 'none';
     document.getElementById('startScreen').style.display = 'block';
 }
 
@@ -913,7 +920,8 @@ function loadPromptsGallery() {
 // Función para abrir un prompt específico
 async function openPrompt(filename, title) {
     try {
-        const response = await fetch(`prompts/${filename}`);
+        console.log('[openPrompt] Cargando:', `prompts/${filename}`);
+        const response = await fetch(`prompts/${filename}`, { cache: 'no-store' });
         if (!response.ok) {
             throw new Error(`Error al cargar el prompt: ${response.status}`);
         }
@@ -924,6 +932,9 @@ async function openPrompt(filename, title) {
         const modal = document.getElementById('promptModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalContent = document.getElementById('markdownContent');
+        // Asegurar que el modal de guías esté cerrado
+        const guideModal = document.getElementById('guideModal');
+        if (guideModal) guideModal.style.display = 'none';
         
         modalTitle.textContent = title;
         
@@ -937,8 +948,12 @@ async function openPrompt(filename, title) {
         
         // Guardar el contenido original para copiar
         modal.dataset.originalContent = markdownContent;
+        // Guardar índice actual para navegación
+        const currentIndex = availablePrompts.findIndex(p => p.file === filename);
+        modal.dataset.currentIndex = String(currentIndex);
         
         modal.style.display = 'block';
+        modal.dataset.source = 'prompt';
         
     } catch (error) {
         console.error('Error al cargar el prompt:', error);
@@ -996,10 +1011,181 @@ async function copyMarkdownContent() {
     }
 }
 
+// Navegación entre prompts
+function navigatePrompt(offset) {
+    const modal = document.getElementById('promptModal');
+    if (!modal || modal.style.display === 'none') return;
+    const idx = parseInt(modal.dataset.currentIndex || '-1', 10);
+    if (isNaN(idx) || idx < 0) return;
+    if (!Array.isArray(availablePrompts) || availablePrompts.length === 0) return;
+    let newIdx = idx + offset;
+    if (newIdx < 0) newIdx = availablePrompts.length - 1;
+    if (newIdx >= availablePrompts.length) newIdx = 0;
+    const item = availablePrompts[newIdx];
+    openPrompt(item.file, item.title);
+}
+
 // Cerrar modal al hacer clic fuera de él
 window.onclick = function(event) {
-    const modal = document.getElementById('promptModal');
-    if (event.target === modal) {
+    const promptModal = document.getElementById('promptModal');
+    const guideModal = document.getElementById('guideModal');
+    if (event.target === promptModal) {
         closeModal();
     }
+    if (event.target === guideModal) {
+        closeGuideModal();
+    }
+}
+
+// Utilidad para cerrar cualquier modal abierto
+function hideAllModals() {
+    const promptModal = document.getElementById('promptModal');
+    const guideModal = document.getElementById('guideModal');
+    if (promptModal) promptModal.style.display = 'none';
+    if (guideModal) guideModal.style.display = 'none';
+}
+
+// ===== FUNCIONALIDAD DE GUÍAS =====
+
+// Mostrar la página de guías
+function showGuidesPage() {
+    // Ocultar todas las pantallas
+    document.getElementById('startScreen').style.display = 'none';
+    document.getElementById('quizContainer').style.display = 'none';
+    document.getElementById('summaryScreen').style.display = 'none';
+    document.getElementById('results').style.display = 'none';
+    // Ocultar página de prompts y cerrar modales abiertos
+    const promptsPage = document.getElementById('promptsPage');
+    if (promptsPage) promptsPage.style.display = 'none';
+    hideAllModals();
+
+    // Mostrar página de guías
+    document.getElementById('guidesPage').style.display = 'block';
+
+    // Cargar las guías en la galería
+    loadGuidesGallery();
+}
+
+// Cargar la galería de guías
+function loadGuidesGallery() {
+    const gallery = document.getElementById('guidesGallery');
+    if (!gallery) return;
+    gallery.innerHTML = '';
+
+    availablePrompts.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        card.innerHTML = `
+            <div class="prompt-card-header">
+                <h3>${item.title}</h3>
+            </div>
+            <div class="prompt-card-body">
+                <p>${item.description}</p>
+                <button class="btn btn-primary" onclick="openGuide('${item.file}', '${item.title}')">
+                    📘 Ver Guía
+                </button>
+            </div>
+        `;
+        gallery.appendChild(card);
+    });
+}
+
+// Abrir una guía específica
+async function openGuide(filename, title) {
+    try {
+        console.log('[openGuide] Cargando:', `guides/${filename}`);
+        const response = await fetch(`guides/${filename}`, { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error(`Error al cargar la guía: ${response.status}`);
+        }
+
+        const markdownContent = await response.text();
+
+        // Mostrar el modal de guías
+        const modal = document.getElementById('guideModal');
+        const modalTitle = document.getElementById('guideModalTitle');
+        const modalContent = document.getElementById('guideMarkdownContent');
+        // Asegurar que el modal de prompts esté cerrado
+        const promptModal = document.getElementById('promptModal');
+        if (promptModal) promptModal.style.display = 'none';
+
+        modalTitle.textContent = title;
+
+        if (typeof marked !== 'undefined') {
+            modalContent.innerHTML = marked.parse(markdownContent);
+        } else {
+            modalContent.innerHTML = `<pre>${markdownContent}</pre>`;
+        }
+
+        // Guardar el contenido original para copiar
+        modal.dataset.originalContent = markdownContent;
+        // Guardar índice actual para navegación
+        const currentIndex = availablePrompts.findIndex(p => p.file === filename);
+        modal.dataset.currentIndex = String(currentIndex);
+
+        modal.style.display = 'block';
+        modal.dataset.source = 'guide';
+
+    } catch (error) {
+        console.error('Error al cargar la guía:', error);
+        alert('Error al cargar la guía. Por favor, intenta de nuevo.');
+    }
+}
+
+// Cerrar modal de guías
+function closeGuideModal() {
+    const modal = document.getElementById('guideModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Copiar contenido Markdown de la guía
+async function copyGuideMarkdownContent() {
+    const modal = document.getElementById('guideModal');
+    if (!modal) return;
+    const originalContent = modal.dataset.originalContent;
+
+    if (!originalContent) {
+        alert('No hay contenido para copiar.');
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(originalContent);
+        const copyBtn = document.getElementById('copyGuideMarkdownBtn');
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '¡Copiado!';
+        copyBtn.style.backgroundColor = '#28a745';
+        setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.backgroundColor = '';
+        }, 2000);
+    } catch (error) {
+        console.error('Error al copiar:', error);
+        const textArea = document.createElement('textarea');
+        textArea.value = originalContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert('Contenido copiado al portapapeles');
+        } catch (fallbackError) {
+            console.error('Error en fallback de copia:', fallbackError);
+            alert('No se pudo copiar el contenido. Por favor, selecciona y copia manualmente.');
+        }
+        document.body.removeChild(textArea);
+    }
+}
+
+// Navegación entre guías
+function navigateGuide(offset) {
+    const modal = document.getElementById('guideModal');
+    if (!modal || modal.style.display === 'none') return;
+    const idx = parseInt(modal.dataset.currentIndex || '-1', 10);
+    if (isNaN(idx) || idx < 0) return;
+    if (!Array.isArray(availablePrompts) || availablePrompts.length === 0) return;
+    let newIdx = idx + offset;
+    if (newIdx < 0) newIdx = availablePrompts.length - 1;
+    if (newIdx >= availablePrompts.length) newIdx = 0;
+    const item = availablePrompts[newIdx];
+    openGuide(item.file, item.title);
 }

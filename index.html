@@ -18,6 +18,7 @@
             </div>
             <div class="prompts-button-container">
                 <button class="btn btn-secondary" id="promptsBtn" onclick="showPromptsPage()">🧠 Prompts</button>
+                <button class="btn btn-secondary" id="guidesBtn" onclick="showGuidesPage()">📘 Guías</button>
             </div>
         </div>
 
@@ -209,6 +210,49 @@
                     <div id="markdownContent" class="markdown-content"></div>
                 </div>
             </div>
+            <!-- Botones de navegación (Prompts) -->
+            <button class="modal-nav-btn modal-nav-left" aria-label="Anterior" onclick="navigatePrompt(-1)">❮</button>
+            <button class="modal-nav-btn modal-nav-right" aria-label="Siguiente" onclick="navigatePrompt(1)">❯</button>
+        </div>
+    </div>
+
+    <!-- Página de Guías -->
+    <div id="guidesPage" class="prompts-page" style="display: none;">
+        <div class="prompts-header">
+            <div class="prompts-header-content">
+                <div class="prompts-title">
+                    <h1>📘 Guías Rápidas DevOps</h1>
+                    <p>Referencia breve para usar tecnologías de forma efectiva</p>
+                </div>
+                <div class="prompts-actions">
+                    <button class="btn btn-secondary" onclick="backToQuiz()">← Volver al Cuestionario</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prompts-content">
+            <div class="prompts-gallery" id="guidesGallery">
+                <!-- Las guías se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+        
+        <!-- Modal para mostrar el contenido de la guía -->
+        <div id="guideModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="guideModalTitle"></h2>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="copyGuideMarkdownBtn" onclick="copyGuideMarkdownContent()">📋 Copiar MD</button>
+                        <button class="btn btn-danger" onclick="closeGuideModal()">✕ Cerrar</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="guideMarkdownContent" class="markdown-content"></div>
+                </div>
+            </div>
+            <!-- Botones de navegación (Guías) -->
+            <button class="modal-nav-btn modal-nav-left" aria-label="Anterior" onclick="navigateGuide(-1)">❮</button>
+            <button class="modal-nav-btn modal-nav-right" aria-label="Siguiente" onclick="navigateGuide(1)">❯</button>
         </div>
     </div>
 
@@ -239,6 +283,6 @@
         </div>
     </template>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=nav-arrows-1"></script>
 </body>
 </html>
