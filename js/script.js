@@ -30,6 +30,15 @@ let selectedQuestionCount = 30; // Número de preguntas seleccionado (por defect
 let isInSummaryMode = false; // Para controlar si estamos en modo resumen
 let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
  let availablePrompts = []; // Lista de cursos, cargada desde js/cursos.json
+ let selectedLevels = ['basico', 'intermedio', 'avanzado']; // Niveles seleccionados por el usuario
+
+ // ===== TTS (Texto a Voz) =====
+ let speechSupported = 'speechSynthesis' in window;
+ let currentUtterance = null;
+ let availableVoices = [];
+  let preferredVoice = null;
+  // Índice de la pregunta que se está narrando actualmente (si aplica)
+  let speakingQuestionIndex = null;
 
 // ===== Persistencia en Sesión =====
 const SESSION_KEY = 'devops_quiz_state';
@@ -46,7 +55,8 @@ function saveSessionState() {
             examMode,
             selectedQuestionCount,
             isInSummaryMode,
-            selectedTechnologies
+            selectedTechnologies,
+            selectedLevels
         };
         sessionStorage.setItem(SESSION_KEY, JSON.stringify(state));
     } catch (e) {
@@ -92,6 +102,12 @@ function restoreSessionState() {
         selectedQuestionCount = state.selectedQuestionCount || selectedQuestionCount;
         isInSummaryMode = !!state.isInSummaryMode;
         selectedTechnologies = Array.isArray(state.selectedTechnologies) ? state.selectedTechnologies : [];
+        selectedLevels = Array.isArray(state.selectedLevels) && state.selectedLevels.length > 0
+            ? state.selectedLevels
+            : selectedLevels;
+
+        // Reflejar niveles restaurados en la UI
+        setLevelCheckboxesFromState();
 
         if (!quizStarted || selectedQuestions.length === 0) return false;
 
@@ -137,6 +153,10 @@ async function loadAllQuestions() {
                         // Agregar información de tecnología a cada pregunta
                         data.preguntas.forEach(pregunta => {
                             pregunta.tecnologia = data.tecnologia;
+                            // Nivel por defecto si no está definido
+                            if (!pregunta.nivel) {
+                                pregunta.nivel = 'intermedio';
+                            }
                         });
                         allQuestions.push(...data.preguntas);
                     }
@@ -163,17 +183,42 @@ async function loadAllQuestions() {
 // Función para seleccionar preguntas aleatorias
 function selectRandomQuestions() {
     // Determinar el conjunto de preguntas según tecnologías seleccionadas
-    const pool = (selectedTechnologies && selectedTechnologies.length > 0)
+    const poolByTech = (selectedTechnologies && selectedTechnologies.length > 0)
         ? allQuestions.filter(q => selectedTechnologies.includes(q.tecnologia))
         : allQuestions;
+
+    // Filtrar por niveles seleccionados
+    const pool = (selectedLevels && selectedLevels.length > 0)
+        ? poolByTech.filter(q => {
+            const nivel = (q.nivel || '').toString().toLowerCase();
+            return selectedLevels.includes(nivel) || selectedLevels.includes('todos');
+        })
+        : poolByTech;
 
     // Si el filtro no devuelve resultados, usar todas las preguntas como fallback
     const base = pool.length > 0 ? pool : allQuestions;
 
-    // Mezclar aleatoriamente
-    const shuffled = [...base].sort(() => Math.random() - 0.5);
+    // Deduplicación por id si existe, si no por texto de pregunta y tecnología
+    const seen = new Set();
+    const unique = [];
+    for (const q of base) {
+        const key = (q.id !== undefined && q.id !== null)
+            ? `id:${q.id}`
+            : `text:${(q.tecnologia || '')}::${(q.pregunta || '').trim()}`;
+        if (!seen.has(key)) {
+            seen.add(key);
+            unique.push(q);
+        }
+    }
 
-    // Seleccionar el número especificado de preguntas
+    // Mezclar con Fisher–Yates para mejor aleatoriedad
+    const shuffled = [...unique];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // Seleccionar hasta el número especificado de preguntas (sin repetir)
     selectedQuestions = shuffled.slice(0, selectedQuestionCount);
 
     // Inicializar array de respuestas del usuario
@@ -254,6 +299,15 @@ function generateQuizHTML() {
         explanationSection.id = `explanation-${index}`;
         const explanationText = fragment.querySelector('.explanation-text');
         explanationText.id = `explanation-text-${index}`;
+        // Toggle TTS (único botón de icono)
+        const ttsToggle = fragment.querySelector('.tts-toggle');
+        if (ttsToggle) {
+            ttsToggle.id = `tts-toggle-${index}`;
+            ttsToggle.disabled = !speechSupported;
+            if (speechSupported) {
+                ttsToggle.addEventListener('click', () => toggleSpeakExplanation(index));
+            }
+        }
         
 
  
@@ -348,11 +402,14 @@ function validateAndShowExplanation(questionIndex) {
     
     explanationSection.style.display = 'block';
     explanationSection.classList.add('slideDown');
-    
-    // Deshabilitar el botón después de validar
-    validateBtn.disabled = true;
-    validateBtn.innerHTML = '✅ Validado';
-    validateBtn.style.opacity = '0.6';
+
+    // Mantener el botón activo para permitir revalidaciones
+    validateBtn.disabled = false;
+    validateBtn.innerHTML = '🔁 Revalidar';
+    validateBtn.style.opacity = '1';
+
+    // Habilitar el toggle de voz si hay soporte
+    enableTTSToggle(questionIndex);
 }
 
 function showExplanation(questionIndex) {
@@ -371,11 +428,14 @@ function showExplanation(questionIndex) {
         explanationSection.style.display = 'block';
         explanationSection.classList.add('slideDown');
     }
+    // Habilitar el toggle de voz si hay soporte
+    enableTTSToggle(questionIndex);
 }
 
 // Función para ir a la siguiente pregunta
 function nextQuestion() {
     if (currentQuestionIndex < selectedQuestions.length - 1) {
+        stopSpeaking();
         document.getElementById(`question-${currentQuestionIndex}`).classList.remove('active');
         currentQuestionIndex++;
         document.getElementById(`question-${currentQuestionIndex}`).classList.add('active');
@@ -390,6 +450,7 @@ function nextQuestion() {
 // Función para ir a la pregunta anterior
 function previousQuestion() {
     if (currentQuestionIndex > 0) {
+        stopSpeaking();
         document.getElementById(`question-${currentQuestionIndex}`).classList.remove('active');
         currentQuestionIndex--;
         document.getElementById(`question-${currentQuestionIndex}`).classList.add('active');
@@ -649,6 +710,8 @@ function restartQuiz() {
     examMode = null;
     isInSummaryMode = false;
     selectedTechnologies = [];
+    selectedLevels = ['basico', 'intermedio', 'avanzado'];
+    stopSpeaking();
     clearSessionState();
     
     // Ocultar resultados
@@ -715,6 +778,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cargar lista de cursos para el multi-select y la galería de prompts
     loadCoursesList();
     initTechnologySelectHandler();
+    initLevelSelectHandler();
+    initSpeech();
     // Intentar restaurar el estado del examen si existe en sesión
     restoreSessionState();
 });
@@ -746,8 +811,11 @@ function populateTechnologySelect() {
         el.dataset.value = item.title;
         el.innerHTML = `<label><input type="checkbox" class="multi-check" value="${item.title}"><span>${item.title}</span></label>`;
         el.addEventListener('click', (e) => {
+            // Evita el toggle automático del label para no hacer doble cambio
+            e.preventDefault();
+            e.stopPropagation();
             const cb = el.querySelector('input.multi-check');
-            if (e.target !== cb) cb.checked = !cb.checked;
+            cb.checked = !cb.checked; // togglear siempre una sola vez
             handleTechSelectionChange();
         });
         dropdown.appendChild(el);
@@ -862,18 +930,13 @@ function clearTechnologySelection() {
 
 // Función para mostrar la página de prompts
 function showPromptsPage() {
-    // Ocultar todas las pantallas
-    document.getElementById('startScreen').style.display = 'none';
-    document.getElementById('quizContainer').style.display = 'none';
-    document.getElementById('summaryScreen').style.display = 'none';
-    document.getElementById('results').style.display = 'none';
-    // Ocultar página de guías y cerrar modales abiertos
-    const guidesPage = document.getElementById('guidesPage');
-    if (guidesPage) guidesPage.style.display = 'none';
+    // Mostrar como superposición sin salir del examen
+    const promptsPage = document.getElementById('promptsPage');
+    promptsPage.style.display = 'block';
+    promptsPage.classList.add('overlay');
+    document.body.classList.add('overlay-open');
+    // Cerrar modales abiertos
     hideAllModals();
-    
-    // Mostrar página de prompts
-    document.getElementById('promptsPage').style.display = 'block';
     
     // Cargar los prompts en la galería
     loadPromptsGallery();
@@ -881,11 +944,32 @@ function showPromptsPage() {
 
 // Función para volver al cuestionario
 function backToQuiz() {
+    // Cerrar overlays si están visibles y volver a la vista adecuada
     const promptsPage = document.getElementById('promptsPage');
     const guidesPage = document.getElementById('guidesPage');
-    if (promptsPage) promptsPage.style.display = 'none';
-    if (guidesPage) guidesPage.style.display = 'none';
-    document.getElementById('startScreen').style.display = 'block';
+    if (promptsPage) {
+        promptsPage.style.display = 'none';
+        promptsPage.classList.remove('overlay');
+    }
+    if (guidesPage) {
+        guidesPage.style.display = 'none';
+        guidesPage.classList.remove('overlay');
+    }
+    document.body.classList.remove('overlay-open');
+    hideAllModals();
+
+    if (quizStarted) {
+        // Restaurar la vista activa sin perder estado
+        if (isInSummaryMode) {
+            document.getElementById('summaryScreen').style.display = 'block';
+            document.getElementById('quizContainer').style.display = 'none';
+        } else {
+            document.getElementById('quizContainer').style.display = 'block';
+        }
+    } else {
+        document.getElementById('startScreen').style.display = 'block';
+    }
+    saveSessionState();
 }
 
 // ===== Salir del Examen =====
@@ -1049,21 +1133,167 @@ function hideAllModals() {
 
 // Mostrar la página de guías
 function showGuidesPage() {
-    // Ocultar todas las pantallas
-    document.getElementById('startScreen').style.display = 'none';
-    document.getElementById('quizContainer').style.display = 'none';
-    document.getElementById('summaryScreen').style.display = 'none';
-    document.getElementById('results').style.display = 'none';
-    // Ocultar página de prompts y cerrar modales abiertos
-    const promptsPage = document.getElementById('promptsPage');
-    if (promptsPage) promptsPage.style.display = 'none';
+    // Mostrar como superposición sin salir del examen
+    const guidesPage = document.getElementById('guidesPage');
+    guidesPage.style.display = 'block';
+    guidesPage.classList.add('overlay');
+    document.body.classList.add('overlay-open');
     hideAllModals();
-
-    // Mostrar página de guías
-    document.getElementById('guidesPage').style.display = 'block';
 
     // Cargar las guías en la galería
     loadGuidesGallery();
+}
+
+// ====== Selección de Niveles ======
+function getSelectedLevelsFromUI() {
+    const checkboxes = document.querySelectorAll('.level-checkbox');
+    const levels = [];
+    checkboxes.forEach(cb => { if (cb.checked) levels.push(cb.value.toLowerCase()); });
+    return levels;
+}
+
+function setLevelCheckboxesFromState() {
+    const checkboxes = document.querySelectorAll('.level-checkbox');
+    checkboxes.forEach(cb => {
+        const isSelected = selectedLevels.includes(cb.value.toLowerCase());
+        cb.checked = isSelected;
+        const label = cb.closest('.level-option');
+        if (label) {
+            label.classList.toggle('selected', isSelected);
+            label.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+        }
+    });
+}
+
+function initLevelSelectHandler() {
+    const options = document.querySelectorAll('.level-option');
+    if (!options || options.length === 0) return;
+    // Si no hay niveles seleccionados aún, por defecto todos marcados
+    if (!selectedLevels || selectedLevels.length === 0) {
+        selectedLevels = ['basico', 'intermedio', 'avanzado'];
+    }
+    setLevelCheckboxesFromState();
+    options.forEach(option => {
+        const cb = option.querySelector('input.level-checkbox');
+        if (!cb) return;
+        // Click en el chip
+        option.addEventListener('click', (e) => {
+            if (e.target !== cb) {
+                // Evitar el toggle por defecto del label para que no ocurra doble cambio
+                e.preventDefault();
+                e.stopPropagation();
+                cb.checked = !cb.checked;
+
+                let newLevels = getSelectedLevelsFromUI();
+                // Enforce: mínimo 1 nivel seleccionado
+                if (newLevels.length === 0) {
+                    cb.checked = true; // revertimos el toggle
+                    newLevels = getSelectedLevelsFromUI();
+                }
+                option.classList.toggle('selected', cb.checked);
+                option.setAttribute('aria-pressed', cb.checked ? 'true' : 'false');
+                selectedLevels = newLevels;
+                saveSessionState();
+            }
+        });
+        // Cambio directo del checkbox (por accesibilidad/teclado)
+        cb.addEventListener('change', () => {
+            let newLevels = getSelectedLevelsFromUI();
+            if (newLevels.length === 0) {
+                cb.checked = true; // revertimos
+                newLevels = getSelectedLevelsFromUI();
+            }
+            option.classList.toggle('selected', cb.checked);
+            option.setAttribute('aria-pressed', cb.checked ? 'true' : 'false');
+            selectedLevels = newLevels;
+            saveSessionState();
+        });
+    });
+}
+
+// ====== TTS Helpers ======
+function initSpeech() {
+    if (!speechSupported) return;
+    const setVoices = () => {
+        availableVoices = window.speechSynthesis.getVoices();
+        // Buscar una voz en español si existe
+        preferredVoice = availableVoices.find(v => /es-|es_ES|Spanish/i.test(v.lang)) || null;
+    };
+    setVoices();
+    if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+        window.speechSynthesis.onvoiceschanged = setVoices;
+    }
+}
+
+function speakExplanation(questionIndex) {
+    if (!speechSupported) return;
+    const textEl = document.getElementById(`explanation-text-${questionIndex}`);
+    if (!textEl) return;
+    const text = textEl.innerText || textEl.textContent || '';
+    if (!text) return;
+    stopSpeaking();
+    const utter = new SpeechSynthesisUtterance(text);
+    if (preferredVoice) utter.voice = preferredVoice;
+    utter.rate = 1;
+    utter.pitch = 1;
+    currentUtterance = utter;
+    speakingQuestionIndex = questionIndex;
+    // Cuando termina o hay error, restablecer UI
+    utter.onend = () => {
+        updateTTSToggleUI(questionIndex, false);
+        speakingQuestionIndex = null;
+    };
+    utter.onerror = () => {
+        updateTTSToggleUI(questionIndex, false);
+        speakingQuestionIndex = null;
+    };
+    window.speechSynthesis.speak(utter);
+    updateTTSToggleUI(questionIndex, true);
+}
+
+function stopSpeaking() {
+    if (!speechSupported) return;
+    if (window.speechSynthesis.speaking || window.speechSynthesis.paused) {
+        window.speechSynthesis.cancel();
+    }
+    currentUtterance = null;
+    if (speakingQuestionIndex !== null) {
+        updateTTSToggleUI(speakingQuestionIndex, false);
+        speakingQuestionIndex = null;
+    }
+}
+
+function enableTTSToggle(questionIndex) {
+    if (!speechSupported) return;
+    const btn = document.getElementById(`tts-toggle-${questionIndex}`);
+    if (btn) btn.disabled = false;
+}
+
+// Alterna reproducción/pausa del TTS para la explicación de una pregunta
+function toggleSpeakExplanation(questionIndex) {
+    if (!speechSupported) return;
+    const synth = window.speechSynthesis;
+    // Si no está hablando o es otra pregunta, comenzar a narrar esta
+    if (!synth.speaking || speakingQuestionIndex !== questionIndex) {
+        speakExplanation(questionIndex);
+        return;
+    }
+    // Si está hablando esta misma pregunta: alternar pausa/reanudación
+    if (synth.paused) {
+        synth.resume();
+        updateTTSToggleUI(questionIndex, true);
+    } else {
+        synth.pause();
+        updateTTSToggleUI(questionIndex, false);
+    }
+}
+
+// Actualiza el estado visual del botón toggle
+function updateTTSToggleUI(questionIndex, isPlaying) {
+    const btn = document.getElementById(`tts-toggle-${questionIndex}`);
+    if (!btn) return;
+    btn.classList.toggle('playing', !!isPlaying);
+    btn.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
 }
 
 // Cargar la galería de guías

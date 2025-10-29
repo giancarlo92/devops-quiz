@@ -127,6 +127,65 @@ body {
     margin-bottom: 25px;
     line-height: 1.6;
 }
+/* Selección de nivel - chips homogéneos */
+.level-selection {
+    margin: 30px 0;
+    text-align: center;
+}
+.level-selection h3 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+    font-size: 1.2em;
+}
+.level-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.level-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    font-weight: 500;
+    user-select: none;
+}
+.level-option:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+.level-option.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+.level-option.selected::before {
+    content: '✔';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #667eea;
+    background: #ffffff;
+    border-radius: 50%;
+}
+.level-option input {
+    display: none;
+}
+.level-option span {
+    font-size: 14px;
+}
 
 /* Options */
 .options-container {
@@ -251,6 +310,12 @@ body {
 
 .results.show {
     display: block;
+}
+/* Controles de voz en explicación */
+.voice-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
 }
 
 .score-circle {
@@ -665,14 +730,74 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 12px;
+    padding: 2px 6px;
     cursor: pointer;
 }
 .multi-select-item:hover {
     background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08));
 }
-.multi-select-item input {
+.multi-select-item input { pointer-events: none; }
+
+/* Diseño mejorado del checkbox del dropdown de tecnologías */
+.multi-select-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+.multi-select-item label:hover {
+    background: rgba(102,126,234,0.06);
+}
+.multi-select-item input.multi-check {
+    position: absolute;
+    opacity: 0;
     pointer-events: none;
+}
+.multi-select-item label span {
+    position: relative;
+    padding-left: 38px; /* más espacio entre checkbox y texto */
+    color: #374151;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+}
+.multi-select-item label span::before {
+    content: '';
+    position: absolute;
+    left: 10px; /* separa el checkbox del texto */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    border: 2px solid #cbd5e1; /* slate-300 */
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+.multi-select-item label span::after {
+    content: '✔';
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-52%) scale(0.9);
+    font-size: 12px;
+    color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+.multi-select-item input.multi-check:checked + span {
+    color: #1f2937;
+    background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08));
+    border-radius: 8px;
+}
+.multi-select-item input.multi-check:checked + span::before {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.18);
+}
+.multi-select-item input.multi-check:checked + span::after {
+    opacity: 1;
 }
 
 .placeholder-text {
@@ -764,6 +889,13 @@ body {
     border-left: 4px solid #17a2b8;
 }
 
+.explanation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .explanation-section h4 {
     color: #2c3e50;
     margin-bottom: 10px;
@@ -772,6 +904,35 @@ body {
 .explanation-section p {
     color: #6c757d;
     line-height: 1.6;
+}
+
+/* Botón de TTS (icono a la derecha) */
+.tts-toggle {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    color: #6c757d;
+    font-size: 20px;
+    padding: 6px;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.tts-toggle:hover {
+    background: rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+}
+
+.tts-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tts-toggle.playing {
+    color: #17a2b8;
+    background: rgba(23,162,184,0.12);
 }
 
 /* Summary Elements */
@@ -1147,6 +1308,17 @@ body {
     text-align: center;
     line-height: 1.5;
     margin-bottom: 15px;
+}
+/* Overlay para Prompts/Guías */
+.prompts-page.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.6);
+    overflow: auto;
+}
+body.overlay-open {
+    overflow: hidden;
 }
 
 .prompt-card-tech {

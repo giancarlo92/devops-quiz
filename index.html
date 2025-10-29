@@ -69,6 +69,25 @@
                     </div>
                 </div>
 
+                <!-- Selector de nivel de dificultad -->
+                <div class="level-selection" aria-label="Selecciona nivel" role="group">
+                    <h3>Selecciona el nivel (puedes combinar varios):</h3>
+                    <div class="level-options">
+                        <label class="level-option" aria-pressed="false">
+                            <input type="checkbox" class="level-checkbox" value="basico" />
+                            <span>Básico</span>
+                        </label>
+                        <label class="level-option" aria-pressed="false">
+                            <input type="checkbox" class="level-checkbox" value="intermedio" />
+                            <span>Intermedio</span>
+                        </label>
+                        <label class="level-option" aria-pressed="false">
+                            <input type="checkbox" class="level-checkbox" value="avanzado" />
+                            <span>Avanzado</span>
+                        </label>
+                    </div>
+                </div>
+
                 <!-- Selección de tecnologías (opcional) - Multi-select con chips -->
                 <div class="technology-selection">
                     <h3>Filtra por temas (opcional):</h3>
@@ -270,8 +289,11 @@
                 <button class="validate-btn">🔍 Validar Respuesta</button>
             </div>
             <div class="explanation-section" style="display: none;">
-                <h4>💡 Explicación:</h4>
-                <p class="explanation-text"></p>
+                <div class="explanation-header">
+                    <h4>💡 Explicación:</h4>
+                    <button class="tts-toggle" type="button" title="Escuchar/Pausar" aria-label="Escuchar/Pausar explicación" aria-pressed="false">🔊</button>
+                </div>
+                <p class="explanation-text" aria-live="polite"></p>
             </div>
         </div>
     </template>
@@ -283,6 +305,6 @@
         </div>
     </template>
 
-    <script src="js/script.js?v=nav-arrows-1"></script>
+    <script src="js/script.js?v=tts-level-1"></script>
 </body>
 </html>
