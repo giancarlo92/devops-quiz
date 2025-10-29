@@ -17,17 +17,17 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son los servicios principales de Azure DevOps?",
+      "pregunta": "¿Cuál de los siguientes NO es un servicio principal de Azure DevOps?",
       "nivel": "básico",
       "opciones": [
         "Azure Repos",
         "Azure Pipelines",
         "Azure Boards",
         "Azure Test Plans",
-        "Azure Artifacts"
+        "Azure Monitor"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los <strong>cinco servicios principales de Azure DevOps</strong> son: <strong>Azure Repos</strong> (control de versiones), <strong>Azure Pipelines</strong> (CI/CD), <strong>Azure Boards</strong> (gestión ágil), <strong>Azure Test Plans</strong> (testing manual), y <strong>Azure Artifacts</strong> (gestión de paquetes). Cada servicio puede usarse independientemente o en conjunto para una experiencia DevOps completa."
+      "respuestas_correctas": [4],
+      "explicacion": "Los servicios principales de Azure DevOps son <strong>Azure Repos</strong>, <strong>Azure Pipelines</strong>, <strong>Azure Boards</strong>, <strong>Azure Test Plans</strong> y <strong>Azure Artifacts</strong>. <strong>Azure Monitor</strong> es un servicio de Azure, pero no forma parte de Azure DevOps."
     },
     {
       "id": 3,
@@ -44,16 +44,16 @@
     },
     {
       "id": 4,
-      "pregunta": "¿Qué tipos de repositorios soporta Azure Repos?",
+      "pregunta": "¿Cuál de los siguientes SÍ está soportado por Azure Repos?",
       "nivel": "básico",
       "opciones": [
-        "Git",
-        "Team Foundation Version Control (TFVC)",
+        "TFVC",
         "Subversion",
-        "Mercurial"
+        "Mercurial",
+        "CVS"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Azure Repos soporta dos tipos de repositorios: <strong>Git</strong> (sistema distribuido, recomendado para nuevos proyectos) y <strong>TFVC</strong> (Team Foundation Version Control, sistema centralizado para proyectos legacy). Git ofrece branching flexible y trabajo offline, mientras TFVC proporciona control granular y es mejor para archivos binarios grandes."
+      "respuestas_correctas": [0],
+      "explicacion": "Azure Repos soporta dos tipos de repositorios: <strong>Git</strong> y <strong>TFVC</strong>. <strong>Subversion</strong>, <strong>Mercurial</strong> y <strong>CVS</strong> no están soportados por Azure Repos."
     },
     {
       "id": 5,
@@ -70,16 +70,17 @@
     },
     {
       "id": 6,
-      "pregunta": "¿Cuáles son los tipos de pipelines en Azure DevOps?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de pipeline en Azure DevOps?",
       "nivel": "intermedio",
       "opciones": [
         "Build Pipelines",
+        "Cron Pipelines",
         "Release Pipelines",
         "YAML Pipelines",
         "Classic Pipelines"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure DevOps ofrece varios tipos de pipelines: <strong>Build Pipelines</strong> (compilación y testing), <strong>Release Pipelines</strong> (despliegue), <strong>YAML Pipelines</strong> (definidos como código), y <strong>Classic Pipelines</strong> (interfaz visual). YAML es el enfoque moderno recomendado por ser versionable y reutilizable."
+      "respuestas_correctas": [1],
+      "explicacion": "Azure DevOps ofrece <strong>Build</strong>, <strong>Release</strong>, <strong>YAML</strong> y <strong>Classic</strong> pipelines. <strong>Cron Pipelines</strong> no es un tipo de pipeline; los disparadores tipo cron se definen como parte de YAML."
     },
     {
       "id": 7,
@@ -96,16 +97,17 @@
     },
     {
       "id": 8,
-      "pregunta": "¿Qué metodologías ágiles soporta Azure Boards?",
+      "pregunta": "¿Cuál de las siguientes NO es una plantilla/proceso soportado por Azure Boards?",
       "nivel": "intermedio",
       "opciones": [
         "Scrum",
         "Kanban",
+        "ITIL",
         "Agile",
         "CMMI"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure Boards soporta múltiples metodologías: <strong>Scrum</strong> (sprints, backlogs, burndown charts), <strong>Kanban</strong> (flujo continuo, WIP limits), <strong>Agile</strong> (proceso básico ágil), y <strong>CMMI</strong> (Capability Maturity Model Integration para procesos más formales). Cada plantilla incluye work items y flujos específicos para la metodología."
+      "respuestas_correctas": [2],
+      "explicacion": "Azure Boards soporta múltiples metodologías: <strong>Scrum</strong>, <strong>Kanban</strong>, <strong>Agile</strong> y <strong>CMMI</strong>. <strong>ITIL</strong> no es una plantilla de proceso en Azure Boards."
     },
     {
       "id": 9,
@@ -122,17 +124,17 @@
     },
     {
       "id": 10,
-      "pregunta": "¿Qué tipos de Work Items existen en Azure Boards?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo estándar de Work Item en Azure Boards?",
       "nivel": "intermedio",
       "opciones": [
         "Epic",
+        "Milestone",
         "Feature",
         "User Story",
-        "Task",
         "Bug"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos de Work Items forman una jerarquía: <strong>Epic</strong> (iniciativas grandes), <strong>Feature</strong> (funcionalidades), <strong>User Story</strong> (requisitos desde perspectiva del usuario), <strong>Task</strong> (trabajo técnico específico), y <strong>Bug</strong> (defectos). Esta estructura permite organizar el trabajo desde alto nivel hasta tareas específicas."
+      "respuestas_correctas": [1],
+      "explicacion": "Los tipos de Work Items estándar incluyen <strong>Epic</strong>, <strong>Feature</strong>, <strong>User Story</strong> y <strong>Bug</strong>. <strong>Milestone</strong> no es un tipo estándar (puede representarse mediante atributos o etiquetas)."
     },
     {
       "id": 11,
@@ -162,17 +164,17 @@
     },
     {
       "id": 13,
-      "pregunta": "¿Qué tipos de paquetes puede almacenar Azure Artifacts?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de paquete soportado por Azure Artifacts?",
       "nivel": "intermedio",
       "opciones": [
         "NuGet",
         "npm",
+        "RubyGems",
         "Maven",
-        "Python",
-        "Universal packages"
+        "Python"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Azure Artifacts soporta múltiples tipos de paquetes: <strong>NuGet</strong> (.NET), <strong>npm</strong> (Node.js), <strong>Maven</strong> (Java), <strong>Python</strong> (PyPI), y <strong>Universal Packages</strong> (formato genérico). Cada tipo tiene su propio feed y herramientas específicas, permitiendo gestión centralizada de dependencias para diferentes tecnologías."
+      "respuestas_correctas": [2],
+      "explicacion": "Azure Artifacts soporta múltiples tipos de paquetes: <strong>NuGet</strong>, <strong>npm</strong>, <strong>Maven</strong>, <strong>Python</strong> y <strong>Universal Packages</strong>. <strong>RubyGems</strong> no está soportado."
     },
     {
       "id": 14,
@@ -189,16 +191,16 @@
     },
     {
       "id": 15,
-      "pregunta": "¿Cuáles son los tipos de agentes en Azure Pipelines?",
+      "pregunta": "¿Cuál de los siguientes SÍ describe un tipo de agente en Azure Pipelines?",
       "nivel": "avanzado",
       "opciones": [
-        "Microsoft-hosted agents",
         "Self-hosted agents",
-        "Container agents",
-        "Virtual agents"
+        "Browser-based agents",
+        "FTP agents",
+        "Email agents"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Azure Pipelines ofrece dos tipos principales: <strong>Microsoft-hosted agents</strong> (gestionados por Microsoft, con diferentes OS y herramientas preinstaladas) y <strong>Self-hosted agents</strong> (instalados y gestionados por el usuario, con control total sobre configuración y software). Los self-hosted permiten acceso a recursos internos y configuraciones específicas."
+      "respuestas_correctas": [0],
+      "explicacion": "Azure Pipelines ofrece dos tipos principales: <strong>Microsoft-hosted agents</strong> y <strong>Self-hosted agents</strong>. Las opciones como 'Browser-based', 'FTP' o 'Email agents' no son tipos válidos."
     },
     {
       "id": 16,
@@ -215,17 +217,17 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Qué elementos pueden configurarse en una YAML pipeline?",
+      "pregunta": "¿Cuál de los siguientes NO es un elemento definible en una YAML pipeline?",
       "nivel": "avanzado",
       "opciones": [
         "Triggers",
-        "Variables",
+        "Commits",
         "Stages",
         "Jobs",
         "Steps"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Una YAML pipeline puede configurar: <strong>Triggers</strong> (cuándo ejecutar), <strong>Variables</strong> (valores reutilizables), <strong>Stages</strong> (fases lógicas), <strong>Jobs</strong> (unidades de trabajo), y <strong>Steps</strong> (tareas individuales). Esta estructura jerárquica permite pipelines complejos, paralelos y reutilizables definidos como código."
+      "respuestas_correctas": [1],
+      "explicacion": "Una YAML pipeline puede configurar <strong>Triggers</strong>, <strong>Variables</strong>, <strong>Stages</strong>, <strong>Jobs</strong> y <strong>Steps</strong>. <strong>Commits</strong> no es un elemento de configuración del pipeline."
     },
     {
       "id": 18,
@@ -242,7 +244,7 @@
     },
     {
       "id": 19,
-      "pregunta": "¿Qué tipos de políticas de rama se pueden configurar?",
+      "pregunta": "¿Cuál de las siguientes NO es una política de rama configurable en Azure Repos?",
       "nivel": "avanzado",
       "opciones": [
         "Require pull request reviews",
@@ -251,8 +253,8 @@
         "Restrict pushes",
         "Require signed commits"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las políticas de rama incluyen: <strong>Require pull request reviews</strong> (revisiones obligatorias), <strong>Require status checks</strong> (builds exitosos), <strong>Require up-to-date branches</strong> (sincronización con target), y <strong>Restrict pushes</strong> (limitar acceso directo). Estas políticas aseguran calidad y control en el flujo de código."
+      "respuestas_correctas": [4],
+      "explicacion": "Las políticas de rama incluyen <strong>Require pull request reviews</strong>, <strong>Require status checks</strong>, <strong>Require up-to-date branches</strong> y <strong>Restrict pushes</strong>. <strong>Require signed commits</strong> no es una política nativa configurable en Azure Repos."
     },
     {
       "id": 20,

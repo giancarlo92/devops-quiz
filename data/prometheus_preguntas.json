@@ -17,17 +17,17 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las características principales de Prometheus?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica principal de Prometheus?",
       "nivel": "básico",
       "opciones": [
         "Modelo de datos de series temporales",
         "Lenguaje de consulta PromQL",
         "Pull-based metrics collection",
         "Alerting integrado",
-        "Service discovery"
+        "Transacciones ACID"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las características principales de Prometheus incluyen: 1) **Modelo de datos de series temporales**: Almacena métricas como series temporales identificadas por nombre de métrica y pares clave-valor (labels). 2) **PromQL**: Lenguaje de consulta funcional que permite seleccionar y agregar datos de series temporales en tiempo real. 3) **Pull-based collection**: Prometheus extrae métricas de los targets configurados a través de HTTP, lo que es más confiable que push-based. 4) **Alerting integrado**: Sistema de alertas basado en reglas que se integra con Alertmanager. 5) **Service discovery**: Descubrimiento automático de targets a través de múltiples mecanismos (Kubernetes, Consul, DNS, etc.)."
+      "respuestas_correctas": [4],
+      "explicacion": "**Transacciones ACID** no es una característica de Prometheus; Prometheus usa un TSDB append-only optimizado para series temporales, sin soporte de transacciones ACID ni SQL relacional. Entre sus características clave están el modelo de series temporales, **PromQL**, la recolección **pull**, el **alerting** integrado y el **service discovery** para descubrir targets dinámicamente."
     },
     {
       "id": 3,
@@ -57,16 +57,17 @@
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son los tipos de métricas en Prometheus?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de métrica en Prometheus?",
       "nivel": "básico",
       "opciones": [
         "Counter",
         "Gauge",
         "Histogram",
-        "Summary"
+        "Summary",
+        "Timer"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Prometheus define cuatro tipos principales de métricas: 1) **Counter**: Métrica acumulativa que solo puede incrementar o reiniciarse a cero (ej: total de requests). 2) **Gauge**: Métrica que puede subir y bajar arbitrariamente (ej: uso de memoria, temperatura). 3) **Histogram**: Muestrea observaciones y las cuenta en buckets configurables, útil para medir latencias y tamaños (ej: duración de requests). 4) **Summary**: Similar al histogram pero calcula cuantiles configurables en el lado del cliente (ej: percentiles de latencia). Cada tipo está optimizado para diferentes casos de uso y patrones de consulta en PromQL."
+      "respuestas_correctas": [4],
+      "explicacion": "**Timer** no es un tipo nativo de métrica en Prometheus. Los tipos soportados son **Counter**, **Gauge**, **Histogram** y **Summary**. Algunos SDKs externos usan 'timers' como envoltorios sobre histogramas o summaries, pero en Prometheus se modelan con esos tipos."
     },
     {
       "id": 6,
@@ -83,17 +84,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son componentes del ecosistema Prometheus?",
+      "pregunta": "¿Cuál de los siguientes NO forma parte del ecosistema de Prometheus?",
       "nivel": "intermedio",
       "opciones": [
         "Prometheus server",
         "Alertmanager",
         "Pushgateway",
         "Node exporter",
-        "Grafana"
+        "Kubelet"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "El ecosistema Prometheus incluye varios componentes: 1) **Prometheus server**: El componente principal que recolecta y almacena métricas. 2) **Alertmanager**: Maneja alertas enviadas por Prometheus, incluyendo silenciamiento, inhibición, agrupación y enrutamiento. 3) **Pushgateway**: Permite que trabajos de corta duración envíen métricas a Prometheus. 4) **Node exporter**: Exporter oficial para métricas de hardware y SO de sistemas Unix. 5) **Grafana**: Herramienta de visualización que se integra perfectamente con Prometheus para crear dashboards. Otros componentes incluyen diversos exporters para diferentes servicios y bibliotecas cliente para instrumentar aplicaciones."
+      "respuestas_correctas": [4],
+      "explicacion": "**Kubelet** es un componente de Kubernetes, no parte del ecosistema Prometheus. El ecosistema incluye **Prometheus server**, **Alertmanager**, **Pushgateway** y exporters como **Node exporter**. Herramientas como **Grafana** se integran para visualización, pero no forman parte del servidor Prometheus."
     },
     {
       "id": 8,
@@ -149,17 +150,17 @@
     },
     {
       "id": 12,
-      "pregunta": "¿Cuáles son funciones comunes en PromQL?",
+      "pregunta": "¿Cuál de las siguientes NO es una función de PromQL?",
       "nivel": "avanzado",
       "opciones": [
         "rate()",
         "sum()",
-        "avg()",
         "increase()",
-        "histogram_quantile()"
+        "histogram_quantile()",
+        "median()"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las funciones comunes en PromQL incluyen: 1) **rate()**: Calcula la tasa por segundo de incremento de un counter en un rango de tiempo. 2) **sum()**: Agrega valores a través de dimensiones, útil para totales. 3) **avg()**: Calcula el promedio de valores a través de dimensiones. 4) **increase()**: Calcula el incremento total de un counter en un rango de tiempo. 5) **histogram_quantile()**: Calcula cuantiles de histogramas. Otras funciones importantes incluyen `max()`, `min()`, `count()`, `topk()`, `bottomk()`, `abs()`, `ceil()`, `floor()`, y funciones de tiempo como `time()` y `day_of_week()`. Estas funciones permiten análisis sofisticados de métricas."
+      "respuestas_correctas": [4],
+      "explicacion": "`median()` no es una función de PromQL. PromQL ofrece funciones como **rate()**, **sum()**, **avg()**, **increase()** y **histogram_quantile()**, entre otras (`max()`, `min()`, `count()`, `topk()`, `bottomk()`, `abs()`, `ceil()`, `floor()`, y funciones de tiempo como `time()` y `day_of_week()`). El cálculo de medianas se logra mediante cuantiles usando **histogram_quantile()** o agregaciones específicas."
     },
     {
       "id": 13,
@@ -176,17 +177,17 @@
     },
     {
       "id": 14,
-      "pregunta": "¿Cuáles son tipos de Service Discovery en Prometheus?",
+      "pregunta": "¿Cuál NO es un tipo de Service Discovery soportado por Prometheus?",
       "nivel": "avanzado",
       "opciones": [
         "Kubernetes",
         "Consul",
-        "EC2",
+        "FTP",
         "DNS",
         "File-based"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Prometheus soporta múltiples tipos de Service Discovery: 1) **Kubernetes**: Descubre pods, services, endpoints, nodes e ingresses automáticamente. 2) **Consul**: Integración con HashiCorp Consul para service discovery. 3) **EC2**: Descubre instancias EC2 de AWS basándose en tags y metadatos. 4) **DNS**: Descubre targets a través de registros DNS A, AAAA o SRV. 5) **File-based**: Lee targets de archivos JSON/YAML que pueden ser actualizados externamente. Otros tipos incluyen Azure, GCE, Marathon, Zookeeper, Nerve, Serverset, Triton, y OpenStack. Cada tipo está optimizado para su ecosistema específico y proporciona metadatos relevantes como labels."
+      "respuestas_correctas": [2],
+      "explicacion": "**FTP** no es un mecanismo de Service Discovery en Prometheus. Entre los soportados se incluyen **Kubernetes**, **Consul**, **EC2**, **DNS** y **file-based**, además de Azure, GCE, Marathon, Zookeeper, Nerve, Serverset, Triton y OpenStack. Cada tipo proporciona metadatos relevantes como labels."
     },
     {
       "id": 15,
@@ -216,17 +217,17 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Cuáles son mejores prácticas para naming de métricas?",
+      "pregunta": "¿Cuál de las siguientes NO es una buena práctica para nombrar métricas?",
       "nivel": "avanzado",
       "opciones": [
         "Usar snake_case",
-        "Incluir unidades en el nombre",
+        "Usar camelCase y espacios",
         "Ser descriptivo pero conciso",
         "Evitar espacios y caracteres especiales",
         "Usar prefijos consistentes"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las mejores prácticas para naming de métricas en Prometheus incluyen: 1) **snake_case**: Usar guiones bajos para separar palabras (ej: `http_requests_total`). 2) **Incluir unidades**: Especificar unidades en el nombre (ej: `_bytes`, `_seconds`, `_total`). 3) **Descriptivo pero conciso**: Nombres claros que expliquen qué miden sin ser excesivamente largos. 4) **Evitar espacios y caracteres especiales**: Solo usar letras, números y guiones bajos. 5) **Prefijos consistentes**: Usar prefijos por aplicación o componente (ej: `myapp_http_requests_total`). También se recomienda usar sufijos estándar como `_total` para counters, `_bucket` para histogramas, y seguir las convenciones de la comunidad."
+      "respuestas_correctas": [1],
+      "explicacion": "**Usar camelCase y espacios** no es una buena práctica en Prometheus. Se recomienda **snake_case**, incluir unidades (`_bytes`, `_seconds`, `_total`), ser descriptivo pero conciso, evitar caracteres especiales y usar prefijos consistentes. También se sugiere usar sufijos estándar como `_total` para counters y `_bucket` para histogramas."
     },
     {
       "id": 18,
@@ -243,17 +244,17 @@
     },
     {
       "id": 19,
-      "pregunta": "¿Cuáles son estrategias de escalabilidad para Prometheus?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de escalabilidad para Prometheus?",
       "nivel": "avanzado",
       "opciones": [
         "Federation",
-        "Sharding",
+        "Agregar más dashboards en Grafana",
         "Remote storage",
         "Horizontal scaling",
         "Recording rules"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las estrategias de escalabilidad para Prometheus incluyen: 1) **Federation**: Permite que un servidor Prometheus recolecte métricas de otros servidores Prometheus, creando jerarquías. 2) **Sharding**: Dividir targets entre múltiples instancias de Prometheus basándose en criterios como región o servicio. 3) **Remote storage**: Usar sistemas de almacenamiento externos como Thanos, Cortex, o InfluxDB para almacenamiento a largo plazo. 4) **Horizontal scaling**: Ejecutar múltiples instancias de Prometheus con diferentes responsabilidades. 5) **Recording rules**: Precomputar consultas complejas para reducir carga en tiempo real. Otras estrategias incluyen optimización de scrape intervals, uso de relabeling para filtrar métricas innecesarias, y implementación de proxies o load balancers."
+      "respuestas_correctas": [1],
+      "explicacion": "**Agregar más dashboards en Grafana** no escala Prometheus. Las estrategias válidas incluyen **federation**, **sharding**, **remote storage**, **escalado horizontal** y **recording rules**. También se puede optimizar los intervalos de scrape, usar relabeling para reducir cardinalidad y emplear proxies o load balancers."
     },
     {
       "id": 20,

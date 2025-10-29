@@ -19,15 +19,15 @@
     {
       "id": 2,
       "nivel": "básico",
-      "pregunta": "¿Cuáles son los principales modelos de servicio en Azure?",
+      "pregunta": "¿Cuál de los siguientes NO es un modelo principal de servicio en Azure?",
       "opciones": [
         "IaaS (Infrastructure as a Service)",
         "PaaS (Platform as a Service)",
         "SaaS (Software as a Service)",
         "FaaS (Function as a Service)"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Los tres modelos principales son: <strong>IaaS</strong> (infraestructura virtualizada como VMs), <strong>PaaS</strong> (plataforma de desarrollo como App Service), y <strong>SaaS</strong> (software listo para usar como Office 365). Cada modelo ofrece diferentes niveles de control y responsabilidad, desde infraestructura básica hasta aplicaciones completas."
+      "respuestas_correctas": [3],
+      "explicacion": "Los tres modelos principales son: <strong>IaaS</strong>, <strong>PaaS</strong> y <strong>SaaS</strong>. <strong>FaaS</strong> no se considera un modelo principal independiente; suele verse como un estilo de cómputo dentro de <strong>PaaS</strong> (por ejemplo, Azure Functions)."
     },
     {
       "id": 3,
@@ -45,223 +45,223 @@
     {
       "id": 4,
       "nivel": "básico",
-      "pregunta": "¿Cuáles son tipos de almacenamiento en Azure?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de Azure Storage?",
       "opciones": [
         "Blob Storage",
         "File Storage",
         "Queue Storage",
-        "Table Storage"
+        "Tape Storage"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure Storage ofrece cuatro tipos: <strong>Blob Storage</strong> (objetos no estructurados), <strong>File Storage</strong> (archivos compartidos SMB), <strong>Queue Storage</strong> (mensajería asíncrona), y <strong>Table Storage</strong> (datos NoSQL estructurados). Cada tipo está optimizado para diferentes casos de uso y patrones de acceso."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Tape Storage</strong> no es parte de Azure Storage. Los tipos válidos son <strong>Blob</strong>, <strong>File</strong> y <strong>Queue Storage</strong> (además de Table Storage), cada uno orientado a diferentes casos de uso."
     },
     {
       "id": 5,
       "nivel": "básico",
-      "pregunta": "¿Qué es Azure Virtual Machine?",
+      "pregunta": "¿Cuál de los siguientes NO describe Azure Virtual Machine?",
       "opciones": [
         "Un servicio de computación en la nube",
         "Una instancia de servidor virtual",
-        "Un contenedor Docker",
+        "Permite control del sistema operativo",
         "Una función serverless"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "<strong>Azure Virtual Machine</strong> es un <strong>servicio de computación en la nube</strong> que proporciona <strong>instancias de servidor virtual</strong> escalables. Ofrece control completo sobre el sistema operativo, aplicaciones y configuraciones. Ideal para migrar aplicaciones existentes, desarrollo/testing, y cargas de trabajo que requieren control total del entorno."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Virtual Machine</strong> es un <strong>servicio de computación</strong> que ofrece <strong>instancias de servidor virtual</strong> con <strong>control del sistema operativo</strong>. No es una <strong>función serverless</strong>; esa capacidad corresponde a Azure Functions."
     },
     {
       "id": 6,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son componentes de Azure Active Directory?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente de Azure Active Directory?",
       "opciones": [
         "Users y Groups",
         "Applications",
         "Conditional Access",
-        "Multi-Factor Authentication"
+        "Resource Groups"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "<strong>Azure Active Directory</strong> incluye: <strong>Users y Groups</strong> (identidades y organización), <strong>Applications</strong> (registro de apps), <strong>Conditional Access</strong> (políticas de acceso basadas en contexto), y <strong>Multi-Factor Authentication</strong> (seguridad adicional). Proporciona gestión de identidades y acceso centralizada para aplicaciones cloud y on-premises."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Resource Groups</strong> pertenecen al modelo de recursos de Azure (ARM), no a Azure AD. En Azure AD sí existen <strong>Users y Groups</strong>, <strong>Applications</strong> y <strong>Conditional Access</strong>, además de MFA y otros componentes de identidad."
     },
     {
       "id": 7,
       "nivel": "intermedio",
-      "pregunta": "¿Qué servicios ofrece Azure para bases de datos?",
+      "pregunta": "¿Cuál de los siguientes NO es un servicio de base de datos gestionado en Azure?",
       "opciones": [
         "Azure SQL Database",
         "Azure Cosmos DB",
         "Azure Database for MySQL",
-        "Azure Database for PostgreSQL"
+        "Azure Data Lake Storage"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure ofrece múltiples servicios de base de datos: <strong>Azure SQL Database</strong> (SQL Server gestionado), <strong>Azure Cosmos DB</strong> (NoSQL distribuida globalmente), <strong>Azure Database for MySQL</strong> y <strong>PostgreSQL</strong> (bases de datos open source gestionadas). Cada servicio está optimizado para diferentes cargas de trabajo y ofrece alta disponibilidad, escalabilidad automática y respaldos integrados."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Data Lake Storage</strong> es un servicio de almacenamiento y análisis de datos, no una base de datos gestionada. Los servicios de base de datos gestionados incluyen <strong>Azure SQL Database</strong>, <strong>Cosmos DB</strong>, <strong>MySQL</strong> y <strong>PostgreSQL</strong>."
     },
     {
       "id": 8,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son tipos de Azure Load Balancer?",
+      "pregunta": "¿Qué servicio de Azure realiza balanceo a nivel DNS global?",
       "opciones": [
         "Public Load Balancer",
         "Internal Load Balancer",
         "Application Gateway",
         "Traffic Manager"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Azure Load Balancer tiene dos tipos principales: <strong>Public Load Balancer</strong> (distribuye tráfico de internet a VMs) e <strong>Internal Load Balancer</strong> (distribuye tráfico dentro de una VNet). Application Gateway y Traffic Manager son servicios de balanceo diferentes: Application Gateway opera en Layer 7 con características avanzadas, mientras que Traffic Manager es un balanceador DNS global."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Traffic Manager</strong> es un <strong>balanceador DNS global</strong>. <strong>Public</strong> e <strong>Internal Load Balancer</strong> operan en capa 4 (TCP/UDP) a nivel regional/VNet, y <strong>Application Gateway</strong> opera en capa 7 (HTTP/HTTPS)."
     },
     {
       "id": 9,
       "nivel": "intermedio",
-      "pregunta": "¿Qué permite Azure App Service?",
+      "pregunta": "¿Cuál de los siguientes NO se implementa con Azure App Service?",
       "opciones": [
         "Hospedar aplicaciones web",
         "APIs REST",
         "Aplicaciones móviles",
         "Funciones serverless"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "<strong>Azure App Service</strong> es una plataforma PaaS que permite <strong>hospedar aplicaciones web</strong>, <strong>APIs REST</strong>, y <strong>backends de aplicaciones móviles</strong>. Soporta múltiples lenguajes (.NET, Java, Python, Node.js), escalado automático, integración continua, y slots de deployment. Las funciones serverless se manejan con Azure Functions, no App Service."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure App Service</strong> permite <strong>hospedar aplicaciones web</strong>, <strong>APIs REST</strong> y <strong>backends móviles</strong>. Las <strong>funciones serverless</strong> se implementan con <strong>Azure Functions</strong>, no con App Service."
     },
     {
       "id": 10,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son características de Azure Virtual Network?",
+      "pregunta": "¿Cuál de los siguientes NO es una característica nativa de Azure Virtual Network?",
       "opciones": [
         "Aislamiento de red",
         "Subnets",
         "Network Security Groups",
-        "VPN Gateway"
+        "Azure DevOps Boards"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "<strong>Azure Virtual Network</strong> proporciona: <strong>Aislamiento de red</strong> (segmentación lógica), <strong>Subnets</strong> (subdivisión de redes), <strong>Network Security Groups</strong> (firewall a nivel de subnet/NIC), y <strong>VPN Gateway</strong> (conectividad híbrida). Permite crear redes privadas seguras en Azure con control total sobre direccionamiento IP, DNS, y políticas de seguridad."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure DevOps Boards</strong> es una herramienta de gestión de proyectos, no una característica de redes. En una VNet sí existen <strong>aislamiento</strong>, <strong>subnets</strong> y <strong>NSGs</strong>. La conectividad híbrida se logra con recursos como VPN Gateway, pero no es una 'característica nativa' de la VNet en sí."
     },
     {
       "id": 11,
       "nivel": "intermedio",
-      "pregunta": "¿Qué es Azure Key Vault?",
+      "pregunta": "¿Cuál de los siguientes NO describe Azure Key Vault?",
       "opciones": [
         "Servicio de gestión de secretos",
         "Almacenamiento de claves criptográficas",
         "Gestión de certificados",
         "Base de datos encriptada"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "<strong>Azure Key Vault</strong> es un <strong>servicio de gestión de secretos</strong> que proporciona <strong>almacenamiento seguro de claves criptográficas</strong> y <strong>gestión de certificados</strong>. Ofrece HSM (Hardware Security Modules), control de acceso granular, auditoría completa, y integración con Azure AD. No es una base de datos encriptada, sino un servicio especializado en seguridad de credenciales."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Key Vault</strong> es un <strong>servicio de gestión de secretos</strong> que proporciona <strong>almacenamiento seguro de claves</strong> y <strong>gestión de certificados</strong>. No es una <strong>base de datos encriptada</strong>, sino un servicio especializado en proteger credenciales y material criptográfico."
     },
     {
       "id": 12,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son patrones de arquitectura en Azure?",
+      "pregunta": "¿Cuál de los siguientes NO es un patrón de arquitectura promovido en Azure?",
       "opciones": [
         "Microservices",
         "Event-driven architecture",
         "CQRS (Command Query Responsibility Segregation)",
-        "Circuit Breaker"
+        "Waterfall"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure soporta múltiples patrones arquitectónicos: <strong>Microservices</strong> (servicios independientes con AKS/Container Apps), <strong>Event-driven architecture</strong> (Event Grid, Service Bus), <strong>CQRS</strong> (separación de comandos y consultas), y <strong>Circuit Breaker</strong> (resiliencia ante fallos). Estos patrones permiten construir aplicaciones escalables, resilientes y mantenibles en la nube."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Waterfall</strong> es un modelo de desarrollo tradicional, no un patrón de arquitectura recomendado para soluciones cloud modernas. Azure promueve patrones como <strong>microservicios</strong>, <strong>event-driven</strong> y <strong>CQRS</strong>, junto a prácticas de resiliencia como Circuit Breaker."
     },
     {
       "id": 13,
       "nivel": "avanzado",
-      "pregunta": "¿Qué permite Azure Resource Manager (ARM)?",
+      "pregunta": "¿Cuál de las siguientes NO es una capacidad de Azure Resource Manager (ARM)?",
       "opciones": [
         "Deployment de recursos",
         "Templates declarativos",
         "Role-based access control",
-        "Resource tagging"
+        "Pipelines CI/CD"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "<strong>Azure Resource Manager (ARM)</strong> es el servicio de deployment y gestión para Azure que permite: <strong>Deployment de recursos</strong> (crear, actualizar, eliminar), <strong>Templates declarativos</strong> (JSON/Bicep para infraestructura como código), <strong>Role-based access control</strong> (RBAC granular), y <strong>Resource tagging</strong> (organización y facturación). Proporciona gestión consistente y segura de recursos."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Pipelines CI/CD</strong> se ofrecen en Azure DevOps/GitHub Actions, no en ARM. ARM sí provee <strong>deployment</strong>, <strong>templates declarativos</strong>, <strong>RBAC</strong> y <strong>tagging</strong> para gobernanza de recursos."
     },
     {
       "id": 14,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son servicios de Azure para DevOps?",
+      "pregunta": "¿Cuál de los siguientes NO es un servicio de Azure orientado a DevOps?",
       "opciones": [
         "Azure DevOps Services",
         "Azure Container Registry",
         "Azure Kubernetes Service",
-        "Azure Functions"
+        "Azure Maps"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Los servicios principales para DevOps son: <strong>Azure DevOps Services</strong> (pipelines CI/CD, repos, boards), <strong>Azure Container Registry</strong> (registro de imágenes Docker), y <strong>Azure Kubernetes Service</strong> (orquestación de contenedores). Azure Functions es un servicio serverless que puede usarse en DevOps pero no es específicamente un servicio DevOps."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Maps</strong> es un servicio de mapas y geolocalización, no orientado a DevOps. Para DevOps se usan <strong>Azure DevOps Services</strong>, <strong>ACR</strong> y <strong>AKS</strong>, entre otros."
     },
     {
       "id": 15,
       "nivel": "avanzado",
-      "pregunta": "¿Qué es Azure Service Fabric?",
+      "pregunta": "¿Cuál de los siguientes NO describe Azure Service Fabric?",
       "opciones": [
         "Plataforma de microservicios",
         "Orquestador de contenedores",
         "Sistema distribuido",
         "Servicio de mensajería"
       ],
-      "respuestas_correctas": [0, 2],
-      "explicacion": "<strong>Azure Service Fabric</strong> es una <strong>plataforma de microservicios</strong> y <strong>sistema distribuido</strong> que facilita el empaquetado, deployment y gestión de aplicaciones escalables y confiables. Aunque puede ejecutar contenedores, no es principalmente un orquestador de contenedores (esa función la cumple AKS). No es un servicio de mensajería."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Service Fabric</strong> es una <strong>plataforma de microservicios</strong> y <strong>sistema distribuido</strong> para construir aplicaciones escalables y confiables. Aunque puede ejecutar contenedores, no es principalmente un servicio de <strong>mensajería</strong>."
     },
     {
       "id": 16,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son características de Azure Cosmos DB?",
+      "pregunta": "¿Cuál de los siguientes NO es una característica de Azure Cosmos DB?",
       "opciones": [
         "Base de datos NoSQL",
         "Distribución global",
         "Múltiples modelos de datos",
-        "Consistencia configurable"
+        "SQL relacional con JOINs nativos"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "<strong>Azure Cosmos DB</strong> es una <strong>base de datos NoSQL</strong> con <strong>distribución global</strong> automática, soporte para <strong>múltiples modelos de datos</strong> (documento, clave-valor, columna, grafo), y <strong>consistencia configurable</strong> (5 niveles). Ofrece latencia de un dígito en milisegundos, escalabilidad elástica, y SLAs del 99.999% de disponibilidad."
+      "respuestas_correctas": [3],
+      "explicacion": "Cosmos DB no es una base de datos relacional tradicional con JOINs nativos como SQL Server. Sí ofrece <strong>modelo NoSQL</strong>, <strong>distribución global</strong>, <strong>múltiples APIs/modelos</strong> y <strong>niveles de consistencia configurables</strong>."
     },
     {
       "id": 17,
       "nivel": "avanzado",
-      "pregunta": "¿Qué permite Azure Policy?",
+      "pregunta": "¿Cuál de los siguientes NO es un objetivo principal de Azure Policy?",
       "opciones": [
         "Governance de recursos",
         "Compliance enforcement",
         "Resource standards",
         "Cost management"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "<strong>Azure Policy</strong> permite <strong>governance de recursos</strong> (control organizacional), <strong>compliance enforcement</strong> (cumplimiento de regulaciones), y <strong>resource standards</strong> (estándares de configuración). Evalúa recursos contra políticas definidas y puede prevenir o remediar configuraciones no conformes. El cost management se maneja con Azure Cost Management, no Policy."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Cost management</strong> se gestiona con Azure Cost Management, no con Policy. Azure Policy se centra en <strong>governance</strong>, <strong>compliance</strong> y <strong>estándares de configuración</strong> aplicados y auditados."
     },
     {
       "id": 18,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son servicios de Azure para AI/ML?",
+      "pregunta": "¿Cuál de los siguientes NO es un servicio de Azure para AI/ML?",
       "opciones": [
         "Azure Machine Learning",
         "Cognitive Services",
         "Azure Bot Service",
-        "Azure Databricks"
+        "Azure Virtual Desktop"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure ofrece servicios completos de AI/ML: <strong>Azure Machine Learning</strong> (plataforma MLOps completa), <strong>Cognitive Services</strong> (APIs pre-entrenadas de visión, lenguaje, habla), <strong>Azure Bot Service</strong> (desarrollo de chatbots inteligentes), y <strong>Azure Databricks</strong> (analytics y ML colaborativo basado en Apache Spark). Todos integran para crear soluciones AI end-to-end."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Virtual Desktop</strong> es un servicio de virtualización de escritorios, no de AI/ML. Para AI/ML se usan <strong>Azure Machine Learning</strong>, <strong>Cognitive Services</strong> y <strong>Azure Bot Service</strong>, además de servicios de datos como Databricks."
     },
     {
       "id": 19,
       "nivel": "avanzado",
-      "pregunta": "¿Qué es Azure Arc?",
+      "pregunta": "¿Cuál de los siguientes NO describe Azure Arc?",
       "opciones": [
         "Gestión híbrida y multi-cloud",
         "Extensión de Azure a on-premises",
         "Gestión de Kubernetes",
         "Solo para Azure resources"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "<strong>Azure Arc</strong> proporciona <strong>gestión híbrida y multi-cloud</strong>, permitiendo <strong>extensión de Azure a on-premises</strong> y otros clouds, incluyendo <strong>gestión de Kubernetes</strong> distribuidos. Extiende los servicios y gestión de Azure más allá de los datacenters de Azure, no se limita solo a recursos de Azure."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Azure Arc</strong> proporciona <strong>gestión híbrida y multi-cloud</strong>, permitiendo <strong>extensión de Azure a on-premises</strong> y otros clouds, incluyendo <strong>gestión de Kubernetes</strong>. No se limita <em>solo</em> a recursos de Azure."
     },
     {
       "id": 20,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son estrategias de disaster recovery en Azure?",
+      "pregunta": "¿Cuál de los siguientes NO es parte de una estrategia de disaster recovery en Azure?",
       "opciones": [
         "Azure Site Recovery",
         "Geo-redundant storage",
         "Cross-region replication",
-        "Backup and restore"
+        "Auto-scaling de App Service"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Azure ofrece múltiples estrategias de disaster recovery: <strong>Azure Site Recovery</strong> (replicación y failover de VMs), <strong>Geo-redundant storage</strong> (replicación automática de datos), <strong>Cross-region replication</strong> (servicios distribuidos geográficamente), y <strong>Backup and restore</strong> (Azure Backup para protección de datos). Estas estrategias se combinan para lograr RPO/RTO óptimos."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Auto-scaling de App Service</strong> es una característica de escalado de aplicaciones, no una estrategia de <em>disaster recovery</em>. Para DR se usan <strong>Site Recovery</strong>, <strong>GRS</strong>, <strong>replicación cross-region</strong> y <strong>backup/restore</strong>."
     }
   ]
 }

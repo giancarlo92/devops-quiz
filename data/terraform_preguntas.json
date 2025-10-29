@@ -17,30 +17,30 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las ventajas principales de Terraform?",
+      "pregunta": "¿Cuál de las siguientes NO es una ventaja principal de Terraform?",
       "nivel": "básico",
       "opciones": [
         "Infraestructura como código",
         "Multi-cloud",
         "Planificación de cambios",
         "Gestión de estado",
-        "Reutilización de código"
+        "Ejecución imperativa por defecto"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Terraform ofrece todas estas ventajas: <strong>Infraestructura como código</strong> (versionable y reproducible), <strong>Multi-cloud</strong> (AWS, Azure, GCP, etc.), <strong>Planificación de cambios</strong> (preview antes de aplicar), <strong>Gestión de estado</strong> (tracking de recursos), y <strong>Reutilización de código</strong> (módulos y templates)."
+      "respuestas_correctas": [4],
+      "explicacion": "**Ejecución imperativa por defecto** no es una ventaja ni el enfoque de Terraform: Terraform es **declarativo**, soporta **multi-cloud**, permite **planificación de cambios** y **gestión de estado**. Además fomenta la reutilización mediante **módulos** y patrones compartidos."
     },
     {
       "id": 3,
-      "pregunta": "¿Qué lenguaje usa Terraform para definir infraestructura?",
+      "pregunta": "Además de HCL, ¿qué formato soporta Terraform para definir infraestructura?",
       "nivel": "básico",
       "opciones": [
-        "HCL (HashiCorp Configuration Language)",
-        "JSON",
         "YAML",
-        "XML"
+        "XML",
+        "JSON",
+        "INI"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Terraform usa principalmente <strong>HCL (HashiCorp Configuration Language)</strong>, un lenguaje declarativo diseñado específicamente para configuración de infraestructura. También soporta <strong>JSON</strong> como formato alternativo, pero HCL es más legible y expresivo para este propósito."
+      "respuestas_correctas": [2],
+      "explicacion": "Terraform usa principalmente **HCL (HashiCorp Configuration Language)** y también soporta **JSON** como formato alternativo. **YAML**, **XML** e **INI** no son formatos soportados para definir la infraestructura en Terraform."
     },
     {
       "id": 4,
@@ -57,21 +57,21 @@
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son los comandos básicos de Terraform?",
+      "pregunta": "¿Cuál de los siguientes NO es un comando básico de Terraform?",
       "nivel": "básico",
       "opciones": [
         "terraform init",
         "terraform plan",
         "terraform apply",
         "terraform destroy",
-        "terraform validate"
+        "terraform status"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los comandos básicos incluyen: <strong>terraform init</strong> (inicializa directorio de trabajo), <strong>terraform plan</strong> (muestra cambios planificados), <strong>terraform apply</strong> (aplica cambios), <strong>terraform destroy</strong> (destruye infraestructura), y <strong>terraform validate</strong> (valida sintaxis). Estos comandos forman el flujo de trabajo básico de Terraform."
+      "respuestas_correctas": [4],
+      "explicacion": "Comandos básicos: **terraform init** (inicializa), **terraform plan** (previsualiza cambios), **terraform apply** (aplica), **terraform destroy** (destruye). **terraform status** no existe como comando de Terraform. Otros útiles incluyen **terraform validate** (valida sintaxis) y **terraform fmt** (formatea)."
     },
     {
       "id": 6,
-      "pregunta": "¿Qué hace el comando 'terraform init'?",
+      "pregunta": "¿Cuál de las siguientes acciones NO realiza 'terraform init'?",
       "nivel": "intermedio",
       "opciones": [
         "Inicializa el directorio de trabajo",
@@ -79,8 +79,8 @@
         "Configura el backend",
         "Aplica cambios a la infraestructura"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "<strong>terraform init</strong> realiza tres funciones principales: <strong>inicializa el directorio de trabajo</strong> preparándolo para Terraform, <strong>descarga providers</strong> necesarios según la configuración, y <strong>configura el backend</strong> para almacenar el estado. No aplica cambios a la infraestructura, solo prepara el entorno."
+      "respuestas_correctas": [3],
+      "explicacion": "**terraform init** inicializa el directorio, **descarga providers** y **configura el backend** para el estado. **No aplica cambios a la infraestructura**; solo prepara el entorno antes de planificar o aplicar."
     },
     {
       "id": 7,
@@ -97,7 +97,7 @@
     },
     {
       "id": 8,
-      "pregunta": "¿Dónde se puede almacenar el estado de Terraform?",
+      "pregunta": "¿Cuál de las siguientes NO es una ubicación soportada para almacenar el estado de Terraform?",
       "nivel": "intermedio",
       "opciones": [
         "Local (terraform.tfstate)",
@@ -105,8 +105,8 @@
         "Terraform Cloud",
         "Base de datos"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "El estado se puede almacenar: <strong>localmente</strong> (terraform.tfstate, por defecto), en <strong>remote backends</strong> como S3, Azure Storage, GCS para colaboración y seguridad, y en <strong>Terraform Cloud</strong> que proporciona gestión de estado como servicio. Las bases de datos no son backends estándar soportados."
+      "respuestas_correctas": [3],
+      "explicacion": "El estado se puede almacenar **localmente**, en **remote backends** (S3, Azure Storage, GCS) y en **Terraform Cloud**. Una **base de datos** no es un backend estándar soportado para el estado de Terraform."
     },
     {
       "id": 9,
@@ -136,7 +136,7 @@
     },
     {
       "id": 11,
-      "pregunta": "¿Cuáles son los tipos de variables en Terraform?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de dato soportado por Terraform?",
       "nivel": "intermedio",
       "opciones": [
         "string",
@@ -144,10 +144,10 @@
         "bool",
         "list",
         "map",
-        "object"
+        "array"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4, 5],
-      "explicacion": "Terraform soporta tipos primitivos: <strong>string</strong> (texto), <strong>number</strong> (enteros y decimales), <strong>bool</strong> (true/false); y tipos complejos: <strong>list</strong> (secuencia ordenada), <strong>map</strong> (clave-valor), y <strong>object</strong> (estructura con atributos tipados). También soporta <strong>set</strong> y <strong>tuple</strong> para casos específicos."
+      "respuestas_correctas": [5],
+      "explicacion": "Terraform soporta tipos primitivos (**string**, **number**, **bool**) y complejos (**list**, **map**, **object**), además de **set** y **tuple**. **array** no es un tipo de dato propio en Terraform; en su lugar se usa **list** o **tuple** según el caso."
     },
     {
       "id": 12,
@@ -229,17 +229,17 @@
     },
     {
       "id": 18,
-      "pregunta": "¿Cuáles son buenas prácticas para el estado de Terraform?",
+      "pregunta": "¿Cuál de las siguientes NO es una buena práctica para gestionar el estado de Terraform?",
       "nivel": "avanzado",
       "opciones": [
         "Usar remote backend",
         "Habilitar state locking",
         "Hacer backups regulares",
         "No editar manualmente el estado",
-        "Usar workspaces para diferentes entornos"
+        "Guardar el estado en el repositorio Git"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las buenas prácticas incluyen: <strong>usar remote backend</strong> para colaboración, <strong>habilitar state locking</strong> para prevenir conflictos, <strong>hacer backups regulares</strong> del estado, <strong>nunca editar manualmente</strong> el archivo de estado, y <strong>usar workspaces</strong> para separar entornos. Estas prácticas garantizan integridad y colaboración segura."
+      "respuestas_correctas": [4],
+      "explicacion": "Buenas prácticas: **remote backend** para colaboración, **state locking** para evitar conflictos, **backups regulares**, **no editar manualmente** el estado y separar entornos con **workspaces**. **Guardar el estado en el repositorio Git** no es recomendable por seguridad e integridad."
     },
     {
       "id": 19,
@@ -256,17 +256,17 @@
     },
     {
       "id": 20,
-      "pregunta": "¿Qué estrategias existen para manejar secretos en Terraform?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia adecuada para manejar secretos en Terraform?",
       "nivel": "avanzado",
       "opciones": [
         "Variables de entorno",
         "Archivos .tfvars separados",
         "Servicios de gestión de secretos (AWS Secrets Manager, Azure Key Vault)",
-        "Terraform Cloud/Enterprise",
+        "Hardcodear secretos en archivos .tf",
         "Nunca hardcodear en archivos .tf"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las estrategias incluyen: <strong>variables de entorno</strong> (TF_VAR_*), <strong>archivos .tfvars separados</strong> (no versionados), <strong>servicios de gestión de secretos</strong> como AWS Secrets Manager o Azure Key Vault, <strong>Terraform Cloud/Enterprise</strong> con variables sensibles, y la regla fundamental de <strong>nunca hardcodear secretos</strong> en archivos .tf versionados."
+      "respuestas_correctas": [3],
+      "explicacion": "Estrategias adecuadas: **variables de entorno** (TF_VAR_*), **archivos .tfvars** separados y no versionados, **servicios de gestión de secretos** (AWS Secrets Manager, Azure Key Vault) y la regla de **nunca hardcodear secretos** en archivos .tf. **Hardcodear secretos en archivos .tf** es una mala práctica que expone credenciales."
     }
   ]
 }

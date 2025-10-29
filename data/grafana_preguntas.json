@@ -17,31 +17,31 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las características principales de Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica principal de Grafana?",
       "nivel": "básico",
       "opciones": [
         "Dashboards interactivos",
         "Alertas",
         "Múltiples fuentes de datos",
         "Visualizaciones personalizables",
-        "Colaboración en equipo"
+        "Motor de base de datos integrado"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las características principales incluyen: <strong>dashboards interactivos</strong> (con filtros y variables), <strong>alertas</strong> (notificaciones automáticas), <strong>múltiples fuentes de datos</strong> (más de 60 conectores), <strong>visualizaciones personalizables</strong> (gráficos, tablas, mapas), y <strong>colaboración en equipo</strong> (compartir, permisos, organizaciones)."
+      "respuestas_correctas": [4],
+      "explicacion": "Grafana <strong>no es un motor de base de datos</strong>; se conecta a múltiples fuentes externas y ofrece <strong>dashboards</strong>, <strong>alertas</strong> y <strong>visualizaciones</strong> personalizables."
     },
     {
       "id": 3,
-      "pregunta": "¿Cuáles son fuentes de datos comunes en Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es una fuente de datos común en Grafana?",
       "nivel": "básico",
       "opciones": [
         "Prometheus",
         "InfluxDB",
         "Elasticsearch",
-        "MySQL",
-        "CloudWatch"
+        "Active Directory",
+        "MySQL"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las fuentes de datos comunes son: <strong>Prometheus</strong> (métricas de sistemas), <strong>InfluxDB</strong> (base de datos de series temporales), <strong>Elasticsearch</strong> (logs y búsquedas), <strong>MySQL</strong> (base de datos relacional), y <strong>CloudWatch</strong> (métricas de AWS). Grafana soporta más de 60 fuentes de datos diferentes."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Active Directory</strong> es un sistema de identidad, no una fuente de datos típica en Grafana. Grafana sí soporta <strong>Prometheus</strong>, <strong>InfluxDB</strong>, <strong>Elasticsearch</strong> y <strong>MySQL</strong>."
     },
     {
       "id": 4,
@@ -58,17 +58,17 @@
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son tipos de paneles en Grafana?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de panel en Grafana?",
       "nivel": "básico",
       "opciones": [
         "Graph",
         "Stat",
         "Table",
         "Heatmap",
-        "Text"
+        "Spreadsheet"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos de paneles incluyen: <strong>Graph</strong> (gráficos de líneas/barras), <strong>Stat</strong> (valores únicos con umbrales), <strong>Table</strong> (datos tabulares), <strong>Heatmap</strong> (mapas de calor), y <strong>Text</strong> (contenido markdown/HTML). Cada tipo está optimizado para diferentes tipos de datos y casos de uso."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Spreadsheet</strong> no es un tipo de panel nativo de Grafana. Sí existen <strong>Graph</strong>, <strong>Stat</strong>, <strong>Table</strong> y <strong>Heatmap</strong>."
     },
     {
       "id": 6,
@@ -85,17 +85,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son tipos de visualizaciones en Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es una visualización estándar en Grafana?",
       "nivel": "intermedio",
       "opciones": [
         "Time series",
         "Bar chart",
-        "Pie chart",
+        "Gantt chart",
         "Gauge",
         "World map"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos de visualizaciones incluyen: <strong>Time series</strong> (gráficos temporales), <strong>Bar chart</strong> (gráficos de barras), <strong>Pie chart</strong> (gráficos circulares), <strong>Gauge</strong> (medidores/indicadores), y <strong>World map</strong> (mapas geográficos). Cada visualización está optimizada para diferentes tipos de datos y casos de uso específicos."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Gantt chart</strong> no es una visualización estándar en Grafana. Sí lo son <strong>Time series</strong>, <strong>Bar chart</strong>, <strong>Gauge</strong> y <strong>World map</strong>."
     },
     {
       "id": 8,
@@ -112,17 +112,17 @@
     },
     {
       "id": 9,
-      "pregunta": "¿Cuáles son tipos de variables en Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es un tipo de variable en Grafana?",
       "nivel": "intermedio",
       "opciones": [
         "Query variables",
         "Custom variables",
         "Constant variables",
         "Datasource variables",
-        "Interval variables"
+        "Secret variables"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos incluyen: <strong>Query variables</strong> (valores desde consultas), <strong>Custom variables</strong> (valores manuales), <strong>Constant variables</strong> (valores fijos), <strong>Datasource variables</strong> (selección de fuente de datos), e <strong>Interval variables</strong> (intervalos de tiempo). Cada tipo sirve para diferentes casos de uso de interactividad."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Secret variables</strong> no es una categoría de variables en Grafana. Sí existen <strong>query</strong>, <strong>custom</strong>, <strong>constant</strong> y <strong>datasource</strong>."
     },
     {
       "id": 10,
@@ -139,17 +139,17 @@
     },
     {
       "id": 11,
-      "pregunta": "¿Cuáles son canales de notificación en Grafana?",
+      "pregunta": "¿Cuál de los siguientes NO es un canal de notificación soportado por Grafana?",
       "nivel": "intermedio",
       "opciones": [
         "Email",
         "Slack",
         "PagerDuty",
-        "Webhook",
+        "FTP",
         "Microsoft Teams"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los canales incluyen: <strong>Email</strong> (correo electrónico), <strong>Slack</strong> (mensajería de equipo), <strong>PagerDuty</strong> (gestión de incidentes), <strong>Webhook</strong> (HTTP personalizado), y <strong>Microsoft Teams</strong> (colaboración). Cada canal permite configurar formatos y destinatarios específicos para las alertas."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>FTP</strong> no es un canal de notificación de Grafana. Grafana soporta <strong>Email</strong>, <strong>Slack</strong>, <strong>PagerDuty</strong>, <strong>Teams</strong> y <strong>Webhook</strong>."
     },
     {
       "id": 12,
@@ -166,17 +166,17 @@
     },
     {
       "id": 13,
-      "pregunta": "¿Cuáles son características avanzadas de Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica avanzada de Grafana?",
       "nivel": "avanzado",
       "opciones": [
         "Templating",
         "Annotations",
         "Provisioning",
         "Plugins",
-        "API REST"
+        "Kernel tuning"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las características avanzadas incluyen: <strong>Templating</strong> (variables dinámicas), <strong>Annotations</strong> (marcadores de eventos), <strong>Provisioning</strong> (configuración como código), <strong>Plugins</strong> (extensiones personalizadas), y <strong>API REST</strong> (automatización y integración). Estas funciones permiten escalabilidad y personalización avanzada."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Kernel tuning</strong> no es una característica de Grafana; Grafana sí ofrece <strong>templating</strong>, <strong>annotations</strong>, <strong>provisioning</strong> y <strong>plugins</strong>."
     },
     {
       "id": 14,
@@ -206,16 +206,16 @@
     },
     {
       "id": 16,
-      "pregunta": "¿Cuáles son tipos de plugins en Grafana?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de plugin en Grafana?",
       "nivel": "avanzado",
       "opciones": [
         "Panel plugins",
         "Datasource plugins",
-        "App plugins",
-        "Renderer plugins"
+        "Network plugins",
+        "App plugins"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los tipos incluyen: <strong>Panel plugins</strong> (nuevas visualizaciones), <strong>Datasource plugins</strong> (conectores a fuentes de datos), <strong>App plugins</strong> (aplicaciones completas), y <strong>Renderer plugins</strong> (generación de imágenes/PDFs). Permiten extender funcionalidad y conectar con sistemas específicos."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Network plugins</strong> no es una categoría de plugins en Grafana. Sí existen <strong>panel</strong>, <strong>datasource</strong> y <strong>app</strong> (y renderer como tipo adicional)."
     },
     {
       "id": 17,
@@ -232,17 +232,17 @@
     },
     {
       "id": 18,
-      "pregunta": "¿Cuáles son métodos de autenticación en Grafana?",
+      "pregunta": "¿Cuál de los siguientes NO es un método de autenticación soportado por Grafana?",
       "nivel": "avanzado",
       "opciones": [
         "Local authentication",
         "LDAP",
         "OAuth",
         "SAML",
-        "Auth Proxy"
+        "Kerberos (nativo)"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los métodos incluyen: <strong>Local authentication</strong> (usuarios locales), <strong>LDAP</strong> (Active Directory), <strong>OAuth</strong> (Google, GitHub, etc.), <strong>SAML</strong> (SSO empresarial), y <strong>Auth Proxy</strong> (autenticación delegada). Permiten integración con sistemas de identidad existentes y SSO."
+      "respuestas_correctas": [4],
+      "explicacion": "Grafana no soporta <strong>Kerberos de forma nativa</strong>; se integra mediante <strong>Auth Proxy</strong>. Sí soporta <strong>local</strong>, <strong>LDAP</strong>, <strong>OAuth</strong> y <strong>SAML</strong>."
     },
     {
       "id": 19,
@@ -259,17 +259,17 @@
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son mejores prácticas para Grafana?",
+      "pregunta": "¿Cuál de las siguientes NO es una práctica recomendada en Grafana?",
       "nivel": "avanzado",
       "opciones": [
         "Organizar dashboards en folders",
         "Usar variables para reutilización",
-        "Implementar alertas significativas",
+        "Permitir acceso anónimo a dashboards sensibles",
         "Documentar dashboards",
         "Usar provisioning para configuración"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las mejores prácticas incluyen: <strong>organizar dashboards en folders</strong> (por equipos/servicios), <strong>usar variables para reutilización</strong> (dashboards dinámicos), <strong>implementar alertas significativas</strong> (evitar ruido), <strong>documentar dashboards</strong> (facilitar mantenimiento), y <strong>usar provisioning para configuración</strong> (Infrastructure as Code). También: convenciones de nomenclatura, optimización de queries, control de versiones, y permisos adecuados."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Permitir acceso anónimo a dashboards sensibles</strong> no es recomendable. Sí lo son <strong>folders</strong>, <strong>variables</strong>, <strong>documentación</strong> y <strong>provisioning</strong>."
     }
   ]
 }

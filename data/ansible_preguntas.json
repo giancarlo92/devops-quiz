@@ -7,39 +7,39 @@
       "pregunta": "¿Qué es Ansible?",
       "nivel": "básico",
       "opciones": [
-        "Una herramienta de automatización de TI",
         "Una base de datos",
+        "Una herramienta de automatización de TI",
         "Un servidor web",
         "Un lenguaje de programación"
       ],
-      "respuestas_correctas": [0],
+      "respuestas_correctas": [1],
       "explicacion": "Ansible es una <strong>herramienta de automatización de TI</strong> de código abierto desarrollada por Red Hat. Permite automatizar la configuración de sistemas, despliegue de aplicaciones, orquestación de tareas y gestión de infraestructura de manera simple y eficiente."
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las características principales de Ansible?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica principal de Ansible?",
       "nivel": "básico",
       "opciones": [
         "Agentless",
         "Declarativo",
         "Idempotente",
         "Usa SSH",
-        "YAML syntax"
+        "Requiere agente instalado en cada host"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Ansible tiene todas estas características: <strong>Agentless</strong> (no requiere agentes en hosts remotos), <strong>Declarativo</strong> (describes el estado deseado), <strong>Idempotente</strong> (ejecutar múltiples veces produce el mismo resultado), <strong>Usa SSH</strong> (comunicación segura), y <strong>YAML syntax</strong> (fácil de leer y escribir)."
+      "respuestas_correctas": [4],
+      "explicacion": "Ansible es <strong>agentless</strong>, <strong>declarativo</strong>, <strong>idempotente</strong> y se comunica normalmente por <strong>SSH</strong>. No <strong>requiere agentes instalados</strong> en los hosts gestionados."
     },
     {
       "id": 3,
       "pregunta": "¿Qué es un Playbook en Ansible?",
       "nivel": "básico",
       "opciones": [
-        "Archivo YAML que define tareas de automatización",
         "Una base de datos",
-        "Un tipo de servidor",
-        "Una configuración de red"
+        "Archivo YAML que define tareas de automatización",
+        "Una configuración de red",
+        "Un tipo de servidor"
       ],
-      "respuestas_correctas": [0],
+      "respuestas_correctas": [1],
       "explicacion": "Un Playbook es un <strong>archivo YAML que define tareas de automatización</strong>. Contiene una serie de 'plays' que mapean grupos de hosts a roles/tareas específicas. Los playbooks son el corazón de Ansible y permiten orquestar configuraciones complejas de manera ordenada y repetible."
     },
     {
@@ -47,26 +47,26 @@
       "pregunta": "¿Qué es un Inventory en Ansible?",
       "nivel": "básico",
       "opciones": [
-        "Lista de hosts gestionados por Ansible",
+        "Un tipo de módulo",
         "Un tipo de playbook",
-        "Una configuración de red",
-        "Un tipo de módulo"
+        "Lista de hosts gestionados por Ansible",
+        "Una configuración de red"
       ],
-      "respuestas_correctas": [0],
+      "respuestas_correctas": [2],
       "explicacion": "Un Inventory es una <strong>lista de hosts gestionados por Ansible</strong>. Define qué servidores están disponibles para automatización, puede organizarlos en grupos, y especificar variables específicas para hosts o grupos. Puede ser estático (archivo) o dinámico (script/plugin)."
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son formatos de Inventory?",
+      "pregunta": "¿Cuál de los siguientes NO es un formato de Inventory?",
       "nivel": "básico",
       "opciones": [
         "INI format",
         "YAML format",
-        "JSON format",
+        "CSV format",
         "Dynamic inventory"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Ansible soporta múltiples formatos de inventory: <strong>INI format</strong> (formato tradicional, simple y legible), <strong>YAML format</strong> (más estructurado, permite jerarquías complejas), <strong>JSON format</strong> (útil para integración con APIs), y <strong>Dynamic inventory</strong> (scripts/plugins que generan inventarios dinámicamente desde fuentes externas como AWS, Azure, etc.)."
+      "respuestas_correctas": [2],
+      "explicacion": "Ansible soporta inventarios <strong>INI</strong>, <strong>YAML</strong> y <strong>dinámicos</strong>. <strong>CSV</strong> no es un formato estándar de inventory en Ansible."
     },
     {
       "id": 6,
@@ -83,17 +83,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son módulos comunes en Ansible?",
+      "pregunta": "¿Cuál de los siguientes NO es un módulo común en Ansible?",
       "nivel": "intermedio",
       "opciones": [
         "copy",
         "file",
         "service",
         "yum/apt",
-        "template"
+        "curl"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Estos son módulos fundamentales en Ansible: <strong>copy</strong> (copia archivos desde control node a hosts), <strong>file</strong> (gestiona archivos/directorios, permisos, enlaces), <strong>service</strong> (controla servicios del sistema), <strong>yum/apt</strong> (gestión de paquetes en RHEL/Debian), y <strong>template</strong> (procesa plantillas Jinja2 para generar archivos de configuración dinámicos)."
+      "respuestas_correctas": [4],
+      "explicacion": "Módulos comunes incluyen <strong>copy</strong>, <strong>file</strong>, <strong>service</strong> y <strong>yum/apt</strong>. <strong>curl</strong> es una utilidad de sistema, NO un módulo de Ansible."
     },
     {
       "id": 8,
@@ -123,17 +123,17 @@
     },
     {
       "id": 10,
-      "pregunta": "¿Cuáles son tipos de Variables en Ansible?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de variable en Ansible?",
       "nivel": "intermedio",
       "opciones": [
         "Host variables",
         "Group variables",
         "Play variables",
         "Extra variables",
-        "Facts"
+        "Kernel variables"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Ansible maneja varios tipos de variables: <strong>Host variables</strong> (específicas de un host), <strong>Group variables</strong> (aplicadas a grupos de hosts), <strong>Play variables</strong> (definidas en el play), <strong>Extra variables</strong> (pasadas por línea de comandos, máxima precedencia), y <strong>Facts</strong> (información del sistema recopilada automáticamente). Cada tipo tiene diferente precedencia y alcance."
+      "respuestas_correctas": [4],
+      "explicacion": "Tipos habituales: <strong>Host</strong>, <strong>Group</strong>, <strong>Play</strong> y <strong>Extra variables</strong>. <strong>Kernel variables</strong> no es una categoría de variables de Ansible."
     },
     {
       "id": 11,
@@ -176,7 +176,7 @@
     },
     {
       "id": 14,
-      "pregunta": "¿Cuál es la estructura de un Role?",
+      "pregunta": "¿Cuál de los siguientes NO forma parte de la estructura típica de un Role?",
       "nivel": "avanzado",
       "opciones": [
         "tasks/",
@@ -184,10 +184,10 @@
         "vars/",
         "defaults/",
         "templates/",
-        "files/"
+        "bin/"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4, 5],
-      "explicacion": "Un Role tiene una estructura estándar: <strong>tasks/</strong> (tareas principales), <strong>handlers/</strong> (handlers del role), <strong>vars/</strong> (variables del role), <strong>defaults/</strong> (variables por defecto), <strong>templates/</strong> (plantillas Jinja2), y <strong>files/</strong> (archivos estáticos). También puede incluir meta/, tests/, y README.md para metadatos, pruebas y documentación."
+      "respuestas_correctas": [5],
+      "explicacion": "La estructura típica de un role incluye <strong>tasks/</strong>, <strong>handlers/</strong>, <strong>vars/</strong>, <strong>defaults/</strong>, <strong>templates/</strong> y <strong>files/</strong>. <strong>bin/</strong> no forma parte estándar de los roles."
     },
     {
       "id": 15,
@@ -217,15 +217,15 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Cuáles son estrategias de ejecución en Ansible?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de ejecución en Ansible?",
       "nivel": "avanzado",
       "opciones": [
         "linear",
         "free",
         "debug"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Ansible tiene varias estrategias de ejecución: <strong>linear</strong> (por defecto, espera que todos los hosts completen una tarea antes de continuar), <strong>free</strong> (permite que hosts avancen independientemente), y <strong>debug</strong> (modo interactivo para debugging). Cada estrategia afecta el paralelismo y sincronización de la ejecución."
+      "respuestas_correctas": [2],
+      "explicacion": "Estrategias válidas: <strong>linear</strong> y <strong>free</strong>. <strong>debug</strong> no es una estrategia de ejecución, es un modo para depuración."
     },
     {
       "id": 18,
@@ -255,17 +255,17 @@
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son mejores prácticas para Ansible?",
+      "pregunta": "¿Cuál de las siguientes NO es una buena práctica en Ansible?",
       "nivel": "avanzado",
       "opciones": [
         "Usar roles para organización",
         "Implementar idempotencia",
         "Usar Ansible Vault para secretos",
-        "Documentar playbooks",
+        "Guardar secretos en texto plano en Git",
         "Testing con molecule"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las <strong>mejores prácticas de Ansible</strong> incluyen: <strong>Roles</strong> para organizar código reutilizable, <strong>Idempotencia</strong> para ejecuciones seguras repetidas, <strong>Ansible Vault</strong> para proteger secretos, <strong>Documentación</strong> clara en playbooks y roles, y <strong>Testing con Molecule</strong> para validar roles. Estas prácticas aseguran código mantenible, seguro y confiable."
+      "respuestas_correctas": [3],
+      "explicacion": "Buenas prácticas: roles, idempotencia, y uso de Vault para secretos, además de pruebas con Molecule. <strong>Guardar secretos en texto plano en Git</strong> NO es una buena práctica."
     }
   ]
 }

@@ -17,20 +17,20 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las versiones principales de PowerShell?",
+      "pregunta": "¿Cuál de los siguientes NO es una versión de PowerShell?",
       "nivel": "básico",
       "opciones": [
         "Windows PowerShell (5.1)",
         "PowerShell Core (6.x)",
-        "PowerShell 7+",
-        "PowerShell ISE"
+        "PowerShell ISE",
+        "PowerShell 7+"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Las versiones principales son: <strong>Windows PowerShell 5.1</strong> (basado en .NET Framework, solo Windows), <strong>PowerShell Core 6.x</strong> (basado en .NET Core, multiplataforma), y <strong>PowerShell 7+</strong> (unifica Windows PowerShell y PowerShell Core, basado en .NET). PowerShell ISE es un entorno de desarrollo integrado, no una versión del motor de PowerShell."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>PowerShell ISE</strong> es un <strong>entorno de desarrollo integrado</strong>, no una versión del motor de PowerShell. Las versiones principales del motor son Windows PowerShell 5.1, PowerShell Core 6.x y PowerShell 7+."
     },
     {
       "id": 3,
-      "pregunta": "¿Qué comando se usa para obtener ayuda en PowerShell?",
+      "pregunta": "¿Cuál de estos NO muestra ayuda nativa en PowerShell?",
       "nivel": "básico",
       "opciones": [
         "Get-Help",
@@ -38,34 +38,34 @@
         "Man",
         "Info"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "<strong>Get-Help</strong> es el cmdlet principal para obtener ayuda, y <strong>Help</strong> es su alias. Ambos proporcionan documentación detallada sobre cmdlets, funciones y conceptos. Ejemplos: <code>Get-Help Get-Process</code>, <code>Help Get-Process -Examples</code>, <code>Get-Help about_Variables</code>. Man e Info no son comandos nativos de PowerShell."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Get-Help</strong> y su alias <strong>Help</strong> muestran la ayuda. En muchos entornos, <strong>man</strong> es un alias funcional hacia la ayuda. <strong>Info</strong> no es un comando nativo de PowerShell para mostrar ayuda."
     },
     {
       "id": 4,
-      "pregunta": "¿Qué comando lista archivos y carpetas?",
+      "pregunta": "¿Cuál de los siguientes NO lista archivos y carpetas en PowerShell?",
       "nivel": "básico",
       "opciones": [
         "Get-ChildItem",
         "ls",
         "dir",
-        "gci"
+        "List-Items"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "<strong>Get-ChildItem</strong> es el cmdlet principal para listar archivos y carpetas. <strong>ls</strong>, <strong>dir</strong> y <strong>gci</strong> son aliases del mismo cmdlet. Ejemplos: <code>Get-ChildItem C:\\</code>, <code>ls -Recurse</code>, <code>dir *.txt</code>, <code>gci -Hidden</code>. Todos estos comandos proporcionan la misma funcionalidad con diferentes sintaxis."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>List-Items</strong> no es un cmdlet/alias válido. Para listar se usan <strong>Get-ChildItem</strong> y sus aliases <strong>ls</strong>/<strong>dir</strong>/<strong>gci</strong>."
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son comandos básicos para navegación?",
+      "pregunta": "¿Cuál de los siguientes NO es un comando de navegación en PowerShell?",
       "nivel": "básico",
       "opciones": [
         "Set-Location (cd)",
         "Get-Location (pwd)",
         "Push-Location",
-        "Pop-Location"
+        "Pop-Registry"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Comandos de navegación: <strong>Set-Location (cd)</strong> cambia el directorio actual, <strong>Get-Location (pwd)</strong> muestra la ubicación actual, <strong>Push-Location</strong> guarda la ubicación actual en una pila y cambia a otra, <strong>Pop-Location</strong> regresa a la ubicación guardada. Ejemplo: <code>cd C:\\Users</code>, <code>pwd</code>, <code>pushd D:\\Projects</code>, <code>popd</code>."
+      "respuestas_correctas": [3],
+      "explicacion": "Los comandos de navegación incluyen <strong>Set-Location (cd)</strong>, <strong>Get-Location (pwd)</strong>, <strong>Push-Location</strong> y <strong>Pop-Location</strong>. <strong>Pop-Registry</strong> no existe. Ejemplo: <code>cd C\\\\Users</code>, <code>pwd</code>, <code>pushd D\\\\Projects</code>, <code>popd</code>."
     },
     {
       "id": 6,
@@ -82,17 +82,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son cmdlets comunes para gestión de archivos?",
+      "pregunta": "¿Cuál de los siguientes NO gestiona archivos o carpetas?",
       "nivel": "intermedio",
       "opciones": [
         "Copy-Item",
         "Move-Item",
         "Remove-Item",
         "New-Item",
-        "Rename-Item"
+        "Start-Job"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Cmdlets de gestión de archivos: <strong>Copy-Item</strong> (copia archivos/carpetas), <strong>Move-Item</strong> (mueve/corta), <strong>Remove-Item</strong> (elimina), <strong>New-Item</strong> (crea nuevos), <strong>Rename-Item</strong> (renombra). Ejemplos: <code>Copy-Item file.txt backup.txt</code>, <code>Move-Item *.log C:\\Logs</code>, <code>Remove-Item temp.txt</code>, <code>New-Item -ItemType Directory NewFolder</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Copy-Item</strong>, <strong>Move-Item</strong>, <strong>Remove-Item</strong> y <strong>New-Item</strong> gestionan archivos/carpetas. <strong>Start-Job</strong> crea trabajos en segundo plano y no es de gestión de archivos. Ejemplos: <code>Move-Item *.log C\\\\Logs</code>, <code>Remove-Item temp.txt</code>."
     },
     {
       "id": 8,
@@ -109,17 +109,17 @@
     },
     {
       "id": 9,
-      "pregunta": "¿Cuáles son operadores de comparación en PowerShell?",
+      "pregunta": "¿Cuál de los siguientes NO es un operador de comparación en PowerShell?",
       "nivel": "intermedio",
       "opciones": [
         "-eq (igual)",
         "-ne (no igual)",
         "-lt (menor que)",
         "-gt (mayor que)",
-        "-like (similar)"
+        "-equals"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Operadores de comparación: <strong>-eq</strong> (igual), <strong>-ne</strong> (no igual), <strong>-lt</strong> (menor que), <strong>-gt</strong> (mayor que), <strong>-like</strong> (coincidencia con wildcards). También existen: <code>-le</code> (menor o igual), <code>-ge</code> (mayor o igual), <code>-match</code> (regex), <code>-contains</code> (contiene). Ejemplo: <code>$a -eq 5</code>, <code>$name -like 'John*'</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "Operadores de comparación válidos incluyen: <strong>-eq</strong>, <strong>-ne</strong>, <strong>-lt</strong>, <strong>-gt</strong>, <strong>-like</strong>. <strong>-equals</strong> no existe en PowerShell; el equivalente es <strong>-eq</strong>."
     },
     {
       "id": 10,
@@ -136,16 +136,16 @@
     },
     {
       "id": 11,
-      "pregunta": "¿Cuáles son cmdlets para gestión de procesos?",
+      "pregunta": "¿Cuál de los siguientes NO gestiona procesos?",
       "nivel": "intermedio",
       "opciones": [
         "Get-Process",
         "Start-Process",
         "Stop-Process",
-        "Wait-Process"
+        "Get-Service"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Cmdlets de gestión de procesos: <strong>Get-Process</strong> (lista procesos), <strong>Start-Process</strong> (inicia nuevos procesos), <strong>Stop-Process</strong> (termina procesos), <strong>Wait-Process</strong> (espera a que termine un proceso). Ejemplos: <code>Get-Process notepad</code>, <code>Start-Process notepad.exe</code>, <code>Stop-Process -Name notepad</code>, <code>Wait-Process -Name setup</code>."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Get-Process</strong>, <strong>Start-Process</strong> y <strong>Stop-Process</strong> gestionan procesos. <strong>Get-Service</strong> gestiona servicios, no procesos. Ejemplos: <code>Start-Process notepad.exe</code>, <code>Stop-Process -Name notepad</code>."
     },
     {
       "id": 12,
@@ -162,17 +162,17 @@
     },
     {
       "id": 13,
-      "pregunta": "¿Cuáles son cmdlets para trabajar con objetos?",
+      "pregunta": "¿Cuál de los siguientes NO es para selección/filtrado/transformación de objetos?",
       "nivel": "avanzado",
       "opciones": [
         "Select-Object",
         "Where-Object",
         "ForEach-Object",
         "Sort-Object",
-        "Group-Object"
+        "Format-Table"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Cmdlets para objetos: <strong>Select-Object</strong> (selecciona propiedades), <strong>Where-Object</strong> (filtra objetos), <strong>ForEach-Object</strong> (ejecuta código para cada objeto), <strong>Sort-Object</strong> (ordena), <strong>Group-Object</strong> (agrupa). Ejemplos: <code>Get-Process | Select-Object Name, CPU | Where-Object {$_.CPU -gt 100} | Sort-Object CPU</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Select-Object</strong>, <strong>Where-Object</strong>, <strong>ForEach-Object</strong> y <strong>Sort-Object</strong> manipulan el conjunto de objetos (selección, filtro, transformación, orden). <strong>Format-Table</strong> solo <strong>presenta</strong> la salida para pantalla y no debe usarse para lógica de procesamiento."
     },
     {
       "id": 14,
@@ -189,17 +189,17 @@
     },
     {
       "id": 15,
-      "pregunta": "¿Cuáles son características de las funciones avanzadas?",
+      "pregunta": "¿Cuál de los siguientes NO es una característica de las funciones avanzadas?",
       "nivel": "avanzado",
       "opciones": [
         "Parámetros con validación",
         "Soporte para pipeline",
         "Help integrado",
-        "Manejo de errores",
+        "Compilación nativa",
         "Atributos [CmdletBinding()]"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Funciones avanzadas incluyen: <strong>Parámetros con validación</strong> ([ValidateSet], [ValidateRange]), <strong>Soporte para pipeline</strong> (ValueFromPipeline), <strong>Help integrado</strong> (.SYNOPSIS, .DESCRIPTION), <strong>Manejo de errores</strong> (ErrorAction), <strong>Atributos [CmdletBinding()]</strong> (habilita características avanzadas). Estas características hacen que las funciones se comporten como cmdlets nativos."
+      "respuestas_correctas": [3],
+      "explicacion": "Funciones avanzadas incluyen: <strong>Parámetros con validación</strong>, <strong>Soporte para pipeline</strong>, <strong>Help integrado</strong> y <strong>Atributos [CmdletBinding()]</strong>. <strong>Compilación nativa</strong> no es una característica de funciones avanzadas de PowerShell."
     },
     {
       "id": 16,
@@ -216,17 +216,17 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Cuáles son cmdlets para gestión de módulos?",
+      "pregunta": "¿Cuál de los siguientes NO gestiona módulos?",
       "nivel": "avanzado",
       "opciones": [
         "Import-Module",
         "Get-Module",
         "Remove-Module",
         "Install-Module",
-        "Update-Module"
+        "Get-Process"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Cmdlets de módulos: <strong>Import-Module</strong> (carga módulos), <strong>Get-Module</strong> (lista módulos disponibles/cargados), <strong>Remove-Module</strong> (descarga módulos), <strong>Install-Module</strong> (instala desde PowerShell Gallery), <strong>Update-Module</strong> (actualiza módulos). Ejemplos: <code>Install-Module -Name Az</code>, <code>Import-Module ActiveDirectory</code>, <code>Get-Module -ListAvailable</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Import-Module</strong>, <strong>Get-Module</strong>, <strong>Remove-Module</strong> e <strong>Install-Module</strong> gestionan módulos. <strong>Get-Process</strong> trabaja con procesos, no con módulos. Ejemplos: <code>Install-Module -Name Az</code>, <code>Import-Module ActiveDirectory</code>."
     },
     {
       "id": 18,
@@ -243,31 +243,31 @@
     },
     {
       "id": 19,
-      "pregunta": "¿Cuáles son cmdlets para manejo de errores?",
+      "pregunta": "¿Cuál de los siguientes NO forma parte del manejo de errores en PowerShell?",
       "nivel": "avanzado",
       "opciones": [
         "Try-Catch-Finally",
         "Throw",
         "Write-Error",
         "$ErrorActionPreference",
-        "Get-Error"
+        "Write-Host"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Manejo de errores: <strong>Try-Catch-Finally</strong> (manejo estructurado de excepciones), <strong>Throw</strong> (lanza errores personalizados), <strong>Write-Error</strong> (escribe errores no terminantes), <strong>$ErrorActionPreference</strong> (controla comportamiento global de errores), <strong>Get-Error</strong> (obtiene detalles de errores). Ejemplo: <code>try { Get-Item NoExiste } catch { Write-Host 'Archivo no encontrado' }</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>Try-Catch-Finally</strong>, <strong>Throw</strong>, <strong>Write-Error</strong> y <strong>$ErrorActionPreference</strong> son mecanismos de manejo de errores. <strong>Write-Host</strong> imprime mensajes a la consola y no participa en el flujo de errores."
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son cmdlets para trabajo remoto?",
+      "pregunta": "¿Cuál de los siguientes NO pertenece a PowerShell Remoting?",
       "nivel": "avanzado",
       "opciones": [
         "Invoke-Command",
         "Enter-PSSession",
         "New-PSSession",
         "Remove-PSSession",
-        "Enable-PSRemoting"
+        "Start-Transcript"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "PowerShell Remoting: <strong>Invoke-Command</strong> (ejecuta comandos remotos), <strong>Enter-PSSession</strong> (sesión interactiva remota), <strong>New-PSSession</strong> (crea sesiones persistentes), <strong>Remove-PSSession</strong> (cierra sesiones), <strong>Enable-PSRemoting</strong> (habilita remoting). Ejemplos: <code>Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Service }</code>, <code>Enter-PSSession -ComputerName Server01</code>."
+      "respuestas_correctas": [4],
+      "explicacion": "PowerShell Remoting incluye <strong>Invoke-Command</strong>, <strong>Enter-PSSession</strong>, <strong>New-PSSession</strong> y <strong>Remove-PSSession</strong>. <strong>Start-Transcript</strong> controla el registro (transcript) de la sesión, no es parte de remoting."
     }
   ]
 }

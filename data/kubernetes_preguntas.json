@@ -17,17 +17,17 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son los componentes principales del Control Plane?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente del Control Plane?",
       "nivel": "básico",
       "opciones": [
         "kube-apiserver",
         "etcd",
         "kube-scheduler",
         "kube-controller-manager",
-        "cloud-controller-manager"
+        "kubelet"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "El Control Plane incluye: <strong>kube-apiserver</strong> (API principal), <strong>etcd</strong> (almacén de datos distribuido), <strong>kube-scheduler</strong> (asigna pods a nodos), <strong>kube-controller-manager</strong> (ejecuta controladores del cluster), y <strong>cloud-controller-manager</strong> (interactúa con APIs de proveedores cloud). Estos componentes gestionan el estado del cluster y toman decisiones globales."
+      "respuestas_correctas": [4],
+      "explicacion": "El Control Plane incluye <strong>kube-apiserver</strong>, <strong>etcd</strong>, <strong>kube-scheduler</strong> y <strong>kube-controller-manager</strong>. <strong>kubelet</strong> es el agente del nodo worker y NO forma parte del Control Plane."
     },
     {
       "id": 3,
@@ -70,17 +70,17 @@
     },
     {
       "id": 6,
-      "pregunta": "¿Cuáles son los tipos de Services en Kubernetes?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de Service en Kubernetes?",
       "nivel": "intermedio",
       "opciones": [
         "ClusterIP",
         "NodePort",
         "LoadBalancer",
         "ExternalName",
-        "Headless"
+        "Ingress"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos de Services son: <strong>ClusterIP</strong> (acceso interno al cluster, por defecto), <strong>NodePort</strong> (expone el service en un puerto de cada nodo), <strong>LoadBalancer</strong> (provisiona un load balancer externo), <strong>ExternalName</strong> (mapea a un nombre DNS externo), y <strong>Headless</strong> (ClusterIP: None, para acceso directo a Pods). Cada tipo sirve diferentes casos de uso de conectividad."
+      "respuestas_correctas": [4],
+      "explicacion": "Tipos válidos de Service: <strong>ClusterIP</strong>, <strong>NodePort</strong>, <strong>LoadBalancer</strong> y <strong>ExternalName</strong>. <strong>Ingress</strong> no es un Service, es un recurso separado para enrutar tráfico HTTP/HTTPS mediante un Ingress Controller."
     },
     {
       "id": 7,
@@ -136,17 +136,17 @@
     },
     {
       "id": 11,
-      "pregunta": "¿Qué tipos de volúmenes soporta Kubernetes?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de volumen soportado por Kubernetes?",
       "nivel": "intermedio",
       "opciones": [
         "emptyDir",
         "hostPath",
         "persistentVolumeClaim",
         "configMap",
-        "secret"
+        "serviceAccount"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Kubernetes soporta múltiples tipos: <strong>emptyDir</strong> (directorio temporal que existe mientras el Pod vive), <strong>hostPath</strong> (monta un archivo/directorio del nodo host), <strong>persistentVolumeClaim</strong> (solicita almacenamiento persistente), <strong>configMap</strong> (monta datos de ConfigMap), y <strong>secret</strong> (monta datos de Secret). También soporta volúmenes de proveedores cloud como AWS EBS, Azure Disk, GCE PD."
+      "respuestas_correctas": [4],
+      "explicacion": "Volúmenes válidos incluyen <strong>emptyDir</strong>, <strong>hostPath</strong>, <strong>persistentVolumeClaim</strong>, <strong>configMap</strong> y <strong>secret</strong>. <strong>serviceAccount</strong> es una identidad para Pods, no un tipo de volumen."
     },
     {
       "id": 12,
@@ -202,7 +202,7 @@
     },
     {
       "id": 16,
-      "pregunta": "¿Cuáles son los componentes de RBAC?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente principal de RBAC?",
       "nivel": "avanzado",
       "opciones": [
         "Role",
@@ -211,8 +211,8 @@
         "ClusterRoleBinding",
         "ServiceAccount"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los componentes de RBAC incluyen: <strong>Role</strong> (permisos dentro de un namespace), <strong>ClusterRole</strong> (permisos a nivel de cluster), <strong>RoleBinding</strong> (vincula Role a usuarios/grupos en un namespace), <strong>ClusterRoleBinding</strong> (vincula ClusterRole a nivel de cluster), y <strong>ServiceAccount</strong> (identidad para Pods). Estos componentes trabajan juntos para implementar control de acceso granular."
+      "respuestas_correctas": [4],
+      "explicacion": "Los objetos principales de RBAC son <strong>Role</strong>, <strong>ClusterRole</strong>, <strong>RoleBinding</strong> y <strong>ClusterRoleBinding</strong>. <strong>ServiceAccount</strong> es una identidad usada por Pods y usuarios de sistema, pero no es un objeto core de RBAC."
     },
     {
       "id": 17,
@@ -255,17 +255,17 @@
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son estrategias de deployment en Kubernetes?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de deployment en Kubernetes?",
       "nivel": "avanzado",
       "opciones": [
         "Rolling Update",
         "Blue-Green",
         "Canary",
         "Recreate",
-        "A/B Testing"
+        "Shadow traffic"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las estrategias incluyen: <strong>Rolling Update</strong> (actualización gradual, por defecto), <strong>Blue-Green</strong> (dos entornos completos, switch instantáneo), <strong>Canary</strong> (despliegue parcial para testing), <strong>Recreate</strong> (termina todos los Pods antes de crear nuevos), y <strong>A/B Testing</strong> (comparación de versiones con tráfico dividido). Cada estrategia ofrece diferentes balances entre velocidad, seguridad y downtime."
+      "respuestas_correctas": [4],
+      "explicacion": "Estrategias comunes: <strong>Rolling Update</strong>, <strong>Blue-Green</strong>, <strong>Canary</strong> y <strong>Recreate</strong>. <strong>Shadow traffic</strong> es una técnica de enrutamiento/observación de tráfico, no una estrategia de deployment en Kubernetes."
     }
   ]
 }

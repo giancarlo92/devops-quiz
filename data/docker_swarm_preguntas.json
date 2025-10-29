@@ -17,16 +17,17 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son los componentes principales de Docker Swarm?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente principal de Docker Swarm?",
       "nivel": "básico",
       "opciones": [
         "Manager nodes",
         "Worker nodes",
         "Services",
-        "Tasks"
+        "Tasks",
+        "Pods"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los componentes principales de Docker Swarm son: <strong>Manager nodes</strong> (gestionan el estado del cluster y toman decisiones), <strong>Worker nodes</strong> (ejecutan contenedores), <strong>Services</strong> (definiciones de cómo ejecutar aplicaciones), y <strong>Tasks</strong> (instancias individuales de contenedores). Esta arquitectura proporciona separación de responsabilidades y escalabilidad."
+      "respuestas_correctas": [4],
+      "explicacion": "Los componentes principales son <strong>Manager nodes</strong>, <strong>Worker nodes</strong>, <strong>Services</strong> y <strong>Tasks</strong>. <strong>Pods</strong> es un concepto de Kubernetes, no de Docker Swarm."
     },
     {
       "id": 3,
@@ -56,16 +57,16 @@
     },
     {
       "id": 5,
-      "pregunta": "¿Cuáles son las diferencias entre manager y worker nodes?",
+      "pregunta": "¿Cuál afirmación NO describe correctamente los roles de manager y worker?",
       "nivel": "básico",
       "opciones": [
         "Manager nodes gestionan el cluster",
         "Worker nodes ejecutan tareas",
         "Manager nodes pueden ejecutar tareas también",
-        "Worker nodes no pueden tomar decisiones de orquestación"
+        "Worker nodes pueden tomar decisiones de orquestación"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las diferencias clave son: <strong>Manager nodes gestionan el cluster</strong> (estado, scheduling, API), <strong>Worker nodes ejecutan tareas</strong> (solo contenedores), <strong>Manager nodes pueden ejecutar tareas también</strong> (por defecto), y <strong>Worker nodes no pueden tomar decisiones de orquestación</strong>. Los managers usan el algoritmo Raft para consenso y se recomienda un número impar para evitar split-brain."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Managers</strong> gestionan el cluster y pueden ejecutar tareas; <strong>workers</strong> ejecutan tareas pero <strong>no toman decisiones de orquestación</strong>. Por eso es incorrecto decir que los workers pueden orquestar."
     },
     {
       "id": 6,
@@ -82,17 +83,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son comandos para gestión de services?",
+      "pregunta": "¿Cuál de los siguientes NO es un comando válido para gestionar services en Swarm?",
       "nivel": "intermedio",
       "opciones": [
         "docker service create",
         "docker service ls",
         "docker service update",
-        "docker service rm",
-        "docker service scale"
+        "docker service delete",
+        "docker service rm"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los comandos principales para gestión de services son: <strong>docker service create</strong> (crear nuevo service), <strong>docker service ls</strong> (listar services), <strong>docker service update</strong> (actualizar service existente), <strong>docker service rm</strong> (eliminar service), y <strong>docker service scale</strong> (cambiar número de réplicas). Estos comandos permiten el ciclo completo de vida de los services."
+      "respuestas_correctas": [3],
+      "explicacion": "Los comandos válidos incluyen <strong>docker service create</strong>, <strong>ls</strong>, <strong>update</strong> y <strong>rm</strong>. <strong>docker service delete</strong> no existe; la eliminación se realiza con <code>docker service rm</code>."
     },
     {
       "id": 8,
@@ -109,16 +110,16 @@
     },
     {
       "id": 9,
-      "pregunta": "¿Cuáles son modos de deployment en services?",
+      "pregunta": "¿Cuál de los siguientes SÍ es un modo de deployment de un service?",
       "nivel": "intermedio",
       "opciones": [
-        "Replicated (múltiples réplicas)",
-        "Global (una instancia por nodo)",
         "Singleton",
-        "Distributed"
+        "Global (una instancia por nodo)",
+        "Distributed",
+        "Stateful"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Docker Swarm soporta dos modos de deployment: <strong>Replicated</strong> (ejecuta un número específico de réplicas distribuidas en el cluster) y <strong>Global</strong> (ejecuta exactamente una instancia en cada nodo disponible). Replicated es útil para aplicaciones web escalables, mientras que Global es ideal para agentes de monitoreo o logging que necesitan ejecutarse en todos los nodos."
+      "respuestas_correctas": [1],
+      "explicacion": "Swarm soporta dos modos: <strong>Replicated</strong> y <strong>Global</strong>. Entre las opciones, <strong>Global</strong> es un modo válido; 'Singleton', 'Distributed' y 'Stateful' no son modos de deployment en Swarm."
     },
     {
       "id": 10,
@@ -135,16 +136,17 @@
     },
     {
       "id": 11,
-      "pregunta": "¿Cuáles son tipos de redes en Docker Swarm?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de red en Docker Swarm?",
       "nivel": "intermedio",
       "opciones": [
         "Overlay networks",
         "Bridge networks",
         "Host networks",
-        "Ingress network"
+        "Ingress network",
+        "Calico network"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Docker Swarm soporta varios tipos de redes: <strong>Overlay networks</strong> (conectan contenedores entre múltiples hosts), <strong>Bridge networks</strong> (red local en un solo host), <strong>Host networks</strong> (usa la red del host directamente), e <strong>Ingress network</strong> (red especial para load balancing de servicios publicados). Las overlay son las más importantes para comunicación inter-nodos."
+      "respuestas_correctas": [4],
+      "explicacion": "Swarm incluye <strong>overlay</strong>, <strong>bridge</strong>, <strong>host</strong> e <strong>ingress</strong>. <strong>Calico</strong> es una solución de CNI común en Kubernetes, no un tipo de red propio de Swarm."
     },
     {
       "id": 12,
@@ -161,16 +163,17 @@
     },
     {
       "id": 13,
-      "pregunta": "¿Cuáles son estrategias de actualización en services?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de actualización en services de Swarm?",
       "nivel": "avanzado",
       "opciones": [
         "Rolling updates",
         "Blue-green deployment",
         "Canary deployment",
-        "Recreate"
+        "Recreate",
+        "A/B testing"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Docker Swarm soporta varias estrategias de actualización: <strong>Rolling updates</strong> (actualización gradual, por defecto), <strong>Blue-green deployment</strong> (dos entornos completos), <strong>Canary deployment</strong> (actualización parcial para testing), y <strong>Recreate</strong> (parar todo y recrear). Se configuran con --update-parallelism, --update-delay, y --update-failure-action para controlar el proceso."
+      "respuestas_correctas": [4],
+      "explicacion": "Las estrategias válidas incluyen <strong>rolling</strong>, <strong>blue-green</strong>, <strong>canary</strong> y <strong>recreate</strong>. <strong>A/B testing</strong> está orientado a experimentación de producto, no es una estrategia de actualización de services en Swarm."
     },
     {
       "id": 14,
@@ -187,16 +190,17 @@
     },
     {
       "id": 15,
-      "pregunta": "¿Cuáles son comandos para gestión de secrets?",
+      "pregunta": "¿Cuál de los siguientes NO es un comando para gestionar secrets en Swarm?",
       "nivel": "avanzado",
       "opciones": [
         "docker secret create",
         "docker secret ls",
         "docker secret rm",
-        "docker secret inspect"
+        "docker secret inspect",
+        "docker secret edit"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los comandos para gestión de secrets incluyen: <strong>docker secret create</strong> (crear nuevo secret), <strong>docker secret ls</strong> (listar secrets), <strong>docker secret rm</strong> (eliminar secret), y <strong>docker secret inspect</strong> (ver detalles del secret). Los secrets se referencian en services con --secret y se montan en /run/secrets/ por defecto."
+      "respuestas_correctas": [4],
+      "explicacion": "La gestión de secrets se realiza con <strong>create</strong>, <strong>ls</strong>, <strong>rm</strong> e <strong>inspect</strong>. No existe <code>docker secret edit</code>; para actualizar un secret se recrea y se referencia la nueva versión."
     },
     {
       "id": 16,
@@ -213,16 +217,17 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Cuáles son características de alta disponibilidad?",
+      "pregunta": "¿Cuál de los siguientes NO contribuye a alta disponibilidad en Swarm?",
       "nivel": "avanzado",
       "opciones": [
         "Múltiples manager nodes",
         "Quorum para decisiones",
         "Failover automático",
-        "Raft consensus algorithm"
+        "Raft consensus algorithm",
+        "Un solo manager sin replicación"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "La alta disponibilidad en Docker Swarm incluye: <strong>Múltiples manager nodes</strong> (recomendado número impar), <strong>Quorum para decisiones</strong> (mayoría de managers activos), <strong>Failover automático</strong> (promoción automática de workers a managers), y <strong>Raft consensus algorithm</strong> (garantiza consistencia de datos). Tolera (N-1)/2 fallos de managers."
+      "respuestas_correctas": [4],
+      "explicacion": "Para alta disponibilidad se requieren <strong>múltiples managers</strong> y <strong>quorum</strong> utilizando <strong>Raft</strong>, con <strong>failover</strong> automático. Un solo manager sin replicación no provee HA."
     },
     {
       "id": 18,
@@ -239,31 +244,31 @@
     },
     {
       "id": 19,
-      "pregunta": "¿Cuáles son comandos para troubleshooting?",
+      "pregunta": "¿Cuál de los siguientes NO ayuda directamente al troubleshooting en Swarm?",
       "nivel": "avanzado",
       "opciones": [
         "docker service logs",
         "docker node inspect",
         "docker service ps",
         "docker swarm ca",
-        "docker system events"
+        "docker image prune"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los comandos principales para troubleshooting incluyen: <strong>docker service logs</strong> (ver logs de un service), <strong>docker node inspect</strong> (detalles de un nodo), <strong>docker service ps</strong> (estado de tasks de un service), <strong>docker swarm ca</strong> (gestión de certificados), y <strong>docker system events</strong> (eventos en tiempo real). Estos comandos ayudan a diagnosticar problemas de conectividad, fallos de tasks, y problemas de certificados."
+      "respuestas_correctas": [4],
+      "explicacion": "Para troubleshooting se usan <strong>service logs</strong>, <strong>node inspect</strong>, <strong>service ps</strong> y <strong>swarm ca</strong>. <strong>docker image prune</strong> limpia imágenes y espacio, pero no aporta diagnóstico directo."
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son mejores prácticas para Docker Swarm?",
+      "pregunta": "¿Cuál de las siguientes NO es una buena práctica recomendada para Docker Swarm?",
       "nivel": "avanzado",
       "opciones": [
         "Usar número impar de managers",
         "Separar managers de workers en producción",
         "Implementar monitoreo y logging",
-        "Usar health checks en services",
-        "Gestionar secrets apropiadamente"
+        "Publicar todos los services en host network sin restricciones",
+        "Usar health checks en services"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las mejores prácticas incluyen: <strong>Usar número impar de managers</strong> (evita split-brain), <strong>separar managers de workers en producción</strong> (mejor rendimiento y seguridad), <strong>implementar monitoreo y logging</strong> (observabilidad), <strong>usar health checks en services</strong> (detección automática de fallos), y <strong>gestionar secrets apropiadamente</strong> (seguridad). También es recomendable usar labels para organización y constraints para placement estratégico."
+      "respuestas_correctas": [3],
+      "explicacion": "Buenas prácticas incluyen managers impares, separación de roles, observabilidad y health checks. <strong>Publicar todo en host network sin restricciones</strong> no es recomendable por seguridad y aislamiento."
     }
   ]
 }

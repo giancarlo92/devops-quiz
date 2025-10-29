@@ -24,10 +24,10 @@
         "Aislamiento",
         "Escalabilidad",
         "Consistencia entre entornos",
-        "Eficiencia de recursos"
+        "Virtualización completa de hardware"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Docker ofrece múltiples ventajas: <strong>Portabilidad</strong> (funciona igual en desarrollo, testing y producción), <strong>Aislamiento</strong> (cada contenedor es independiente), <strong>Escalabilidad</strong> (fácil escalado horizontal), <strong>Consistencia entre entornos</strong> (elimina el problema 'funciona en mi máquina'), y <strong>Eficiencia de recursos</strong> (menor overhead que las VMs tradicionales)."
+      "respuestas_correctas": [4],
+      "explicacion": "Docker ofrece <strong>portabilidad</strong>, <strong>aislamiento</strong>, <strong>escalabilidad</strong> y <strong>consistencia</strong> entre entornos. La <strong>virtualización completa de hardware</strong> no es una ventaja de Docker; Docker usa contenedores a nivel de sistema operativo, no hipervisores."
     },
     {
       "id": 3,
@@ -83,17 +83,17 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son instrucciones comunes en un Dockerfile?",
+      "pregunta": "¿Cuál de las siguientes NO es una instrucción válida en un Dockerfile?",
       "nivel": "intermedio",
       "opciones": [
         "FROM",
         "RUN",
         "COPY",
         "EXPOSE",
-        "CMD"
+        "LAUNCH"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las instrucciones principales del Dockerfile son: <strong>FROM</strong> (imagen base), <strong>RUN</strong> (ejecutar comandos durante build), <strong>COPY</strong> (copiar archivos al contenedor), <strong>EXPOSE</strong> (documentar puertos), y <strong>CMD</strong> (comando por defecto al ejecutar). Otras importantes incluyen WORKDIR, ENV, ADD, ENTRYPOINT, y LABEL."
+      "respuestas_correctas": [4],
+      "explicacion": "Instrucciones válidas incluyen <strong>FROM</strong>, <strong>RUN</strong>, <strong>COPY</strong> y <strong>EXPOSE</strong>. <strong>LAUNCH</strong> no existe en Dockerfile; el comando por defecto se define con <strong>CMD</strong> o <strong>ENTRYPOINT</strong>."
     },
     {
       "id": 8,
@@ -123,17 +123,17 @@
     },
     {
       "id": 10,
-      "pregunta": "¿Qué comandos se usan para gestionar imágenes Docker?",
+      "pregunta": "¿Cuál de los siguientes comandos NO gestiona imágenes Docker?",
       "nivel": "intermedio",
       "opciones": [
         "docker images",
         "docker pull",
         "docker push",
         "docker rmi",
-        "docker tag"
+        "docker exec"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los comandos principales para gestionar imágenes son: <strong>docker images</strong> (listar imágenes locales), <strong>docker pull</strong> (descargar imagen), <strong>docker push</strong> (subir imagen a registry), <strong>docker rmi</strong> (eliminar imagen), y <strong>docker tag</strong> (etiquetar imagen). Otros útiles: docker inspect, docker history, y docker save/load."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>docker images</strong>, <strong>pull</strong>, <strong>push</strong>, <strong>rmi</strong> y <strong>tag</strong> sí gestionan imágenes. <strong>docker exec</strong> ejecuta comandos dentro de contenedores en ejecución y no gestiona imágenes."
     },
     {
       "id": 11,
@@ -202,17 +202,17 @@
     },
     {
       "id": 16,
-      "pregunta": "¿Cuáles son los tipos de redes en Docker?",
+      "pregunta": "¿Cuál de los siguientes NO es un tipo de red en Docker?",
       "nivel": "avanzado",
       "opciones": [
         "bridge",
         "host",
         "overlay",
         "macvlan",
-        "none"
+        "lan"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Docker soporta varios tipos de redes: <strong>bridge</strong> (red por defecto, aislada), <strong>host</strong> (usa la red del host directamente), <strong>overlay</strong> (para Docker Swarm, conecta múltiples hosts), <strong>macvlan</strong> (asigna MAC address al contenedor), y <strong>none</strong> (sin conectividad de red). Cada tipo sirve diferentes casos de uso y arquitecturas."
+      "respuestas_correctas": [4],
+      "explicacion": "Tipos válidos incluyen <strong>bridge</strong>, <strong>host</strong>, <strong>overlay</strong>, <strong>macvlan</strong> y <strong>none</strong>. <strong>lan</strong> no es un tipo de red definido por Docker."
     },
     {
       "id": 17,
@@ -255,17 +255,17 @@
     },
     {
       "id": 20,
-      "pregunta": "¿Qué técnicas se usan para optimizar imágenes Docker?",
+      "pregunta": "¿Cuál de las siguientes NO ayuda a optimizar imágenes Docker?",
       "nivel": "avanzado",
       "opciones": [
         "Usar imágenes base mínimas",
         "Multi-stage builds",
         "Minimizar capas",
         "Usar .dockerignore",
-        "Limpiar cache de paquetes"
+        "Mantener archivos temporales"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las técnicas principales para optimizar imágenes Docker incluyen: <strong>Usar imágenes base mínimas</strong> (como Alpine Linux), <strong>Multi-stage builds</strong> para eliminar dependencias de build, <strong>minimizar capas</strong> combinando comandos RUN, <strong>usar .dockerignore</strong> para excluir archivos innecesarios, y <strong>limpiar cache de paquetes</strong> después de instalaciones. También es recomendable ordenar instrucciones por frecuencia de cambio y evitar instalar paquetes innecesarios."
+      "respuestas_correctas": [4],
+      "explicacion": "Optimizar imágenes implica <strong>usar imágenes base mínimas</strong>, <strong>multi-stage builds</strong>, <strong>minimizar capas</strong> y <strong>usar .dockerignore</strong>. <strong>Mantener archivos temporales</strong> aumenta el tamaño y no ayuda a optimizar. Además conviene limpiar caches y paquetes innecesarios."
     }
   ]
 }

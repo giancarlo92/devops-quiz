@@ -17,16 +17,16 @@
     },
     {
       "id": 2,
-      "pregunta": "¿Cuáles son las diferencias principales entre OpenShift y Kubernetes vanilla?",
+      "pregunta": "¿Cuál de las siguientes afirmaciones NO describe una diferencia de OpenShift respecto a Kubernetes vanilla?",
       "nivel": "básico",
       "opciones": [
         "OpenShift incluye herramientas adicionales de desarrollo",
-        "OpenShift tiene seguridad mejorada por defecto",
-        "OpenShift incluye registro de imágenes integrado",
-        "OpenShift tiene interfaz web más completa"
+        "OpenShift tiene seguridad reforzada por defecto (SCC/RBAC)",
+        "OpenShift integra un registro interno de imágenes",
+        "OpenShift sustituye etcd por MySQL como datastore"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "OpenShift se diferencia de Kubernetes vanilla en varios aspectos: incluye <strong>herramientas adicionales de desarrollo</strong> (Source-to-Image, BuildConfigs), tiene <strong>seguridad mejorada por defecto</strong> (SCCs, RBAC estricto), incluye un <strong>registro de imágenes integrado</strong> para almacenar contenedores, y proporciona una <strong>interfaz web más completa</strong> con consola de desarrollador y administrador."
+      "respuestas_correctas": [3],
+      "explicacion": "La afirmación incorrecta es que OpenShift <strong>sustituye etcd por MySQL</strong>. OpenShift sigue usando <strong>etcd</strong> como datastore principal, y sí se diferencia por <strong>herramientas de desarrollo</strong>, <strong>seguridad reforzada</strong> y <strong>registro interno</strong>."
     },
     {
       "id": 3,
@@ -43,17 +43,17 @@
     },
     {
       "id": 4,
-      "pregunta": "¿Cuáles son los componentes principales de OpenShift?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente principal de OpenShift?",
       "nivel": "básico",
       "opciones": [
         "Master nodes",
         "Worker nodes",
         "etcd",
-        "Container Registry",
+        "Active Directory",
         "Router"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los componentes principales incluyen: <strong>Master nodes</strong> (controlan el cluster), <strong>Worker nodes</strong> (ejecutan aplicaciones), <strong>etcd</strong> (almacén de datos distribuido), <strong>Container Registry</strong> (almacena imágenes de contenedor), y <strong>Router</strong> (enruta tráfico externo). Estos componentes trabajan juntos para proporcionar una plataforma completa de contenedores."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Active Directory</strong> no es un componente de OpenShift. Los componentes principales incluyen <strong>master/worker nodes</strong>, <strong>etcd</strong>, <strong>router</strong> y el <strong>registro de imágenes</strong>."
     },
     {
       "id": 5,
@@ -83,16 +83,16 @@
     },
     {
       "id": 7,
-      "pregunta": "¿Cuáles son los tipos de build strategies en OpenShift?",
+      "pregunta": "¿Cuál de las siguientes NO es una build strategy soportada en OpenShift?",
       "nivel": "intermedio",
       "opciones": [
         "Source-to-Image (S2I)",
         "Docker build",
         "Custom build",
-        "Pipeline build"
+        "GitHub Actions build"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las estrategias de build incluyen: <strong>Source-to-Image (S2I)</strong> (combina código fuente con imagen builder), <strong>Docker build</strong> (usa Dockerfile), <strong>Custom build</strong> (estrategia personalizada con imagen propia), y <strong>Pipeline build</strong> (usa Jenkins pipelines para builds complejos). Cada estrategia tiene casos de uso específicos según las necesidades del proyecto."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>GitHub Actions</strong> es una plataforma de CI/CD externa, no una build strategy nativa de OpenShift. OpenShift soporta <strong>S2I</strong>, <strong>Docker</strong> y <strong>Custom</strong>; los pipelines se orquestan con Jenkins/tekton según la versión."
     },
     {
       "id": 8,
@@ -122,17 +122,17 @@
     },
     {
       "id": 10,
-      "pregunta": "¿Cuáles son comandos básicos del CLI de OpenShift (oc)?",
+      "pregunta": "¿Cuál de los siguientes NO es un comando válido del CLI de OpenShift (oc)?",
       "nivel": "intermedio",
       "opciones": [
         "oc new-app",
         "oc get",
-        "oc describe",
+        "oc compose",
         "oc logs",
         "oc exec"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los comandos básicos incluyen: <strong>oc new-app</strong> (crea nueva aplicación), <strong>oc get</strong> (lista recursos), <strong>oc describe</strong> (muestra detalles de recursos), <strong>oc logs</strong> (muestra logs de pods), y <strong>oc exec</strong> (ejecuta comandos en contenedores). Estos comandos son fundamentales para la gestión diaria de aplicaciones en OpenShift."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>oc compose</strong> no es un comando válido. Comandos básicos de oc incluyen <strong>new-app</strong>, <strong>get</strong>, <strong>describe</strong>, <strong>logs</strong> y <strong>exec</strong>."
     },
     {
       "id": 11,
@@ -162,17 +162,17 @@
     },
     {
       "id": 13,
-      "pregunta": "¿Cuáles son características de seguridad en OpenShift?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica de seguridad en OpenShift?",
       "nivel": "avanzado",
       "opciones": [
         "Security Context Constraints (SCCs)",
         "Role-Based Access Control (RBAC)",
         "Network Policies",
-        "Pod Security Standards",
+        "Horizontal Pod Autoscaler (HPA)",
         "Image scanning"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las características de seguridad incluyen: <strong>Security Context Constraints (SCCs)</strong> (controlan privilegios de pods), <strong>Role-Based Access Control (RBAC)</strong> (control de acceso granular), <strong>Network Policies</strong> (aislamiento de red), <strong>Pod Security Standards</strong> (políticas de seguridad de pods), e <strong>Image scanning</strong> (análisis de vulnerabilidades en imágenes). Estas características proporcionan seguridad multicapa."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>HPA</strong> es una funcionalidad de escalado automático, no una característica de seguridad. OpenShift ofrece <strong>SCCs</strong>, <strong>RBAC</strong>, <strong>Network Policies</strong>, <strong>Pod Security</strong> y <strong>escaneo de imágenes</strong>."
     },
     {
       "id": 14,
@@ -189,17 +189,17 @@
     },
     {
       "id": 15,
-      "pregunta": "¿Cuáles son tipos de almacenamiento en OpenShift?",
+      "pregunta": "¿Cuál de los siguientes NO corresponde a un mecanismo de almacenamiento en OpenShift?",
       "nivel": "avanzado",
       "opciones": [
         "Persistent Volumes (PV)",
         "Persistent Volume Claims (PVC)",
         "Storage Classes",
         "ConfigMaps",
-        "Secrets"
+        "EmptyDir"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los tipos de almacenamiento incluyen: <strong>Persistent Volumes (PV)</strong> (almacenamiento físico), <strong>Persistent Volume Claims (PVC)</strong> (solicitudes de almacenamiento), <strong>Storage Classes</strong> (tipos de almacenamiento dinámico), <strong>ConfigMaps</strong> (datos de configuración), y <strong>Secrets</strong> (datos sensibles). Cada tipo tiene propósitos específicos para diferentes necesidades de almacenamiento."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>ConfigMaps</strong> almacenan configuración en texto plano y no son un mecanismo de almacenamiento de datos de aplicación. <strong>PV</strong>, <strong>PVC</strong>, <strong>StorageClasses</strong> y volúmenes como <strong>EmptyDir</strong> sí son mecanismos de almacenamiento."
     },
     {
       "id": 16,
@@ -216,17 +216,17 @@
     },
     {
       "id": 17,
-      "pregunta": "¿Cuáles son componentes del OpenShift Container Platform?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente del OpenShift Container Platform?",
       "nivel": "avanzado",
       "opciones": [
         "OpenShift API server",
         "OpenShift Controller Manager",
-        "OpenShift Router",
+        "Docker Swarm Manager",
         "OpenShift Registry",
         "OpenShift Web Console"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Los componentes incluyen: <strong>OpenShift API server</strong> (API principal), <strong>OpenShift Controller Manager</strong> (controladores específicos de OpenShift), <strong>OpenShift Router</strong> (enrutamiento de tráfico), <strong>OpenShift Registry</strong> (registro de imágenes), y <strong>OpenShift Web Console</strong> (interfaz web). Estos componentes extienden Kubernetes con funcionalidades empresariales."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Docker Swarm Manager</strong> pertenece a otra plataforma de orquestación y no es parte de OpenShift. OpenShift incluye <strong>API server</strong>, <strong>Controller Manager</strong>, <strong>Router</strong>, <strong>Registry</strong> y <strong>Web Console</strong>."
     },
     {
       "id": 18,
@@ -243,7 +243,7 @@
     },
     {
       "id": 19,
-      "pregunta": "¿Cuáles son estrategias de deployment en OpenShift?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de deployment en OpenShift?",
       "nivel": "avanzado",
       "opciones": [
         "Rolling deployment",
@@ -252,22 +252,22 @@
         "Canary deployment",
         "A/B testing"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las estrategias incluyen: <strong>Rolling deployment</strong> (actualización gradual), <strong>Recreate deployment</strong> (parar y recrear), <strong>Blue-Green deployment</strong> (dos entornos paralelos), <strong>Canary deployment</strong> (despliegue gradual a subconjunto), y <strong>A/B testing</strong> (comparación de versiones). Cada estrategia tiene ventajas específicas según los requisitos de disponibilidad y riesgo."
+      "respuestas_correctas": [4],
+      "explicacion": "<strong>A/B testing</strong> es una táctica de experimentación/marketing, no una estrategia de deployment en OpenShift. OpenShift soporta <strong>rolling</strong>, <strong>recreate</strong>, <strong>blue-green</strong> y <strong>canary</strong>."
     },
     {
       "id": 20,
-      "pregunta": "¿Cuáles son mejores prácticas para OpenShift?",
+      "pregunta": "¿Cuál de las siguientes NO es una práctica recomendada en OpenShift?",
       "nivel": "avanzado",
       "opciones": [
         "Usar resource quotas y limits",
         "Implementar health checks",
-        "Usar multi-stage builds",
+        "Permitir contenedores privilegiados por defecto",
         "Aplicar principio de menor privilegio",
         "Monitorear con Prometheus y Grafana"
       ],
-      "respuestas_correctas": [0, 1, 2, 3, 4],
-      "explicacion": "Las mejores prácticas incluyen: <strong>usar resource quotas y limits</strong> (controlar uso de recursos), <strong>implementar health checks</strong> (liveness y readiness probes), <strong>usar multi-stage builds</strong> (imágenes optimizadas), <strong>aplicar principio de menor privilegio</strong> (seguridad mínima necesaria), y <strong>monitorear con Prometheus y Grafana</strong> (observabilidad completa). Estas prácticas aseguran operaciones eficientes y seguras."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Permitir contenedores privilegiados por defecto</strong> no es una buena práctica. Sí lo son <strong>quotas/limits</strong>, <strong>health checks</strong>, <strong>menor privilegio</strong> y <strong>observabilidad</strong>."
     }
   ]
 }

@@ -6,262 +6,262 @@
     {
       "id": 1,
       "nivel": "básico",
-      "pregunta": "¿Qué es GitHub?",
+      "pregunta": "¿Cuál de las siguientes NO describe correctamente a GitHub?",
       "opciones": [
-        "Un sistema de control de versiones",
         "Una plataforma de hosting para repositorios Git",
-        "Un editor de código",
-        "Un lenguaje de programación"
+        "Una plataforma de colaboración basada en Git",
+        "Un lenguaje de programación",
+        "Un servicio para gestionar repositorios e issues/PRs"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "GitHub es tanto <strong>un sistema de control de versiones</strong> (basado en Git) como <strong>una plataforma de hosting para repositorios Git</strong>. Proporciona una interfaz web para gestionar repositorios, colaboración, issues, pull requests, y herramientas de CI/CD. Facilita el desarrollo colaborativo y la gestión de proyectos de software."
+      "respuestas_correctas": [2],
+      "explicacion": "GitHub es una plataforma de colaboración y hosting basada en Git; <strong>no</strong> es un lenguaje de programación."
     },
     {
       "id": 2,
       "nivel": "básico",
-      "pregunta": "¿Cuáles son formas de crear un repositorio en GitHub?",
+      "pregunta": "¿Cuál de las siguientes acciones NO crea un repositorio en GitHub?",
       "opciones": [
         "Desde la interfaz web",
         "Usando GitHub CLI",
         "Clonando un repositorio existente",
         "Usando la API de GitHub"
       ],
-      "respuestas_correctas": [0, 1, 3],
-      "explicacion": "Se puede crear un repositorio: <strong>desde la interfaz web</strong> (botón 'New repository'), <strong>usando GitHub CLI</strong> (<code>gh repo create</code>), y <strong>usando la API de GitHub</strong> (endpoints REST/GraphQL). Clonar un repositorio existente no crea uno nuevo, sino que descarga una copia local de uno existente."
+      "respuestas_correctas": [2],
+      "explicacion": "<strong>Clonar</strong> un repositorio copia uno existente; no crea uno nuevo. Sí se crean vía web, CLI y API."
     },
     {
       "id": 3,
       "nivel": "básico",
       "pregunta": "¿Qué es un fork en GitHub?",
       "opciones": [
-        "Una copia personal de un repositorio",
         "Una rama del repositorio",
         "Un tipo de commit",
+        "Una copia personal de un repositorio",
         "Una herramienta de debugging"
       ],
-      "respuestas_correctas": [0],
-      "explicacion": "Un fork es <strong>una copia personal de un repositorio</strong> que permite hacer cambios sin afectar el repositorio original. Es fundamental para contribuir a proyectos open source: se hace fork, se realizan cambios en la copia personal, y luego se crea un pull request para proponer los cambios al repositorio original."
+      "respuestas_correctas": [2],
+      "explicacion": "Un fork es <strong>una copia personal de un repositorio</strong> para trabajar sin afectar el original."
     },
     {
       "id": 4,
       "nivel": "básico",
-      "pregunta": "¿Cuáles archivos son importantes en un repositorio de GitHub?",
+      "pregunta": "¿Cuál de los siguientes NO es universalmente importante en cualquier repositorio?",
       "opciones": [
         "README.md",
         "LICENSE",
         ".gitignore",
         "package.json"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Los archivos importantes son: <strong>README.md</strong> (documentación del proyecto), <strong>LICENSE</strong> (términos de uso y distribución), y <strong>.gitignore</strong> (archivos a ignorar por Git). package.json es específico de proyectos Node.js, no es universalmente importante para todos los repositorios de GitHub."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>package.json</strong> es específico de Node.js; README, LICENSE y .gitignore son comunes y recomendados."
     },
     {
       "id": 5,
       "nivel": "básico",
-      "pregunta": "¿Qué es un Pull Request?",
+      "pregunta": "¿Cuál de las siguientes NO describe correctamente un Pull Request?",
       "opciones": [
         "Una solicitud para fusionar cambios",
-        "Una forma de descargar código",
-        "Un tipo de issue",
-        "Una herramienta de revisión de código"
+        "Una herramienta de revisión de código",
+        "Un mecanismo de discusión y validación",
+        "Una forma de descargar código"
       ],
-      "respuestas_correctas": [0, 3],
-      "explicacion": "Un Pull Request es <strong>una solicitud para fusionar cambios</strong> de una rama a otra y <strong>una herramienta de revisión de código</strong>. Permite proponer cambios, discutir modificaciones, revisar código, ejecutar tests automáticos, y colaborar antes de fusionar. Es el mecanismo principal para contribuciones en GitHub."
+      "respuestas_correctas": [3],
+      "explicacion": "Un PR sirve para <strong>fusionar cambios</strong>, revisar y discutir; <strong>no</strong> es una forma de descargar código."
     },
     {
       "id": 6,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son tipos de colaboradores en GitHub?",
+      "pregunta": "¿Cuál de los siguientes NO es un rol/permisos típico en GitHub?",
       "opciones": [
         "Owner",
         "Admin",
         "Write",
-        "Read"
+        "Debugger"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los tipos de colaboradores son: <strong>Owner</strong> (control total del repositorio), <strong>Admin</strong> (gestión completa excepto transferir ownership), <strong>Write</strong> (push, merge, gestionar issues/PRs), y <strong>Read</strong> (solo lectura, clonar, crear issues). Cada nivel incluye los permisos de niveles inferiores."
+      "respuestas_correctas": [3],
+      "explicacion": "<strong>Debugger</strong> no es un rol/permisos en GitHub; existen niveles como Owner/Admin/Write/Read/Triage/Maintain."
     },
     {
       "id": 7,
       "nivel": "intermedio",
-      "pregunta": "¿Qué funciones tienen los GitHub Issues?",
+      "pregunta": "¿Cuál de las siguientes NO es una función típica de GitHub Issues?",
       "opciones": [
         "Reportar bugs",
         "Solicitar features",
-        "Hacer preguntas",
-        "Documentar tareas"
+        "Desplegar a producción",
+        "Hacer preguntas"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los GitHub Issues sirven para: <strong>reportar bugs</strong> (errores del software), <strong>solicitar features</strong> (nuevas funcionalidades), <strong>hacer preguntas</strong> (soporte y discusión), y <strong>documentar tareas</strong> (planificación y seguimiento). Son el sistema central de gestión de proyectos en GitHub, con labels, milestones, y asignaciones."
+      "respuestas_correctas": [2],
+      "explicacion": "Issues sirven para <strong>bugs, features y preguntas</strong>; <strong>no</strong> despliegan a producción."
     },
     {
       "id": 8,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son opciones de merge en un Pull Request?",
+      "pregunta": "¿Cuál de las siguientes NO es una opción de merge en un Pull Request en GitHub?",
       "opciones": [
         "Create a merge commit",
         "Squash and merge",
         "Rebase and merge",
         "Fast-forward merge"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Las opciones de merge son: <strong>Create a merge commit</strong> (preserva historial completo con commit de merge), <strong>Squash and merge</strong> (combina todos los commits en uno solo), y <strong>Rebase and merge</strong> (aplica commits individualmente sin merge commit). Fast-forward merge no es una opción específica de GitHub."
+      "respuestas_correctas": [3],
+      "explicacion": "GitHub ofrece Merge commit, Squash y Rebase; <strong>Fast-forward</strong> no es una opción directa en la UI."
     },
     {
       "id": 9,
       "nivel": "intermedio",
-      "pregunta": "¿Qué son los GitHub Labels?",
+      "pregunta": "¿Cuál de las siguientes NO describe correctamente los GitHub Labels?",
       "opciones": [
-        "Etiquetas para categorizar issues",
-        "Etiquetas para pull requests",
+        "Marcadores de prioridad",
         "Sistema de organización",
-        "Marcadores de prioridad"
+        "Etiquetas para categorizar issues y PRs",
+        "Compiladores que generan binarios"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los labels son: <strong>etiquetas para categorizar issues</strong> y <strong>pull requests</strong>, funcionando como <strong>sistema de organización</strong> y <strong>marcadores de prioridad</strong>. Ejemplos: 'bug', 'enhancement', 'high priority', 'documentation'. Permiten filtrar, buscar, y organizar el trabajo del proyecto eficientemente."
+      "respuestas_correctas": [3],
+      "explicacion": "Los labels son etiquetas para organizar issues/PRs y prioridades; <strong>no</strong> son compiladores."
     },
     {
       "id": 10,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son características de GitHub Pages?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica de GitHub Pages?",
       "opciones": [
         "Hosting gratuito de sitios estáticos",
         "Integración con Jekyll",
         "Dominio personalizado",
         "Solo para repositorios públicos"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "GitHub Pages ofrece: <strong>hosting gratuito de sitios estáticos</strong> (HTML, CSS, JS), <strong>integración con Jekyll</strong> (generador de sitios estáticos), y <strong>dominio personalizado</strong> (además del dominio github.io). Está disponible tanto para repositorios públicos como privados (en cuentas de pago)."
+      "respuestas_correctas": [3],
+      "explicacion": "GitHub Pages soporta <strong>sitios estáticos</strong>, Jekyll y dominios personalizados; no está limitado a repositorios públicos."
     },
     {
       "id": 11,
       "nivel": "intermedio",
-      "pregunta": "¿Qué permite hacer GitHub CLI?",
+      "pregunta": "¿Cuál de las siguientes NO es una capacidad típica de GitHub CLI?",
       "opciones": [
+        "Hacer deploy automático",
         "Crear repositorios desde terminal",
         "Gestionar pull requests",
-        "Crear issues",
-        "Hacer deploy automático"
+        "Crear issues"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "GitHub CLI permite: <strong>crear repositorios desde terminal</strong> (<code>gh repo create</code>), <strong>gestionar pull requests</strong> (<code>gh pr create/merge/review</code>), y <strong>crear issues</strong> (<code>gh issue create</code>). No incluye funcionalidades de deploy automático, que se manejan con GitHub Actions."
+      "respuestas_correctas": [0],
+      "explicacion": "GitHub CLI gestiona repos, PRs e issues; <strong>no</strong> realiza deploy por sí sola. El despliegue se orquesta con GitHub Actions."
     },
     {
       "id": 12,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son tipos de webhooks en GitHub?",
+      "pregunta": "¿Cuál de los siguientes NO es un evento soportado por los webhooks de GitHub?",
       "opciones": [
         "Push events",
         "Pull request events",
         "Issue events",
-        "Release events"
+        "Login events"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los webhooks incluyen: <strong>Push events</strong> (cuando se hace push), <strong>Pull request events</strong> (crear/actualizar/cerrar PRs), <strong>Issue events</strong> (crear/editar/cerrar issues), y <strong>Release events</strong> (crear releases). Permiten integrar GitHub con sistemas externos enviando notificaciones HTTP automáticas."
+      "respuestas_correctas": [3],
+      "explicacion": "Los webhooks se disparan por push, PRs, issues y muchos más eventos; <strong>login</strong> no es un evento estándar de webhook."
     },
     {
       "id": 13,
       "nivel": "avanzado",
-      "pregunta": "¿Qué son los GitHub Apps?",
+      "pregunta": "¿Cuál de las siguientes NO describe correctamente los GitHub Apps?",
       "opciones": [
-        "Aplicaciones que se integran con GitHub",
+        "Aplicaciones con permisos granulares",
         "Extensiones del navegador",
-        "Herramientas de CI/CD",
-        "Aplicaciones con permisos granulares"
+        "Aplicaciones que se integran con GitHub",
+        "Se instalan en repositorios u organizaciones"
       ],
-      "respuestas_correctas": [0, 3],
-      "explicacion": "Los GitHub Apps son <strong>aplicaciones que se integran con GitHub</strong> usando la API oficial y <strong>aplicaciones con permisos granulares</strong> que pueden actuar en nombre de usuarios u organizaciones. Tienen autenticación segura mediante JWT y pueden instalarse en repositorios específicos. No son extensiones de navegador ni herramientas de CI/CD genéricas."
+      "respuestas_correctas": [1],
+      "explicacion": "Los GitHub Apps son aplicaciones integradas con permisos granulares que pueden instalarse en repositorios/organizaciones; no son extensiones de navegador."
     },
     {
       "id": 14,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son características de GitHub Enterprise?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica de GitHub Enterprise?",
       "opciones": [
-        "Hosting on-premise",
+        "Limitado a repositorios públicos",
         "SAML SSO",
         "Advanced security features",
-        "Unlimited private repositories"
+        "Hosting on-premise"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "GitHub Enterprise incluye: <strong>hosting on-premise</strong> (GitHub Enterprise Server), <strong>SAML SSO</strong> (autenticación empresarial), <strong>advanced security features</strong> (code scanning, secret scanning), y <strong>unlimited private repositories</strong>. Diseñado para organizaciones con requisitos de seguridad, compliance y control de datos estrictos."
+      "respuestas_correctas": [0],
+      "explicacion": "Enterprise soporta on‑premise, SSO y seguridad avanzada; <strong>no</strong> está limitado a repositorios públicos. Permite repos privados de manera amplia."
     },
     {
       "id": 15,
       "nivel": "avanzado",
-      "pregunta": "¿Qué permite la GitHub API?",
+      "pregunta": "¿Cuál de las siguientes afirmaciones es INCORRECTA sobre la GitHub API?",
       "opciones": [
         "Automatizar operaciones de GitHub",
+        "Solo consultar información",
         "Crear aplicaciones personalizadas",
-        "Integrar con sistemas externos",
-        "Solo consultar información"
+        "Integrar con sistemas externos"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "La GitHub API permite: <strong>automatizar operaciones de GitHub</strong> (crear repos, gestionar PRs, issues), <strong>crear aplicaciones personalizadas</strong> (dashboards, herramientas de gestión), e <strong>integrar con sistemas externos</strong> (CI/CD, project management). No es solo de consulta - también permite operaciones de escritura y modificación."
+      "respuestas_correctas": [1],
+      "explicacion": "La API permite lectura y escritura (crear repos, gestionar PRs/issues); no es solo de consulta."
     },
     {
       "id": 16,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son tipos de GitHub Marketplace apps?",
+      "pregunta": "¿Cuál de las siguientes NO se distribuye como tipo de app en GitHub Marketplace?",
       "opciones": [
+        "Desktop applications",
         "GitHub Apps",
         "OAuth Apps",
-        "Actions",
-        "Desktop applications"
+        "Actions"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "GitHub Marketplace incluye: <strong>GitHub Apps</strong> (aplicaciones integradas con permisos granulares), <strong>OAuth Apps</strong> (aplicaciones de terceros con autenticación OAuth), y <strong>Actions</strong> (workflows automatizados reutilizables). Las aplicaciones de escritorio no se distribuyen a través del Marketplace de GitHub."
+      "respuestas_correctas": [0],
+      "explicacion": "GitHub Marketplace ofrece GitHub Apps, OAuth Apps y Actions; las aplicaciones de escritorio no se publican ahí."
     },
     {
       "id": 17,
       "nivel": "avanzado",
-      "pregunta": "¿Qué son los GitHub Secrets?",
+      "pregunta": "¿Cuál de las siguientes NO corresponde a GitHub Secrets?",
       "opciones": [
         "Variables de entorno encriptadas",
         "Credenciales para Actions",
-        "Tokens de acceso",
-        "Archivos de configuración"
+        "Tokens de acceso visibles en el repositorio",
+        "Solo se descifran durante la ejecución"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Los GitHub Secrets son <strong>variables de entorno encriptadas</strong> que se almacenan de forma segura y <strong>credenciales para Actions</strong> que permiten autenticación en workflows. Se encriptan en reposo y solo se descifran durante la ejecución. No son tokens de acceso directos ni archivos de configuración completos."
+      "respuestas_correctas": [2],
+      "explicacion": "Los secrets se almacenan cifrados y se exponen solo en ejecución para Actions; <strong>no</strong> son tokens visibles en el repositorio."
     },
     {
       "id": 18,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son características de GitHub Codespaces?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica de GitHub Codespaces?",
       "opciones": [
+        "Solo para repositorios públicos",
         "Entorno de desarrollo en la nube",
         "Basado en VS Code",
-        "Configuración con devcontainer",
-        "Solo para repositorios públicos"
+        "Configuración con devcontainer"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "GitHub Codespaces ofrece: <strong>entorno de desarrollo en la nube</strong> (máquinas virtuales configurables), <strong>basado en VS Code</strong> (editor completo en el navegador), y <strong>configuración con devcontainer</strong> (setup automático del entorno). Está disponible para repositorios públicos y privados, no solo públicos."
+      "respuestas_correctas": [0],
+      "explicacion": "Codespaces funciona para repos públicos y privados; sí es cloud, está basado en VS Code y usa devcontainers."
     },
     {
       "id": 19,
       "nivel": "avanzado",
-      "pregunta": "¿Qué permite GitHub Advanced Security?",
+      "pregunta": "¿Cuál de las siguientes NO forma parte de GitHub Advanced Security?",
       "opciones": [
         "Code scanning",
+        "Compilación de binarios firmados",
         "Secret scanning",
-        "Dependency review",
-        "Security advisories"
+        "Dependency review"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "GitHub Advanced Security incluye: <strong>Code scanning</strong> (análisis estático de código con CodeQL), <strong>Secret scanning</strong> (detección de credenciales expuestas), <strong>Dependency review</strong> (análisis de vulnerabilidades en dependencias), y <strong>Security advisories</strong> (notificaciones y gestión de vulnerabilidades). Herramientas integradas para DevSecOps y seguridad del código."
+      "respuestas_correctas": [1],
+      "explicacion": "Advanced Security incluye code scanning, secret scanning y dependency review; no compila binarios firmados."
     },
     {
       "id": 20,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son estrategias de branching en GitHub?",
+      "pregunta": "¿Cuál de las siguientes NO es una estrategia de branching común en GitHub?",
       "opciones": [
         "GitHub Flow",
+        "Snapshot tagging",
         "Git Flow",
-        "Feature branching",
         "Trunk-based development"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las estrategias incluyen: <strong>GitHub Flow</strong> (main + feature branches con PRs), <strong>Git Flow</strong> (master/develop/feature/release/hotfix), <strong>Feature branching</strong> (rama por funcionalidad), y <strong>Trunk-based development</strong> (commits frecuentes a main con feature flags). Cada estrategia se adapta a diferentes equipos y proyectos."
+      "respuestas_correctas": [1],
+      "explicacion": "GitHub Flow, Git Flow y Trunk-based son estrategias conocidas; 'Snapshot tagging' es etiquetado, no una estrategia de branching."
     }
   ]
 }

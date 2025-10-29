@@ -14,20 +14,20 @@
         "Un sistema de control de versiones"
       ],
       "respuestas_correctas": [0],
-      "explicacion": "GitHub Actions es <strong>un sistema de CI/CD integrado en GitHub</strong> que permite automatizar workflows de desarrollo, testing, y deployment directamente desde los repositorios. Facilita la integración continua y entrega continua sin necesidad de herramientas externas, usando eventos del repositorio como triggers."
+      "explicacion": "GitHub Actions es <strong>un sistema de CI/CD integrado en GitHub</strong> que permite automatizar workflows de desarrollo, testing y deployment directamente desde los repositorios. Facilita la integración continua y entrega continua usando eventos del repositorio como disparadores."
     },
     {
       "id": 2,
       "nivel": "básico",
-      "pregunta": "¿Cuáles son componentes principales de GitHub Actions?",
+      "pregunta": "¿Cuál de los siguientes NO es un componente principal de GitHub Actions?",
       "opciones": [
         "Workflows",
         "Jobs",
-        "Steps",
-        "Actions"
+        "Pipelines",
+        "Steps"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los componentes principales son: <strong>Workflows</strong> (procesos automatizados definidos en YAML), <strong>Jobs</strong> (conjunto de steps que se ejecutan en el mismo runner), <strong>Steps</strong> (tareas individuales dentro de un job), y <strong>Actions</strong> (unidades reutilizables de código que realizan tareas específicas). Estos componentes se organizan jerárquicamente."
+      "respuestas_correctas": [2],
+      "explicacion": "Los componentes principales son: <strong>Workflows</strong>, <strong>Jobs</strong>, <strong>Steps</strong> y <strong>Actions</strong>. <strong>Pipelines</strong> no es un componente oficial en GitHub Actions; es un término más asociado a otras plataformas como Azure DevOps."
     },
     {
       "id": 3,
@@ -40,20 +40,20 @@
         "En la carpeta workflows"
       ],
       "respuestas_correctas": [0],
-      "explicacion": "Los workflows se almacenan <strong>en la carpeta .github/workflows</strong> del repositorio. Esta ubicación específica permite a GitHub detectar automáticamente los archivos YAML de workflow y ejecutarlos según los eventos configurados. Los archivos deben tener extensión .yml o .yaml."
+      "explicacion": "Los workflows se almacenan <strong>en la carpeta .github/workflows</strong> del repositorio. Esta ubicación permite a GitHub detectar automáticamente los archivos YAML del workflow y ejecutarlos según los eventos configurados."
     },
     {
       "id": 4,
       "nivel": "básico",
-      "pregunta": "¿Cuáles eventos pueden disparar un workflow?",
+      "pregunta": "¿Cuál de estos eventos NO puede disparar un workflow?",
       "opciones": [
         "push",
+        "commit",
         "pull_request",
-        "schedule",
         "workflow_dispatch"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Todos son eventos válidos: <strong>push</strong> (cuando se hace push al repositorio), <strong>pull_request</strong> (cuando se crea/actualiza un PR), <strong>schedule</strong> (ejecución programada con cron), y <strong>workflow_dispatch</strong> (ejecución manual desde la interfaz). También existen otros eventos como issues, releases, y webhooks."
+      "respuestas_correctas": [1],
+      "explicacion": "<strong>commit</strong> no es un evento soportado por GitHub Actions. Los eventos válidos incluyen <strong>push</strong>, <strong>pull_request</strong>, <strong>workflow_dispatch</strong> y otros como <code>schedule</code>."
     },
     {
       "id": 5,
@@ -66,202 +66,202 @@
         "TOML"
       ],
       "respuestas_correctas": [1],
-      "explicacion": "Los archivos de workflow usan formato <strong>YAML</strong> (Yet Another Markup Language). YAML es legible por humanos, soporta comentarios, y es ideal para configuraciones complejas. Los archivos deben tener extensión .yml o .yaml y seguir la sintaxis específica de GitHub Actions."
+      "explicacion": "Los archivos de workflow usan formato <strong>YAML</strong>. Es legible, soporta comentarios y es ideal para configuraciones. Deben tener extensión .yml o .yaml y seguir la sintaxis específica de GitHub Actions."
     },
     {
       "id": 6,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son tipos de runners en GitHub Actions?",
+      "pregunta": "¿Cuál de los siguientes ES un tipo de runner oficial?",
       "opciones": [
-        "GitHub-hosted runners",
-        "Self-hosted runners",
-        "Container runners",
-        "Cloud runners"
+        "Serverless runners",
+        "Kubernetes runners",
+        "Cloud runners",
+        "GitHub-hosted runners"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Los tipos válidos son: <strong>GitHub-hosted runners</strong> (máquinas virtuales administradas por GitHub con Ubuntu, Windows, y macOS) y <strong>Self-hosted runners</strong> (máquinas propias configuradas para ejecutar workflows). 'Container runners' y 'Cloud runners' no son categorías oficiales, aunque se pueden usar containers dentro de los runners."
+      "respuestas_correctas": [3],
+      "explicacion": "Los tipos oficiales son <strong>GitHub-hosted runners</strong> y <strong>Self-hosted runners</strong>. Términos como serverless, Kubernetes o cloud runners no son categorías oficiales en GitHub Actions."
     },
     {
       "id": 7,
       "nivel": "intermedio",
-      "pregunta": "¿Cómo se definen variables de entorno en GitHub Actions?",
+      "pregunta": "¿Cuál de las siguientes afirmaciones sobre variables de entorno es INCORRECTA?",
       "opciones": [
-        "Con la palabra clave 'env'",
-        "En el nivel de workflow",
-        "En el nivel de job",
-        "En el nivel de step"
+        "Se definen solo en el runner, no en YAML",
+        "Se definen con la palabra clave 'env'",
+        "Pueden declararse en el workflow, job y step",
+        "Se pueden referenciar secrets con <code>${{ secrets.NAME }}</code>"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las variables de entorno se definen usando <strong>la palabra clave 'env'</strong> y pueden configurarse <strong>en el nivel de workflow, job, o step</strong>. Ejemplo: <code>env: NODE_ENV: production</code>. Las variables definidas en niveles superiores están disponibles en niveles inferiores, y pueden referenciar secrets usando <code>${{ secrets.SECRET_NAME }}</code>."
+      "respuestas_correctas": [0],
+      "explicacion": "Las variables se definen en YAML con <strong>env</strong> y pueden declararse a nivel de workflow, job o step. También pueden referenciar secrets con <code>${{ secrets.NAME }}</code>. La afirmación sobre definirlas solo en el runner es <strong>incorrecta</strong>."
     },
     {
       "id": 8,
       "nivel": "intermedio",
-      "pregunta": "¿Qué son los secrets en GitHub Actions?",
+      "pregunta": "¿Qué opción NO describe correctamente los secrets en GitHub Actions?",
       "opciones": [
         "Variables encriptadas",
         "Credenciales seguras",
-        "Tokens de acceso",
-        "Archivos de configuración"
+        "Archivos de configuración",
+        "Se enmascaran en los logs"
       ],
-      "respuestas_correctas": [0, 1],
-      "explicacion": "Los secrets son <strong>variables encriptadas</strong> y <strong>credenciales seguras</strong> que almacenan información sensible como API keys, passwords, y tokens. Se configuran en la configuración del repositorio y se acceden usando <code>${{ secrets.SECRET_NAME }}</code>. GitHub los enmascara automáticamente en los logs para mayor seguridad."
+      "respuestas_correctas": [2],
+      "explicacion": "Los secrets son <strong>variables encriptadas</strong> y <strong>credenciales seguras</strong>. GitHub enmascara su valor en los logs. No son <strong>archivos de configuración</strong>."
     },
     {
       "id": 9,
       "nivel": "intermedio",
-      "pregunta": "¿Cuáles son estrategias de matrix en GitHub Actions?",
+      "pregunta": "¿Cuál NO es un propósito de la estrategia de matrix?",
       "opciones": [
         "Ejecutar jobs en múltiples versiones",
-        "Ejecutar en diferentes OS",
-        "Paralelizar ejecuciones",
-        "Reducir tiempo de build"
+        "Asegurar ejecución secuencial",
+        "Ejecutar en diferentes sistemas operativos",
+        "Paralelizar ejecuciones"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las estrategias de matrix permiten: <strong>ejecutar jobs en múltiples versiones</strong> de lenguajes/herramientas, <strong>ejecutar en diferentes OS</strong> (Ubuntu, Windows, macOS), <strong>paralelizar ejecuciones</strong> automáticamente, y <strong>reducir tiempo de build</strong> total. Ejemplo: <code>strategy: matrix: node-version: [14, 16, 18], os: [ubuntu-latest, windows-latest]</code>."
+      "respuestas_correctas": [1],
+      "explicacion": "La matrix sirve para <strong>variar versiones</strong>, <strong>probar en distintos sistemas</strong> y <strong>paralelizar</strong>. No está pensada para asegurar ejecución secuencial."
     },
     {
       "id": 10,
       "nivel": "intermedio",
-      "pregunta": "¿Cómo se comparten datos entre jobs?",
+      "pregunta": "¿Cuál de los siguientes SÍ permite compartir datos entre jobs?",
       "opciones": [
-        "Usando artifacts",
+        "Artifacts",
         "Variables de entorno globales",
-        "Outputs de jobs",
-        "Cache"
+        "Cache",
+        "Runner labels"
       ],
-      "respuestas_correctas": [0, 2],
-      "explicacion": "Los datos se comparten principalmente usando: <strong>Artifacts</strong> (archivos subidos/descargados entre jobs con <code>actions/upload-artifact</code> y <code>actions/download-artifact</code>) y <strong>Outputs de jobs</strong> (valores simples pasados entre jobs usando <code>outputs:</code> y <code>needs:</code>). Variables de entorno globales no persisten entre jobs, y cache es para optimización, no para compartir datos."
+      "respuestas_correctas": [0],
+      "explicacion": "Los <strong>artifacts</strong> permiten compartir archivos entre jobs (con <code>actions/upload-artifact</code> y <code>actions/download-artifact</code>). Las variables globales no persisten entre jobs, el cache optimiza descargas y los labels no transfieren datos."
     },
     {
       "id": 11,
       "nivel": "intermedio",
-      "pregunta": "¿Qué permite el cache en GitHub Actions?",
+      "pregunta": "¿Cuál de las siguientes NO es un objetivo del cache en GitHub Actions?",
       "opciones": [
         "Acelerar builds",
         "Guardar dependencias",
-        "Reducir tiempo de ejecución",
-        "Compartir archivos entre workflows"
+        "Compartir archivos entre workflows",
+        "Reducir tiempo de ejecución"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "El cache permite: <strong>acelerar builds</strong> evitando descargas repetidas, <strong>guardar dependencias</strong> como node_modules, pip cache, Maven dependencies, y <strong>reducir tiempo de ejecución</strong> significativamente. Se usa con <code>actions/cache</code> especificando key y paths. No está diseñado para compartir archivos entre workflows diferentes."
+      "respuestas_correctas": [2],
+      "explicacion": "El cache se usa para <strong>acelerar builds</strong>, <strong>guardar dependencias</strong> y <strong>reducir el tiempo</strong>. No está diseñado para <strong>compartir archivos entre workflows</strong>."
     },
     {
       "id": 12,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son tipos de actions personalizadas?",
+      "pregunta": "¿Cuál NO es un tipo de action personalizada?",
       "opciones": [
         "JavaScript actions",
         "Docker container actions",
         "Composite actions",
         "Shell script actions"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Los tipos válidos son: <strong>JavaScript actions</strong> (ejecutan código Node.js directamente en el runner), <strong>Docker container actions</strong> (ejecutan código en un container Docker con cualquier lenguaje), y <strong>Composite actions</strong> (combinan múltiples steps en una action reutilizable usando YAML). 'Shell script actions' no es un tipo oficial de custom action."
+      "respuestas_correctas": [3],
+      "explicacion": "Los tipos válidos son: <strong>JavaScript</strong>, <strong>Docker container</strong> y <strong>Composite</strong>. <strong>Shell script actions</strong> no es una categoría oficial de acción personalizada."
     },
     {
       "id": 13,
       "nivel": "avanzado",
-      "pregunta": "¿Cómo se implementan conditional jobs?",
+      "pregunta": "¿Qué opción NO se utiliza para condicionar la ejecución de jobs?",
       "opciones": [
-        "Usando la palabra clave 'if'",
-        "Con expresiones de GitHub",
-        "Basado en outputs de jobs anteriores",
-        "Con variables de entorno"
+        "La palabra clave 'if'",
+        "Expresiones de GitHub",
+        "Variables de entorno sin expresiones",
+        "Outputs de jobs anteriores"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "Los conditional jobs se implementan usando <strong>la palabra clave 'if'</strong> con <strong>expresiones de GitHub</strong> que pueden evaluar contextos, funciones, y <strong>outputs de jobs anteriores</strong>. Ejemplos: <code>if: github.ref == 'refs/heads/main'</code>, <code>if: needs.test.result == 'success'</code>, <code>if: contains(github.event.head_commit.message, '[deploy]')</code>. Permite control granular del flujo de ejecución."
+      "respuestas_correctas": [2],
+      "explicacion": "Se usan <strong>if</strong> y <strong>expresiones</strong> que pueden evaluar contextos y <strong>outputs</strong> de jobs anteriores. Las variables de entorno por sí solas no condicionan sin expresiones."
     },
     {
       "id": 14,
       "nivel": "avanzado",
-      "pregunta": "¿Qué son los reusable workflows?",
+      "pregunta": "¿Cuál afirmación sobre los reusable workflows es INCORRECTA?",
       "opciones": [
-        "Workflows que pueden ser llamados por otros",
-        "Templates de workflows",
-        "Workflows compartidos entre repositorios",
-        "Workflows con parámetros"
+        "Pueden ser llamados por otros workflows",
+        "Pueden compartirse entre repositorios",
+        "Aceptan parámetros (inputs/outputs)",
+        "Son simples templates estáticos"
       ],
-      "respuestas_correctas": [0, 2, 3],
-      "explicacion": "Los reusable workflows son <strong>workflows que pueden ser llamados por otros</strong> usando <code>workflow_call</code> como trigger y <code>uses:</code> para invocarlos. Son <strong>workflows compartidos entre repositorios</strong> y <strong>workflows con parámetros</strong> (inputs/outputs). Permiten modularizar lógica común, reducir duplicación, y centralizar configuraciones estándar."
+      "respuestas_correctas": [3],
+      "explicacion": "Los reusable workflows se invocan con <code>workflow_call</code>, pueden compartirse y aceptar parámetros. No son simples templates estáticos; encapsulan lógica reutilizable."
     },
     {
       "id": 15,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son características de los environments?",
+      "pregunta": "¿Cuál de las siguientes NO es una característica de los environments?",
       "opciones": [
         "Protection rules",
         "Environment secrets",
         "Deployment approvals",
-        "Environment variables"
+        "Auto-scaling de runners"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los environments incluyen: <strong>Protection rules</strong> (restricciones de ramas, required reviewers), <strong>Environment secrets</strong> (credenciales específicas del entorno), <strong>Deployment approvals</strong> (aprobaciones manuales obligatorias), y <strong>Environment variables</strong> (configuraciones específicas). Ideales para separar staging, production, y otros entornos con diferentes niveles de seguridad."
+      "respuestas_correctas": [3],
+      "explicacion": "Los environments incluyen <strong>protection rules</strong>, <strong>secrets</strong> y <strong>deployment approvals</strong>. No gestionan el <strong>auto-scaling de runners</strong>."
     },
     {
       "id": 16,
       "nivel": "avanzado",
-      "pregunta": "¿Cómo se configuran self-hosted runners?",
+      "pregunta": "¿Cuál de los siguientes NO es un paso requerido para configurar self-hosted runners?",
       "opciones": [
-        "Descargando el runner application",
-        "Configurando con un token",
-        "Registrando en el repositorio/organización",
-        "Instalando Docker"
+        "Descargar la aplicación del runner",
+        "Instalar Docker obligatoriamente",
+        "Configurar con un token",
+        "Registrar en el repositorio u organización"
       ],
-      "respuestas_correctas": [0, 1, 2],
-      "explicacion": "La configuración requiere: <strong>descargar el runner application</strong> desde GitHub, <strong>configurar con un token</strong> de autenticación generado, y <strong>registrar en el repositorio/organización</strong> correspondiente. El proceso incluye ejecutar scripts de configuración y establecer el runner como servicio. Docker es opcional para ejecutar actions en containers."
+      "respuestas_correctas": [1],
+      "explicacion": "La configuración requiere <strong>descargar</strong> el runner, <strong>configurar con un token</strong> y <strong>registrarlo</strong>. Docker es opcional y no es un paso obligatorio."
     },
     {
       "id": 17,
       "nivel": "avanzado",
-      "pregunta": "¿Qué permite el GitHub Actions Marketplace?",
+      "pregunta": "¿Qué afirmación es INCORRECTA sobre GitHub Actions Marketplace?",
       "opciones": [
-        "Compartir actions personalizadas",
-        "Encontrar actions de terceros",
-        "Vender actions comerciales",
-        "Versionar actions"
+        "Permite compartir acciones personalizadas",
+        "Incluye acciones de terceros",
+        "Permite vender acciones comerciales",
+        "Se pueden versionar las actions"
       ],
-      "respuestas_correctas": [0, 1, 3],
-      "explicacion": "El Marketplace permite: <strong>compartir actions personalizadas</strong> con la comunidad, <strong>encontrar actions de terceros</strong> para reutilizar funcionalidad común, y <strong>versionar actions</strong> usando tags y releases. Las actions son gratuitas y open source; no es una plataforma comercial para vender actions."
+      "respuestas_correctas": [2],
+      "explicacion": "El Marketplace sirve para <strong>compartir</strong>, <strong>descubrir</strong> y <strong>versionar</strong> acciones. No es una plataforma para <strong>vender</strong> acciones comerciales."
     },
     {
       "id": 18,
       "nivel": "avanzado",
-      "pregunta": "¿Cuáles son límites de GitHub Actions?",
+      "pregunta": "¿Cuál NO es un límite típico de GitHub Actions?",
       "opciones": [
         "2000 minutos/mes para cuentas gratuitas",
-        "500 MB de storage para artifacts",
-        "20 jobs concurrentes",
-        "6 horas máximo por job"
+        "500 MB de almacenamiento de artifacts por repositorio",
+        "20 jobs concurrentes en GitHub-hosted",
+        "10 horas máximo por job"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Los límites incluyen: <strong>2000 minutos/mes para cuentas gratuitas</strong> (Linux), <strong>500 MB de storage para artifacts</strong> por repositorio, <strong>20 jobs concurrentes</strong> para GitHub-hosted runners, y <strong>6 horas máximo por job</strong>. También hay límites en tamaño de logs (64KB por step), artifacts individuales (10GB), y API requests (1000/hora)."
+      "respuestas_correctas": [3],
+      "explicacion": "El tiempo máximo por job suele ser <strong>6 horas</strong>. Los otros límites son reales (pueden variar según tipo de cuenta y sistema operativo)."
     },
     {
       "id": 19,
       "nivel": "avanzado",
-      "pregunta": "¿Cómo se implementa deployment con GitHub Actions?",
+      "pregunta": "¿Cuál de las siguientes NO implementa por sí sola un deployment?",
       "opciones": [
-        "Usando environments",
-        "Con deployment actions",
-        "Configurando protection rules",
-        "Con manual approvals"
+        "Usar environments",
+        "Configurar protection rules",
+        "Usar deployment actions",
+        "Requerir manual approvals"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "El deployment se implementa mediante: <strong>environments</strong> que definen entornos como staging/production con protection rules, <strong>deployment actions</strong> específicas para plataformas (AWS, Azure, Heroku), <strong>protection rules</strong> que requieren aprobaciones y restricciones de rama, y <strong>manual approvals</strong> para control humano en deployments críticos. Esto garantiza deployments seguros y controlados."
+      "respuestas_correctas": [1],
+      "explicacion": "Las <strong>protection rules</strong> por sí solas no realizan despliegues; son controles. <strong>Environments</strong>, <strong>acciones de deployment</strong> y <strong>aprobaciones</strong> sí forman parte del proceso de deployment."
     },
     {
       "id": 20,
       "nivel": "avanzado",
-      "pregunta": "¿Qué son las GitHub Actions expressions?",
+      "pregunta": "¿Cuál de las siguientes NO describe las GitHub Actions expressions?",
       "opciones": [
+        "Plantillas YAML fijas",
         "Sintaxis para evaluar contextos",
-        "Funciones built-in",
-        "Operadores lógicos",
-        "Variables dinámicas"
+        "Funciones built-in como contains()",
+        "Operadores lógicos (&&, ||, !)"
       ],
-      "respuestas_correctas": [0, 1, 2, 3],
-      "explicacion": "Las expressions incluyen: <strong>sintaxis para evaluar contextos</strong> usando <code>${{ }}</code> para acceder a github, env, secrets, needs, <strong>funciones built-in</strong> como contains(), startsWith(), success(), failure(), <strong>operadores lógicos</strong> (&&, ||, !) para condiciones complejas, y <strong>variables dinámicas</strong> que se resuelven en tiempo de ejecución. Permiten lógica condicional avanzada en workflows."
+      "respuestas_correctas": [0],
+      "explicacion": "Las expressions son <strong>sintaxis</strong> con <strong>funciones built-in</strong> y <strong>operadores lógicos</strong> para evaluar contextos dinámicamente. No son <strong>plantillas YAML fijas</strong>."
     }
   ]
 }
