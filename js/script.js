@@ -28,8 +28,9 @@ let quizStarted = false;
 let examMode = null; // 'guided' or 'evaluation'
 let selectedQuestionCount = 30; // Número de preguntas seleccionado (por defecto 30)
 let isInSummaryMode = false; // Para controlar si estamos en modo resumen
-let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
- let availablePrompts = []; // Lista de cursos, cargada desde js/cursos.json
+ let selectedTechnologies = []; // Tecnologías seleccionadas por el usuario (opcional)
+  let availablePrompts = []; // Lista de cursos, cargada desde js/cursos.json
+  let availableDocs = []; // Lista de PDFs descubiertos en /documentation
  let selectedLevels = ['basico', 'intermedio', 'avanzado']; // Niveles seleccionados por el usuario
 
  // ===== TTS (Texto a Voz) =====
@@ -1004,6 +1005,7 @@ function backToQuiz() {
     // Cerrar overlays si están visibles y volver a la vista adecuada
     const promptsPage = document.getElementById('promptsPage');
     const guidesPage = document.getElementById('guidesPage');
+    const docsPage = document.getElementById('docsPage');
     if (promptsPage) {
         promptsPage.style.display = 'none';
         promptsPage.classList.remove('overlay');
@@ -1011,6 +1013,10 @@ function backToQuiz() {
     if (guidesPage) {
         guidesPage.style.display = 'none';
         guidesPage.classList.remove('overlay');
+    }
+    if (docsPage) {
+        docsPage.style.display = 'none';
+        docsPage.classList.remove('overlay');
     }
     document.body.classList.remove('overlay-open');
     hideAllModals();
@@ -1170,11 +1176,15 @@ function navigatePrompt(offset) {
 window.onclick = function(event) {
     const promptModal = document.getElementById('promptModal');
     const guideModal = document.getElementById('guideModal');
+    const docModal = document.getElementById('docModal');
     if (event.target === promptModal) {
         closeModal();
     }
     if (event.target === guideModal) {
         closeGuideModal();
+    }
+    if (event.target === docModal) {
+        closeDocModal();
     }
 }
 
@@ -1182,8 +1192,10 @@ window.onclick = function(event) {
 function hideAllModals() {
     const promptModal = document.getElementById('promptModal');
     const guideModal = document.getElementById('guideModal');
+    const docModal = document.getElementById('docModal');
     if (promptModal) promptModal.style.display = 'none';
     if (guideModal) guideModal.style.display = 'none';
+    if (docModal) docModal.style.display = 'none';
 }
 
 // ===== FUNCIONALIDAD DE GUÍAS =====
@@ -1199,6 +1211,161 @@ function showGuidesPage() {
 
     // Cargar las guías en la galería
     loadGuidesGallery();
+}
+
+// ===== FUNCIONALIDAD DE DOCUMENTACIÓN =====
+// Mostrar la página de documentación
+function showDocsPage() {
+    const docsPage = document.getElementById('docsPage');
+    docsPage.style.display = 'block';
+    docsPage.classList.add('overlay');
+    document.body.classList.add('overlay-open');
+    hideAllModals();
+
+    // Cargar documentos en la galería
+    loadDocsGallery();
+}
+
+// Exponer funciones de Documentación al ámbito global por compatibilidad con atributos onclick
+window.showDocsPage = showDocsPage;
+window.loadDocsGallery = loadDocsGallery;
+window.openDocument = openDocument;
+window.closeDocModal = closeDocModal;
+window.navigateDocument = navigateDocument;
+
+// Descubrir y mostrar la galería de PDFs
+async function loadDocsGallery() {
+    const gallery = document.getElementById('docsGallery');
+    if (!gallery) return;
+    gallery.innerHTML = '';
+
+    try {
+        // Obtenemos el listado del directorio (http.server genera index por defecto)
+        const res = await fetch('documentation/', { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Error al leer documentación: ${res.status}`);
+        const html = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a'));
+        const pdfs = links
+            .map(a => a.getAttribute('href') || '')
+            .filter(href => href && href.toLowerCase().endsWith('.pdf'))
+            .map(href => href.replace(/^\/?documentation\//i, '').replace(/^\//, ''));
+
+        // Helper para obtener un título legible y consistente
+        function getDocTitleFromFileName(file) {
+            const base = (file || '').replace(/\.pdf$/i, '');
+            // 1) Intentar obtener título desde availablePrompts (cursos.json)
+            try {
+                if (Array.isArray(availablePrompts) && availablePrompts.length > 0) {
+                    const match = availablePrompts.find(p => {
+                        const pf = (p.file || '').replace(/\.(md|markdown)$/i, '');
+                        return pf === base;
+                    });
+                    if (match && match.title) return match.title;
+                }
+            } catch (_) { /* noop */ }
+
+            // 2) Formateo legible a partir del nombre del archivo
+            const slug = base.replace(/_aprendizaje$/i, '');
+            const parts = slug.split(/[_-]+/).filter(Boolean);
+            const specialMap = {
+                'github': 'GitHub',
+                'actions': 'Actions',
+                'docker': 'Docker',
+                'swarm': 'Swarm',
+                'kubernetes': 'Kubernetes',
+                'terraform': 'Terraform',
+                'linux': 'Linux',
+                'azure': 'Azure',
+                'devops': 'DevOps',
+                'prometheus': 'Prometheus',
+                'grafana': 'Grafana',
+                'ansible': 'Ansible',
+                'jenkins': 'Jenkins',
+                'argocd': 'Argo CD',
+            };
+            const title = parts.map(w => specialMap[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1))).join(' ');
+            return title || base;
+        }
+
+        availableDocs = pdfs.map(file => ({
+            file,
+            title: getDocTitleFromFileName(file),
+            description: 'Documento PDF'
+        }));
+
+        if (availableDocs.length === 0) {
+            gallery.innerHTML = '<p>No se encontraron archivos PDF en la carpeta documentación.</p>';
+            return;
+        }
+
+        availableDocs.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'prompt-card';
+            card.innerHTML = `
+                <div class="prompt-card-header">
+                    <h3>${item.title}</h3>
+                </div>
+                <div class="prompt-card-body">
+                    <p>${item.description}</p>
+                    <button class="btn btn-primary" onclick="openDocument('${item.file}', '${item.title}')">
+                        📄 Ver
+                    </button>
+                </div>
+            `;
+            gallery.appendChild(card);
+        });
+    } catch (err) {
+        console.error('Error al cargar la galería de documentación:', err);
+        gallery.innerHTML = '<p>Error al cargar la documentación.</p>';
+    }
+}
+
+// Abrir documento PDF en modal
+function openDocument(filename, title) {
+    const modal = document.getElementById('docModal');
+    const modalTitle = document.getElementById('docModalTitle');
+    const frame = document.getElementById('pdfFrame');
+    const openNewTabBtn = document.getElementById('openDocNewTabBtn');
+
+    // Cerrar otros modales
+    const promptModal = document.getElementById('promptModal');
+    const guideModal = document.getElementById('guideModal');
+    if (promptModal) promptModal.style.display = 'none';
+    if (guideModal) guideModal.style.display = 'none';
+
+    modalTitle.textContent = title;
+    const src = `documentation/${filename}`;
+    frame.src = src;
+    if (openNewTabBtn) {
+        openNewTabBtn.onclick = () => window.open(src, '_blank');
+    }
+
+    const currentIndex = availableDocs.findIndex(d => d.file === filename);
+    modal.dataset.currentIndex = String(currentIndex);
+    modal.dataset.source = 'document';
+    modal.style.display = 'block';
+}
+
+// Cerrar modal de documentación
+function closeDocModal() {
+    const modal = document.getElementById('docModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Navegación entre documentos
+function navigateDocument(offset) {
+    const modal = document.getElementById('docModal');
+    if (!modal || modal.style.display === 'none') return;
+    const idx = parseInt(modal.dataset.currentIndex || '-1', 10);
+    if (isNaN(idx) || idx < 0) return;
+    if (!Array.isArray(availableDocs) || availableDocs.length === 0) return;
+    let newIdx = idx + offset;
+    if (newIdx < 0) newIdx = availableDocs.length - 1;
+    if (newIdx >= availableDocs.length) newIdx = 0;
+    const item = availableDocs[newIdx];
+    openDocument(item.file, item.title);
 }
 
 // ====== Selección de Niveles ======

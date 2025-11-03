@@ -1370,6 +1370,22 @@ body.overlay-open {
     background: #f8f9fa;
 }
 
+/* Visor PDF para Documentación */
+.pdf-viewer-container {
+    width: 100%;
+    height: 70vh;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.pdf-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+}
+
 .modal-header h2 {
     margin: 0;
     color: #333;
