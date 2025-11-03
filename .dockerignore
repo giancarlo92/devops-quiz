@@ -1,0 +1,17 @@
+.git
+.gitignore
+.vscode/
+.idea/
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.tmp
+**/.cache/
+**/__pycache__/
+**/*.pyc
+venv/
+.env
+.DS_Store
+Thumbs.db
