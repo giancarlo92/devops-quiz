@@ -109,6 +109,15 @@ function restoreSessionState() {
         // Reflejar niveles restaurados en la UI
         setLevelCheckboxesFromState();
 
+        // Sincronizar la UI de cantidad de preguntas con el estado restaurado
+        try {
+            updateQuestionCount(selectedQuestionCount);
+            const radio = document.querySelector(`input[name="questionCount"][value="${selectedQuestionCount}"]`);
+            if (radio) radio.checked = true;
+        } catch (_) {
+            // Si la UI aún no está montada, ignoramos
+        }
+
         if (!quizStarted || selectedQuestions.length === 0) return false;
 
         // Ocultar inicio, mostrar contenedor del quiz
@@ -198,33 +207,74 @@ function selectRandomQuestions() {
     // Si el filtro no devuelve resultados, usar todas las preguntas como fallback
     const base = pool.length > 0 ? pool : allQuestions;
 
-    // Deduplicación por id si existe, si no por texto de pregunta y tecnología
-    const seen = new Set();
-    const unique = [];
+    // Helper para construir clave única de pregunta
+    const buildKey = (q) => {
+        const tech = (q.tecnologia || '').toString();
+        if (q.id !== undefined && q.id !== null) {
+            // Incluir tecnología para evitar colisiones de IDs entre archivos
+            return `tech:${tech}::id:${q.id}`;
+        }
+        return `tech:${tech}::text:${(q.pregunta || '').trim()}`;
+    };
+
+    // Deduplicación del conjunto base
+    const seenBase = new Set();
+    const uniqueBase = [];
     for (const q of base) {
-        const key = (q.id !== undefined && q.id !== null)
-            ? `id:${q.id}`
-            : `text:${(q.tecnologia || '')}::${(q.pregunta || '').trim()}`;
-        if (!seen.has(key)) {
-            seen.add(key);
-            unique.push(q);
+        const key = buildKey(q);
+        if (!seenBase.has(key)) {
+            seenBase.add(key);
+            uniqueBase.push(q);
         }
     }
 
     // Mezclar con Fisher–Yates para mejor aleatoriedad
-    const shuffled = [...unique];
-    for (let i = shuffled.length - 1; i > 0; i--) {
+    const shuffledBase = [...uniqueBase];
+    for (let i = shuffledBase.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        [shuffledBase[i], shuffledBase[j]] = [shuffledBase[j], shuffledBase[i]];
     }
 
-    // Seleccionar hasta el número especificado de preguntas (sin repetir)
-    selectedQuestions = shuffled.slice(0, selectedQuestionCount);
+    // Selección inicial desde el conjunto filtrado
+    const selected = shuffledBase.slice(0, selectedQuestionCount);
 
-    // Inicializar array de respuestas del usuario
-    userAnswers = new Array(selectedQuestionCount).fill(null);
+    // Si falta para llegar al total elegido, completar con el resto del banco global
+    if (selected.length < selectedQuestionCount) {
+        const need = selectedQuestionCount - selected.length;
+        const alreadyKeys = new Set(selected.map(buildKey));
 
-    console.log('Preguntas seleccionadas:', selectedQuestions);
+        // Deduplicar y mezclar todas las preguntas
+        const seenAll = new Set();
+        const uniqueAll = [];
+        for (const q of allQuestions) {
+            const key = buildKey(q);
+            if (!seenAll.has(key)) {
+                seenAll.add(key);
+                uniqueAll.push(q);
+            }
+        }
+        const shuffledAll = [...uniqueAll];
+        for (let i = shuffledAll.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledAll[i], shuffledAll[j]] = [shuffledAll[j], shuffledAll[i]];
+        }
+
+        for (const q of shuffledAll) {
+            const key = buildKey(q);
+            if (!alreadyKeys.has(key)) {
+                selected.push(q);
+                alreadyKeys.add(key);
+                if (selected.length >= selectedQuestionCount) break;
+            }
+        }
+    }
+
+    // En caso extremo de no tener suficientes preguntas únicas en el banco
+    selectedQuestions = selected;
+
+    // Inicializar array de respuestas del usuario (mantener sincronía con las preguntas)
+    userAnswers = new Array(selectedQuestions.length).fill(null);
+
     generateQuizHTML();
     // Guardar estado inicial del examen tras generar
     quizStarted = true;
@@ -536,6 +586,13 @@ async function startQuiz() {
         return;
     }
     
+    // Asegurar que usamos la cantidad actualmente seleccionada en la UI
+    const selectedRadio = document.querySelector('input[name="questionCount"]:checked');
+    if (selectedRadio) {
+        const val = parseInt(selectedRadio.value, 10);
+        if (!isNaN(val)) selectedQuestionCount = val;
+    }
+
     document.getElementById('startScreen').style.display = 'none';
     await loadAllQuestions();
     selectRandomQuestions();

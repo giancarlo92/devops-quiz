@@ -105,7 +105,7 @@
         "Imperative Pipeline",
         "YAML Pipeline"
       ],
-      "respuestas_correctas": [3],
+      "respuestas_correctas": [2,3],
       "explicacion": "Jenkins soporta <strong>Declarative</strong> y <strong>Scripted</strong> Pipelines (Groovy). No existe una sintaxis nativa en YAML."
     },
     {
