@@ -190,6 +190,15 @@ async function loadAllQuestions() {
     }
 }
 
+// Utilidad: normaliza texto (quita tildes/diacríticos y pasa a minúsculas)
+function normalizeString(str) {
+    return String(str || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+}
+
 // Función para seleccionar preguntas aleatorias
 function selectRandomQuestions() {
     // Determinar el conjunto de preguntas según tecnologías seleccionadas
@@ -198,10 +207,13 @@ function selectRandomQuestions() {
         : allQuestions;
 
     // Filtrar por niveles seleccionados
-    const pool = (selectedLevels && selectedLevels.length > 0)
+    const selectedLevelsNorm = (selectedLevels && selectedLevels.length > 0)
+        ? selectedLevels.map(l => normalizeString(l))
+        : [];
+    const pool = (selectedLevelsNorm && selectedLevelsNorm.length > 0)
         ? poolByTech.filter(q => {
-            const nivel = (q.nivel || '').toString().toLowerCase();
-            return selectedLevels.includes(nivel) || selectedLevels.includes('todos');
+            const nivel = normalizeString(q.nivel);
+            return selectedLevelsNorm.includes(nivel) || selectedLevelsNorm.includes('todos');
         })
         : poolByTech;
 
@@ -442,9 +454,13 @@ function validateAndShowExplanation(questionIndex) {
         }
     });
     
-    // Mostrar la explicación
+    // Mostrar la explicación (Markdown soportado)
     if (question.explicacion) {
-        explanationText.innerHTML = question.explicacion;
+        try {
+            explanationText.innerHTML = renderMarkdownHTML(question.explicacion);
+        } catch (e) {
+            explanationText.textContent = String(question.explicacion);
+        }
     } else {
         // Si no hay explicación, mostrar las respuestas correctas
         const correctAnswers = question.respuestas_correctas.map(index => question.opciones[index]);
@@ -469,7 +485,11 @@ function showExplanation(questionIndex) {
     const explanationText = document.getElementById(`explanation-text-${questionIndex}`);
     
     if (question.explicacion) {
-        explanationText.innerHTML = question.explicacion;
+        try {
+            explanationText.innerHTML = renderMarkdownHTML(question.explicacion);
+        } catch (e) {
+            explanationText.textContent = String(question.explicacion);
+        }
         explanationSection.style.display = 'block';
         explanationSection.classList.add('slideDown');
     } else {
@@ -481,6 +501,41 @@ function showExplanation(questionIndex) {
     }
     // Habilitar el toggle de voz si hay soporte
     enableTTSToggle(questionIndex);
+}
+
+// Renderizado Markdown seguro con fallback local
+function renderMarkdownHTML(md) {
+    const src = String(md || '');
+    // Intentar con marked si está disponible
+    try {
+        if (typeof marked !== 'undefined' && typeof marked.parse === 'function') {
+            const rendered = marked.parse(src);
+            return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(rendered) : rendered;
+        }
+        if (typeof marked !== 'undefined' && typeof marked === 'function') {
+            const rendered = marked(src);
+            return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(rendered) : rendered;
+        }
+    } catch (_) { /* continuar al fallback */ }
+
+    // Fallback básico: **negrita**, *itálica*, `código`, bloques ```
+    let html = src;
+    html = html.replace(/```([\s\S]*?)```/g, (_, code) => `<pre><code>${escapeHtml(code)}</code></pre>`);
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    // Saltos de línea
+    html = html.replace(/\n{2,}/g, '<br/><br/>').replace(/\n/g, '<br/>');
+    return (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(html) : html;
+}
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 // Función para ir a la siguiente pregunta
@@ -1372,7 +1427,7 @@ function navigateDocument(offset) {
 function getSelectedLevelsFromUI() {
     const checkboxes = document.querySelectorAll('.level-checkbox');
     const levels = [];
-    checkboxes.forEach(cb => { if (cb.checked) levels.push(cb.value.toLowerCase()); });
+    checkboxes.forEach(cb => { if (cb.checked) levels.push(normalizeString(cb.value)); });
     return levels;
 }
 
