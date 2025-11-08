@@ -1,0 +1,266 @@
+{
+  "tecnologia": "SonarQube",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "nivel": "básico",
+      "pregunta": "¿Qué evalúa SonarQube principalmente?",
+      "opciones": [
+        "Calidad del código",
+        "Uso de CPU en producción",
+        "Cobertura de pruebas",
+        "Disponibilidad de servidores"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "SonarQube analiza calidad y mide cobertura. Métricas de CPU/availability pertenecen a monitoreo, no a análisis estático."
+    },
+    {
+      "id": 2,
+      "nivel": "básico",
+      "pregunta": "¿Qué componentes básicos incluye?",
+      "opciones": [
+        "Quality Profiles",
+        "Quality Gates",
+        "Auto Scaling Groups",
+        "Issues"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "SonarQube gestiona perfiles de reglas, quality gates e issues. Auto Scaling Groups son de AWS."
+    },
+    {
+      "id": 3,
+      "nivel": "básico",
+      "pregunta": "¿Qué fuentes analiza SonarQube?",
+      "opciones": [
+        "Código fuente",
+        "Artefactos binarios",
+        "Resultados de pruebas",
+        "Logs de infraestructura"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "Analiza código y puede importar resultados de pruebas para cobertura. No procesa binarios ni logs de infra."
+    },
+    {
+      "id": 4,
+      "nivel": "básico",
+      "pregunta": "¿Qué tipo de problemas detecta?",
+      "opciones": [
+        "Code smells",
+        "Vulnerabilidades",
+        "Bugs",
+        "Fallas de hardware"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Detecta bugs, vulnerabilidades y code smells. Fallas de hardware no forman parte del análisis estático."
+    },
+    {
+      "id": 5,
+      "nivel": "básico",
+      "pregunta": "¿Qué lenguaje de configuración usa mayormente?",
+      "opciones": [
+        "JSON para reglas",
+        "Propiedades (sonar-project.properties)",
+        "YAML nativo",
+        "XML para plugins"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "La configuración típica usa sonar-project.properties. JSON/YAML no son formatos primarios de configuración en SonarQube."
+    },
+    {
+      "id": 6,
+      "nivel": "básico",
+      "pregunta": "¿Qué herramientas de análisis se integran?",
+      "opciones": [
+        "SonarScanner",
+        "Build Wrapper (C/C++)",
+        "Grafana",
+        "SonarLint"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "SonarScanner, Build Wrapper y SonarLint se integran con SonarQube; Grafana es visualización externa."
+    },
+    {
+      "id": 7,
+      "nivel": "básico",
+      "pregunta": "¿Qué asegura un Quality Gate?",
+      "opciones": [
+        "Condiciones mínimas de calidad antes de aprobar",
+        "Escalado automático de servidores",
+        "Reinicio de pipelines",
+        "Ejecución de pruebas de carga"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Quality Gate define umbrales que deben cumplirse (bugs, vulnerabilidades, cobertura, duplicaciones, etc.)."
+    },
+    {
+      "id": 8,
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas mejoran resultados?",
+      "opciones": [
+        "Revisar issues y asignarlos",
+        "Actualizar Quality Profiles",
+        "Ignorar duplicación de código",
+        "Integrar SonarQube en CI"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Asignación de issues, perfiles adecuados e integración en CI mejoran calidad; ignorar duplicación es mala práctica."
+    },
+    {
+      "id": 9,
+      "nivel": "básico",
+      "pregunta": "¿Qué métricas clave reporta?",
+      "opciones": [
+        "Cobertura",
+        "Duplicación",
+        "Complejidad",
+        "Latencia de red"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Cobertura, duplicación y complejidad son métricas claves; latencia de red es monitoreo de infraestructura."
+    },
+    {
+      "id": 10,
+      "nivel": "básico",
+      "pregunta": "¿Qué integra SonarLint?",
+      "opciones": [
+        "Análisis en el IDE",
+        "Corrección automática de bugs",
+        "Sincronización con Quality Profiles",
+        "Escaneo de puertos"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "SonarLint analiza en el IDE y puede sincronizar reglas con SonarQube; no corrige automáticamente ni escanea puertos."
+    },
+    {
+      "id": 11,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué enfoques mejoran gobernanza?",
+      "opciones": [
+        "Quality Gates por proyecto",
+        "Perfiles específicos por lenguaje",
+        "Auditoría de cambios en reglas",
+        "Aprobación manual de cada commit"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Quality Gates, perfiles por lenguaje y auditoría aseguran gobernanza; aprobar cada commit no es práctico."
+    },
+    {
+      "id": 12,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas integran cobertura en SonarQube?",
+      "opciones": [
+        "Generar reportes (JaCoCo, lcov)",
+        "Importar resultados al análisis",
+        "Medir cobertura en producción",
+        "Ignorar tests lentos"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "SonarQube consume reportes de cobertura generados por herramientas y los agrega al análisis."
+    },
+    {
+      "id": 13,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas reducen falsos positivos?",
+      "opciones": [
+        "Afinar Quality Profiles",
+        "Usar suppressions justificadas",
+        "Desactivar análisis",
+        "Revisar reglas con el equipo"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Perfiles afinados, suppressions justificadas y revisión colaborativa reducen falsos positivos."
+    },
+    {
+      "id": 14,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué tipos de issues existen?",
+      "opciones": [
+        "Bug",
+        "Vulnerability",
+        "Code Smell",
+        "Hardware Fault"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los issues se clasifican en bug, vulnerability y code smell; fallas de hardware no aplican."
+    },
+    {
+      "id": 15,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué medidas mejoran calidad del nuevo código?",
+      "opciones": [
+        "Definir un Quality Gate del nuevo código",
+        "Requerir cobertura mínima",
+        "Permitir duplicación ilimitada",
+        "Revisiones de code smells"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "El enfoque de 'nuevo código' con umbrales de cobertura y duplicación y revisión de smells mejora calidad."
+    },
+    {
+      "id": 16,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué integraciones CI son comunes?",
+      "opciones": [
+        "Jenkins",
+        "GitHub Actions",
+        "CircleCI",
+        "Microsoft Excel"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "SonarQube se integra con múltiples CI como Jenkins/GHA/CircleCI; Excel no es un sistema CI."
+    },
+    {
+      "id": 17,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué estrategias alinean seguridad y calidad?",
+      "opciones": [
+        "Quality Gates con condiciones de seguridad",
+        "Análisis de dependencias externas",
+        "Ignorar vulnerabilidades menores",
+        "Políticas de aprobación basadas en riesgo"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Quality Gates con seguridad, análisis de dependencias y políticas basadas en riesgo alinean seguridad y calidad."
+    },
+    {
+      "id": 18,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas mejoran rendimiento del análisis?",
+      "opciones": [
+        "Cacheo de resultados",
+        "Incremental analysis",
+        "Paralelismo inteligente",
+        "Deshabilitar reglas críticas"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Cache, análisis incremental y paralelismo mejoran rendimiento; deshabilitar reglas críticas degrada calidad."
+    },
+    {
+      "id": 19,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué enfoques mejoran adopción organizacional?",
+      "opciones": [
+        "Perfiles y gates estandarizados",
+        "Capacitación y soporte",
+        "Métricas y reportes organizacionales",
+        "Penalizar equipos por issues"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Estandarización, capacitación y métricas institucionales impulsan adopción; penalizar inhibe colaboración."
+    },
+    {
+      "id": 20,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué datos son críticos para un Quality Gate efectivo?",
+      "opciones": [
+        "Cobertura mínima",
+        "Duplicación máxima",
+        "Severidad de vulnerabilidades",
+        "Disponibilidad del servidor de producción"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Quality Gates se basan en cobertura, duplicación y severidad de issues; disponibilidad del servidor es monitoreo, no métrica de gate."
+    }
+  ]
+}

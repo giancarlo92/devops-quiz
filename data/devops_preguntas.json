@@ -1,0 +1,266 @@
+{
+  "tecnologia": "DevOps (Teoría)",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "nivel": "básico",
+      "pregunta": "¿Cuáles principios están alineados con DevOps?",
+      "opciones": [
+        "Colaboración entre desarrollo y operaciones",
+        "Entregas frecuentes y automatización",
+        "Aislar por completo a QA del proceso",
+        "Ciclos de retroalimentación rápidos"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "DevOps busca colaboración, automatización y feedback rápido. Aislar QA va en contra de la integración continua de calidad."
+    },
+    {
+      "id": 2,
+      "nivel": "básico",
+      "pregunta": "¿Qué objetivo clave persigue DevOps?",
+      "opciones": [
+        "Reducir tiempo de entrega",
+        "Eliminar toda documentación",
+        "Aumentar la fricción entre equipos",
+        "Minimizar visibilidad de cambios"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "DevOps busca entregar valor más rápido y con calidad; no promueve eliminar documentación ni ocultar cambios."
+    },
+    {
+      "id": 3,
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas fomentan la calidad continua?",
+      "opciones": [
+        "Integración continua",
+        "Revisión de código",
+        "Despliegues manuales sin pruebas",
+        "Pruebas automatizadas"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "CI, code review y pruebas automatizadas sostienen la calidad. Despliegues manuales sin pruebas la ponen en riesgo."
+    },
+    {
+      "id": 4,
+      "nivel": "básico",
+      "pregunta": "¿Qué caracteriza la infraestructura como código (IaC)?",
+      "opciones": [
+        "Versionar y automatizar la configuración de infraestructura",
+        "Cambios manuales no trazables",
+        "Reproducibilidad y consistencia",
+        "Uso exclusivo de GUI"
+      ],
+      "respuestas_correctas": [0, 2],
+      "explicacion": "IaC promueve versionado, automatización y reproducibilidad; los cambios manuales no trazables van en contra del enfoque."
+    },
+    {
+      "id": 5,
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas promueven feedback rápido?",
+      "opciones": [
+        "Deploys poco frecuentes",
+        "Monitoreo continuo",
+        "Feature flags",
+        "Revisión trimestral de incidentes"
+      ],
+      "respuestas_correctas": [1, 2],
+      "explicacion": "Monitoreo continuo y feature flags reducen riesgo y aceleran feedback; despliegues poco frecuentes lo ralentizan."
+    },
+    {
+      "id": 6,
+      "nivel": "básico",
+      "pregunta": "¿Qué elementos facilitan trazabilidad de cambios?",
+      "opciones": [
+        "Control de versiones",
+        "Commits sin mensajes",
+        "Pipelines reproducibles",
+        "Docs vivas vinculadas al pipeline"
+      ],
+      "respuestas_correctas": [0, 2, 3],
+      "explicacion": "Versionado, pipelines reproducibles y documentación vinculada mejoran trazabilidad; commits vacíos la dificultan."
+    },
+    {
+      "id": 7,
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas reducen riesgo en despliegues?",
+      "opciones": [
+        "Canary releases",
+        "Blue/Green",
+        "Deploy directo a producción sin pruebas",
+        "Rollbacks automatizados"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Canary, Blue/Green y rollbacks automatizados reducen riesgo; desplegar sin pruebas lo aumenta."
+    },
+    {
+      "id": 8,
+      "nivel": "básico",
+      "pregunta": "¿Qué cultura favorece DevOps?",
+      "opciones": [
+        "Culpar individuos por errores",
+        "Aprendizaje continuo",
+        "Transparencia y responsabilidad compartida",
+        "Silenciar postmortems"
+      ],
+      "respuestas_correctas": [1, 2],
+      "explicacion": "DevOps promueve aprendizaje, transparencia y responsabilidad colectiva; culpas y silencio inhiben mejora continua."
+    },
+    {
+      "id": 9,
+      "nivel": "básico",
+      "pregunta": "¿Qué métricas son relevantes para entrega?",
+      "opciones": [
+        "Lead time",
+        "Frecuencia de despliegue",
+        "Tiempo medio de restauración (MTTR)",
+        "Número de tíquets abiertos por semana"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Las métricas DORA incluyen lead time, frecuencia de despliegue y MTTR; los tíquets semanales no son métricas estandarizadas de desempeño DevOps."
+    },
+    {
+      "id": 10,
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas ayudan a seguridad integrada (DevSecOps)?",
+      "opciones": [
+        "Scans automáticos tempranos",
+        "Controles manuales tardíos únicamente",
+        "Políticas como código",
+        "Revisiones de dependencias"
+      ],
+      "respuestas_correctas": [0, 2, 3],
+      "explicacion": "Automatizar seguridad, tratar políticas como código y revisar dependencias integra seguridad en el ciclo de desarrollo."
+    },
+    {
+      "id": 11,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué características definen pipelines confiables?",
+      "opciones": [
+        "Idempotencia",
+        "Paralelismo controlado",
+        "Logs y trazas completas",
+        "Dependencia de clics manuales"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Idempotencia, paralelismo y observabilidad hacen pipelines confiables; depender de clics manuales introduce variabilidad."
+    },
+    {
+      "id": 12,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas mejoran gestión de cambios?",
+      "opciones": [
+        "Feature toggles",
+        "Branching alineado a releases",
+        "Revisiones ligeras y continuas",
+        "Ramas largas sin integración"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Toggles, estrategia de ramas clara y revisiones continuas mejoran cambios; ramas largas aisladas complican integración."
+    },
+    {
+      "id": 13,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué elementos componen observabilidad efectiva?",
+      "opciones": [
+        "Logs",
+        "Métricas",
+        "Trazas",
+        "Capturas de pantalla manuales"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Observabilidad moderna se basa en correlación de logs, métricas y trazas; capturas manuales no escalan ni son trazables."
+    },
+    {
+      "id": 14,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas reducen el tiempo de recuperación?",
+      "opciones": [
+        "Runbooks automatizados",
+        "Simulacros regulares",
+        "Alertas accionables",
+        "Dependencia exclusiva de mensajes en chat"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Runbooks, simulacros y alertas claras reducen MTTR; depender solo de chat no asegura respuesta efectiva."
+    },
+    {
+      "id": 15,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas favorecen gobernanza sin fricción?",
+      "opciones": [
+        "Controles como código",
+        "Auditoría continua",
+        "Puertas manuales opacas",
+        "Rastreabilidad automatizada"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Controles como código, auditoría y trazabilidad automatizada integran gobernanza sin bloquear flujo."
+    },
+    {
+      "id": 16,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué riesgos surgen con despliegues grandes e infrecuentes?",
+      "opciones": [
+        "Mayor complejidad de cambios",
+        "Dificultad de rollback",
+        "Menor visibilidad de impacto",
+        "Mejor feedback inmediato"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Cambios grandes dificultan rollback y visibilidad; el feedback suele ser tardío, no inmediato."
+    },
+    {
+      "id": 17,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué estrategias escalan DevOps en organizaciones grandes?",
+      "opciones": [
+        "Plataformas internas de entrega",
+        "Plantillas y estándares compartidos",
+        "Autonomía con guardrails",
+        "Control centralizado rígido sin automatización"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Plataformas internas, estándares y guardrails balancean autonomía con control; rigidez sin automatización frena adopción."
+    },
+    {
+      "id": 18,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas alinean producto y operaciones?",
+      "opciones": [
+        "SLOs y SLIs",
+        "Reuniones postmortem colaborativas",
+        "Ownership de equipos sobre servicios",
+        "Métricas no vinculadas a objetivos"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "SLO/SLI, postmortems y ownership alinean producto y operaciones; métricas desconectadas impiden decisiones informadas."
+    },
+    {
+      "id": 19,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas mejoran seguridad sin frenar entrega?",
+      "opciones": [
+        "Shift-left de controles",
+        "Firmas y atestación de artefactos",
+        "Automatizar excepciones con expiración",
+        "Aprobar manualmente todo despliegue"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Controles tempranos, supply chain seguro y excepciones acotadas equilibran seguridad y velocidad; aprobar manualmente todo no escala."
+    },
+    {
+      "id": 20,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué indicadores evalúan efectividad DevOps?",
+      "opciones": [
+        "Tiempo de ciclo",
+        "Tasa de cambios fallidos",
+        "Satisfacción del equipo",
+        "Número de repositorios por organización"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Tiempo de ciclo, tasa de fallos y salud del equipo son indicadores útiles; el número de repos no refleja efectividad."
+    }
+  ]
+}

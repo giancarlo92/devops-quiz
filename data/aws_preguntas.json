@@ -1,0 +1,266 @@
+{
+  "tecnologia": "AWS",
+  "total_preguntas": 20,
+  "preguntas": [
+    {
+      "id": 1,
+      "nivel": "básico",
+      "pregunta": "¿Qué describe mejor una Región en AWS?",
+      "opciones": [
+        "Un conjunto de zonas de disponibilidad dentro de una ubicación geográfica",
+        "Una VPC por defecto en cada cuenta",
+        "Un servicio de red administrado",
+        "Un tipo de instancia EC2"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una Región es una ubicación física con múltiples Zonas de Disponibilidad (AZ) independientes que permiten alta disponibilidad y tolerancia a fallos."
+    },
+    {
+      "id": 2,
+      "nivel": "básico",
+      "pregunta": "¿Cuál servicio de AWS está orientado a almacenar objetos?",
+      "opciones": [
+        "Amazon EBS",
+        "Amazon EFS",
+        "Amazon S3",
+        "Amazon RDS"
+      ],
+      "respuestas_correctas": [2],
+      "explicacion": "Amazon S3 es almacenamiento de objetos. EBS es para bloques adjuntos a instancias, EFS es un sistema de archivos NFS, y RDS es base de datos administrada."
+    },
+    {
+      "id": 3,
+      "nivel": "básico",
+      "pregunta": "¿Qué NO es parte de IAM?",
+      "opciones": [
+        "Usuarios",
+        "Roles",
+        "Políticas",
+        "Zonas de disponibilidad"
+      ],
+      "respuestas_correctas": [3],
+      "explicacion": "IAM gestiona Usuarios, Roles, Grupos y Políticas. Las Zonas de Disponibilidad pertenecen al dominio de infraestructura regional."
+    },
+    {
+      "id": 4,
+      "nivel": "básico",
+      "pregunta": "¿Qué describe mejor un Security Group?",
+      "opciones": [
+        "Firewall a nivel instancia con reglas stateful",
+        "ACL de red a nivel subred, stateless",
+        "Mecanismo de routing entre VPCs",
+        "Servicio de balanceo de carga"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Security Groups son firewalls stateful asociados a recursos (p.ej., instancias EC2). Las NACL son stateless a nivel de subred."
+    },
+    {
+      "id": 5,
+      "nivel": "básico",
+      "pregunta": "¿Cuál servicio se utiliza principalmente para métricas y alarmas?",
+      "opciones": [
+        "AWS CloudTrail",
+        "AWS CloudWatch",
+        "AWS Config",
+        "AWS Shield"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "CloudWatch ofrece métricas, logs y alarmas. CloudTrail registra eventos de API, Config audita configuraciones y Shield protege de DDoS."
+    },
+    {
+      "id": 6,
+      "nivel": "básico",
+      "pregunta": "¿Cuáles son servicios de cómputo en AWS?",
+      "opciones": [
+        "Amazon EC2",
+        "AWS Lambda",
+        "Amazon S3",
+        "AWS Fargate"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "EC2, Lambda y Fargate son servicios de cómputo (máquinas virtuales, serverless y contenedores administrados). S3 es almacenamiento de objetos."
+    },
+    {
+      "id": 7,
+      "nivel": "básico",
+      "pregunta": "¿Qué es una Zona de Disponibilidad (AZ)?",
+      "opciones": [
+        "Un centro de datos aislado dentro de una Región",
+        "Una subred pública por defecto",
+        "Un tipo de VPC compartida",
+        "Un servicio de DNS"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Una AZ es uno o más centros de datos independientes y aislados dentro de una Región, diseñados para alta disponibilidad."
+    },
+    {
+      "id": 8,
+      "nivel": "básico",
+      "pregunta": "¿Cuál opción describe mejor Amazon EBS?",
+      "opciones": [
+        "Almacenamiento de objetos",
+        "Almacenamiento de bloques para instancias",
+        "Sistema de archivos distribuido",
+        "Base de datos administrada"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "EBS proporciona volúmenes de bloques para instancias EC2. S3 es objetos, EFS es archivos y RDS bases de datos."
+    },
+    {
+      "id": 9,
+      "nivel": "básico",
+      "pregunta": "¿Qué función cumple AWS CloudTrail?",
+      "opciones": [
+        "Recolección de métricas en tiempo real",
+        "Registro de llamadas a la API y auditoría",
+        "Escaneo de vulnerabilidades",
+        "Balanceo de carga de aplicaciones"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "CloudTrail registra eventos de API para auditoría y cumplimiento. Las métricas en tiempo real las gestiona CloudWatch."
+    },
+    {
+      "id": 10,
+      "nivel": "básico",
+      "pregunta": "¿Qué componente NO pertenece a una política de IAM típica?",
+      "opciones": [
+        "Effect",
+        "Action",
+        "Resource",
+        "Region"
+      ],
+      "respuestas_correctas": [3],
+      "explicacion": "Las políticas incluyen Effect, Action, Resource y opcionalmente Condition. 'Region' no es un campo de la política."
+    },
+    {
+      "id": 11,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuál es una práctica adecuada para otorgar acceso temporal a recursos?",
+      "opciones": [
+        "Usar roles de IAM con asunción temporal",
+        "Crear usuarios permanentes con claves estáticas",
+        "Compartir la contraseña del root",
+        "Adjuntar políticas directamente al root user"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "Los roles con asunción temporal (STS) evitan credenciales estáticas y siguen el principio de mínimo privilegio."
+    },
+    {
+      "id": 12,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué describe mejor una VPC?",
+      "opciones": [
+        "Un servicio de monitoreo",
+        "Una red virtual aislada dentro de AWS",
+        "Un balanceador de carga regional",
+        "Un repositorio de contenedores"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "Una VPC es una red virtual privada que permite segmentar subredes, routing y seguridad para recursos."
+    },
+    {
+      "id": 13,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué servicio facilita la administración de claves y cifrado?",
+      "opciones": [
+        "AWS KMS",
+        "AWS Glue",
+        "Amazon ECR",
+        "AWS Batch"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "AWS KMS gestiona claves para cifrado. Glue es ETL, ECR es registry de contenedores y Batch gestiona trabajos por lotes."
+    },
+    {
+      "id": 14,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuál enfoque NO mejora la alta disponibilidad?",
+      "opciones": [
+        "Desplegar en múltiples AZ",
+        "Usar Auto Scaling",
+        "Single-AZ con instancias spot únicamente",
+        "Balanceo de carga entre instancias"
+      ],
+      "respuestas_correctas": [2],
+      "explicacion": "Single-AZ con enfoque spot exclusivo no garantiza disponibilidad. Multi-AZ, Auto Scaling y balanceo distribuyen carga y fallos."
+    },
+    {
+      "id": 15,
+      "nivel": "intermedio",
+      "pregunta": "¿Qué componentes de CloudWatch participan en observabilidad?",
+      "opciones": [
+        "Metrics",
+        "Logs",
+        "Alarms",
+        "SQS"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "CloudWatch integra métricas, logs y alarmas para observabilidad. SQS es un servicio de colas, no parte de CloudWatch."
+    },
+    {
+      "id": 16,
+      "nivel": "intermedio",
+      "pregunta": "¿Cuál es una práctica recomendada de costos?",
+      "opciones": [
+        "No usar etiquetas",
+        "Usar etiquetas (tags) y budgets",
+        "Guardar facturas manualmente",
+        "Deshabilitar métricas para ahorrar"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "Etiquetas y presupuestos permiten visibilidad y control de costos. Deshabilitar métricas reduce observabilidad y no es recomendable."
+    },
+    {
+      "id": 17,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué describe AWS Organizations?",
+      "opciones": [
+        "Un servicio para crear VPCs compartidas",
+        "Gestión multi-cuenta con políticas centralizadas",
+        "Un registro de contenedores",
+        "Un sistema de colas de mensajes"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "Organizations permite gestionar múltiples cuentas, aplicar políticas (SCP) y gobernanza centralizada."
+    },
+    {
+      "id": 18,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas favorecen resiliencia ante desastres?",
+      "opciones": [
+        "Backups regulares y replicación entre regiones",
+        "Automatizar pruebas de recuperación",
+        "Un único bucket S3 en una región",
+        "Almacenar estados manualmente en texto plano"
+      ],
+      "respuestas_correctas": [0, 1],
+      "explicacion": "DR efectivo incluye copias y replicación multi-región junto con pruebas de recuperación automatizadas. Single-region y almacenamiento manual no ofrecen garantías."
+    },
+    {
+      "id": 19,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas mejoran seguridad a escala?",
+      "opciones": [
+        "Permisos amplios por conveniencia",
+        "Políticas administradas y versionadas, mínimo privilegio",
+        "Deshabilitar CloudTrail",
+        "Auditoría continua con CloudTrail habilitado"
+      ],
+      "respuestas_correctas": [1, 3],
+      "explicacion": "Políticas versionadas y mínimo privilegio, junto con auditoría continua, escalan la seguridad. Deshabilitar auditoría y compartir claves es riesgoso."
+    },
+    {
+      "id": 20,
+      "nivel": "avanzado",
+      "pregunta": "¿Qué describe mejor la observabilidad avanzada en AWS?",
+      "opciones": [
+        "Solo métricas de CPU",
+        "Correlación de logs, métricas y trazas",
+        "Desactivar logs para ahorrar",
+        "Uso exclusivo de dashboards estáticos"
+      ],
+      "respuestas_correctas": [1],
+      "explicacion": "La observabilidad implica correlacionar logs, métricas y trazas para entender el comportamiento del sistema y detectar problemas."
+    }
+  ]
+}

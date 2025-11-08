@@ -3,6 +3,7 @@
     { "file": "argocd_aprendizaje.md", "title": "ArgoCD", "description": "Continuous Deployment con ArgoCD" },
     { "file": "azure_aprendizaje.md", "title": "Azure", "description": "Microsoft Azure Cloud Platform" },
     { "file": "azure_devops_aprendizaje.md", "title": "Azure DevOps", "description": "Azure DevOps Services" },
+    { "file": "aws_aprendizaje.md", "title": "AWS", "description": "Servicios y arquitectura en AWS" },
     { "file": "docker_aprendizaje.md", "title": "Docker", "description": "Containerización con Docker" },
     { "file": "docker_swarm_aprendizaje.md", "title": "Docker Swarm", "description": "Orquestación con Docker Swarm" },
     { "file": "git_aprendizaje.md", "title": "Git", "description": "Control de versiones con Git" },
@@ -16,6 +17,9 @@
     { "file": "powershell_aprendizaje.md", "title": "PowerShell", "description": "Scripting con PowerShell" },
     { "file": "prometheus_aprendizaje.md", "title": "Prometheus", "description": "Monitoreo con Prometheus" },
     { "file": "python_aprendizaje.md", "title": "Python", "description": "Programación en Python" },
-    { "file": "terraform_aprendizaje.md", "title": "Terraform", "description": "Infrastructure as Code" }
+    { "file": "terraform_aprendizaje.md", "title": "Terraform", "description": "Infrastructure as Code" },
+    { "file": "devops_aprendizaje.md", "title": "DevOps", "description": "DevOps Practices" },
+    { "file": "jenkins_aprendizaje.md", "title": "Jenkins", "description": "CI/CD con Jenkins" },
+    { "file": "sonarqube_aprendizaje.md", "title": "SonarQube", "description": "Análisis de código con SonarQube" }
   ]
 }

@@ -4,271 +4,263 @@
   "preguntas": [
     {
       "id": 1,
-      "pregunta": "¿Qué es Jenkins?",
       "nivel": "básico",
+      "pregunta": "¿Qué caracteriza a Jenkins?",
       "opciones": [
-        "Una base de datos",
-        "Un servidor web",
-        "Un lenguaje de programación",
-        "Un servidor de automatización de código abierto"
+        "Servidor de automatización de CI/CD",
+        "Base de datos relacional",
+        "Herramienta de monitoreo de logs",
+        "Sistema operativo embebido"
       ],
-      "respuestas_correctas": [3],
-      "explicacion": "Jenkins es un <strong>servidor de automatización de código abierto</strong> centrado en CI/CD, no una base de datos ni un lenguaje de programación."
+      "respuestas_correctas": [0],
+      "explicacion": "Jenkins es un servidor de automatización para CI/CD extensible mediante plugins."
     },
     {
       "id": 2,
-      "pregunta": "¿Cuál de las siguientes NO es una característica principal de Jenkins?",
       "nivel": "básico",
+      "pregunta": "¿Qué elementos componen un Job o Pipeline?",
       "opciones": [
-        "Integración continua",
-        "Entrega continua",
-        "Gestión nativa de bases de datos transaccionales",
-        "Extensible con plugins",
-        "Multiplataforma"
+        "Stages",
+        "Steps",
+        "Nodes",
+        "Tables"
       ],
-      "respuestas_correctas": [2],
-      "explicacion": "Jenkins se enfoca en CI/CD, plugins y multiplataforma; no gestiona bases de datos de forma nativa."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Los pipelines definen stages, steps y agentes (nodes). 'Tables' no es un concepto nativo de pipelines."
     },
     {
       "id": 3,
-      "pregunta": "¿Qué puerto usa Jenkins por defecto?",
       "nivel": "básico",
-      "opciones": [
-        "9090",
-        "8000",
-        "8080",
-        "3000"
-      ],
-      "respuestas_correctas": [2],
-      "explicacion": "Jenkins usa el puerto <strong>8080</strong> por defecto para su interfaz web."
-    },
-    {
-      "id": 4,
-      "pregunta": "¿Qué es un Job en Jenkins?",
-      "nivel": "básico",
-      "opciones": [
-        "Un tipo de plugin",
-        "Una configuración de red",
-        "Un tipo de usuario",
-        "Una tarea o proyecto que Jenkins puede ejecutar"
-      ],
-      "respuestas_correctas": [3],
-      "explicacion": "Un Job en Jenkins es una <strong>tarea o proyecto que Jenkins puede ejecutar</strong>."
-    },
-    {
-      "id": 5,
-      "pregunta": "¿Cuál de los siguientes NO es un tipo de Job en Jenkins?",
-      "nivel": "básico",
-      "opciones": [
-        "Freestyle project",
-        "Pipeline",
-        "Multi-configuration project",
-        "Multibranch Pipeline",
-        "Service account"
-      ],
-      "respuestas_correctas": [4],
-      "explicacion": "Una <strong>service account</strong> no es un tipo de Job; los tipos de Job incluyen Freestyle, Pipeline, Multi-configuration y Multibranch."
-    },
-    {
-      "id": 6,
-      "pregunta": "¿Qué es un Build en Jenkins?",
-      "nivel": "básico",
-      "opciones": [
-        "Un tipo de plugin",
-        "Una configuración de usuario",
-        "Una ejecución específica de un Job",
-        "Un tipo de workspace"
-      ],
-      "respuestas_correctas": [2],
-      "explicacion": "Un Build en Jenkins es <strong>una ejecución específica de un Job</strong>."
-    },
-    {
-      "id": 7,
-      "pregunta": "¿Qué es un Pipeline en Jenkins?",
-      "nivel": "intermedio",
-      "opciones": [
-        "Un tipo de usuario",
-        "Una suite de plugins para implementar CI/CD",
-        "Una configuración de red",
-        "Un tipo de base de datos"
-      ],
-      "respuestas_correctas": [1],
-      "explicacion": "Un Pipeline en Jenkins es <strong>una suite de plugins para implementar CI/CD</strong> definida como código mediante Jenkinsfile."
-    },
-    {
-      "id": 8,
-      "pregunta": "¿Cuál de las siguientes NO es una sintaxis de Pipeline en Jenkins?",
-      "nivel": "intermedio",
+      "pregunta": "¿Qué formatos admite Jenkins para pipelines?",
       "opciones": [
         "Declarative Pipeline",
         "Scripted Pipeline",
-        "Imperative Pipeline",
-        "YAML Pipeline"
+        "YAML nativo sin plugin",
+        "Groovy"
       ],
-      "respuestas_correctas": [2,3],
-      "explicacion": "Jenkins soporta <strong>Declarative</strong> y <strong>Scripted</strong> Pipelines (Groovy). No existe una sintaxis nativa en YAML."
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Jenkins usa Groovy: Declarative y Scripted. YAML requiere plugins específicos, no es formato nativo estándar."
+    },
+    {
+      "id": 4,
+      "nivel": "básico",
+      "pregunta": "¿Qué plugins son típicos para integraciones SCM?",
+      "opciones": [
+        "Git Plugin",
+        "Subversion Plugin",
+        "Oracle Plugin",
+        "Mercurial Plugin"
+      ],
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Jenkins integra múltiples SCM vía plugins como Git, SVN y Mercurial. 'Oracle Plugin' no es un SCM."
+    },
+    {
+      "id": 5,
+      "nivel": "básico",
+      "pregunta": "¿Qué disparadores pueden iniciar ejecuciones?",
+      "opciones": [
+        "Webhooks",
+        "CRON (triggers programados)",
+        "Eventos de SCM",
+        "Gestos en la interfaz"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Webhooks, cron y eventos de SCM disparan pipelines. 'Gestos en la interfaz' no es un disparador técnico estándar."
+    },
+    {
+      "id": 6,
+      "nivel": "básico",
+      "pregunta": "¿Qué concepto describe el 'agent' en Declarative Pipeline?",
+      "opciones": [
+        "Dónde se ejecuta el pipeline",
+        "El repositorio remoto",
+        "El almacenamiento de artefactos",
+        "El sistema de notificaciones"
+      ],
+      "respuestas_correctas": [0],
+      "explicacion": "El agent define el nodo/ambiente de ejecución del pipeline (p. ej., docker, label, any)."
+    },
+    {
+      "id": 7,
+      "nivel": "básico",
+      "pregunta": "¿Qué buenas prácticas aplican a credenciales?",
+      "opciones": [
+        "Guardar secretos en texto plano",
+        "Usar el store de credenciales de Jenkins",
+        "Inyectar credenciales en ámbitos mínimos",
+        "Exponer tokens en logs"
+      ],
+      "respuestas_correctas": [1, 2],
+      "explicacion": "Se deben usar el store de Jenkins y limitar el alcance. Nunca exponer secretos en texto plano o logs."
+    },
+    {
+      "id": 8,
+      "nivel": "básico",
+      "pregunta": "¿Qué componentes ayudan a escalabilidad?",
+      "opciones": [
+        "Masters/Controllers",
+        "Agents/Nodes",
+        "Plugins de integración",
+        "Tablas de verificación"
+      ],
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Controladores y agentes distribuyen carga; plugins aportan extensibilidad. 'Tablas de verificación' no es un componente."
     },
     {
       "id": 9,
-      "pregunta": "¿Qué son los Agents en Jenkins Pipeline?",
-      "nivel": "intermedio",
+      "nivel": "básico",
+      "pregunta": "¿Qué salida esperas del paso 'archiveArtifacts'?",
       "opciones": [
-        "Tipos de usuarios",
-        "Configuraciones de red",
-        "Nodos donde se ejecutan los pasos del pipeline",
-        "Tipos de plugins"
+        "Publicar artefactos del build",
+        "Actualizar la base de datos",
+        "Aplicar cambios de infraestructura",
+        "Borrar registros del sistema"
       ],
-      "respuestas_correctas": [2],
-      "explicacion": "Los Agents son <strong>nodos donde se ejecutan los pasos</strong>, incluidos nodos dedicados o contenedores."
+      "respuestas_correctas": [0],
+      "explicacion": "archiveArtifacts publica artefactos generados para su preservación/descarga."
     },
     {
       "id": 10,
-      "pregunta": "¿Cuál de las siguientes NO es una sección principal de un Declarative Pipeline?",
-      "nivel": "intermedio",
+      "nivel": "básico",
+      "pregunta": "¿Qué prácticas mejoran observabilidad en Jenkins?",
       "opciones": [
-        "agent",
-        "stages",
-        "steps",
-        "post",
-        "databases"
+        "Logs estructurados",
+        "Notificaciones accionables",
+        "Pipeline Graph View y Blue Ocean",
+        "Ocultar etapas fallidas"
       ],
-      "respuestas_correctas": [4],
-      "explicacion": "Las secciones principales incluyen <strong>agent</strong>, <strong>stages</strong>, <strong>steps</strong> y <strong>post</strong>; no existe una sección de bases de datos."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Logs claros, notificaciones y visualización mejoran observabilidad. Ocultar fallos es mala práctica."
     },
     {
       "id": 11,
-      "pregunta": "¿Qué son los Triggers en Jenkins?",
       "nivel": "intermedio",
+      "pregunta": "¿Qué enfoques reducen riesgos en despliegues con Jenkins?",
       "opciones": [
-        "Tipos de plugins",
-        "Tipos de workspace",
-        "Configuraciones de usuario",
-        "Eventos que inician automáticamente un build"
+        "Canary releases",
+        "Blue/Green",
+        "Approvals basados en políticas",
+        "Despliegues sin pruebas"
       ],
-      "respuestas_correctas": [3],
-      "explicacion": "Los triggers son <strong>eventos que inician automáticamente un build</strong> en respuesta a cambios o horarios."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Canary, Blue/Green y approvals con políticas reducen riesgo; desplegar sin pruebas lo aumenta."
     },
     {
       "id": 12,
-      "pregunta": "¿Cuál de los siguientes NO es un tipo de trigger común?",
       "nivel": "intermedio",
+      "pregunta": "¿Qué bloque en Declarative define condiciones de ejecución?",
       "opciones": [
-        "SCM polling",
-        "Webhook",
-        "Cron schedule",
-        "Build after other projects",
-        "Rotación manual de backups"
+        "when",
+        "post",
+        "environment",
+        "options"
       ],
-      "respuestas_correctas": [4],
-      "explicacion": "La <strong>rotación manual de backups</strong> no inicia builds. Triggers comunes incluyen SCM polling, webhooks, cron y post-build."
+      "respuestas_correctas": [0],
+      "explicacion": "El bloque 'when' condiciona ejecución con expresiones (p. ej., branch, changeset)."
     },
     {
       "id": 13,
-      "pregunta": "¿Qué son los Nodes/Slaves en Jenkins?",
-      "nivel": "avanzado",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué pasos ayudan a manejo de fallos?",
       "opciones": [
-        "Configuraciones de red",
-        "Tipos de usuarios",
-        "Máquinas adicionales para ejecutar builds",
-        "Tipos de plugins"
+        "retry",
+        "timeout",
+        "catchError",
+        "deleteDir"
       ],
-      "respuestas_correctas": [2],
-      "explicacion": "Los Nodes son <strong>máquinas adicionales para ejecutar builds</strong> y escalar la capacidad de Jenkins."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "retry/timeout/catchError gestionan fallos/tiempos; deleteDir limpia workspace pero no maneja errores."
     },
     {
       "id": 14,
-      "pregunta": "¿Cuál de los siguientes NO es un método de conexión a Nodes?",
-      "nivel": "avanzado",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué buenas prácticas aplican a agentes?",
       "opciones": [
-        "SSH",
-        "JNLP",
-        "SMTP",
-        "Windows service",
-        "Command execution"
+        "Etiquetar capacidades de agentes",
+        "Usar contenedores para entornos reproducibles",
+        "Ejecutar todo en el controlador",
+        "Aislar trabajos por requerimientos"
       ],
-      "respuestas_correctas": [2],
-      "explicacion": "<strong>SMTP</strong> es un protocolo de correo, no un método de conexión de agentes en Jenkins."
+      "respuestas_correctas": [0, 1, 3],
+      "explicacion": "Etiquetas, contenedores y aislamiento por requisitos mejoran confiabilidad; ejecutar todo en el controlador no escala."
     },
     {
       "id": 15,
-      "pregunta": "¿Qué es Blue Ocean en Jenkins?",
-      "nivel": "avanzado",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué bloques manejan postcondiciones en Declarative?",
       "opciones": [
-        "Una configuración de red",
-        "Una interfaz moderna para Jenkins Pipeline",
-        "Un tipo de plugin de seguridad",
-        "Un tipo de base de datos"
+        "post",
+        "always",
+        "success",
+        "failure"
       ],
-      "respuestas_correctas": [1],
-      "explicacion": "Blue Ocean es <strong>una interfaz moderna para Jenkins Pipeline</strong> que mejora la visualización y UX."
+      "respuestas_correctas": [0],
+      "explicacion": "El bloque 'post' agrupa postcondiciones y define acciones para always/success/failure/unstable/changed, etc."
     },
     {
       "id": 16,
-      "pregunta": "¿Cuál de las siguientes NO es una característica de seguridad en Jenkins?",
-      "nivel": "avanzado",
+      "nivel": "intermedio",
+      "pregunta": "¿Qué prácticas mejoran seguridad en Jenkins?",
       "opciones": [
-        "Matrix-based security",
-        "Motor integrado de mitigación DDoS",
-        "Role-based security",
-        "LDAP integration",
-        "Credential management"
+        "Roles y matrices de seguridad",
+        "Actualizar plugins",
+        "Habilitar CSRF protection",
+        "Compartir tokens por conveniencia"
       ],
-      "respuestas_correctas": [1],
-      "explicacion": "Jenkins no incluye un <strong>motor de mitigación DDoS</strong>; sí ofrece seguridad por matriz/roles, LDAP y gestión de credenciales."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "RBAC, plugins actualizados y protección CSRF son esenciales; compartir tokens es riesgoso."
     },
     {
       "id": 17,
-      "pregunta": "¿Qué son los Shared Libraries en Jenkins?",
       "nivel": "avanzado",
+      "pregunta": "¿Qué patrones escalan Jenkins a nivel organización?",
       "opciones": [
-        "Tipos de plugins",
-        "Configuraciones de red",
-        "Tipos de usuarios",
-        "Código reutilizable para Pipelines"
+        "Pipelines como código versionados",
+        "Bibliotecas compartidas (Shared Libraries)",
+        "Plantillas parametrizadas",
+        "Jobs manuales aislados sin versionado"
       ],
-      "respuestas_correctas": [3],
-      "explicacion": "Las Shared Libraries son <strong>código reutilizable para Pipelines</strong> compartido entre proyectos."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Pipelines como código, shared libs y plantillas parametrizadas escalan y estandarizan."
     },
     {
       "id": 18,
-      "pregunta": "¿Cuál de las siguientes NO es una estrategia de backup adecuada para Jenkins?",
       "nivel": "avanzado",
+      "pregunta": "¿Qué integraciones mejoran supply chain de software?",
       "opciones": [
-        "Backup del JENKINS_HOME",
-        "Configuration as Code",
-        "Plugin de backup",
-        "Borrar periódicamente el JENKINS_HOME para liberar espacio",
-        "Snapshots de filesystem"
+        "Firmas de artefactos",
+        "Análisis de dependencias",
+        "Políticas de aprobación automáticas",
+        "Descargar binarios desde fuentes desconocidas"
       ],
-      "respuestas_correctas": [3],
-      "explicacion": "<strong>Borrar JENKINS_HOME</strong> destruye configuración y datos; es lo opuesto a una estrategia de respaldo."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Firmas, análisis y políticas elevan seguridad del pipeline; binarios no confiables son un riesgo."
     },
     {
       "id": 19,
-      "pregunta": "¿Qué es Jenkins Configuration as Code (JCasC)?",
       "nivel": "avanzado",
+      "pregunta": "¿Qué prácticas mejoran rendimiento de ejecuciones?",
       "opciones": [
-        "Una configuración de seguridad",
-        "Un tipo de pipeline",
-        "Un tipo de plugin de build",
-        "Plugin para configurar Jenkins mediante YAML"
+        "Cacheo de dependencias",
+        "Paralelismo de etapas",
+        "Reutilización de workspaces con control",
+        "Deshabilitar logs por completo"
       ],
-      "respuestas_correctas": [3],
-      "explicacion": "JCasC es un <strong>plugin</strong> para configurar Jenkins mediante YAML de forma reproducible."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Caches, paralelismo y manejo de workspaces mejoran rendimiento; deshabilitar logs quita observabilidad."
     },
     {
       "id": 20,
-      "pregunta": "¿Cuál de las siguientes NO es una buena práctica para Jenkins?",
       "nivel": "avanzado",
+      "pregunta": "¿Qué controles automatizados reducen riesgo en producción?",
       "opciones": [
-        "Usar Pipeline as Code",
-        "Evitar usar credenciales y autenticación para simplificar",
-        "Monitor performance",
-        "Keep plugins updated",
-        "Regular backups"
+        "Gates basados en calidad",
+        "Pruebas de humo post-deploy",
+        "Verificaciones de cambios en infraestructura",
+        "Eludir aprobación por política"
       ],
-      "respuestas_correctas": [1],
-      "explicacion": "Evitar credenciales/autenticación <strong>no</strong> es una buena práctica; se debe proteger Jenkins, monitorear, respaldar y mantener plugins actualizados."
+      "respuestas_correctas": [0, 1, 2],
+      "explicacion": "Quality gates, pruebas post-deploy y verificaciones de IaC reducen riesgo; eludir políticas lo incrementa."
     }
   ]
 }
