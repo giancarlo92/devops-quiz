@@ -1061,6 +1061,7 @@ function backToQuiz() {
     const promptsPage = document.getElementById('promptsPage');
     const guidesPage = document.getElementById('guidesPage');
     const docsPage = document.getElementById('docsPage');
+    const learningPage = document.getElementById('learningPage');
     if (promptsPage) {
         promptsPage.style.display = 'none';
         promptsPage.classList.remove('overlay');
@@ -1072,6 +1073,10 @@ function backToQuiz() {
     if (docsPage) {
         docsPage.style.display = 'none';
         docsPage.classList.remove('overlay');
+    }
+    if (learningPage) {
+        learningPage.style.display = 'none';
+        learningPage.classList.remove('overlay');
     }
     document.body.classList.remove('overlay-open');
     hideAllModals();
@@ -1232,6 +1237,7 @@ window.onclick = function(event) {
     const promptModal = document.getElementById('promptModal');
     const guideModal = document.getElementById('guideModal');
     const docModal = document.getElementById('docModal');
+    const learningModal = document.getElementById('learningModal');
     if (event.target === promptModal) {
         closeModal();
     }
@@ -1241,6 +1247,9 @@ window.onclick = function(event) {
     if (event.target === docModal) {
         closeDocModal();
     }
+    if (event.target === learningModal) {
+        closeLearningModal();
+    }
 }
 
 // Utilidad para cerrar cualquier modal abierto
@@ -1248,9 +1257,11 @@ function hideAllModals() {
     const promptModal = document.getElementById('promptModal');
     const guideModal = document.getElementById('guideModal');
     const docModal = document.getElementById('docModal');
+    const learningModal = document.getElementById('learningModal');
     if (promptModal) promptModal.style.display = 'none';
     if (guideModal) guideModal.style.display = 'none';
     if (docModal) docModal.style.display = 'none';
+    if (learningModal) learningModal.style.display = 'none';
 }
 
 // ===== FUNCIONALIDAD DE GUÍAS =====
@@ -1266,6 +1277,18 @@ function showGuidesPage() {
 
     // Cargar las guías en la galería
     loadGuidesGallery();
+}
+
+// Mostrar la página de aprendizaje
+function showLearningPage() {
+    const learningPage = document.getElementById('learningPage');
+    learningPage.style.display = 'block';
+    learningPage.classList.add('overlay');
+    document.body.classList.add('overlay-open');
+    hideAllModals();
+
+    // Cargar los cursos de aprendizaje en la galería
+    loadLearningGallery();
 }
 
 // ===== FUNCIONALIDAD DE DOCUMENTACIÓN =====
@@ -1697,4 +1720,134 @@ function navigateGuide(offset) {
     if (newIdx >= availablePrompts.length) newIdx = 0;
     const item = availablePrompts[newIdx];
     openGuide(item.file, item.title);
+}
+
+// ===== FUNCIONALIDAD DE APRENDIZAJE =====
+
+// Cargar la galería de aprendizaje
+function loadLearningGallery() {
+    const gallery = document.getElementById('learningGallery');
+    if (!gallery) return;
+    gallery.innerHTML = '';
+
+    availablePrompts.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        card.innerHTML = `
+            <div class="prompt-card-header">
+                <h3>${item.title}</h3>
+            </div>
+            <div class="prompt-card-body">
+                <p>${item.description}</p>
+                <button class="btn btn-primary" onclick="openLearning('${item.file}', '${item.title}')">
+                    🎓 Ver Aprendizaje
+                </button>
+            </div>
+        `;
+        gallery.appendChild(card);
+    });
+}
+
+// Abrir un archivo de aprendizaje específico
+async function openLearning(filename, title) {
+    try {
+        console.log('[openLearning] Cargando:', `learning/${filename}`);
+        const response = await fetch(`learning/${filename}`, { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error(`Error al cargar aprendizaje: ${response.status}`);
+        }
+
+        const markdownContent = await response.text();
+
+        // Mostrar el modal de aprendizaje
+        const modal = document.getElementById('learningModal');
+        const modalTitle = document.getElementById('learningModalTitle');
+        const modalContent = document.getElementById('learningMarkdownContent');
+        // Asegurar que otros modales estén cerrados
+        const promptModal = document.getElementById('promptModal');
+        const guideModal = document.getElementById('guideModal');
+        const docModal = document.getElementById('docModal');
+        if (promptModal) promptModal.style.display = 'none';
+        if (guideModal) guideModal.style.display = 'none';
+        if (docModal) docModal.style.display = 'none';
+
+        modalTitle.textContent = title;
+
+        if (typeof marked !== 'undefined') {
+            modalContent.innerHTML = marked.parse(markdownContent);
+        } else {
+            modalContent.innerHTML = `<pre>${markdownContent}</pre>`;
+        }
+
+        // Guardar el contenido original para copiar
+        modal.dataset.originalContent = markdownContent;
+        // Guardar índice actual para navegación
+        const currentIndex = availablePrompts.findIndex(p => p.file === filename);
+        modal.dataset.currentIndex = String(currentIndex);
+
+        modal.style.display = 'block';
+        modal.dataset.source = 'learning';
+
+    } catch (error) {
+        console.error('Error al cargar aprendizaje:', error);
+        alert('Error al cargar el contenido de aprendizaje. Intenta de nuevo.');
+    }
+}
+
+// Cerrar modal de aprendizaje
+function closeLearningModal() {
+    const modal = document.getElementById('learningModal');
+    if (modal) modal.style.display = 'none';
+}
+
+// Copiar contenido Markdown del aprendizaje
+async function copyLearningMarkdownContent() {
+    const modal = document.getElementById('learningModal');
+    if (!modal) return;
+    const originalContent = modal.dataset.originalContent;
+
+    if (!originalContent) {
+        alert('No hay contenido para copiar.');
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(originalContent);
+        const copyBtn = document.getElementById('copyLearningMarkdownBtn');
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '¡Copiado!';
+        copyBtn.style.backgroundColor = '#28a745';
+        setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.backgroundColor = '';
+        }, 2000);
+    } catch (error) {
+        console.error('Error al copiar:', error);
+        const textArea = document.createElement('textarea');
+        textArea.value = originalContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert('Contenido copiado al portapapeles');
+        } catch (fallbackError) {
+            console.error('Error en fallback de copia:', fallbackError);
+            alert('No se pudo copiar el contenido. Por favor, selecciona y copia manualmente.');
+        }
+        document.body.removeChild(textArea);
+    }
+}
+
+// Navegación entre archivos de aprendizaje
+function navigateLearning(offset) {
+    const modal = document.getElementById('learningModal');
+    if (!modal || modal.style.display === 'none') return;
+    const idx = parseInt(modal.dataset.currentIndex || '-1', 10);
+    if (isNaN(idx) || idx < 0) return;
+    if (!Array.isArray(availablePrompts) || availablePrompts.length === 0) return;
+    let newIdx = idx + offset;
+    if (newIdx < 0) newIdx = availablePrompts.length - 1;
+    if (newIdx >= availablePrompts.length) newIdx = 0;
+    const item = availablePrompts[newIdx];
+    openLearning(item.file, item.title);
 }

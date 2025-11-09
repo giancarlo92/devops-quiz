@@ -17,6 +17,7 @@
                 </div>
             </div>
             <div class="prompts-button-container">
+                <button class="btn btn-secondary" id="learningBtn" onclick="showLearningPage()">🎓 Aprendizaje</button>
                 <button class="btn btn-secondary" id="promptsBtn" onclick="showPromptsPage()">🧠 Prompts</button>
                 <button class="btn btn-secondary" id="guidesBtn" onclick="showGuidesPage()">📘 Guías</button>
                 <button class="btn btn-secondary" id="docsBtn" onclick="showDocsPage()">📄 Documentación</button>
@@ -315,6 +316,46 @@
             <!-- Botones de navegación (Documentación) -->
             <button class="modal-nav-btn modal-nav-left" aria-label="Anterior" onclick="navigateDocument(-1)">❮</button>
             <button class="modal-nav-btn modal-nav-right" aria-label="Siguiente" onclick="navigateDocument(1)">❯</button>
+        </div>
+    </div>
+
+    <!-- Página de Aprendizaje -->
+    <div id="learningPage" class="prompts-page" style="display: none;">
+        <div class="prompts-header">
+            <div class="prompts-header-content">
+                <div class="prompts-title">
+                    <h1>🎓 Aprendizaje DevOps</h1>
+                    <p>Cursos y sesiones guiadas sin puntuación</p>
+                </div>
+                <div class="prompts-actions">
+                    <button class="btn btn-secondary" onclick="backToQuiz()">← Volver al Cuestionario</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="prompts-content">
+            <div class="prompts-gallery" id="learningGallery">
+                <!-- Los cursos de aprendizaje se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+        
+        <!-- Modal para mostrar el contenido de aprendizaje -->
+        <div id="learningModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="learningModalTitle"></h2>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="copyLearningMarkdownBtn" onclick="copyLearningMarkdownContent()">📋 Copiar MD</button>
+                        <button class="btn btn-danger" onclick="closeLearningModal()">✕ Cerrar</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="learningMarkdownContent" class="markdown-content"></div>
+                </div>
+            </div>
+            <!-- Botones de navegación (Aprendizaje) -->
+            <button class="modal-nav-btn modal-nav-left" aria-label="Anterior" onclick="navigateLearning(-1)">❮</button>
+            <button class="modal-nav-btn modal-nav-right" aria-label="Siguiente" onclick="navigateLearning(1)">❯</button>
         </div>
     </div>
 
